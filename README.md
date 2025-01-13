@@ -1,2 +1,2 @@
 # igrca-za-RPAv
-game 
+To je moja igrica za RPAv. Upam da bo pozitivna ocena.
