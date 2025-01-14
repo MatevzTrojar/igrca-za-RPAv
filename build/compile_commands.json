@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/matko/Desktop/igrca-za-RPAv/build",
+  "command": "/usr/bin/c++  -isystem /usr/include/SDL2  -o CMakeFiles/mygame.dir/src/main.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/main.cpp",
+  "file": "/home/matko/Desktop/igrca-za-RPAv/src/main.cpp",
+  "output": "CMakeFiles/mygame.dir/src/main.cpp.o"
+}
+]

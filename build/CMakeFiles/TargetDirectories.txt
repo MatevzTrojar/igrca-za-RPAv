@@ -1,0 +1,3 @@
+/home/matko/Desktop/igrca-za-RPAv/build/CMakeFiles/mygame.dir
+/home/matko/Desktop/igrca-za-RPAv/build/CMakeFiles/edit_cache.dir
+/home/matko/Desktop/igrca-za-RPAv/build/CMakeFiles/rebuild_cache.dir
