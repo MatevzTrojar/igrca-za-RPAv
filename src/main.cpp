@@ -1,4 +1,6 @@
 #include <SDL2/SDL.h>
+#include <algorithm>
+#include <ctime>
 #include <glm/vector_relational.hpp>
 #include <SDL2/SDL_timer.h>
 #include <SDL_image.h>
@@ -6,6 +8,8 @@
 #include "glm/ext/vector_float2.hpp"
 #include "glm/geometric.hpp"
 #include <glm/glm.hpp>
+#include "clock.hpp"
+#include<iostream>
 int main() {
 	// returns zero on success else non-zero
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
@@ -18,6 +22,8 @@ int main() {
 	// triggers the program that controls
 	// your graphics hardware and sets flags
 	Uint32 render_flags = SDL_RENDERER_ACCELERATED;
+    
+    Clock clock;
 
 	// creates a renderer to render our images
 	SDL_Renderer* rend = SDL_CreateRenderer(win, -1, render_flags);
@@ -59,6 +65,7 @@ int main() {
 
 	// animation loop
 	while (!close) {
+        clock.tick();
 		SDL_Event event;
         glm::vec2 move;
 		// Events management
@@ -84,11 +91,29 @@ int main() {
                             move.x+=1;
                         }
                         break;
+				case SDL_KEYUP:
+					// keyboard API for key pressed
+                   		if(SDLK_a == event.key.keysym.sym){
+                            move.x+=1;
+                        }
+					    if(SDLK_w == event.key.keysym.sym){
+                            move.y+=1;
+                        }
+					    if(SDLK_s == event.key.keysym.sym){
+                            move.y-=1;
+                        }
+					    if(SDLK_d == event.key.keysym.sym){
+                            move.x-=1;
+                        }
+                        break;
+
 			}
 		}
         glm::vec2 finalMove = glm::normalize(move);
+        finalMove *= clock.delta;
         dest.x += finalMove.x;
         dest.y += finalMove.y;
+        std::cout<<clock.delta<<std::endl;
 		// right boundary
 		if (dest.x + dest.w > 1000) dest.x = 1000 - dest.w;
 
@@ -108,8 +133,9 @@ int main() {
 		// triggers the double buffers
 		// for multiple rendering
 		SDL_RenderPresent(rend);
+        SDL_Delay(1000 / 60);
 	}
-
+    
 	// destroy texture
 	SDL_DestroyTexture(tex);
 

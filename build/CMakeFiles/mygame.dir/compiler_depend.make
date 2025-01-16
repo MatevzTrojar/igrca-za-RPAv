@@ -141,6 +141,7 @@ CMakeFiles/mygame.dir/src/main.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/main
   _deps/glm-src/glm/vec3.hpp \
   _deps/glm-src/glm/vec4.hpp \
   _deps/glm-src/glm/vector_relational.hpp \
+  /home/matko/Desktop/igrca-za-RPAv/src/clock.hpp \
   /usr/include/SDL2/SDL.h \
   /usr/include/SDL2/SDL_assert.h \
   /usr/include/SDL2/SDL_atomic.h \
@@ -193,11 +194,16 @@ CMakeFiles/mygame.dir/src/main.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/main
   /usr/include/SDL2/begin_code.h \
   /usr/include/SDL2/close_code.h \
   /usr/include/alloca.h \
+  /usr/include/asm-generic/errno-base.h \
+  /usr/include/asm-generic/errno.h \
+  /usr/include/asm/errno.h \
   /usr/include/assert.h \
   /usr/include/bits/atomic_wide_counter.h \
   /usr/include/bits/byteswap.h \
+  /usr/include/bits/cpu-set.h \
   /usr/include/bits/endian.h \
   /usr/include/bits/endianness.h \
+  /usr/include/bits/errno.h \
   /usr/include/bits/floatn-common.h \
   /usr/include/bits/floatn.h \
   /usr/include/bits/flt-eval-method.h \
@@ -207,6 +213,7 @@ CMakeFiles/mygame.dir/src/main.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/main
   /usr/include/bits/libc-header-start.h \
   /usr/include/bits/libm-simd-decl-stubs.h \
   /usr/include/bits/local_lim.h \
+  /usr/include/bits/locale.h \
   /usr/include/bits/long-double.h \
   /usr/include/bits/math-vector.h \
   /usr/include/bits/mathcalls-helper-functions.h \
@@ -217,7 +224,9 @@ CMakeFiles/mygame.dir/src/main.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/main
   /usr/include/bits/pthread_stack_min-dynamic.h \
   /usr/include/bits/pthreadtypes-arch.h \
   /usr/include/bits/pthreadtypes.h \
+  /usr/include/bits/sched.h \
   /usr/include/bits/select.h \
+  /usr/include/bits/setjmp.h \
   /usr/include/bits/stdint-intn.h \
   /usr/include/bits/stdint-least.h \
   /usr/include/bits/stdint-uintn.h \
@@ -226,8 +235,10 @@ CMakeFiles/mygame.dir/src/main.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/main
   /usr/include/bits/struct_mutex.h \
   /usr/include/bits/struct_rwlock.h \
   /usr/include/bits/thread-shared-types.h \
+  /usr/include/bits/time.h \
   /usr/include/bits/time64.h \
   /usr/include/bits/timesize.h \
+  /usr/include/bits/timex.h \
   /usr/include/bits/types.h \
   /usr/include/bits/types/FILE.h \
   /usr/include/bits/types/__FILE.h \
@@ -239,12 +250,17 @@ CMakeFiles/mygame.dir/src/main.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/main
   /usr/include/bits/types/clock_t.h \
   /usr/include/bits/types/clockid_t.h \
   /usr/include/bits/types/cookie_io_functions_t.h \
+  /usr/include/bits/types/error_t.h \
   /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/mbstate_t.h \
   /usr/include/bits/types/sigset_t.h \
   /usr/include/bits/types/struct_FILE.h \
+  /usr/include/bits/types/struct___jmp_buf_tag.h \
+  /usr/include/bits/types/struct_itimerspec.h \
+  /usr/include/bits/types/struct_sched_param.h \
   /usr/include/bits/types/struct_timespec.h \
   /usr/include/bits/types/struct_timeval.h \
+  /usr/include/bits/types/struct_tm.h \
   /usr/include/bits/types/time_t.h \
   /usr/include/bits/types/timer_t.h \
   /usr/include/bits/types/wint_t.h \
@@ -254,37 +270,131 @@ CMakeFiles/mygame.dir/src/main.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/main
   /usr/include/bits/waitflags.h \
   /usr/include/bits/waitstatus.h \
   /usr/include/bits/wchar.h \
+  /usr/include/bits/wctype-wchar.h \
   /usr/include/bits/wordsize.h \
   /usr/include/bits/xopen_lim.h \
+  /usr/include/c++/14.2.1/algorithm \
+  /usr/include/c++/14.2.1/backward/binders.h \
+  /usr/include/c++/14.2.1/bits/algorithmfwd.h \
+  /usr/include/c++/14.2.1/bits/alloc_traits.h \
+  /usr/include/c++/14.2.1/bits/allocator.h \
+  /usr/include/c++/14.2.1/bits/basic_ios.h \
+  /usr/include/c++/14.2.1/bits/basic_ios.tcc \
+  /usr/include/c++/14.2.1/bits/basic_string.h \
+  /usr/include/c++/14.2.1/bits/basic_string.tcc \
+  /usr/include/c++/14.2.1/bits/char_traits.h \
+  /usr/include/c++/14.2.1/bits/charconv.h \
+  /usr/include/c++/14.2.1/bits/concept_check.h \
   /usr/include/c++/14.2.1/bits/cpp_type_traits.h \
+  /usr/include/c++/14.2.1/bits/cxxabi_forced.h \
+  /usr/include/c++/14.2.1/bits/cxxabi_init_exception.h \
+  /usr/include/c++/14.2.1/bits/exception.h \
+  /usr/include/c++/14.2.1/bits/exception_defines.h \
+  /usr/include/c++/14.2.1/bits/exception_ptr.h \
+  /usr/include/c++/14.2.1/bits/functexcept.h \
+  /usr/include/c++/14.2.1/bits/functional_hash.h \
+  /usr/include/c++/14.2.1/bits/hash_bytes.h \
+  /usr/include/c++/14.2.1/bits/invoke.h \
+  /usr/include/c++/14.2.1/bits/ios_base.h \
+  /usr/include/c++/14.2.1/bits/istream.tcc \
+  /usr/include/c++/14.2.1/bits/locale_classes.h \
+  /usr/include/c++/14.2.1/bits/locale_classes.tcc \
+  /usr/include/c++/14.2.1/bits/locale_facets.h \
+  /usr/include/c++/14.2.1/bits/locale_facets.tcc \
+  /usr/include/c++/14.2.1/bits/localefwd.h \
+  /usr/include/c++/14.2.1/bits/memoryfwd.h \
+  /usr/include/c++/14.2.1/bits/move.h \
+  /usr/include/c++/14.2.1/bits/nested_exception.h \
+  /usr/include/c++/14.2.1/bits/new_allocator.h \
+  /usr/include/c++/14.2.1/bits/ostream.tcc \
+  /usr/include/c++/14.2.1/bits/ostream_insert.h \
+  /usr/include/c++/14.2.1/bits/postypes.h \
+  /usr/include/c++/14.2.1/bits/predefined_ops.h \
+  /usr/include/c++/14.2.1/bits/ptr_traits.h \
+  /usr/include/c++/14.2.1/bits/range_access.h \
+  /usr/include/c++/14.2.1/bits/refwrap.h \
   /usr/include/c++/14.2.1/bits/requires_hosted.h \
   /usr/include/c++/14.2.1/bits/std_abs.h \
+  /usr/include/c++/14.2.1/bits/stl_algo.h \
+  /usr/include/c++/14.2.1/bits/stl_algobase.h \
+  /usr/include/c++/14.2.1/bits/stl_construct.h \
+  /usr/include/c++/14.2.1/bits/stl_function.h \
+  /usr/include/c++/14.2.1/bits/stl_heap.h \
+  /usr/include/c++/14.2.1/bits/stl_iterator.h \
+  /usr/include/c++/14.2.1/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/14.2.1/bits/stl_iterator_base_types.h \
+  /usr/include/c++/14.2.1/bits/stl_pair.h \
+  /usr/include/c++/14.2.1/bits/stl_tempbuf.h \
+  /usr/include/c++/14.2.1/bits/streambuf.tcc \
+  /usr/include/c++/14.2.1/bits/streambuf_iterator.h \
+  /usr/include/c++/14.2.1/bits/stringfwd.h \
+  /usr/include/c++/14.2.1/bits/uniform_int_dist.h \
+  /usr/include/c++/14.2.1/bits/utility.h \
   /usr/include/c++/14.2.1/bits/version.h \
   /usr/include/c++/14.2.1/cassert \
+  /usr/include/c++/14.2.1/cctype \
+  /usr/include/c++/14.2.1/cerrno \
   /usr/include/c++/14.2.1/cfloat \
   /usr/include/c++/14.2.1/climits \
+  /usr/include/c++/14.2.1/clocale \
   /usr/include/c++/14.2.1/cmath \
   /usr/include/c++/14.2.1/cstddef \
   /usr/include/c++/14.2.1/cstdint \
+  /usr/include/c++/14.2.1/cstdio \
   /usr/include/c++/14.2.1/cstdlib \
+  /usr/include/c++/14.2.1/ctime \
+  /usr/include/c++/14.2.1/cwchar \
+  /usr/include/c++/14.2.1/cwctype \
+  /usr/include/c++/14.2.1/debug/assertions.h \
+  /usr/include/c++/14.2.1/debug/debug.h \
+  /usr/include/c++/14.2.1/exception \
+  /usr/include/c++/14.2.1/ext/alloc_traits.h \
+  /usr/include/c++/14.2.1/ext/atomicity.h \
+  /usr/include/c++/14.2.1/ext/numeric_traits.h \
+  /usr/include/c++/14.2.1/ext/string_conversions.h \
   /usr/include/c++/14.2.1/ext/type_traits.h \
+  /usr/include/c++/14.2.1/initializer_list \
+  /usr/include/c++/14.2.1/ios \
+  /usr/include/c++/14.2.1/iosfwd \
+  /usr/include/c++/14.2.1/iostream \
+  /usr/include/c++/14.2.1/istream \
   /usr/include/c++/14.2.1/limits \
   /usr/include/c++/14.2.1/math.h \
+  /usr/include/c++/14.2.1/new \
+  /usr/include/c++/14.2.1/ostream \
+  /usr/include/c++/14.2.1/stdexcept \
   /usr/include/c++/14.2.1/stdlib.h \
+  /usr/include/c++/14.2.1/streambuf \
+  /usr/include/c++/14.2.1/string \
+  /usr/include/c++/14.2.1/system_error \
   /usr/include/c++/14.2.1/type_traits \
+  /usr/include/c++/14.2.1/typeinfo \
+  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
+  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
+  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++locale.h \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h \
+  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h \
+  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/ctype_inline.h \
+  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/error_constants.h \
+  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/gthr-default.h \
+  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/gthr.h \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
   /usr/include/ctype.h \
   /usr/include/endian.h \
+  /usr/include/errno.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
   /usr/include/gnu/stubs-64.h \
   /usr/include/gnu/stubs.h \
   /usr/include/inttypes.h \
   /usr/include/limits.h \
+  /usr/include/linux/errno.h \
   /usr/include/linux/limits.h \
+  /usr/include/locale.h \
   /usr/include/math.h \
+  /usr/include/pthread.h \
+  /usr/include/sched.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdint.h \
   /usr/include/stdio.h \
@@ -293,8 +403,11 @@ CMakeFiles/mygame.dir/src/main.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/main
   /usr/include/strings.h \
   /usr/include/sys/cdefs.h \
   /usr/include/sys/select.h \
+  /usr/include/sys/single_threaded.h \
   /usr/include/sys/types.h \
+  /usr/include/time.h \
   /usr/include/wchar.h \
+  /usr/include/wctype.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/adxintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxbf16intrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxcomplexintrin.h \
@@ -457,896 +570,1122 @@ mygame: /usr/lib/Scrt1.o \
   CMakeFiles/mygame.dir/src/main.cpp.o
 
 
+CMakeFiles/mygame.dir/src/main.cpp.o:
+
 /usr/lib32/libzstd.so.1:
-
-/usr/lib32/libtiff.so.6:
-
-/usr/lib32/libbrotlicommon.so.1:
-
-/usr/lib/libzstd.so.1:
-
-/usr/lib/libyuv.so:
-
-/usr/lib/libwebpdemux.so.2:
-
-/usr/lib/libwebp.so.7:
-
-/usr/lib/libmvec.so.1:
-
-/usr/lib/libjxl_cms.so.0.11:
-
-/usr/lib/libjbig.so.2.1:
-
-/usr/lib/libc_nonshared.a:
-
-/usr/lib/libc.so.6:
-
-/usr/lib/libbrotlienc.so.1:
-
-/usr/lib/libavif.so.16:
-
-/usr/lib/libSvtAv1Enc.so.2:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/libgcc.a:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtendS.o:
-
-/usr/lib/libaom.so.3:
-
-/usr/lib/libstdc++.so:
-
-/usr/lib/libSDL2_image.so:
-
-/usr/lib/crti.o:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xtestintrin.h:
-
-/usr/lib/libm.so.6:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsavesintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsaveintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsavecintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xmmintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/x86gprintrin.h:
-
-/usr/lib32/libwebp.so.7:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/wmmintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/waitpkgintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/vaesintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/usermsrintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h:
-
-/usr/lib/crtn.o:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tbmintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/smmintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sm4intrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/serializeintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/raointintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/popcntintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/pconfigintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mwaitintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mm_malloc.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/immintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/ia32intrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/hresetintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/gfniintrin.h:
-
-/usr/lib/libm.so:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/f16cintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/emmintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/clflushoptintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsaveoptintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/cldemoteintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/cetintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/bmiintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxvnniintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxvnniint8intrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxvnniint16intrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxneconvertintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxifmaintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vpopcntdqintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vp2intersectvlintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/fmaintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vp2intersectintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vnnivlintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vldqintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vlbwintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vbmivlintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/enqcmdintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vbmiintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vbmi2vlintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vbmi2intrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512pfintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512fp16vlintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512cdintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bitalgvlintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bitalgintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bf16vlintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/clwbintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bf16intrin.h:
-
-/usr/lib/liblzma.so.5:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx5124fmapsintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx2intrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vpopcntdqvlintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxint8intrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxfp16intrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxcomplexintrin.h:
-
-/usr/include/sys/select.h:
-
-/usr/include/sys/cdefs.h:
-
-/usr/include/strings.h:
-
-/usr/include/string.h:
-
-/usr/include/stdc-predef.h:
-
-/usr/include/math.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/wbnoinvdintrin.h:
-
-/usr/include/limits.h:
-
-/usr/include/inttypes.h:
-
-/usr/lib/libSDL2.so:
-
-/usr/include/features-time64.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/uintrintrin.h:
-
-/usr/include/stdint.h:
-
-/usr/include/endian.h:
-
-/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++config.h:
-
-/usr/include/c++/14.2.1/stdlib.h:
-
-/usr/lib32/libjpeg.so.8:
-
-/usr/include/c++/14.2.1/math.h:
-
-/usr/include/c++/14.2.1/cstdlib:
-
-/usr/include/c++/14.2.1/cstdint:
-
-/usr/lib/libhwy.so.1:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vnniintrin.h:
-
-/usr/include/c++/14.2.1/cstddef:
-
-/usr/include/bits/stdint-uintn.h:
-
-_deps/glm-src/glm/detail/type_vec3.inl:
-
-/usr/include/bits/fp-logb.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512ifmaintrin.h:
-
-_deps/glm-src/glm/detail/func_packing.inl:
-
-_deps/glm-src/glm/detail/compute_common.hpp:
-
-_deps/glm-src/glm/vec4.hpp:
-
-/usr/include/c++/14.2.1/bits/requires_hosted.h:
-
-/usr/include/sys/types.h:
-
-_deps/glm-src/glm/detail/func_geometric.inl:
-
-/usr/include/bits/struct_rwlock.h:
-
-_deps/glm-src/glm/detail/_vectorize.hpp:
-
-_deps/glm-src/glm/detail/type_mat3x3.hpp:
-
-/usr/include/stdlib.h:
-
-_deps/glm-src/glm/mat4x2.hpp:
-
-_deps/glm-src/glm/common.hpp:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/rdseedintrin.h:
-
-_deps/glm-src/glm/ext/vector_uint3.hpp:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/vpclmulqdqintrin.h:
-
-_deps/glm-src/glm/geometric.hpp:
-
-_deps/glm-src/glm/ext/vector_int4_sized.hpp:
-
-/usr/include/bits/types/__fpos_t.h:
-
-/usr/include/bits/types/clock_t.h:
-
-_deps/glm-src/glm/detail/type_half.hpp:
-
-_deps/glm-src/glm/ext/vector_uint2.hpp:
-
-_deps/glm-src/glm/ext/vector_float4_precision.hpp:
-
-_deps/glm-src/glm/ext/matrix_double3x3.hpp:
-
-_deps/glm-src/glm/detail/func_vector_relational.inl:
-
-/usr/include/SDL2/SDL_rect.h:
-
-_deps/glm-src/glm/ext/vector_float2_precision.hpp:
-
-_deps/glm-src/glm/ext/vector_bool3_precision.hpp:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vlintrin.h:
-
-_deps/glm-src/glm/ext/vector_double2.hpp:
-
-_deps/glm-src/glm/ext/vector_bool2.hpp:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/bmi2intrin.h:
-
-/usr/include/SDL2/SDL_error.h:
-
-/usr/include/SDL2/SDL_render.h:
-
-/usr/lib/libbrotlidec.so.1:
-
-/usr/include/c++/14.2.1/cfloat:
-
-/usr/include/bits/timesize.h:
-
-_deps/glm-src/glm/ext/vector_bool4.hpp:
-
-_deps/glm-src/glm/mat3x2.hpp:
-
-/usr/include/SDL2/SDL_guid.h:
-
-_deps/glm-src/glm/ext/matrix_double2x2.hpp:
-
-/usr/include/bits/xopen_lim.h:
-
-/usr/include/bits/floatn-common.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h:
-
-_deps/glm-src/glm/detail/type_vec1.hpp:
-
-/usr/include/bits/flt-eval-method.h:
-
-_deps/glm-src/glm/ext/vector_bool2_precision.hpp:
-
-/usr/include/bits/types/FILE.h:
-
-/usr/include/linux/limits.h:
-
-_deps/glm-src/glm/ext/vector_double2_precision.hpp:
-
-_deps/glm-src/glm/detail/type_vec2.hpp:
-
-/usr/include/SDL2/SDL_config.h:
-
-_deps/glm-src/glm/detail/type_mat2x2.hpp:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/prfchwintrin.h:
-
-/usr/include/bits/fp-fast.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512fintrin.h:
-
-/usr/include/gnu/stubs.h:
-
-_deps/glm-src/glm/detail/func_common.inl:
-
-_deps/glm-src/glm/ext/matrix_double3x4.hpp:
-
-/usr/include/SDL2/SDL_messagebox.h:
-
-/usr/lib/libjxl.so.0.11:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx5124vnniwintrin.h:
-
-_deps/glm-src/glm/ext/matrix_double4x2.hpp:
-
-/usr/include/c++/14.2.1/bits/cpp_type_traits.h:
-
-_deps/glm-src/glm/matrix.hpp:
-
-/usr/include/c++/14.2.1/limits:
-
-_deps/glm-src/glm/vec3.hpp:
-
-_deps/glm-src/glm/detail/func_integer.inl:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/fxsrintrin.h:
-
-_deps/glm-src/glm/detail/func_matrix.inl:
-
-_deps/glm-src/glm/detail/qualifier.hpp:
-
-/usr/include/bits/mathcalls-helper-functions.h:
-
-_deps/glm-src/glm/detail/type_mat3x2.hpp:
-
-_deps/glm-src/glm/simd/platform.h:
-
-/usr/lib32/libsharpyuv.so.0:
-
-_deps/glm-src/glm/detail/type_mat3x4.hpp:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bwintrin.h:
-
-_deps/glm-src/glm/ext/matrix_float3x4_precision.hpp:
-
-/usr/include/bits/select.h:
-
-_deps/glm-src/glm/ext/scalar_uint_sized.hpp:
-
-_deps/glm-src/glm/ext/matrix_double3x2_precision.hpp:
-
-_deps/glm-src/glm/ext/matrix_double3x3_precision.hpp:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512fp16intrin.h:
-
-_deps/glm-src/glm/ext/matrix_float3x2.hpp:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/shaintrin.h:
-
-_deps/glm-src/glm/detail/type_mat4x2.hpp:
-
-_deps/glm-src/glm/detail/compute_vector_relational.hpp:
-
-_deps/glm-src/glm/ext/matrix_float2x4.hpp:
-
-_deps/glm-src/glm/ext/vector_double3.hpp:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sgxintrin.h:
-
-_deps/glm-src/glm/detail/type_mat4x4.inl:
-
-_deps/glm-src/glm/ext/matrix_float4x2.hpp:
-
-/usr/lib32/libbrotlidec.so.1:
-
-/usr/include/SDL2/SDL_video.h:
-
-/usr/include/bits/byteswap.h:
-
-/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/os_defines.h:
-
-/home/matko/Desktop/igrca-za-RPAv/src/main.cpp:
-
-_deps/glm-src/glm/detail/type_mat4x4.hpp:
-
-/usr/lib32/libpng16.so.16:
-
-_deps/glm-src/glm/mat3x4.hpp:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxtileintrin.h:
-
-_deps/glm-src/glm/ext/vector_int2.hpp:
-
-/usr/include/bits/floatn.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxbf16intrin.h:
-
-_deps/glm-src/glm/ext/matrix_double4x2_precision.hpp:
-
-_deps/glm-src/glm/detail/type_vec4.inl:
-
-/usr/include/bits/long-double.h:
-
-_deps/glm-src/glm/ext/vector_int3.hpp:
-
-_deps/glm-src/glm/detail/type_mat2x3.inl:
-
-_deps/glm-src/glm/ext/scalar_int_sized.hpp:
-
-/usr/include/c++/14.2.1/climits:
-
-_deps/glm-src/glm/ext/matrix_double3x4_precision.hpp:
-
-_deps/glm-src/glm/ext/matrix_float2x3_precision.hpp:
-
-_deps/glm-src/glm/ext/vector_double4_precision.hpp:
-
-_deps/glm-src/glm/fwd.hpp:
-
-_deps/glm-src/glm/detail/type_mat3x4.inl:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h:
-
-/usr/include/bits/endianness.h:
-
-/usr/include/c++/14.2.1/cassert:
-
-_deps/glm-src/glm/detail/type_half.inl:
-
-_deps/glm-src/glm/detail/type_mat4x3.hpp:
-
-_deps/glm-src/glm/ext/matrix_float4x3_precision.hpp:
-
-_deps/glm-src/glm/exponential.hpp:
-
-_deps/glm-src/glm/mat4x3.hpp:
-
-_deps/glm-src/glm/ext/matrix_double2x4_precision.hpp:
-
-/usr/include/bits/mathcalls-narrow.h:
-
-_deps/glm-src/glm/detail/type_vec1.inl:
-
-_deps/glm-src/glm/mat4x4.hpp:
-
-_deps/glm-src/glm/mat2x2.hpp:
-
-_deps/glm-src/glm/ext/vector_float3.hpp:
-
-/usr/include/bits/endian.h:
-
-_deps/glm-src/glm/detail/type_mat3x3.inl:
-
-/usr/include/ctype.h:
-
-/usr/include/SDL2/SDL_gesture.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sha512intrin.h:
-
-_deps/glm-src/glm/detail/type_mat4x2.inl:
-
-_deps/glm-src/glm/detail/func_exponential.inl:
-
-_deps/glm-src/glm/ext/matrix_double2x3_precision.hpp:
-
-_deps/glm-src/glm/detail/type_vec2.inl:
-
-_deps/glm-src/glm/ext/matrix_float4x3.hpp:
-
-/usr/include/gnu/stubs-64.h:
-
-_deps/glm-src/glm/integer.hpp:
-
-_deps/glm-src/glm/mat2x4.hpp:
-
-/usr/lib/libtiff.so.6:
-
-/usr/include/SDL2/SDL_log.h:
-
-/usr/lib/libgcc_s.so:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mmintrin.h:
-
-_deps/glm-src/glm/ext/matrix_float2x4_precision.hpp:
-
-/usr/include/bits/mathcalls.h:
-
-_deps/glm-src/glm/ext/vector_bool4_precision.hpp:
-
-_deps/glm-src/glm/ext/matrix_double4x3.hpp:
-
-_deps/glm-src/glm/ext/matrix_float2x3.hpp:
-
-_deps/glm-src/glm/ext/matrix_double4x4.hpp:
-
-_deps/glm-src/glm/ext/matrix_double2x2_precision.hpp:
-
-_deps/glm-src/glm/ext/matrix_double4x4_precision.hpp:
-
-/usr/include/SDL2/SDL_sensor.h:
-
-_deps/glm-src/glm/ext/matrix_float3x2_precision.hpp:
-
-/usr/lib/libjpeg.so.8:
-
-_deps/glm-src/glm/ext/matrix_float4x2_precision.hpp:
-
-/usr/include/SDL2/SDL_hints.h:
-
-_deps/glm-src/glm/detail/type_mat2x2.inl:
-
-/usr/include/bits/pthread_stack_min-dynamic.h:
-
-/usr/include/SDL2/SDL_loadso.h:
-
-_deps/glm-src/glm/ext/matrix_double2x4.hpp:
-
-/usr/lib/libpng16.so.16:
-
-/usr/lib/libdav1d.so.7:
-
-_deps/glm-src/glm/ext/matrix_float3x3.hpp:
-
-_deps/glm-src/glm/ext/vector_double3_precision.hpp:
 
 /usr/lib32/libz.so.1:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/pmmintrin.h:
+/usr/lib32/libwebp.so.7:
 
-_deps/glm-src/glm/detail/type_vec4.hpp:
+/usr/lib32/libtiff.so.6:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mwaitxintrin.h:
+/usr/lib32/libsharpyuv.so.0:
 
-_deps/glm-src/glm/detail/type_mat2x3.hpp:
+/usr/lib32/libpng16.so.16:
 
-_deps/glm-src/glm/detail/setup.hpp:
+/usr/lib32/liblzma.so.5:
 
-_deps/glm-src/glm/mat2x3.hpp:
+/usr/lib32/libjpeg.so.8:
 
-/usr/include/SDL2/SDL_haptic.h:
-
-_deps/glm-src/glm/ext/vector_int2_sized.hpp:
-
-_deps/glm-src/glm/packing.hpp:
-
-_deps/glm-src/glm/trigonometric.hpp:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/keylockerintrin.h:
-
-_deps/glm-src/glm/ext/vector_float3_precision.hpp:
-
-/usr/include/SDL2/SDL_timer.h:
-
-_deps/glm-src/glm/vec2.hpp:
-
-/usr/include/SDL2/SDL.h:
-
-/usr/include/SDL2/SDL_assert.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/adxintrin.h:
-
-/usr/include/bits/waitstatus.h:
-
-/usr/include/bits/wchar.h:
-
-/usr/include/SDL2/SDL_atomic.h:
-
-/usr/lib/libgcc_s.so.1:
-
-_deps/glm-src/glm/ext/vector_uint4.hpp:
-
-/usr/include/SDL2/SDL_audio.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512ifmavlintrin.h:
-
-/usr/include/SDL2/SDL_blendmode.h:
-
-_deps/glm-src/glm/ext/vector_int3_sized.hpp:
-
-_deps/glm-src/glm/ext/vector_int4.hpp:
-
-/usr/include/bits/local_lim.h:
-
-/usr/lib/Scrt1.o:
-
-/usr/include/c++/14.2.1/type_traits:
-
-/usr/include/SDL2/SDL_clipboard.h:
-
-_deps/glm-src/glm/ext/matrix_float4x4_precision.hpp:
-
-_deps/glm-src/glm/ext/matrix_double2x3.hpp:
-
-_deps/glm-src/glm/ext/vector_bool3.hpp:
-
-/usr/include/SDL2/SDL_cpuinfo.h:
-
-CMakeFiles/mygame.dir/src/main.cpp.o:
-
-_deps/glm-src/glm/ext/vector_uint3_sized.hpp:
-
-/usr/include/bits/typesizes.h:
-
-/usr/include/bits/types/time_t.h:
-
-/usr/include/SDL2/SDL_endian.h:
-
-_deps/glm-src/glm/ext/matrix_float2x2_precision.hpp:
-
-/usr/include/SDL2/SDL_events.h:
-
-_deps/glm-src/glm/detail/func_trigonometric.inl:
-
-_deps/glm-src/glm/detail/_fixes.hpp:
-
-/usr/include/SDL2/SDL_filesystem.h:
-
-/usr/include/SDL2/SDL_gamecontroller.h:
-
-/usr/include/bits/atomic_wide_counter.h:
-
-/usr/lib32/libbrotlienc.so.1:
-
-/usr/include/SDL2/SDL_image.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sm3intrin.h:
-
-_deps/glm-src/glm/detail/type_mat4x3.inl:
-
-/usr/include/alloca.h:
-
-/usr/include/assert.h:
-
-_deps/glm-src/glm/detail/type_mat3x2.inl:
-
-/usr/include/SDL2/SDL_joystick.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tmmintrin.h:
-
-/usr/include/SDL2/SDL_keyboard.h:
-
-/usr/include/SDL2/SDL_keycode.h:
-
-/usr/include/stdio.h:
-
-_deps/glm-src/glm/detail/type_vec3.hpp:
-
-/usr/include/bits/wordsize.h:
-
-_deps/glm-src/glm/detail/type_mat2x4.inl:
-
-/usr/include/SDL2/SDL_locale.h:
-
-/usr/include/SDL2/SDL_main.h:
-
-/usr/include/SDL2/SDL_misc.h:
-
-/usr/include/SDL2/SDL_mouse.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/float.h:
-
-/usr/include/SDL2/SDL_pixels.h:
-
-/usr/include/SDL2/SDL_platform.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtbeginS.o:
-
-/usr/include/SDL2/SDL_power.h:
-
-_deps/glm-src/glm/ext/matrix_float4x4.hpp:
-
-/usr/include/bits/stdint-least.h:
-
-/usr/include/SDL2/SDL_rwops.h:
-
-/usr/lib/libsharpyuv.so.0:
-
-_deps/glm-src/glm/ext/vector_double4.hpp:
-
-/usr/include/SDL2/SDL_quit.h:
-
-/usr/include/SDL2/SDL_shape.h:
-
-/usr/lib/libc.so:
-
-_deps/glm-src/glm/ext/vector_uint4_sized.hpp:
-
-/usr/include/bits/pthreadtypes.h:
-
-/usr/include/SDL2/SDL_scancode.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/pkuintrin.h:
-
-_deps/glm-src/glm/ext/matrix_double4x3_precision.hpp:
-
-/usr/include/SDL2/SDL_stdinc.h:
-
-_deps/glm-src/glm/ext/vector_float2.hpp:
-
-/usr/include/bits/types/sigset_t.h:
-
-/usr/include/SDL2/SDL_surface.h:
-
-_deps/glm-src/glm/ext/matrix_float3x3_precision.hpp:
-
-/usr/include/SDL2/SDL_system.h:
-
-/usr/include/SDL2/SDL_thread.h:
-
-/usr/include/SDL2/SDL_touch.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512erintrin.h:
-
-_deps/glm-src/glm/detail/type_mat2x4.hpp:
-
-/usr/include/bits/types/locale_t.h:
+/usr/lib32/libbrotlicommon.so.1:
 
 /usr/lib/libz.so.1:
 
-/usr/include/SDL2/SDL_version.h:
+/usr/lib/libtiff.so.6:
 
-/usr/include/bits/uintn-identity.h:
+/usr/include/bits/types/wint_t.h:
 
-/usr/include/SDL2/begin_code.h:
+/usr/include/bits/types/timer_t.h:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/movdirintrin.h:
+_deps/glm-src/glm/glm.hpp:
 
-/usr/include/bits/libc-header-start.h:
+/usr/include/bits/types/struct_timeval.h:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/clzerointrin.h:
+/usr/include/bits/types/struct_timespec.h:
 
-/usr/include/c++/14.2.1/ext/type_traits.h:
+/usr/include/bits/types/struct___jmp_buf_tag.h:
 
-_deps/glm-src/glm/ext/vector_uint2_sized.hpp:
+/usr/include/bits/waitstatus.h:
 
-_deps/glm-src/glm/mat3x3.hpp:
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/adxintrin.h:
 
-/usr/include/SDL2/close_code.h:
+/usr/include/bits/types/struct_FILE.h:
 
-/usr/lib/librav1e.so.0.7:
+/usr/include/bits/types/mbstate_t.h:
 
-_deps/glm-src/glm/vector_relational.hpp:
+/usr/include/bits/types/error_t.h:
 
-/usr/include/bits/iscanonical.h:
+/usr/include/bits/types/cookie_io_functions_t.h:
 
-/usr/include/bits/libm-simd-decl-stubs.h:
+/usr/include/bits/types/__sigset_t.h:
 
-/usr/lib/libbrotlicommon.so.1:
+/usr/include/c++/14.2.1/bits/functional_hash.h:
 
-/usr/include/wchar.h:
+/usr/include/bits/types/__FILE.h:
 
-_deps/glm-src/glm/ext/matrix_double3x2.hpp:
+/usr/include/features.h:
 
-/usr/include/bits/posix1_lim.h:
+/usr/include/bits/types.h:
 
-_deps/glm-src/glm/ext/matrix_float3x4.hpp:
+/usr/include/bits/thread-shared-types.h:
+
+/usr/include/bits/struct_mutex.h:
+
+/usr/include/c++/14.2.1/bits/locale_classes.tcc:
+
+/usr/include/bits/time64.h:
+
+/usr/include/bits/types/__mbstate_t.h:
+
+/usr/include/bits/time.h:
+
+/usr/include/c++/14.2.1/debug/assertions.h:
+
+/usr/include/bits/stdio_lim.h:
+
+/usr/include/bits/types/clockid_t.h:
+
+/usr/lib/libwebpdemux.so.2:
+
+/usr/include/bits/setjmp.h:
+
+/usr/include/c++/14.2.1/bits/charconv.h:
 
 /usr/include/bits/posix2_lim.h:
 
 /usr/include/bits/pthreadtypes-arch.h:
 
-/usr/lib32/liblzma.so.5:
+_deps/glm-src/glm/ext/matrix_float3x4.hpp:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/rtmintrin.h:
+/usr/include/bits/posix1_lim.h:
 
-/usr/include/bits/types/clockid_t.h:
+/usr/include/c++/14.2.1/clocale:
 
-/usr/include/bits/stdint-intn.h:
+/usr/include/wchar.h:
 
-/usr/include/bits/stdio_lim.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/prfchiintrin.h:
-
-/usr/include/bits/types/__mbstate_t.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/cmpccxaddintrin.h:
-
-/usr/include/SDL2/SDL_metal.h:
-
-/usr/include/bits/stdlib-float.h:
-
-/usr/include/bits/time64.h:
-
-/usr/include/bits/struct_mutex.h:
-
-/usr/include/bits/thread-shared-types.h:
-
-_deps/glm-src/glm/ext/vector_float4.hpp:
-
-/usr/include/bits/types.h:
-
-/usr/include/features.h:
-
-/usr/include/bits/types/__FILE.h:
-
-/usr/include/bits/types/__fpos64_t.h:
-
-/usr/include/bits/types/__locale_t.h:
-
-/usr/include/bits/types/__sigset_t.h:
-
-/usr/include/bits/types/cookie_io_functions_t.h:
-
-/usr/include/bits/types/mbstate_t.h:
-
-/usr/include/c++/14.2.1/bits/version.h:
-
-/usr/include/bits/types/struct_FILE.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512dqintrin.h:
-
-/usr/include/SDL2/SDL_hidapi.h:
-
-/usr/include/bits/types/struct_timespec.h:
-
-/usr/lib32/libwebpdemux.so.2:
-
-/usr/include/bits/types/struct_timeval.h:
-
-_deps/glm-src/glm/glm.hpp:
-
-/usr/include/bits/types/timer_t.h:
-
-/usr/include/bits/types/wint_t.h:
-
-_deps/glm-src/glm/ext/matrix_float2x2.hpp:
+/usr/lib/libbrotlicommon.so.1:
 
 /usr/include/bits/math-vector.h:
 
+_deps/glm-src/glm/ext/matrix_float2x2.hpp:
+
 /usr/include/bits/uio_lim.h:
 
-/usr/include/bits/waitflags.h:
+/usr/include/bits/libm-simd-decl-stubs.h:
 
-/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h:
+/usr/include/bits/iscanonical.h:
+
+_deps/glm-src/glm/vector_relational.hpp:
+
+/usr/lib/librav1e.so.0.7:
+
+/usr/include/bits/timex.h:
+
+_deps/glm-src/glm/ext/matrix_float3x2.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512fp16intrin.h:
+
+/usr/include/asm/errno.h:
+
+/usr/include/bits/stdint-uintn.h:
+
+/usr/include/c++/14.2.1/iostream:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/prfchiintrin.h:
+
+_deps/glm-src/glm/mat3x3.hpp:
+
+_deps/glm-src/glm/ext/vector_uint2_sized.hpp:
+
+/usr/include/c++/14.2.1/ext/type_traits.h:
+
+/usr/include/bits/libc-header-start.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/movdirintrin.h:
+
+/usr/include/SDL2/SDL_version.h:
+
+/usr/include/bits/uintn-identity.h:
+
+/usr/include/bits/types/locale_t.h:
+
+_deps/glm-src/glm/detail/type_mat2x4.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512erintrin.h:
+
+/usr/include/c++/14.2.1/bits/exception_defines.h:
+
+/usr/include/SDL2/SDL_system.h:
+
+_deps/glm-src/glm/ext/matrix_float3x3_precision.hpp:
+
+/usr/include/bits/types/sigset_t.h:
+
+_deps/glm-src/glm/ext/vector_float2.hpp:
+
+/usr/include/SDL2/SDL_stdinc.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/cmpccxaddintrin.h:
+
+_deps/glm-src/glm/ext/matrix_double4x3_precision.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/pkuintrin.h:
+
+/usr/include/SDL2/SDL_scancode.h:
+
+/usr/include/bits/pthreadtypes.h:
+
+_deps/glm-src/glm/ext/vector_uint4_sized.hpp:
+
+/usr/lib/libc.so:
+
+/usr/include/SDL2/SDL_shape.h:
+
+_deps/glm-src/glm/ext/vector_double4.hpp:
+
+/usr/include/SDL2/SDL_rwops.h:
+
+_deps/glm-src/glm/ext/matrix_float4x4.hpp:
+
+/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/gthr.h:
+
+/usr/include/SDL2/SDL_platform.h:
+
+/usr/include/SDL2/SDL_mouse.h:
+
+/usr/include/SDL2/SDL_misc.h:
+
+_deps/glm-src/glm/detail/type_mat2x4.inl:
+
+/usr/include/SDL2/SDL_keycode.h:
+
+/usr/include/SDL2/SDL_keyboard.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tmmintrin.h:
+
+/usr/include/SDL2/SDL_joystick.h:
+
+_deps/glm-src/glm/detail/type_mat3x2.inl:
+
+/usr/include/assert.h:
+
+/usr/include/alloca.h:
+
+/usr/include/SDL2/SDL_metal.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sm3intrin.h:
+
+/usr/include/SDL2/SDL_image.h:
+
+/usr/include/bits/atomic_wide_counter.h:
+
+/usr/include/SDL2/SDL_filesystem.h:
+
+_deps/glm-src/glm/detail/_fixes.hpp:
+
+/usr/include/SDL2/SDL_events.h:
+
+_deps/glm-src/glm/ext/matrix_float2x2_precision.hpp:
+
+/usr/include/c++/14.2.1/algorithm:
+
+/usr/include/c++/14.2.1/bits/postypes.h:
+
+/usr/include/SDL2/SDL_endian.h:
+
+/usr/lib32/libwebpdemux.so.2:
+
+/usr/include/bits/types/time_t.h:
+
+/usr/lib/libyuv.so:
+
+/usr/include/SDL2/SDL_cpuinfo.h:
+
+_deps/glm-src/glm/ext/matrix_double2x3.hpp:
+
+_deps/glm-src/glm/ext/matrix_float4x4_precision.hpp:
+
+/usr/include/bits/types/__fpos64_t.h:
+
+/usr/include/SDL2/SDL_clipboard.h:
+
+/usr/lib/Scrt1.o:
+
+/usr/include/bits/local_lim.h:
+
+_deps/glm-src/glm/ext/vector_int4.hpp:
+
+_deps/glm-src/glm/ext/vector_int3_sized.hpp:
+
+/usr/include/SDL2/SDL_blendmode.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512ifmavlintrin.h:
+
+/usr/include/SDL2/SDL_audio.h:
+
+_deps/glm-src/glm/ext/vector_uint4.hpp:
+
+/usr/include/c++/14.2.1/bits/streambuf_iterator.h:
+
+/usr/lib/libgcc_s.so.1:
+
+/usr/include/SDL2/SDL_assert.h:
+
+/usr/include/SDL2/SDL.h:
+
+/usr/include/c++/14.2.1/bits/predefined_ops.h:
+
+/usr/include/SDL2/SDL_timer.h:
+
+_deps/glm-src/glm/trigonometric.hpp:
+
+_deps/glm-src/glm/ext/vector_int2_sized.hpp:
+
+_deps/glm-src/glm/mat2x3.hpp:
+
+_deps/glm-src/glm/detail/setup.hpp:
+
+_deps/glm-src/glm/detail/type_mat2x3.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mwaitxintrin.h:
+
+_deps/glm-src/glm/detail/type_vec4.hpp:
+
+/usr/include/c++/14.2.1/bits/stl_iterator.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/pmmintrin.h:
+
+_deps/glm-src/glm/ext/vector_double3_precision.hpp:
+
+/usr/include/bits/locale.h:
+
+/usr/lib/libdav1d.so.7:
+
+/usr/lib/libpng16.so.16:
+
+_deps/glm-src/glm/ext/matrix_double2x4.hpp:
+
+/usr/include/bits/pthread_stack_min-dynamic.h:
+
+/usr/include/SDL2/SDL_hints.h:
+
+_deps/glm-src/glm/ext/matrix_float4x2_precision.hpp:
+
+/usr/include/c++/14.2.1/string:
+
+/usr/include/pthread.h:
+
+/usr/lib/libjpeg.so.8:
+
+_deps/glm-src/glm/ext/matrix_float3x2_precision.hpp:
+
+/usr/include/SDL2/SDL_sensor.h:
+
+/usr/include/asm-generic/errno-base.h:
+
+/usr/lib/libSvtAv1Enc.so.2:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/float.h:
+
+_deps/glm-src/glm/ext/matrix_double2x2_precision.hpp:
+
+_deps/glm-src/glm/ext/matrix_double4x4.hpp:
+
+_deps/glm-src/glm/ext/matrix_float2x3.hpp:
+
+_deps/glm-src/glm/vec2.hpp:
+
+_deps/glm-src/glm/ext/matrix_double4x3.hpp:
+
+_deps/glm-src/glm/ext/vector_bool4_precision.hpp:
+
+/usr/include/bits/mathcalls.h:
+
+/usr/include/SDL2/SDL_log.h:
+
+_deps/glm-src/glm/integer.hpp:
+
+_deps/glm-src/glm/ext/matrix_float4x3.hpp:
+
+_deps/glm-src/glm/detail/func_exponential.inl:
+
+_deps/glm-src/glm/detail/type_mat4x2.inl:
+
+_deps/glm-src/glm/ext/matrix_float3x3.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sha512intrin.h:
+
+/usr/include/SDL2/SDL_gesture.h:
+
+_deps/glm-src/glm/detail/type_mat3x3.inl:
+
+/usr/include/c++/14.2.1/bits/memoryfwd.h:
+
+/usr/include/bits/endian.h:
+
+_deps/glm-src/glm/ext/vector_float3.hpp:
+
+_deps/glm-src/glm/mat4x4.hpp:
+
+_deps/glm-src/glm/ext/matrix_float2x4_precision.hpp:
+
+_deps/glm-src/glm/detail/type_vec1.inl:
+
+_deps/glm-src/glm/mat4x3.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mmintrin.h:
+
+_deps/glm-src/glm/exponential.hpp:
+
+_deps/glm-src/glm/ext/matrix_float4x3_precision.hpp:
+
+_deps/glm-src/glm/detail/type_mat4x3.hpp:
+
+/usr/include/c++/14.2.1/cwchar:
+
+_deps/glm-src/glm/detail/type_half.inl:
+
+_deps/glm-src/glm/ext/matrix_double2x4_precision.hpp:
+
+/usr/include/bits/endianness.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h:
+
+_deps/glm-src/glm/detail/type_mat3x4.inl:
+
+_deps/glm-src/glm/fwd.hpp:
+
+/usr/include/c++/14.2.1/bits/cxxabi_forced.h:
+
+_deps/glm-src/glm/packing.hpp:
+
+/usr/include/gnu/stubs-64.h:
+
+_deps/glm-src/glm/ext/vector_double4_precision.hpp:
+
+_deps/glm-src/glm/ext/matrix_double3x4_precision.hpp:
+
+/usr/include/c++/14.2.1/climits:
+
+_deps/glm-src/glm/ext/scalar_int_sized.hpp:
+
+_deps/glm-src/glm/ext/vector_int3.hpp:
+
+/usr/include/bits/long-double.h:
+
+/home/matko/Desktop/igrca-za-RPAv/src/clock.hpp:
+
+_deps/glm-src/glm/detail/type_vec4.inl:
+
+/usr/include/c++/14.2.1/type_traits:
+
+_deps/glm-src/glm/ext/matrix_double4x2_precision.hpp:
+
+/usr/include/bits/floatn.h:
+
+_deps/glm-src/glm/ext/vector_int2.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtbeginS.o:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxtileintrin.h:
+
+_deps/glm-src/glm/mat3x4.hpp:
+
+/usr/include/bits/types/struct_sched_param.h:
+
+_deps/glm-src/glm/detail/type_mat4x4.hpp:
+
+_deps/glm-src/glm/detail/func_trigonometric.inl:
+
+/home/matko/Desktop/igrca-za-RPAv/src/main.cpp:
+
+/usr/lib/libsharpyuv.so.0:
+
+/usr/include/SDL2/SDL_video.h:
+
+_deps/glm-src/glm/ext/matrix_float4x2.hpp:
+
+_deps/glm-src/glm/detail/type_mat4x4.inl:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sgxintrin.h:
+
+_deps/glm-src/glm/ext/matrix_float2x4.hpp:
+
+_deps/glm-src/glm/detail/compute_vector_relational.hpp:
+
+_deps/glm-src/glm/detail/type_mat4x2.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/shaintrin.h:
+
+_deps/glm-src/glm/ext/matrix_double3x3_precision.hpp:
+
+/usr/include/c++/14.2.1/system_error:
+
+/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h:
+
+_deps/glm-src/glm/ext/matrix_double3x2_precision.hpp:
+
+/usr/include/bits/select.h:
+
+/usr/include/c++/14.2.1/bits/algorithmfwd.h:
+
+_deps/glm-src/glm/ext/matrix_float3x4_precision.hpp:
+
+_deps/glm-src/glm/detail/type_mat3x4.hpp:
+
+_deps/glm-src/glm/simd/platform.h:
+
+_deps/glm-src/glm/detail/type_mat3x2.hpp:
+
+_deps/glm-src/glm/mat2x2.hpp:
+
+/usr/include/bits/mathcalls-helper-functions.h:
+
+_deps/glm-src/glm/detail/qualifier.hpp:
+
+_deps/glm-src/glm/detail/func_matrix.inl:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/fxsrintrin.h:
+
+_deps/glm-src/glm/detail/func_integer.inl:
+
+_deps/glm-src/glm/vec3.hpp:
+
+/usr/include/c++/14.2.1/backward/binders.h:
+
+/usr/include/c++/14.2.1/limits:
+
+/usr/include/SDL2/SDL_messagebox.h:
+
+_deps/glm-src/glm/ext/matrix_double3x4.hpp:
+
+_deps/glm-src/glm/detail/func_common.inl:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512fintrin.h:
+
+/usr/include/sched.h:
+
+/usr/include/wctype.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/prfchwintrin.h:
+
+_deps/glm-src/glm/detail/type_mat2x2.hpp:
+
+/usr/include/SDL2/SDL_config.h:
 
 /usr/include/SDL2/SDL_mutex.h:
 
+/usr/include/SDL2/SDL_gamecontroller.h:
+
 /usr/include/c++/14.2.1/bits/std_abs.h:
+
+/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h:
+
+_deps/glm-src/glm/ext/vector_double2_precision.hpp:
+
+/usr/include/bits/types/FILE.h:
+
+_deps/glm-src/glm/ext/vector_bool2_precision.hpp:
+
+_deps/glm-src/glm/ext/vector_double3.hpp:
+
+/usr/include/c++/14.2.1/cctype:
+
+/usr/include/bits/flt-eval-method.h:
+
+_deps/glm-src/glm/detail/type_mat2x2.inl:
+
+_deps/glm-src/glm/detail/type_vec1.hpp:
+
+/usr/include/bits/mathcalls-narrow.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h:
+
+_deps/glm-src/glm/ext/matrix_double2x2.hpp:
+
+/usr/include/SDL2/SDL_loadso.h:
+
+_deps/glm-src/glm/ext/matrix_double4x2.hpp:
+
+/usr/include/c++/14.2.1/bits/cpp_type_traits.h:
+
+/usr/lib/libjxl.so.0.11:
+
+/usr/include/SDL2/SDL_guid.h:
+
+/usr/include/c++/14.2.1/bits/stl_pair.h:
+
+_deps/glm-src/glm/mat3x2.hpp:
+
+_deps/glm-src/glm/ext/vector_bool4.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512cdintrin.h:
+
+/usr/include/SDL2/SDL_render.h:
+
+_deps/glm-src/glm/detail/type_vec3.hpp:
+
+/usr/include/stdio.h:
+
+/usr/include/SDL2/SDL_surface.h:
+
+/usr/include/bits/cpu-set.h:
+
+/usr/include/bits/types/__locale_t.h:
+
+/usr/include/SDL2/SDL_error.h:
+
+/usr/include/c++/14.2.1/bits/locale_classes.h:
+
+_deps/glm-src/glm/ext/vector_bool2.hpp:
+
+_deps/glm-src/glm/ext/vector_double2.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vlintrin.h:
+
+_deps/glm-src/glm/ext/vector_bool3_precision.hpp:
+
+_deps/glm-src/glm/ext/vector_float2_precision.hpp:
+
+/usr/include/SDL2/SDL_rect.h:
+
+_deps/glm-src/glm/detail/func_vector_relational.inl:
+
+/usr/include/c++/14.2.1/ext/numeric_traits.h:
+
+/usr/lib/libgcc_s.so:
+
+_deps/glm-src/glm/ext/matrix_double3x3.hpp:
+
+_deps/glm-src/glm/ext/vector_float4_precision.hpp:
+
+_deps/glm-src/glm/ext/vector_uint2.hpp:
+
+_deps/glm-src/glm/detail/type_half.hpp:
+
+/usr/include/bits/types/clock_t.h:
+
+/usr/include/bits/types/__fpos_t.h:
+
+/usr/include/SDL2/SDL_main.h:
+
+/usr/include/gnu/stubs.h:
+
+_deps/glm-src/glm/ext/vector_int4_sized.hpp:
+
+/usr/include/SDL2/begin_code.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/vpclmulqdqintrin.h:
+
+/usr/include/bits/wordsize.h:
+
+_deps/glm-src/glm/ext/vector_uint3.hpp:
+
+_deps/glm-src/glm/ext/matrix_float2x3_precision.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/bmi2intrin.h:
+
+/usr/include/bits/typesizes.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/rdseedintrin.h:
+
+_deps/glm-src/glm/common.hpp:
+
+_deps/glm-src/glm/mat4x2.hpp:
+
+/usr/lib32/libbrotlidec.so.1:
+
+/usr/include/stdlib.h:
+
+_deps/glm-src/glm/detail/type_mat3x3.hpp:
+
+_deps/glm-src/glm/detail/_vectorize.hpp:
+
+/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/gthr-default.h:
+
+/usr/include/bits/types/struct_itimerspec.h:
+
+/usr/include/bits/sched.h:
+
+_deps/glm-src/glm/ext/matrix_double3x2.hpp:
+
+/usr/include/bits/struct_rwlock.h:
+
+_deps/glm-src/glm/detail/func_geometric.inl:
+
+/usr/include/c++/14.2.1/exception:
+
+/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/os_defines.h:
+
+/usr/include/sys/types.h:
+
+_deps/glm-src/glm/ext/vector_uint3_sized.hpp:
+
+_deps/glm-src/glm/vec4.hpp:
+
+_deps/glm-src/glm/ext/vector_bool3.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bwintrin.h:
+
+_deps/glm-src/glm/detail/compute_common.hpp:
+
+_deps/glm-src/glm/detail/func_packing.inl:
+
+/usr/include/SDL2/SDL_thread.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512ifmaintrin.h:
+
+/usr/include/sys/single_threaded.h:
+
+/usr/include/asm-generic/errno.h:
+
+_deps/glm-src/glm/detail/type_vec3.inl:
+
+/usr/include/bits/waitflags.h:
+
+/usr/include/bits/stdint-intn.h:
+
+/usr/include/bits/wctype-wchar.h:
+
+/usr/include/bits/xopen_lim.h:
+
+/usr/include/SDL2/SDL_touch.h:
+
+/usr/include/c++/14.2.1/ostream:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512dqintrin.h:
+
+/usr/include/c++/14.2.1/bits/alloc_traits.h:
+
+/usr/include/c++/14.2.1/bits/basic_ios.h:
+
+/usr/include/c++/14.2.1/bits/basic_ios.tcc:
+
+/usr/include/c++/14.2.1/bits/basic_string.h:
+
+/usr/include/bits/byteswap.h:
+
+/usr/include/c++/14.2.1/bits/basic_string.tcc:
+
+/usr/include/c++/14.2.1/bits/char_traits.h:
+
+/usr/include/c++/14.2.1/bits/concept_check.h:
+
+/usr/include/c++/14.2.1/bits/cxxabi_init_exception.h:
+
+/usr/include/c++/14.2.1/bits/exception.h:
+
+/usr/include/c++/14.2.1/bits/functexcept.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxvnniint8intrin.h:
+
+/usr/include/c++/14.2.1/bits/invoke.h:
+
+/usr/include/c++/14.2.1/bits/ios_base.h:
+
+_deps/glm-src/glm/ext/matrix_double4x4_precision.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bitalgvlintrin.h:
+
+/usr/include/c++/14.2.1/bits/istream.tcc:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/immintrin.h:
+
+/usr/include/c++/14.2.1/bits/locale_facets.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/cldemoteintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsaveoptintrin.h:
+
+/usr/include/c++/14.2.1/bits/locale_facets.tcc:
+
+/usr/include/c++/14.2.1/bits/new_allocator.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxbf16intrin.h:
+
+/usr/include/c++/14.2.1/bits/ostream.tcc:
+
+/usr/include/endian.h:
+
+/usr/include/stdint.h:
+
+/usr/include/c++/14.2.1/bits/localefwd.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/uintrintrin.h:
+
+/usr/include/c++/14.2.1/istream:
+
+/usr/include/c++/14.2.1/bits/ptr_traits.h:
+
+/usr/include/c++/14.2.1/bits/range_access.h:
+
+/usr/include/SDL2/SDL_pixels.h:
+
+/usr/include/c++/14.2.1/bits/stl_heap.h:
+
+/usr/include/features-time64.h:
+
+/usr/lib/libSDL2.so:
+
+/usr/include/c++/14.2.1/bits/refwrap.h:
+
+/usr/include/c++/14.2.1/bits/requires_hosted.h:
+
+/usr/include/c++/14.2.1/bits/stl_algo.h:
+
+/usr/include/c++/14.2.1/bits/stl_algobase.h:
+
+_deps/glm-src/glm/mat2x4.hpp:
+
+/usr/include/c++/14.2.1/cstdlib:
+
+/usr/include/c++/14.2.1/bits/stl_construct.h:
+
+_deps/glm-src/glm/ext/scalar_uint_sized.hpp:
+
+/usr/include/c++/14.2.1/ext/atomicity.h:
+
+/usr/include/c++/14.2.1/stdlib.h:
+
+/usr/include/ctype.h:
+
+/usr/include/c++/14.2.1/bits/stl_function.h:
+
+_deps/glm-src/glm/ext/vector_float4.hpp:
+
+/usr/include/c++/14.2.1/bits/stl_iterator_base_funcs.h:
+
+/usr/include/bits/stdint-least.h:
+
+/usr/include/c++/14.2.1/bits/stl_iterator_base_types.h:
+
+/usr/include/bits/stdlib-float.h:
+
+/usr/include/c++/14.2.1/bits/stl_tempbuf.h:
+
+/usr/include/c++/14.2.1/bits/stringfwd.h:
+
+/usr/include/locale.h:
+
+/usr/lib/libstdc++.so:
+
+/usr/lib/libaom.so.3:
+
+/usr/include/c++/14.2.1/bits/version.h:
+
+/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h:
+
+/usr/include/c++/14.2.1/cassert:
+
+/usr/include/c++/14.2.1/cerrno:
+
+/usr/include/c++/14.2.1/initializer_list:
+
+/usr/lib/libbrotlidec.so.1:
+
+/usr/include/c++/14.2.1/bits/ostream_insert.h:
+
+/usr/include/c++/14.2.1/cmath:
 
 /usr/lib/ld-linux-x86-64.so.2:
 
-/usr/include/c++/14.2.1/cmath:
+/usr/include/bits/wchar.h:
+
+/usr/include/c++/14.2.1/cstddef:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx5124vnniwintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vnniintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h:
+
+/usr/lib/libhwy.so.1:
+
+/usr/include/c++/14.2.1/cstdint:
+
+/usr/lib/libwebp.so.7:
+
+/usr/include/c++/14.2.1/cstdio:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/clzerointrin.h:
+
+/usr/include/c++/14.2.1/ctime:
+
+/usr/include/c++/14.2.1/cwctype:
+
+_deps/glm-src/glm/detail/type_mat4x3.inl:
+
+/usr/include/c++/14.2.1/ext/string_conversions.h:
+
+/usr/include/c++/14.2.1/ios:
+
+/usr/include/math.h:
+
+/usr/include/c++/14.2.1/bits/streambuf.tcc:
+
+/usr/include/c++/14.2.1/iosfwd:
+
+/usr/include/c++/14.2.1/math.h:
+
+/usr/include/c++/14.2.1/new:
+
+_deps/glm-src/glm/ext/matrix_double2x3_precision.hpp:
+
+/usr/include/c++/14.2.1/stdexcept:
+
+/usr/include/c++/14.2.1/streambuf:
+
+/usr/include/bits/errno.h:
+
+/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++config.h:
+
+/usr/include/SDL2/SDL_locale.h:
+
+/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++locale.h:
+
+/usr/include/SDL2/close_code.h:
+
+/usr/include/errno.h:
+
+/usr/lib32/libbrotlienc.so.1:
+
+/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/ctype_inline.h:
+
+/usr/include/c++/14.2.1/bits/allocator.h:
+
+/usr/include/c++/14.2.1/debug/debug.h:
+
+/usr/include/inttypes.h:
+
+/usr/include/limits.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/wbnoinvdintrin.h:
+
+/usr/include/linux/errno.h:
+
+/usr/include/stdc-predef.h:
+
+_deps/glm-src/glm/detail/type_mat2x3.inl:
+
+_deps/glm-src/glm/detail/type_vec2.hpp:
+
+/usr/include/string.h:
+
+/usr/include/strings.h:
+
+/usr/lib/libzstd.so.1:
+
+_deps/glm-src/glm/ext/vector_float3_precision.hpp:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/sys/select.h:
+
+/usr/include/time.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxcomplexintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxfp16intrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxint8intrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vpopcntdqvlintrin.h:
+
+/usr/include/c++/14.2.1/bits/utility.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx2intrin.h:
+
+/usr/include/c++/14.2.1/bits/hash_bytes.h:
+
+/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx5124fmapsintrin.h:
+
+/usr/include/SDL2/SDL_power.h:
+
+/usr/lib/liblzma.so.5:
+
+_deps/glm-src/glm/matrix.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bf16intrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/clwbintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bf16vlintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bitalgintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512fp16vlintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512pfintrin.h:
+
+/usr/include/c++/14.2.1/ext/alloc_traits.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vbmi2intrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vbmi2vlintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vbmiintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vbmivlintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vlbwintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vldqintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vnnivlintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vp2intersectintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/fmaintrin.h:
+
+/usr/include/bits/timesize.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vp2intersectvlintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vpopcntdqintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxifmaintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxneconvertintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxvnniint16intrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/bmiintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/cetintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/clflushoptintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/emmintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/f16cintrin.h:
+
+/usr/lib/libm.so:
+
+/usr/include/bits/types/struct_tm.h:
+
+_deps/glm-src/glm/geometric.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/gfniintrin.h:
+
+/usr/include/bits/floatn-common.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/hresetintrin.h:
+
+/usr/include/c++/14.2.1/bits/exception_ptr.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/ia32intrin.h:
+
+/usr/include/c++/14.2.1/bits/uniform_int_dist.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mm_malloc.h:
+
+/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/error_constants.h:
+
+/usr/include/c++/14.2.1/bits/nested_exception.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mwaitintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/enqcmdintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/pconfigintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/popcntintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/raointintrin.h:
+
+/usr/include/c++/14.2.1/typeinfo:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/serializeintrin.h:
+
+/usr/include/SDL2/SDL_haptic.h:
+
+_deps/glm-src/glm/detail/type_vec2.inl:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sm4intrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/smmintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h:
+
+/usr/include/SDL2/SDL_hidapi.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tbmintrin.h:
+
+/usr/include/linux/limits.h:
+
+/usr/lib/crtn.o:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/keylockerintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/usermsrintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/vaesintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/waitpkgintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/wmmintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxvnniintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/x86gprintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xmmintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/rtmintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsavecintrin.h:
+
+/usr/include/c++/14.2.1/bits/move.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsaveintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsavesintrin.h:
+
+/usr/lib/libm.so.6:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xtestintrin.h:
+
+/usr/lib/crti.o:
+
+/usr/lib/libSDL2_image.so:
+
+/usr/include/SDL2/SDL_quit.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtendS.o:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/libgcc.a:
+
+/usr/lib/libavif.so.16:
+
+/usr/lib/libbrotlienc.so.1:
+
+/usr/include/bits/fp-fast.h:
+
+/usr/lib/libc.so.6:
+
+/usr/include/SDL2/SDL_atomic.h:
+
+/usr/lib/libc_nonshared.a:
+
+/usr/include/c++/14.2.1/cfloat:
+
+/usr/lib/libjbig.so.2.1:
+
+/usr/lib/libjxl_cms.so.0.11:
+
+/usr/include/bits/fp-logb.h:
+
+/usr/lib/libmvec.so.1:
