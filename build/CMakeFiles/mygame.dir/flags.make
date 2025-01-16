@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /usr/include/SDL2
+CXX_INCLUDES = -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..
 
-CXX_FLAGS = 
+CXX_FLAGS =  -std=c++0x
 

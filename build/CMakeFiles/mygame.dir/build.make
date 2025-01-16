@@ -96,8 +96,6 @@ mygame_EXTERNAL_OBJECTS =
 mygame: CMakeFiles/mygame.dir/src/main.cpp.o
 mygame: CMakeFiles/mygame.dir/build.make
 mygame: CMakeFiles/mygame.dir/compiler_depend.ts
-mygame: /usr/lib/libSDL2main.a
-mygame: /usr/lib/libSDL2-2.0.so.0.3000.11
 mygame: CMakeFiles/mygame.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/matko/Desktop/igrca-za-RPAv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable mygame"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mygame.dir/link.txt --verbose=$(VERBOSE)

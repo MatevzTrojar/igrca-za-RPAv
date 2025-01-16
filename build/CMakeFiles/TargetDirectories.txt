@@ -1,3 +1,8 @@
 /home/matko/Desktop/igrca-za-RPAv/build/CMakeFiles/mygame.dir
+/home/matko/Desktop/igrca-za-RPAv/build/CMakeFiles/CopyAssets.dir
 /home/matko/Desktop/igrca-za-RPAv/build/CMakeFiles/edit_cache.dir
 /home/matko/Desktop/igrca-za-RPAv/build/CMakeFiles/rebuild_cache.dir
+/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-build/CMakeFiles/edit_cache.dir
+/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-build/CMakeFiles/rebuild_cache.dir
+/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-build/glm/CMakeFiles/edit_cache.dir
+/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-build/glm/CMakeFiles/rebuild_cache.dir

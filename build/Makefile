@@ -129,6 +129,19 @@ mygame/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/build
 .PHONY : mygame/fast
 
+#=============================================================================
+# Target rules for targets named CopyAssets
+
+# Build rule for target.
+CopyAssets: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CopyAssets
+.PHONY : CopyAssets
+
+# fast build rule for target.
+CopyAssets/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CopyAssets.dir/build.make CMakeFiles/CopyAssets.dir/build
+.PHONY : CopyAssets/fast
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -161,6 +174,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... CopyAssets"
 	@echo "... mygame"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
