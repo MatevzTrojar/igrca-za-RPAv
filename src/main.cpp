@@ -1,15 +1,11 @@
-#include <SDL2/SDL.h>
-#include <algorithm>
-#include <ctime>
-#include <glm/vector_relational.hpp>
-#include <SDL2/SDL_timer.h>
-#include <SDL_image.h>
-#include <glm/vec2.hpp>
-#include "glm/ext/vector_float2.hpp"
-#include "glm/geometric.hpp"
-#include <glm/glm.hpp>
-#include "clock.hpp"
-#include<iostream>
+
+
+#include <iostream>
+
+#include "GameObject.h"
+#include "SDL_keyboard.h"
+#include "SDL_platform.h"
+#include "SDL_scancode.h"
 int main() {
 	// returns zero on success else non-zero
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
@@ -22,52 +18,49 @@ int main() {
 	// triggers the program that controls
 	// your graphics hardware and sets flags
 	Uint32 render_flags = SDL_RENDERER_ACCELERATED;
-    
-    Clock clock;
 
 	// creates a renderer to render our images
 	SDL_Renderer* rend = SDL_CreateRenderer(win, -1, render_flags);
-
+	GameObject player;
 	// creates a surface to load an image into the main memory
-	SDL_Surface* surface;
 
 	// please provide a path for your image
-	surface = IMG_Load("assets/textures/test.jpg");
+	player.surface = IMG_Load("assets/textures/Test2.png");
 
 	// loads image to our graphics hardware memory.
-	SDL_Texture* tex = SDL_CreateTextureFromSurface(rend, surface);
+	player.tex = SDL_CreateTextureFromSurface(rend, player.surface);
 
 	// clears main-memory
-	SDL_FreeSurface(surface);
+	SDL_FreeSurface(player.surface);
 
 	// let us control our image position
 	// so that we can move it with our keyboard.
-	SDL_Rect dest;
 
 	// connects our texture with dest to control position
-	SDL_QueryTexture(tex, NULL, NULL, &dest.w, &dest.h);
+	SDL_QueryTexture(player.tex, NULL, NULL, &player.dest.w, &player.dest.h);
 
 	// adjust height and width of our image box.
-	dest.w /= 3.5;
-	dest.h /= 3.5;
+	player.dest.w /= 3.5;
+	player.dest.h /= 3.5;
 
 	// sets initial x-position of object
-	dest.x = (1000 - dest.w) / 2;
+	player.dest.x = (1000 - player.dest.w) / 2;
 
 	// sets initial y-position of object
-	dest.y = (1000 - dest.h) / 2;
+	player.dest.y = (1000 - player.dest.h) / 2;
 
 	// controls animation loop
 	int close = 0;
 
-	// speed of box
-	int speed = 300;
-
 	// animation loop
 	while (!close) {
-        clock.tick();
+		const Uint8* state = SDL_GetKeyboardState(NULL);
+		player.moving_left = state[SDL_SCANCODE_A];
+		player.moving_up = state[SDL_SCANCODE_W];
+		player.moving_down = state[SDL_SCANCODE_S];
+		player.moving_right = state[SDL_SCANCODE_D];
 		SDL_Event event;
-        glm::vec2 move;
+
 		// Events management
 		while (SDL_PollEvent(&event)) {
 			switch (event.type) {
@@ -75,69 +68,38 @@ int main() {
 					// handling of close button
 					close = 1;
 					break;
-
-				case SDL_KEYDOWN:
-					// keyboard API for key pressed
-                   		if(SDLK_a == event.key.keysym.sym){
-                            move.x-=1;
-                        }
-					    if(SDLK_w == event.key.keysym.sym){
-                            move.y-=1;
-                        }
-					    if(SDLK_s == event.key.keysym.sym){
-                            move.y+=1;
-                        }
-					    if(SDLK_d == event.key.keysym.sym){
-                            move.x+=1;
-                        }
-                        break;
-				case SDL_KEYUP:
-					// keyboard API for key pressed
-                   		if(SDLK_a == event.key.keysym.sym){
-                            move.x+=1;
-                        }
-					    if(SDLK_w == event.key.keysym.sym){
-                            move.y+=1;
-                        }
-					    if(SDLK_s == event.key.keysym.sym){
-                            move.y-=1;
-                        }
-					    if(SDLK_d == event.key.keysym.sym){
-                            move.x-=1;
-                        }
-                        break;
-
 			}
 		}
-        glm::vec2 finalMove = glm::normalize(move);
-        finalMove *= clock.delta;
-        dest.x += finalMove.x;
-        dest.y += finalMove.y;
-        std::cout<<clock.delta<<std::endl;
+		if (player.moving_down) player.dest.y += 10;
+		if (player.moving_right) player.dest.x += 10;
+		if (player.moving_up) player.dest.y -= 10;
+		if (player.moving_left) player.dest.x -= 10;
 		// right boundary
-		if (dest.x + dest.w > 1000) dest.x = 1000 - dest.w;
+		if (player.dest.x + player.dest.w > 1000)
+			player.dest.x = 1000 - player.dest.w;
 
 		// left boundary
-		if (dest.x < 0) dest.x = 0;
+		if (player.dest.x < 0) player.dest.x = 0;
 
 		// bottom boundary
-		if (dest.y + dest.h > 1000) dest.y = 1000 - dest.h;
+		if (player.dest.y + player.dest.h > 1000)
+			player.dest.y = 1000 - player.dest.h;
 
 		// upper boundary
-		if (dest.y < 0) dest.y = 0;
+		if (player.dest.y < 0) player.dest.y = 0;
 
 		// clears the screen
 		SDL_RenderClear(rend);
-		SDL_RenderCopy(rend, tex, NULL, &dest);
+		SDL_RenderCopy(rend, player.tex, NULL, &player.dest);
 
 		// triggers the double buffers
 		// for multiple rendering
 		SDL_RenderPresent(rend);
-        SDL_Delay(1000 / 60);
+		SDL_Delay(1000 / 60);
 	}
-    
+
 	// destroy texture
-	SDL_DestroyTexture(tex);
+	SDL_DestroyTexture(player.tex);
 
 	// destroy renderer
 	SDL_DestroyRenderer(rend);
