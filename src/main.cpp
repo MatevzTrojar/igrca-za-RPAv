@@ -1,10 +1,13 @@
 
 
 #include <iostream>
-
-#include "GameObject.h"
+#include <type_traits>
+#include"GameObject.cpp"
+#include "TextureManager.h"
+#include "SDL_image.h"
 #include "SDL_keyboard.h"
 #include "SDL_platform.h"
+#include "SDL_render.h"
 #include "SDL_scancode.h"
 int main() {
 	// returns zero on success else non-zero
@@ -17,38 +20,47 @@ int main() {
 
 	// triggers the program that controls
 	// your graphics hardware and sets flags
-	Uint32 render_flags = SDL_RENDERER_ACCELERATED;
+	Uint32 render_flags = SDL_RENDERER_PRESENTVSYNC;
 
 	// creates a renderer to render our images
+    
 	SDL_Renderer* rend = SDL_CreateRenderer(win, -1, render_flags);
-	GameObject player;
+	GameObject player,entity;
 	// creates a surface to load an image into the main memory
+    player.tex = TextureManager::LoadTexture("assets/textures/Test2.png",rend);
+    entity.tex = TextureManager::LoadTexture("assets/textures/Test3.png",rend);
 
 	// please provide a path for your image
-	player.surface = IMG_Load("assets/textures/Test2.png");
-
+/*	player.surface = IMG_Load("assets/textures/Test2.png");
+    entity.surface = IMG_Load("assets/textures/Test3.png");
+    
 	// loads image to our graphics hardware memory.
 	player.tex = SDL_CreateTextureFromSurface(rend, player.surface);
-
+    entity.tex = SDL_CreateTextureFromSurface(rend,entity.surface);
 	// clears main-memory
 	SDL_FreeSurface(player.surface);
-
+    SDL_FreeSurface(entity.surface);
 	// let us control our image position
 	// so that we can move it with our keyboard.
-
+*/
 	// connects our texture with dest to control position
 	SDL_QueryTexture(player.tex, NULL, NULL, &player.dest.w, &player.dest.h);
-
+    SDL_QueryTexture(entity.tex,NULL,NULL,&entity.dest.w,&entity.dest.h);
 	// adjust height and width of our image box.
+    // 
 	player.dest.w /= 3.5;
 	player.dest.h /= 3.5;
+    entity.dest.w/= 3.5;
+    entity.dest.h/= 3.5;
+
 
 	// sets initial x-position of object
 	player.dest.x = (1000 - player.dest.w) / 2;
-
+    entity.dest.x = (1000-entity.dest.w)/2;
 	// sets initial y-position of object
 	player.dest.y = (1000 - player.dest.h) / 2;
-
+    entity.dest.y = (1000 - entity.dest.h)/2;
+    
 	// controls animation loop
 	int close = 0;
 
@@ -91,6 +103,7 @@ int main() {
 		// clears the screen
 		SDL_RenderClear(rend);
 		SDL_RenderCopy(rend, player.tex, NULL, &player.dest);
+        SDL_RenderCopy(rend,entity.tex,NULL,&entity.dest);
 
 		// triggers the double buffers
 		// for multiple rendering
@@ -100,6 +113,7 @@ int main() {
 
 	// destroy texture
 	SDL_DestroyTexture(player.tex);
+    SDL_DestroyTexture(entity.tex);
 
 	// destroy renderer
 	SDL_DestroyRenderer(rend);

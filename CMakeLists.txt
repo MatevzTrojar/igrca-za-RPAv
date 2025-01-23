@@ -1,11 +1,12 @@
 project(mygame)
 
 cmake_minimum_required(VERSION 3.3)
+# Local header files here ONLY
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
 
-add_executable(${PROJECT_NAME} src/main.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp src/GameObject.cpp src/TextureManager.cpp)
 
 INCLUDE(FindPkgConfig)
 include(FetchContent)
@@ -36,3 +37,5 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 add_custom_target(CopyAssets ALL
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${ASSETS_DIR} ${CMAKE_BINARY_DIR}/assets
 )
+
+

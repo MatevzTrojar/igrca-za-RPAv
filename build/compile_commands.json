@@ -4,5 +4,17 @@
   "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/main.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/main.cpp",
   "file": "/home/matko/Desktop/igrca-za-RPAv/src/main.cpp",
   "output": "CMakeFiles/mygame.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/matko/Desktop/igrca-za-RPAv/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/GameObject.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/GameObject.cpp",
+  "file": "/home/matko/Desktop/igrca-za-RPAv/src/GameObject.cpp",
+  "output": "CMakeFiles/mygame.dir/src/GameObject.cpp.o"
+},
+{
+  "directory": "/home/matko/Desktop/igrca-za-RPAv/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/TextureManager.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/TextureManager.cpp",
+  "file": "/home/matko/Desktop/igrca-za-RPAv/src/TextureManager.cpp",
+  "output": "CMakeFiles/mygame.dir/src/TextureManager.cpp.o"
 }
 ]

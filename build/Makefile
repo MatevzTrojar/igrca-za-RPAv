@@ -142,6 +142,54 @@ CopyAssets/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CopyAssets.dir/build.make CMakeFiles/CopyAssets.dir/build
 .PHONY : CopyAssets/fast
 
+src/GameObject.o: src/GameObject.cpp.o
+.PHONY : src/GameObject.o
+
+# target to build an object file
+src/GameObject.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/src/GameObject.cpp.o
+.PHONY : src/GameObject.cpp.o
+
+src/GameObject.i: src/GameObject.cpp.i
+.PHONY : src/GameObject.i
+
+# target to preprocess a source file
+src/GameObject.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/src/GameObject.cpp.i
+.PHONY : src/GameObject.cpp.i
+
+src/GameObject.s: src/GameObject.cpp.s
+.PHONY : src/GameObject.s
+
+# target to generate assembly for a file
+src/GameObject.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/src/GameObject.cpp.s
+.PHONY : src/GameObject.cpp.s
+
+src/TextureManager.o: src/TextureManager.cpp.o
+.PHONY : src/TextureManager.o
+
+# target to build an object file
+src/TextureManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/src/TextureManager.cpp.o
+.PHONY : src/TextureManager.cpp.o
+
+src/TextureManager.i: src/TextureManager.cpp.i
+.PHONY : src/TextureManager.i
+
+# target to preprocess a source file
+src/TextureManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/src/TextureManager.cpp.i
+.PHONY : src/TextureManager.cpp.i
+
+src/TextureManager.s: src/TextureManager.cpp.s
+.PHONY : src/TextureManager.s
+
+# target to generate assembly for a file
+src/TextureManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/src/TextureManager.cpp.s
+.PHONY : src/TextureManager.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -176,6 +224,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... CopyAssets"
 	@echo "... mygame"
+	@echo "... src/GameObject.o"
+	@echo "... src/GameObject.i"
+	@echo "... src/GameObject.s"
+	@echo "... src/TextureManager.o"
+	@echo "... src/TextureManager.i"
+	@echo "... src/TextureManager.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
