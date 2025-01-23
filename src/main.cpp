@@ -30,19 +30,6 @@ int main() {
     player.tex = TextureManager::LoadTexture("assets/textures/Test2.png",rend);
     entity.tex = TextureManager::LoadTexture("assets/textures/Test3.png",rend);
 
-	// please provide a path for your image
-/*	player.surface = IMG_Load("assets/textures/Test2.png");
-    entity.surface = IMG_Load("assets/textures/Test3.png");
-    
-	// loads image to our graphics hardware memory.
-	player.tex = SDL_CreateTextureFromSurface(rend, player.surface);
-    entity.tex = SDL_CreateTextureFromSurface(rend,entity.surface);
-	// clears main-memory
-	SDL_FreeSurface(player.surface);
-    SDL_FreeSurface(entity.surface);
-	// let us control our image position
-	// so that we can move it with our keyboard.
-*/
 	// connects our texture with dest to control position
 	SDL_QueryTexture(player.tex, NULL, NULL, &player.dest.w, &player.dest.h);
     SDL_QueryTexture(entity.tex,NULL,NULL,&entity.dest.w,&entity.dest.h);
