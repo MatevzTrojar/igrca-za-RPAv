@@ -3,7 +3,7 @@
 #include "SDL2/SDL.h"
 #include "SDL_image.h"
 #include <iostream>
-
+#include "clock.hpp"
 class Game
 {
 public:
@@ -13,7 +13,7 @@ public:
 	void init(const char* title, int width, int height, bool fullscreen);
 
 	void handleEvents();
-	void update();
+	void update(Clock *);
 	bool running() { return isRunning; }
 	void render();
 	void clean();

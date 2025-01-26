@@ -1,9 +1,10 @@
 #include "Game.h"
+#include <cstdlib>
 #include "TextureManager.h"
 #include "GameObject.h"
 
 GameObject* player;
-
+Scientist* scientist;
 SDL_Renderer* Game::renderer = nullptr;
 
 Game::Game()
@@ -34,7 +35,8 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 	}
 
 
-	player = new GameObject("assets/textures/Test2.png",500,500); 
+	player = new GameObject("assets/textures/Test2.png",1920/2,1080/2);
+    scientist = new Scientist("assets/textures/scientist.png",rand()%(1920),rand()%(1080));
 }
 
 void Game::handleEvents()
@@ -53,16 +55,17 @@ void Game::handleEvents()
 	}
 }
 
-void Game::update()
+void Game::update(Clock* ura)
 {
- 	player->Update();
-
+ 	player->Update(ura);
+    scientist->Update(ura,player);
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
 	player->Render();
+    scientist->Render();
 	SDL_RenderPresent(renderer);
 }
 
