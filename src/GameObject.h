@@ -1,14 +1,21 @@
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include "SDL_rect.h"
-#include "SDL_render.h"
-#include "SDL_stdinc.h"
-#include "SDL_surface.h"
-class GameObject{
-    public:
-SDL_Rect dest;
-SDL_Rect source;
-SDL_Texture* tex;
-bool moving_left = false, moving_right = false, moving_up = false, moving_down = false;
-SDL_Surface *surface;
+#pragma once
+
+#include "Game.h"
+
+class GameObject {
+   public:
+	GameObject(const char* textureSheet, int x, int y);
+	~GameObject() {}
+
+	void Update();
+	void Render();
+
+    private:
+	int xpos;
+	int ypos;
+	bool isFlipped = false;
+	bool moving_left = false, moving_right = false, moving_up = false,
+		 moving_down = false;
+	SDL_Texture* objTexture;
+	SDL_Rect srcRect, dest;
 };

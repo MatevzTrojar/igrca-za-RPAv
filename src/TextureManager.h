@@ -1,8 +1,10 @@
 #pragma once
-#include <SDL2/SDL.h>
-#include "GameObject.h"
-#include "SDL_render.h"
-class TextureManager{
-    public:
-        static SDL_Texture* LoadTexture(const char * filename, SDL_Renderer*ren);
+
+#include "Game.h"
+
+class TextureManager
+{
+public:
+	static SDL_Texture* LoadTexture(const char* fileName);
+//	static void Draw(SDL_Texture* tex, SDL_Rect src, SDL_Rect dest);
 };

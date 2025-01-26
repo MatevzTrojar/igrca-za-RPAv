@@ -1,1 +1,1 @@
-/usr/bin/c++  -std=c++0x -rdynamic -Wl,--dependency-file=CMakeFiles/mygame.dir/link.d CMakeFiles/mygame.dir/src/main.cpp.o CMakeFiles/mygame.dir/src/GameObject.cpp.o CMakeFiles/mygame.dir/src/TextureManager.cpp.o -o mygame  -lSDL2 -lSDL2_image -lSDL2 -lSDL2_image
+/usr/bin/c++  -std=c++0x -rdynamic -Wl,--dependency-file=CMakeFiles/mygame.dir/link.d CMakeFiles/mygame.dir/src/main.cpp.o CMakeFiles/mygame.dir/src/GameObject.cpp.o CMakeFiles/mygame.dir/src/TextureManager.cpp.o CMakeFiles/mygame.dir/src/Game.cpp.o -o mygame  -lSDL2 -lSDL2_image -lSDL2 -lSDL2_image

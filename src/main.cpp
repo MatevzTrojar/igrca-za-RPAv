@@ -1,115 +1,27 @@
+#include "Game.h"
+#include "SDL_joystick.h"
+#include "SDL_stdinc.h"
+#include "SDL_timer.h"
 
+Game* game = nullptr;
+int main(int argc, char* argv[]) {
+	const int FPS = 60;
+	Uint32 frameStart;
 
-#include <iostream>
-#include <type_traits>
-#include"GameObject.cpp"
-#include "TextureManager.h"
-#include "SDL_image.h"
-#include "SDL_keyboard.h"
-#include "SDL_platform.h"
-#include "SDL_render.h"
-#include "SDL_scancode.h"
-int main() {
-	// returns zero on success else non-zero
-	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
-		printf("error initializing SDL: %s\n", SDL_GetError());
+	game = new Game();
+	game->init("zivali", 1000, 1000, false);
+
+	while (game->running()) {
+		frameStart = SDL_GetTicks();
+
+		game->handleEvents();
+		game->update();
+		game->render();
 	}
-	SDL_Window* win = SDL_CreateWindow("GAME",	// creates a window
-									   SDL_WINDOWPOS_CENTERED,
-									   SDL_WINDOWPOS_CENTERED, 1000, 1000, 0);
-
-	// triggers the program that controls
-	// your graphics hardware and sets flags
-	Uint32 render_flags = SDL_RENDERER_PRESENTVSYNC;
-
-	// creates a renderer to render our images
-    
-	SDL_Renderer* rend = SDL_CreateRenderer(win, -1, render_flags);
-	GameObject player,entity;
-	// creates a surface to load an image into the main memory
-    player.tex = TextureManager::LoadTexture("assets/textures/Test2.png",rend);
-    entity.tex = TextureManager::LoadTexture("assets/textures/Test3.png",rend);
-
-	// connects our texture with dest to control position
-	SDL_QueryTexture(player.tex, NULL, NULL, &player.dest.w, &player.dest.h);
-    SDL_QueryTexture(entity.tex,NULL,NULL,&entity.dest.w,&entity.dest.h);
-	// adjust height and width of our image box.
-    // 
-	player.dest.w /= 3.5;
-	player.dest.h /= 3.5;
-    entity.dest.w/= 3.5;
-    entity.dest.h/= 3.5;
-
-
-	// sets initial x-position of object
-	player.dest.x = (1000 - player.dest.w) / 2;
-    entity.dest.x = (1000-entity.dest.w)/2;
-	// sets initial y-position of object
-	player.dest.y = (1000 - player.dest.h) / 2;
-    entity.dest.y = (1000 - entity.dest.h)/2;
-    
-	// controls animation loop
-	int close = 0;
-
-	// animation loop
-	while (!close) {
-		const Uint8* state = SDL_GetKeyboardState(NULL);
-		player.moving_left = state[SDL_SCANCODE_A];
-		player.moving_up = state[SDL_SCANCODE_W];
-		player.moving_down = state[SDL_SCANCODE_S];
-		player.moving_right = state[SDL_SCANCODE_D];
-		SDL_Event event;
-
-		// Events management
-		while (SDL_PollEvent(&event)) {
-			switch (event.type) {
-				case SDL_QUIT:
-					// handling of close button
-					close = 1;
-					break;
-			}
-		}
-		if (player.moving_down) player.dest.y += 10;
-		if (player.moving_right) player.dest.x += 10;
-		if (player.moving_up) player.dest.y -= 10;
-		if (player.moving_left) player.dest.x -= 10;
-		// right boundary
-		if (player.dest.x + player.dest.w > 1000)
-			player.dest.x = 1000 - player.dest.w;
-
-		// left boundary
-		if (player.dest.x < 0) player.dest.x = 0;
-
-		// bottom boundary
-		if (player.dest.y + player.dest.h > 1000)
-			player.dest.y = 1000 - player.dest.h;
-
-		// upper boundary
-		if (player.dest.y < 0) player.dest.y = 0;
-
-		// clears the screen
-		SDL_RenderClear(rend);
-		SDL_RenderCopy(rend, player.tex, NULL, &player.dest);
-        SDL_RenderCopy(rend,entity.tex,NULL,&entity.dest);
-
-		// triggers the double buffers
-		// for multiple rendering
-		SDL_RenderPresent(rend);
-		SDL_Delay(1000 / 60);
+	if (1000 / FPS > SDL_GetTicks() - frameStart) {
+		SDL_Delay(1000 / FPS - (SDL_GetTicks() - frameStart));
 	}
-
-	// destroy texture
-	SDL_DestroyTexture(player.tex);
-    SDL_DestroyTexture(entity.tex);
-
-	// destroy renderer
-	SDL_DestroyRenderer(rend);
-
-	// destroy window
-	SDL_DestroyWindow(win);
-
-	// close SDL
-	SDL_Quit();
+	game->clean();
 
 	return 0;
 }

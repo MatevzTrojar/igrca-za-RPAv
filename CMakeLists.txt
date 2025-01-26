@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 3.3)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
 
-add_executable(${PROJECT_NAME} src/main.cpp src/GameObject.cpp src/TextureManager.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp src/GameObject.cpp src/TextureManager.cpp src/Game.cpp)
 
 INCLUDE(FindPkgConfig)
 include(FetchContent)

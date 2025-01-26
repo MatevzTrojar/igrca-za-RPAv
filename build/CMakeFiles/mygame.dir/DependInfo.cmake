@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/matko/Desktop/igrca-za-RPAv/src/Game.cpp" "CMakeFiles/mygame.dir/src/Game.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/Game.cpp.o.d"
   "/home/matko/Desktop/igrca-za-RPAv/src/GameObject.cpp" "CMakeFiles/mygame.dir/src/GameObject.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/GameObject.cpp.o.d"
   "/home/matko/Desktop/igrca-za-RPAv/src/TextureManager.cpp" "CMakeFiles/mygame.dir/src/TextureManager.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/TextureManager.cpp.o.d"
   "/home/matko/Desktop/igrca-za-RPAv/src/main.cpp" "CMakeFiles/mygame.dir/src/main.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/main.cpp.o.d"
