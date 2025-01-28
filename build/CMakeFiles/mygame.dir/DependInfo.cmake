@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/matko/Desktop/igrca-za-RPAv/src/Game.cpp" "CMakeFiles/mygame.dir/src/Game.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/Game.cpp.o.d"
   "/home/matko/Desktop/igrca-za-RPAv/src/GameObject.cpp" "CMakeFiles/mygame.dir/src/GameObject.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/GameObject.cpp.o.d"
+  "/home/matko/Desktop/igrca-za-RPAv/src/Mouse.cpp" "CMakeFiles/mygame.dir/src/Mouse.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/Mouse.cpp.o.d"
   "/home/matko/Desktop/igrca-za-RPAv/src/Scientist.cpp" "CMakeFiles/mygame.dir/src/Scientist.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/Scientist.cpp.o.d"
   "/home/matko/Desktop/igrca-za-RPAv/src/TextureManager.cpp" "CMakeFiles/mygame.dir/src/TextureManager.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/TextureManager.cpp.o.d"
   "/home/matko/Desktop/igrca-za-RPAv/src/main.cpp" "CMakeFiles/mygame.dir/src/main.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/main.cpp.o.d"

@@ -190,6 +190,30 @@ src/GameObject.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/src/GameObject.cpp.s
 .PHONY : src/GameObject.cpp.s
 
+src/Mouse.o: src/Mouse.cpp.o
+.PHONY : src/Mouse.o
+
+# target to build an object file
+src/Mouse.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/src/Mouse.cpp.o
+.PHONY : src/Mouse.cpp.o
+
+src/Mouse.i: src/Mouse.cpp.i
+.PHONY : src/Mouse.i
+
+# target to preprocess a source file
+src/Mouse.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/src/Mouse.cpp.i
+.PHONY : src/Mouse.cpp.i
+
+src/Mouse.s: src/Mouse.cpp.s
+.PHONY : src/Mouse.s
+
+# target to generate assembly for a file
+src/Mouse.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/src/Mouse.cpp.s
+.PHONY : src/Mouse.cpp.s
+
 src/Scientist.o: src/Scientist.cpp.o
 .PHONY : src/Scientist.o
 
@@ -278,6 +302,9 @@ help:
 	@echo "... src/GameObject.o"
 	@echo "... src/GameObject.i"
 	@echo "... src/GameObject.s"
+	@echo "... src/Mouse.o"
+	@echo "... src/Mouse.i"
+	@echo "... src/Mouse.s"
 	@echo "... src/Scientist.o"
 	@echo "... src/Scientist.i"
 	@echo "... src/Scientist.s"

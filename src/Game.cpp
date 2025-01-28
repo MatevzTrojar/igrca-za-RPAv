@@ -1,13 +1,14 @@
 #include "Game.h"
 
 #include <cstdlib>
-
+#include "Mouse.hpp"
 #include "GameObject.h"
 #include "Scientist.hpp"
-#include "TextureManager.h"
+#include"TextureManager.h"
 
 GameObject* player;
 Scientist* scientist;
+Mouse *mouse;
 SDL_Renderer* Game::renderer = nullptr;
 
 Game::Game() {}
@@ -50,6 +51,8 @@ void Game::handleEvents() {
 		default:
 			break;
 	}
+    mouse->Update(event);
+    
 }
 
 void Game::update(Clock* ura) {
