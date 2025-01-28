@@ -190,6 +190,30 @@ src/GameObject.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/src/GameObject.cpp.s
 .PHONY : src/GameObject.cpp.s
 
+src/Scientist.o: src/Scientist.cpp.o
+.PHONY : src/Scientist.o
+
+# target to build an object file
+src/Scientist.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/src/Scientist.cpp.o
+.PHONY : src/Scientist.cpp.o
+
+src/Scientist.i: src/Scientist.cpp.i
+.PHONY : src/Scientist.i
+
+# target to preprocess a source file
+src/Scientist.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/src/Scientist.cpp.i
+.PHONY : src/Scientist.cpp.i
+
+src/Scientist.s: src/Scientist.cpp.s
+.PHONY : src/Scientist.s
+
+# target to generate assembly for a file
+src/Scientist.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/src/Scientist.cpp.s
+.PHONY : src/Scientist.cpp.s
+
 src/TextureManager.o: src/TextureManager.cpp.o
 .PHONY : src/TextureManager.o
 
@@ -254,6 +278,9 @@ help:
 	@echo "... src/GameObject.o"
 	@echo "... src/GameObject.i"
 	@echo "... src/GameObject.s"
+	@echo "... src/Scientist.o"
+	@echo "... src/Scientist.i"
+	@echo "... src/Scientist.s"
 	@echo "... src/TextureManager.o"
 	@echo "... src/TextureManager.i"
 	@echo "... src/TextureManager.s"
