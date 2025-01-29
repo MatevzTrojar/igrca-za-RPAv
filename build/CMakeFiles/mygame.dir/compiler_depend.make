@@ -637,7 +637,9 @@ CMakeFiles/mygame.dir/src/GameObject.cpp.o: /home/matko/Desktop/igrca-za-RPAv/sr
   /usr/include/bits/wctype-wchar.h \
   /usr/include/bits/wordsize.h \
   /usr/include/bits/xopen_lim.h \
+  /usr/include/c++/14.2.1/algorithm \
   /usr/include/c++/14.2.1/backward/binders.h \
+  /usr/include/c++/14.2.1/bits/algorithmfwd.h \
   /usr/include/c++/14.2.1/bits/alloc_traits.h \
   /usr/include/c++/14.2.1/bits/allocator.h \
   /usr/include/c++/14.2.1/bits/basic_ios.h \
@@ -678,16 +680,20 @@ CMakeFiles/mygame.dir/src/GameObject.cpp.o: /home/matko/Desktop/igrca-za-RPAv/sr
   /usr/include/c++/14.2.1/bits/requires_hosted.h \
   /usr/include/c++/14.2.1/bits/sstream.tcc \
   /usr/include/c++/14.2.1/bits/std_abs.h \
+  /usr/include/c++/14.2.1/bits/stl_algo.h \
   /usr/include/c++/14.2.1/bits/stl_algobase.h \
   /usr/include/c++/14.2.1/bits/stl_construct.h \
   /usr/include/c++/14.2.1/bits/stl_function.h \
+  /usr/include/c++/14.2.1/bits/stl_heap.h \
   /usr/include/c++/14.2.1/bits/stl_iterator.h \
   /usr/include/c++/14.2.1/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/14.2.1/bits/stl_iterator_base_types.h \
   /usr/include/c++/14.2.1/bits/stl_pair.h \
+  /usr/include/c++/14.2.1/bits/stl_tempbuf.h \
   /usr/include/c++/14.2.1/bits/streambuf.tcc \
   /usr/include/c++/14.2.1/bits/streambuf_iterator.h \
   /usr/include/c++/14.2.1/bits/stringfwd.h \
+  /usr/include/c++/14.2.1/bits/uniform_int_dist.h \
   /usr/include/c++/14.2.1/bits/utility.h \
   /usr/include/c++/14.2.1/bits/version.h \
   /usr/include/c++/14.2.1/cassert \
@@ -2552,6 +2558,12 @@ CMakeFiles/mygame.dir/src/Game.cpp.o:
 
 /usr/lib/libjxl_cms.so.0.11:
 
+/usr/lib/libjxl.so.0.11:
+
+/usr/lib/libjpeg.so.8:
+
+/usr/lib/libdav1d.so.7:
+
 /usr/include/wchar.h:
 
 /usr/include/c++/14.2.1/clocale:
@@ -2638,8 +2650,6 @@ _deps/glm-src/glm/detail/func_vector_relational.inl:
 
 _deps/glm-src/glm/ext/matrix_float4x2_precision.hpp:
 
-/usr/lib/libjpeg.so.8:
-
 /usr/include/c++/14.2.1/debug/assertions.h:
 
 /usr/include/bits/time.h:
@@ -2695,6 +2705,8 @@ _deps/glm-src/glm/ext/vector_uint4.hpp:
 /usr/include/SDL2/SDL_events.h:
 
 _deps/glm-src/glm/ext/matrix_float2x2_precision.hpp:
+
+/usr/include/c++/14.2.1/algorithm:
 
 _deps/glm-src/glm/ext/vector_float2_precision.hpp:
 
@@ -2772,6 +2784,10 @@ _deps/glm-src/glm/detail/func_geometric.inl:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsaveoptintrin.h:
 
+/usr/lib/libc_nonshared.a:
+
+/usr/include/SDL2/SDL_atomic.h:
+
 /usr/include/bits/types/struct___jmp_buf_tag.h:
 
 /usr/include/bits/waitstatus.h:
@@ -2840,10 +2856,6 @@ _deps/glm-src/glm/detail/func_trigonometric.inl:
 
 /usr/include/bits/types/__sigset_t.h:
 
-/usr/include/features-time64.h:
-
-/usr/include/SDL2/SDL_pixels.h:
-
 /home/matko/Desktop/igrca-za-RPAv/src/Game.h:
 
 _deps/glm-src/glm/ext/matrix_double3x2_precision.hpp:
@@ -2853,8 +2865,6 @@ _deps/glm-src/glm/ext/matrix_double3x2_precision.hpp:
 _deps/glm-src/glm/ext/scalar_uint_sized.hpp:
 
 /usr/include/c++/14.2.1/bits/cpp_type_traits.h:
-
-/usr/lib/libjxl.so.0.11:
 
 /usr/include/SDL2/SDL_messagebox.h:
 
@@ -2892,8 +2902,6 @@ _deps/glm-src/glm/ext/matrix_double2x4.hpp:
 
 _deps/glm-src/glm/ext/vector_bool2_precision.hpp:
 
-/usr/include/bits/stdlib-float.h:
-
 /home/matko/Desktop/igrca-za-RPAv/src/clock.hpp:
 
 /usr/include/bits/long-double.h:
@@ -2906,6 +2914,10 @@ _deps/glm-src/glm/mat4x2.hpp:
 
 /usr/include/SDL2/SDL_assert.h:
 
+/usr/lib/libhwy.so.1:
+
+/home/matko/Desktop/igrca-za-RPAv/src/Game.cpp:
+
 /usr/include/SDL2/SDL_misc.h:
 
 /home/matko/Desktop/igrca-za-RPAv/src/Mouse.hpp:
@@ -2913,8 +2925,6 @@ _deps/glm-src/glm/mat4x2.hpp:
 /usr/include/c++/14.2.1/bits/basic_string.h:
 
 /usr/include/SDL2/SDL_log.h:
-
-/home/matko/Desktop/igrca-za-RPAv/src/TextureManager.h:
 
 _deps/glm-src/glm/detail/type_mat4x2.inl:
 
@@ -2937,6 +2947,10 @@ _deps/glm-src/glm/ext/matrix_float4x4.hpp:
 /usr/include/SDL2/SDL_power.h:
 
 /usr/include/c++/14.2.1/initializer_list:
+
+/usr/lib/libjbig.so.2.1:
+
+/usr/include/c++/14.2.1/cfloat:
 
 /usr/lib/libbrotlidec.so.1:
 
@@ -3156,6 +3170,10 @@ _deps/glm-src/glm/glm.hpp:
 
 /usr/include/bits/select.h:
 
+/home/matko/Desktop/igrca-za-RPAv/src/TextureManager.h:
+
+/usr/include/c++/14.2.1/bits/algorithmfwd.h:
+
 /usr/include/bits/types/struct_timeval.h:
 
 /usr/include/bits/thread-shared-types.h:
@@ -3298,10 +3316,6 @@ _deps/glm-src/glm/ext/vector_double2.hpp:
 
 /usr/include/c++/14.2.1/cstddef:
 
-/home/matko/Desktop/igrca-za-RPAv/src/Game.cpp:
-
-/usr/lib/libhwy.so.1:
-
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vnnivlintrin.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vp2intersectintrin.h:
@@ -3387,6 +3401,12 @@ _deps/glm-src/glm/detail/type_mat4x4.inl:
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/shaintrin.h:
 
 _deps/glm-src/glm/detail/type_mat4x2.hpp:
+
+/usr/include/features-time64.h:
+
+/usr/include/SDL2/SDL_pixels.h:
+
+/usr/include/c++/14.2.1/bits/stl_heap.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/smmintrin.h:
 
@@ -3497,8 +3517,6 @@ _deps/glm-src/glm/detail/compute_vector_relational.hpp:
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sha512intrin.h:
 
 _deps/glm-src/glm/ext/matrix_float3x3.hpp:
-
-/usr/lib/libdav1d.so.7:
 
 /usr/include/bits/pthreadtypes-arch.h:
 
@@ -3614,6 +3632,12 @@ _deps/glm-src/glm/ext/vector_uint3_sized.hpp:
 
 _deps/glm-src/glm/vec4.hpp:
 
+/usr/include/c++/14.2.1/bits/stl_algo.h:
+
+/usr/include/bits/stdlib-float.h:
+
+/usr/include/c++/14.2.1/bits/stl_tempbuf.h:
+
 /usr/include/c++/14.2.1/cassert:
 
 /usr/include/c++/14.2.1/cstdint:
@@ -3621,6 +3645,8 @@ _deps/glm-src/glm/vec4.hpp:
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/clzerointrin.h:
 
 /usr/include/c++/14.2.1/ctime:
+
+/usr/include/c++/14.2.1/bits/uniform_int_dist.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h:
 
@@ -3647,11 +3673,3 @@ _deps/glm-src/glm/vec4.hpp:
 /usr/include/bits/fp-fast.h:
 
 /usr/lib/libc.so.6:
-
-/usr/include/SDL2/SDL_atomic.h:
-
-/usr/lib/libc_nonshared.a:
-
-/usr/include/c++/14.2.1/cfloat:
-
-/usr/lib/libjbig.so.2.1:

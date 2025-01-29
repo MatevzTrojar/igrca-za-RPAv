@@ -51,7 +51,7 @@ void Game::handleEvents() {
 		default:
 			break;
 	}
-    mouse->Update(event);
+  //  mouse->Update(event);
     
 }
 

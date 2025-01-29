@@ -1,18 +1,21 @@
 #include "GameObject.h"
 
+#include <algorithm>
 #include <cmath>
 #include <cstdlib>
 #include <ctime>
-
-#include <iostream>
-#include <ostream>
 #include <glm/glm.hpp>
 #include <glm/vec2.hpp>
+#include <iostream>
+#include <ostream>
+#include <system_error>
+
 #include "Game.h"
 #include "SDL_platform.h"
 #include "SDL_render.h"
 #include "SDL_timer.h"
 #include "TextureManager.h"
+#include "glm/geometric.hpp"
 
 GameObject::GameObject(const char* textureSheet, int x, int y) {
 	objTexture = TextureManager::LoadTexture(textureSheet);
@@ -20,11 +23,11 @@ GameObject::GameObject(const char* textureSheet, int x, int y) {
 	posx = x;
 	posy = y;
 	isFlipped = false;	// Initially not flipped
-/*	srcRect.h = 100;
-	srcRect.w = 100;
-	srcRect.x = 0;
-	srcRect.y = 0;
-    */
+	/*	srcRect.h = 100;
+		srcRect.w = 100;
+		srcRect.x = 0;
+		srcRect.y = 0;
+		*/
 }
 GameObject::GameObject(const char* textureSheet, int x, int y, int nFrames,
 					   int mSpeed) {
@@ -34,7 +37,7 @@ GameObject::GameObject(const char* textureSheet, int x, int y, int nFrames,
 
 	objTexture = TextureManager::LoadTexture(textureSheet);
 	SDL_QueryTexture(objTexture, NULL, NULL, &dest.w, &dest.h);
-	posx = x; 
+	posx = x;
 	posy = y;
 	isFlipped = false;	// Initially not flipped
 	srcRect.h = 100;
@@ -45,7 +48,8 @@ GameObject::GameObject(const char* textureSheet, int x, int y, int nFrames,
 
 void GameObject::Update(Clock* ura) {
 	if (isAnimated) {
-        srcRect.x = srcRect.w * static_cast <int>((SDL_GetTicks() / speed) % frames);
+		srcRect.x =
+			srcRect.w * static_cast<int>((SDL_GetTicks() / speed) % frames);
 	}
 
 	const Uint8* state = SDL_GetKeyboardState(NULL);
@@ -53,16 +57,24 @@ void GameObject::Update(Clock* ura) {
 	moving_up = state[SDL_SCANCODE_W];
 	moving_down = state[SDL_SCANCODE_S];
 	moving_right = state[SDL_SCANCODE_D];
-	if (moving_down) posy += 1 * ura->delta*0.8;
+	glm::vec2 move;
+	move.x = 0;
+	move.y = 0;
+	glm::vec2 FinalMove;
+	if (moving_up) move.y -= 1 * ura->delta * 0.6;
+	if (moving_down) move.y += 1 * ura->delta * 0.6;
 	if (moving_right) {
-		posx += 1 * ura->delta*0.8;
+		move.x += 1 * ura->delta * 0.6;
 		isFlipped = true;
 	}
-	if (moving_up) posy -= 1 * ura->delta*0.8;
 	if (moving_left) {
-		posx -= 1 * ura->delta*0.8;
+		move.x -= 1 * ura->delta * 0.6;
 		isFlipped = false;
 	}
+	FinalMove = move;
+	posx += FinalMove.x;
+	posy += FinalMove.y;
+
 	if (posx + dest.w > 1920) posx = 1920 - dest.w;
 
 	// left boundary
@@ -74,8 +86,8 @@ void GameObject::Update(Clock* ura) {
 	if (posy < 0) posy = 0;
 	dest.w = 75;
 	dest.h = 75;
-    dest.x=posx;
-    dest.y=posy;
+	dest.x = posx;
+	dest.y = posy;
 }
 
 void GameObject::Render() {
