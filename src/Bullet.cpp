@@ -1,14 +1,23 @@
 #include "Bullet.hpp"
+
 #include <csignal>
+#include <ctime>
 #include "GameObject.h"
 #include "glm/ext/vector_float2.hpp"
-Bullet::~Bullet(){
-mTimer = NULL;
-delete objTexture;
-objTexture = NULL;
 
-};
-void Bullet::Fire(glm::vec2 pos){
-    dest.x = pos.x;
-    dest.y = pos.y;
+
+
+void Bullet::Update(glm::vec2 pos,struct Clock *ura){
+    posx+=pos.x *ura->delta;
+    posy+=pos.y * ura ->delta;
+    dest.x = posx;
+    dest.y =posy;
+    if(posx > 1920){
+        Active = false;
+    }
+    if(posy>1080)
+        Active = false;
+    if(posx< 0 || posy < 0)
+        Active = false;
 }
+

@@ -13,6 +13,7 @@ class GameObject {
 
 	void Update(Clock*);
 	void Render();
+
 	SDL_Texture* objTexture;
 	SDL_Rect srcRect, dest;
 	bool moving_left = false, moving_right = false, moving_up = false,

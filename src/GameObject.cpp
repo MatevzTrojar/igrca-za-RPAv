@@ -9,25 +9,21 @@
 #include <iostream>
 #include <ostream>
 #include <system_error>
-
+#include "Bullet.hpp"
+#include "Mouse.hpp"
 #include "Game.h"
 #include "SDL_platform.h"
 #include "SDL_render.h"
 #include "SDL_timer.h"
 #include "TextureManager.h"
 #include "glm/geometric.hpp"
-
 GameObject::GameObject(const char* textureSheet, int x, int y) {
 	objTexture = TextureManager::LoadTexture(textureSheet);
 	SDL_QueryTexture(objTexture, NULL, NULL, &dest.w, &dest.h);
 	posx = x;
 	posy = y;
 	isFlipped = false;	// Initially not flipped
-	/*	srcRect.h = 100;
-		srcRect.w = 100;
-		srcRect.x = 0;
-		srcRect.y = 0;
-		*/
+
 }
 GameObject::GameObject(const char* textureSheet, int x, int y, int nFrames,
 					   int mSpeed) {
@@ -47,6 +43,7 @@ GameObject::GameObject(const char* textureSheet, int x, int y, int nFrames,
 }
 
 void GameObject::Update(Clock* ura) {
+    Mouse mouse;
 	if (isAnimated) {
 		srcRect.x =
 			srcRect.w * static_cast<int>((SDL_GetTicks() / speed) % frames);

@@ -1,14 +1,20 @@
 #include "Game.h"
 
+#include <cfenv>
 #include <cstdlib>
-#include "Mouse.hpp"
-#include "GameObject.h"
-#include "Scientist.hpp"
-#include"TextureManager.h"
 
+#include "Bullet.hpp"
+#include "GameObject.h"
+#include "Mouse.hpp"
+#include "SDL_platform.h"
+#include "Scientist.hpp"
+#include "TextureManager.h"
+#include "glm/ext/vector_float2.hpp"
+#include "glm/geometric.hpp"
 GameObject* player;
 Scientist* scientist;
-Mouse *mouse;
+Mouse mouse;
+Bullet* bullet = NULL;
 SDL_Renderer* Game::renderer = nullptr;
 
 Game::Game() {}
@@ -51,19 +57,38 @@ void Game::handleEvents() {
 		default:
 			break;
 	}
-  //  mouse->Update(event);
-    
+	mouse.XY(event);
+	mouse.Clicked(event);
+	std::cout << mouse.x << "   " << mouse.y << "  " << mouse.click
+			  << std::endl;
 }
+    glm::vec2 FinalMove;
 
 void Game::update(Clock* ura) {
 	player->Update(ura);
 	scientist->Update(ura, player);
+	if (mouse.click) {
+		glm::vec2 vec;
+		vec.x = mouse.xpos - player->posx;
+		vec.y = mouse.ypos - player->posy;
+		bullet = new Bullet("assets/textures/bullet.png", player->dest.x,
+							player->dest.x);
+        FinalMove = glm::normalize(vec);
+		bullet->Active = true;
+	}
+	if (bullet != NULL) {
+        bullet->Update(FinalMove,ura);
+	}
+
 }
 
 void Game::render() {
 	SDL_RenderClear(renderer);
 	player->Render();
 	scientist->Render();
+    if(bullet!=NULL){
+        bullet->Render();
+    }
 	SDL_RenderPresent(renderer);
 }
 
