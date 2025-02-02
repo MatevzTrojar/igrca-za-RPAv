@@ -2,15 +2,22 @@
 
 #include <cfenv>
 #include <cstdlib>
+#include <ios>
+#include <iostream>
 
 #include "Bullet.hpp"
 #include "GameObject.h"
 #include "Mouse.hpp"
 #include "SDL_platform.h"
+#include "SDL_stdinc.h"
+#include "SDL_timer.h"
 #include "Scientist.hpp"
 #include "TextureManager.h"
+#include "glm/detail/type_vec4.hpp"
 #include "glm/ext/vector_float2.hpp"
 #include "glm/geometric.hpp"
+#include <vector>
+
 GameObject* player;
 Scientist* scientist;
 Mouse mouse;
@@ -62,33 +69,35 @@ void Game::handleEvents() {
 	std::cout << mouse.x << "   " << mouse.y << "  " << mouse.click
 			  << std::endl;
 }
-    glm::vec2 FinalMove;
+glm::vec2 FinalMove;
+Uint32 BulletTime;
+std::vector<Bullet*> bullets[6];
 
 void Game::update(Clock* ura) {
 	player->Update(ura);
 	scientist->Update(ura, player);
-	if (mouse.click) {
+	if (mouse.click ) {
+		bullet = new Bullet("assets/textures/bullet.png", player->dest.x,
+							player->dest.y);
 		glm::vec2 vec;
 		vec.x = mouse.xpos - player->posx;
 		vec.y = mouse.ypos - player->posy;
-		bullet = new Bullet("assets/textures/bullet.png", player->dest.x,
-							player->dest.x);
-        FinalMove = glm::normalize(vec);
+		FinalMove = glm::normalize(vec);
 		bullet->Active = true;
 	}
-	if (bullet != NULL) {
-        bullet->Update(FinalMove,ura);
-	}
 
+	if (bullet != NULL) {
+		bullet->Update(FinalMove, ura,BulletTime);
+	}
 }
 
 void Game::render() {
 	SDL_RenderClear(renderer);
 	player->Render();
 	scientist->Render();
-    if(bullet!=NULL){
-        bullet->Render();
-    }
+	if (bullet != NULL) {
+		bullet->Render();
+	}
 	SDL_RenderPresent(renderer);
 }
 

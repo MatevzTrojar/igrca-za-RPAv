@@ -14,6 +14,7 @@
 #include "Game.h"
 #include "SDL_platform.h"
 #include "SDL_render.h"
+#include "SDL_stdinc.h"
 #include "SDL_timer.h"
 #include "TextureManager.h"
 #include "glm/geometric.hpp"
@@ -85,6 +86,9 @@ void GameObject::Update(Clock* ura) {
 	dest.h = 75;
 	dest.x = posx;
 	dest.y = posy;
+}
+void Detect() {
+    //neki glede collision detection
 }
 
 void GameObject::Render() {

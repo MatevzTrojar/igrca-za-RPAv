@@ -517,6 +517,7 @@ CMakeFiles/mygame.dir/src/Game.cpp.o
  /usr/include/bits/endian.h
  /usr/include/bits/endianness.h
  /usr/include/bits/errno.h
+ /usr/include/bits/fenv.h
  /usr/include/bits/floatn-common.h
  /usr/include/bits/floatn.h
  /usr/include/bits/flt-eval-method.h
@@ -637,6 +638,7 @@ CMakeFiles/mygame.dir/src/Game.cpp.o
  /usr/include/c++/14.2.1/cassert
  /usr/include/c++/14.2.1/cctype
  /usr/include/c++/14.2.1/cerrno
+ /usr/include/c++/14.2.1/cfenv
  /usr/include/c++/14.2.1/clocale
  /usr/include/c++/14.2.1/cmath
  /usr/include/c++/14.2.1/complex
@@ -654,6 +656,7 @@ CMakeFiles/mygame.dir/src/Game.cpp.o
  /usr/include/c++/14.2.1/ext/numeric_traits.h
  /usr/include/c++/14.2.1/ext/string_conversions.h
  /usr/include/c++/14.2.1/ext/type_traits.h
+ /usr/include/c++/14.2.1/fenv.h
  /usr/include/c++/14.2.1/initializer_list
  /usr/include/c++/14.2.1/ios
  /usr/include/c++/14.2.1/iosfwd
@@ -687,6 +690,7 @@ CMakeFiles/mygame.dir/src/Game.cpp.o
  /usr/include/errno.h
  /usr/include/features-time64.h
  /usr/include/features.h
+ /usr/include/fenv.h
  /usr/include/gnu/stubs-64.h
  /usr/include/gnu/stubs.h
  /usr/include/inttypes.h

@@ -515,6 +515,7 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   /usr/include/bits/endian.h \
   /usr/include/bits/endianness.h \
   /usr/include/bits/errno.h \
+  /usr/include/bits/fenv.h \
   /usr/include/bits/floatn-common.h \
   /usr/include/bits/floatn.h \
   /usr/include/bits/flt-eval-method.h \
@@ -635,6 +636,7 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   /usr/include/c++/14.2.1/cassert \
   /usr/include/c++/14.2.1/cctype \
   /usr/include/c++/14.2.1/cerrno \
+  /usr/include/c++/14.2.1/cfenv \
   /usr/include/c++/14.2.1/clocale \
   /usr/include/c++/14.2.1/cmath \
   /usr/include/c++/14.2.1/complex \
@@ -652,6 +654,7 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   /usr/include/c++/14.2.1/ext/numeric_traits.h \
   /usr/include/c++/14.2.1/ext/string_conversions.h \
   /usr/include/c++/14.2.1/ext/type_traits.h \
+  /usr/include/c++/14.2.1/fenv.h \
   /usr/include/c++/14.2.1/initializer_list \
   /usr/include/c++/14.2.1/ios \
   /usr/include/c++/14.2.1/iosfwd \
@@ -685,6 +688,7 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   /usr/include/errno.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
+  /usr/include/fenv.h \
   /usr/include/gnu/stubs-64.h \
   /usr/include/gnu/stubs.h \
   /usr/include/inttypes.h \
@@ -3072,6 +3076,10 @@ CMakeFiles/mygame.dir/src/Bullet.cpp.o:
 
 /usr/include/c++/14.2.1/bits/uniform_int_dist.h:
 
+/usr/include/c++/14.2.1/bits/stl_algo.h:
+
+/usr/include/c++/14.2.1/algorithm:
+
 /usr/include/c++/14.2.1/iostream:
 
 /usr/include/bits/stdint-uintn.h:
@@ -3130,8 +3138,6 @@ _deps/glm-src/glm/ext/vector_uint4.hpp:
 
 _deps/glm-src/glm/ext/matrix_float2x2_precision.hpp:
 
-/usr/include/c++/14.2.1/algorithm:
-
 /usr/include/endian.h:
 
 /usr/include/stdint.h:
@@ -3167,8 +3173,6 @@ _deps/glm-src/glm/detail/type_mat3x3.inl:
 /usr/include/c++/14.2.1/bits/cxxabi_forced.h:
 
 _deps/glm-src/glm/detail/type_mat3x4.inl:
-
-_deps/glm-src/glm/fwd.hpp:
 
 /usr/lib/crti.o:
 
@@ -3245,6 +3249,10 @@ _deps/glm-src/glm/mat2x4.hpp:
 /usr/include/c++/14.2.1/bits/alloc_traits.h:
 
 /usr/include/bits/types/__sigval_t.h:
+
+_deps/glm-src/glm/fwd.hpp:
+
+/usr/include/c++/14.2.1/fenv.h:
 
 /usr/include/bits/types/__sigset_t.h:
 
@@ -3372,6 +3380,8 @@ _deps/glm-src/glm/ext/matrix_float4x2_precision.hpp:
 
 /usr/include/SDL2/SDL_clipboard.h:
 
+/usr/include/bits/fenv.h:
+
 _deps/glm-src/glm/detail/_vectorize.hpp:
 
 /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/gthr-default.h:
@@ -3460,6 +3470,12 @@ _deps/glm-src/glm/detail/setup.hpp:
 
 /usr/include/c++/14.2.1/bits/range_access.h:
 
+/usr/include/c++/14.2.1/bits/stl_heap.h:
+
+/usr/include/SDL2/SDL_pixels.h:
+
+/usr/include/features-time64.h:
+
 /usr/include/bits/math-vector.h:
 
 _deps/glm-src/glm/ext/matrix_float2x2.hpp:
@@ -3479,6 +3495,10 @@ _deps/glm-src/glm/ext/matrix_float2x2.hpp:
 /usr/include/SDL2/close_code.h:
 
 /usr/include/errno.h:
+
+/usr/include/c++/14.2.1/bits/algorithmfwd.h:
+
+/home/matko/Desktop/igrca-za-RPAv/src/TextureManager.h:
 
 _deps/glm-src/glm/detail/func_exponential.inl:
 
@@ -3744,10 +3764,6 @@ _deps/glm-src/glm/ext/matrix_double2x4_precision.hpp:
 
 /usr/include/bits/select.h:
 
-/home/matko/Desktop/igrca-za-RPAv/src/TextureManager.h:
-
-/usr/include/c++/14.2.1/bits/algorithmfwd.h:
-
 /usr/include/SDL2/SDL_image.h:
 
 /usr/include/bits/getopt_core.h:
@@ -3988,12 +4004,6 @@ _deps/glm-src/glm/detail/type_mat4x4.inl:
 
 _deps/glm-src/glm/detail/type_mat4x2.hpp:
 
-/usr/include/SDL2/SDL_pixels.h:
-
-/usr/include/features-time64.h:
-
-/usr/include/c++/14.2.1/bits/stl_heap.h:
-
 _deps/glm-src/glm/detail/type_vec2.inl:
 
 /usr/include/SDL2/SDL_haptic.h:
@@ -4076,6 +4086,12 @@ _deps/glm-src/glm/mat4x3.hpp:
 
 _deps/glm-src/glm/detail/type_mat4x4.hpp:
 
+/usr/include/c++/14.2.1/cfenv:
+
+_deps/glm-src/glm/detail/type_mat3x4.hpp:
+
+/usr/include/fenv.h:
+
 /home/matko/Desktop/igrca-za-RPAv/src/GameObject.cpp:
 
 /usr/include/bits/mathcalls-helper-functions.h:
@@ -4091,8 +4107,6 @@ _deps/glm-src/glm/detail/type_mat2x3.inl:
 _deps/glm-src/glm/detail/type_mat3x2.hpp:
 
 _deps/glm-src/glm/detail/type_mat3x3.hpp:
-
-_deps/glm-src/glm/detail/type_mat3x4.hpp:
 
 /usr/include/c++/14.2.1/stdexcept:
 
@@ -4193,5 +4207,3 @@ _deps/glm-src/glm/detail/type_half.inl:
 /usr/include/SDL2/SDL_timer.h:
 
 _deps/glm-src/glm/trigonometric.hpp:
-
-/usr/include/c++/14.2.1/bits/stl_algo.h:

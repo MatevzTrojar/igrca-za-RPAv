@@ -24,4 +24,5 @@ class GameObject {
 	int speed = 100;
 	float posx;
 	float posy;
+    void Detect();
 };

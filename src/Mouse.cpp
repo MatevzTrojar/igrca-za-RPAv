@@ -16,4 +16,11 @@ void Mouse::Clicked(SDL_Event &event) {
 		}
 
 	}
+    if(SDL_MOUSEBUTTONUP == event.type){
+        if(SDL_BUTTON_LEFT == event.button.button){
+
+            click = false;
+
+        }
+    }
 }

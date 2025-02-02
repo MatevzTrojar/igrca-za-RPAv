@@ -11,8 +11,8 @@ void Scientist::Update(Clock* ura, GameObject* player) {
 	move.x = player->posx - posx;
 	move.y = player->posy - posy;
 	glm::vec2 Finalmove = glm::normalize(move);
-	GameObject::posx += Finalmove.x * ura->delta * 0.35;
-	GameObject::posy += Finalmove.y * ura->delta * 0.35;
+	GameObject::posx += Finalmove.x * ura->delta * 0.2;
+	GameObject::posy += Finalmove.y * ura->delta * 0.2;
 	dest.x = posx;
 	dest.y = posy;
 
