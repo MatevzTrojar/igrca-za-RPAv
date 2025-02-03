@@ -1,4 +1,5 @@
 #include <sys/types.h>
+#include <vector>
 #include "Game.h"
 #include "GameObject.h"
 #include "SDL_gesture.h"
@@ -17,14 +18,14 @@ class Bullet : public GameObject {
         dest.w = 70;
         dest.h = 70;
 	};
-    int firerate = 1000;
+    glm::vec2 pos;
+    int firerate = 3000;
 	~Bullet(){
-        Clean();
+    //    Clean();
     };
-    Uint32 lastshot = 0;
-	void Update(glm::vec2 pos,struct Clock *ura,Uint32 currenttime);
+	void Update(Clock *ura);
     bool Active = false;
     void Reload();
-    void Clean();
+    //void Clean();
 };
 

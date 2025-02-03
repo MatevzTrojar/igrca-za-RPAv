@@ -1,15 +1,18 @@
 #include "Bullet.hpp"
-
+#include <algorithm>
+#include "clock.hpp" 
 #include <csignal>
 #include <ctime>
 #include <exception>
+#include <fstream>
 #include <sstream>
+#include <vector>
 #include "GameObject.h"
 #include "SDL_stdinc.h"
 #include "glm/common.hpp"
 #include "glm/ext/vector_float2.hpp"
 
-void Bullet::Update(glm::vec2 pos,struct Clock *ura,Uint32 currenttime) {
+void Bullet::Update( Clock *ura) {
     posx+=pos.x *ura->delta;
     posy+=pos.y * ura ->delta;
     dest.x = posx;
@@ -19,15 +22,14 @@ void Bullet::Update(glm::vec2 pos,struct Clock *ura,Uint32 currenttime) {
     }
     if(posy>1080)
         Active = false;
-    if(posx< 0 || posy < 0)
+    if(posx< 0)
         Active = false;
-    if(currenttime - lastshot >firerate){
-    }
+    if(posy<0)
+        Active = false;
+
 }
 
 
-void Bullet::Clean() {
+/*void Bullet::Clean() {
     SDL_DestroyTexture(objTexture);
-}
-void Bullet::Reload(){ 
-}
+}*/

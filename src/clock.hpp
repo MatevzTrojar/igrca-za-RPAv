@@ -1,3 +1,5 @@
+#pragma once
+
 #include <SDL2/SDL.h>
 struct Clock {
 	unsigned int last_tick_time = 0;

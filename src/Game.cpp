@@ -1,13 +1,19 @@
 #include "Game.h"
 
+#include <algorithm>
 #include <cfenv>
+#include <cmath>
 #include <cstdlib>
 #include <ios>
 #include <iostream>
+#include <set>
+#include <utility>
+#include <vector>
 
 #include "Bullet.hpp"
 #include "GameObject.h"
 #include "Mouse.hpp"
+#include "SDL_cpuinfo.h"
 #include "SDL_platform.h"
 #include "SDL_stdinc.h"
 #include "SDL_timer.h"
@@ -16,12 +22,11 @@
 #include "glm/detail/type_vec4.hpp"
 #include "glm/ext/vector_float2.hpp"
 #include "glm/geometric.hpp"
-#include <vector>
 
+std::set<Bullet*> bullets;
 GameObject* player;
 Scientist* scientist;
 Mouse mouse;
-Bullet* bullet = NULL;
 SDL_Renderer* Game::renderer = nullptr;
 
 Game::Game() {}
@@ -66,28 +71,44 @@ void Game::handleEvents() {
 	}
 	mouse.XY(event);
 	mouse.Clicked(event);
-	std::cout << mouse.x << "   " << mouse.y << "  " << mouse.click
-			  << std::endl;
+	//	std::cout << mouse.x << "   " << mouse.y << "  " << mouse.click
+	//			  << std::endl;
 }
 glm::vec2 FinalMove;
-Uint32 BulletTime;
-std::vector<Bullet*> bullets[6];
-
+int TimeSinceLastBullet = 1e9;
 void Game::update(Clock* ura) {
 	player->Update(ura);
 	scientist->Update(ura, player);
-	if (mouse.click ) {
-		bullet = new Bullet("assets/textures/bullet.png", player->dest.x,
-							player->dest.y);
+	if (mouse.click && TimeSinceLastBullet > 750) {
+        if(TimeSinceLastBullet > 750)
+            TimeSinceLastBullet = 0;
+		Bullet* bullet = new Bullet("assets/textures/bullet.png",
+									player->dest.x, player->dest.y);
+		bullet->Active = true;
 		glm::vec2 vec;
 		vec.x = mouse.xpos - player->posx;
 		vec.y = mouse.ypos - player->posy;
 		FinalMove = glm::normalize(vec);
-		bullet->Active = true;
+		bullet->pos = FinalMove;
+		bullets.insert(bullet);
 	}
+    TimeSinceLastBullet += ura->delta;
 
-	if (bullet != NULL) {
-		bullet->Update(FinalMove, ura,BulletTime);
+	for (Bullet* bullet : bullets) {
+		if (bullet != NULL && bullet->Active) {
+			bullet->Update(ura);
+		}
+	}
+	std::vector<Bullet*> toDelete;
+
+	for (Bullet* bullet : bullets) {
+		if (!bullet->Active) {
+			toDelete.push_back(bullet);
+		}
+	}
+	for (Bullet* bullet : toDelete) {
+		bullets.erase(bullet);
+		delete bullet;
 	}
 }
 
@@ -95,8 +116,10 @@ void Game::render() {
 	SDL_RenderClear(renderer);
 	player->Render();
 	scientist->Render();
-	if (bullet != NULL) {
-		bullet->Render();
+	for (Bullet* bullet : bullets) {
+		if (bullet != NULL && bullet->Active) {
+			bullet->Render();
+		}
 	}
 	SDL_RenderPresent(renderer);
 }
