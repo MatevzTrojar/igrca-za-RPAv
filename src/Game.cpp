@@ -17,15 +17,14 @@
 #include "SDL_platform.h"
 #include "SDL_stdinc.h"
 #include "SDL_timer.h"
-#include "Scientist.hpp"
 #include "TextureManager.h"
 #include "glm/detail/type_vec4.hpp"
 #include "glm/ext/vector_float2.hpp"
 #include "glm/geometric.hpp"
 
-std::set<Bullet*> bullets;
+std::set<Bullet*>bullets;
 GameObject* player;
-Scientist* scientist;
+std::set<Scientist*> scientists;
 Mouse mouse;
 SDL_Renderer* Game::renderer = nullptr;
 
@@ -53,8 +52,10 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 	srand(time(NULL));
 
 	player = new GameObject("assets/textures/Test2.png", 1920 / 2, 1080 / 2);
-	scientist = new Scientist("assets/textures/scientist.png", rand() % (1920),
-							  rand() % (1080));
+    for(int i = 0;i<3;i++){
+        scientists.insert(new Scientist("assets/textures/scientist.png", rand() % (1920),
+                              rand() % (1080)));
+    }
 }
 
 void Game::handleEvents() {
@@ -78,10 +79,10 @@ glm::vec2 FinalMove;
 int TimeSinceLastBullet = 1e9;
 void Game::update(Clock* ura) {
 	player->Update(ura);
+    for(Scientist* scientist:scientists)
 	scientist->Update(ura, player);
 	if (mouse.click && TimeSinceLastBullet > 750) {
-        if(TimeSinceLastBullet > 750)
-            TimeSinceLastBullet = 0;
+		if (TimeSinceLastBullet > 750) TimeSinceLastBullet = 0;
 		Bullet* bullet = new Bullet("assets/textures/bullet.png",
 									player->dest.x, player->dest.y);
 		bullet->Active = true;
@@ -92,7 +93,7 @@ void Game::update(Clock* ura) {
 		bullet->pos = FinalMove;
 		bullets.insert(bullet);
 	}
-    TimeSinceLastBullet += ura->delta;
+	TimeSinceLastBullet += ura->delta;
 
 	for (Bullet* bullet : bullets) {
 		if (bullet != NULL && bullet->Active) {
@@ -100,21 +101,39 @@ void Game::update(Clock* ura) {
 		}
 	}
 	std::vector<Bullet*> toDelete;
+    std::set<Scientist*> toDeleteScientist;
 
 	for (Bullet* bullet : bullets) {
+        for(Scientist* scientist:scientists){
+            if(bullet->CollisionDetect(scientist)){
+                toDeleteScientist.insert(scientist);
+                toDelete.push_back(bullet);
+            }
+        }
 		if (!bullet->Active) {
 			toDelete.push_back(bullet);
 		}
+
 	}
 	for (Bullet* bullet : toDelete) {
 		bullets.erase(bullet);
 		delete bullet;
 	}
+    for(Scientist* scientist:toDeleteScientist){
+        scientists.erase(scientist);
+        delete scientist;
+    }
+    for(Scientist* scientist:scientists){
+        if(player->CollisionDetect(scientist)){
+            isRunning = false;
+        }
+    }
 }
 
 void Game::render() {
 	SDL_RenderClear(renderer);
 	player->Render();
+    for(Scientist* scientist:scientists)
 	scientist->Render();
 	for (Bullet* bullet : bullets) {
 		if (bullet != NULL && bullet->Active) {

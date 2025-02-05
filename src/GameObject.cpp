@@ -1,17 +1,21 @@
 #include "GameObject.h"
+#include <endian.h>
 
 #include <algorithm>
 #include <cmath>
 #include <cstdlib>
 #include <ctime>
+#include <fstream>
 #include <glm/glm.hpp>
 #include <glm/vec2.hpp>
 #include <iostream>
 #include <ostream>
+#include <set>
 #include <system_error>
+
 #include "Bullet.hpp"
-#include "Mouse.hpp"
 #include "Game.h"
+#include "Mouse.hpp"
 #include "SDL_platform.h"
 #include "SDL_render.h"
 #include "SDL_stdinc.h"
@@ -24,10 +28,9 @@ GameObject::GameObject(const char* textureSheet, int x, int y) {
 	posx = x;
 	posy = y;
 	isFlipped = false;	// Initially not flipped
-
 }
 GameObject::GameObject(const char* textureSheet, int x, int y, int nFrames,
-					   int mSpeed) {
+					  int mSpeed) {
 	isAnimated = true;
 	frames = nFrames;
 	speed = mSpeed;
@@ -44,7 +47,7 @@ GameObject::GameObject(const char* textureSheet, int x, int y, int nFrames,
 }
 
 void GameObject::Update(Clock* ura) {
-    Mouse mouse;
+	Mouse mouse;
 	if (isAnimated) {
 		srcRect.x =
 			srcRect.w * static_cast<int>((SDL_GetTicks() / speed) % frames);
@@ -87,9 +90,41 @@ void GameObject::Update(Clock* ura) {
 	dest.x = posx;
 	dest.y = posy;
 }
-void Detect() {
-    //neki glede collision detection
+bool GameObject::CollisionDetect(GameObject* other) {
+	// right collision
+	if (dest.x + dest.w > other->dest.x &&
+		dest.x < other->dest.x + other->dest.w &&
+		dest.y + dest.h > other->dest.y &&
+		dest.y < other->dest.y + other->dest.h) {
+        dest.x = other->dest.x - dest.w;
+		return true;
+	}
+	// left collision
+	if (other->dest.x + other->dest.w > dest.x &&
+		other->dest.x < dest.x + dest.w &&
+		other->dest.y + other->dest.h > dest.y &&
+		other->dest.y < dest.y + dest.h) {
+        dest.x = other->dest.x + other->dest.w;
+		return true;
+	}
+	// upper collision
+	if (dest.x + dest.w > other->dest.x &&
+		dest.x < other->dest.x + other->dest.w &&
+		dest.y < other->dest.y + other->dest.h &&
+		dest.y + dest.h > other->dest.y) {
+        dest.y = other->dest.y + other->dest.h;
+		return true;
+	}
+	// down collision
+	if (other->dest.x + other->dest.w > dest.x &&
+		other->dest.x < dest.x + dest.w && other->dest.y < dest.y + dest.h &&
+		other->dest.y + other->dest.h > dest.y) {
+        dest.y = other->dest.y - dest.h;
+		return true;
+	}
+    return false;
 }
+
 
 void GameObject::Render() {
 	if (!isFlipped)

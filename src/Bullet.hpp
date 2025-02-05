@@ -1,4 +1,5 @@
 #include <sys/types.h>
+#include <cstdio>
 #include <vector>
 #include "Game.h"
 #include "GameObject.h"
@@ -9,8 +10,8 @@
 #include "TextureManager.h"
 #include "glm/common.hpp"
 #include "glm/ext/vector_float2.hpp"
-
-
+#include <set>
+#include "Scientist.hpp"
 
 class Bullet : public GameObject {
    public:
@@ -25,7 +26,6 @@ class Bullet : public GameObject {
     };
 	void Update(Clock *ura);
     bool Active = false;
-    void Reload();
     //void Clean();
 };
 

@@ -1,15 +1,18 @@
 #pragma once
 
 #include <complex>
-
+#include <set>
 #include "Game.h"
-
+#include "SDL_render.h"
+#include <set>
 class GameObject {
    public:
 	GameObject(const char* textureSheet, int x, int y);
 	GameObject(const char* textureSheet, int x, int y, int nFrames, int mSpeed);
 
-	~GameObject() {}
+	~GameObject() {
+        SDL_DestroyTexture(objTexture);
+    }
 
 	void Update(Clock*);
 	void Render();
@@ -24,5 +27,7 @@ class GameObject {
 	int speed = 100;
 	float posx;
 	float posy;
-    void Detect();
+    bool CollisionDetect(GameObject* other);
+
+
 };

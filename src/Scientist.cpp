@@ -1,5 +1,7 @@
 #include "Scientist.hpp"
 
+#include <cctype>
+#include <experimental/filesystem>
 #include <glm/glm.hpp>
 #include <glm/vec2.hpp>
 #include <type_traits>
@@ -11,6 +13,12 @@ void Scientist::Update(Clock* ura, GameObject* player) {
 	move.x = player->posx - posx;
 	move.y = player->posy - posy;
 	glm::vec2 Finalmove = glm::normalize(move);
+    if(Finalmove.x > 0){
+        isFlipped = true;
+    }
+    if(Finalmove.x < 0){
+        isFlipped = false;
+    }
 	GameObject::posx += Finalmove.x * ura->delta * 0.2;
 	GameObject::posy += Finalmove.y * ura->delta * 0.2;
 	dest.x = posx;

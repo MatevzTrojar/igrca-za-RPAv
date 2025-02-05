@@ -1,6 +1,7 @@
 #include "Bullet.hpp"
 #include <algorithm>
 #include "clock.hpp" 
+#include <cmath>
 #include <csignal>
 #include <ctime>
 #include <exception>
@@ -11,7 +12,6 @@
 #include "SDL_stdinc.h"
 #include "glm/common.hpp"
 #include "glm/ext/vector_float2.hpp"
-
 void Bullet::Update( Clock *ura) {
     posx+=pos.x *ura->delta;
     posy+=pos.y * ura ->delta;
@@ -28,6 +28,7 @@ void Bullet::Update( Clock *ura) {
         Active = false;
 
 }
+
 
 
 /*void Bullet::Clean() {
