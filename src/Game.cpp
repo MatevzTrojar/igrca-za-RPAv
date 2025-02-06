@@ -23,7 +23,7 @@
 #include "glm/geometric.hpp"
 
 std::set<Bullet*>bullets;
-GameObject* player;
+GameObject* player,*neki;
 std::set<Scientist*> scientists;
 Mouse mouse;
 SDL_Renderer* Game::renderer = nullptr;
@@ -44,7 +44,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 								  SDL_WINDOWPOS_CENTERED, width, height, flags);
 		renderer = SDL_CreateRenderer(window, -1, 0);
 		if (renderer) {
-			SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+			SDL_SetRenderDrawColor(renderer, 100, 100,100, 100);
 		}
 
 		isRunning = true;
@@ -52,6 +52,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 	srand(time(NULL));
 
 	player = new GameObject("assets/textures/Test2.png", 1920 / 2, 1080 / 2);
+    neki = new GameObject("assets/textures/Test3.png",300,300);
     for(int i = 0;i<3;i++){
         scientists.insert(new Scientist("assets/textures/scientist.png", rand() % (1920),
                               rand() % (1080)));
@@ -79,6 +80,8 @@ glm::vec2 FinalMove;
 int TimeSinceLastBullet = 1e9;
 void Game::update(Clock* ura) {
 	player->Update(ura);
+    std::cout << player->posx << " " << player->posy << std::endl;
+    player -> CollisionDetect(neki);
     for(Scientist* scientist:scientists)
 	scientist->Update(ura, player);
 	if (mouse.click && TimeSinceLastBullet > 750) {
@@ -133,6 +136,7 @@ void Game::update(Clock* ura) {
 void Game::render() {
 	SDL_RenderClear(renderer);
 	player->Render();
+    neki->Render();
     for(Scientist* scientist:scientists)
 	scientist->Render();
 	for (Bullet* bullet : bullets) {

@@ -26,6 +26,7 @@ class Bullet : public GameObject {
     };
 	void Update(Clock *ura);
     bool Active = false;
+    bool CollisionDetect(GameObject* other);
     //void Clean();
 };
 

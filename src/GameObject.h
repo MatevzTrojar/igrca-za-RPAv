@@ -1,6 +1,8 @@
 #pragma once
 
+#include <sys/ucontext.h>
 #include <complex>
+#include <iomanip>
 #include <set>
 #include "Game.h"
 #include "SDL_render.h"
@@ -25,8 +27,8 @@ class GameObject {
 	bool isAnimated = false;
 	int frames = 0;
 	int speed = 100;
-	float posx;
-	float posy;
+	float posx,oldX;
+	float posy,oldY;
     bool CollisionDetect(GameObject* other);
 
 

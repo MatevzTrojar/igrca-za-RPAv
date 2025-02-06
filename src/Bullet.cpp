@@ -29,7 +29,36 @@ void Bullet::Update( Clock *ura) {
 
 }
 
-
+bool Bullet::CollisionDetect(GameObject* other) {
+	// right collision
+	if (dest.x + dest.w > other->dest.x &&
+		dest.x < other->dest.x + other->dest.w &&
+		dest.y + dest.h > other->dest.y &&
+		dest.y < other->dest.y + other->dest.h) {
+		return true;
+	}
+	// left collision
+	if (other->dest.x + other->dest.w > dest.x &&
+		other->dest.x < dest.x + dest.w &&
+		other->dest.y + other->dest.h > dest.y &&
+		other->dest.y < dest.y + dest.h) {
+		return true;
+	}
+	// upper collision
+	if (dest.x + dest.w > other->dest.x &&
+		dest.x < other->dest.x + other->dest.w &&
+		dest.y < other->dest.y + other->dest.h &&
+		dest.y + dest.h > other->dest.y) {
+		return true;
+	}
+	// down collision
+	if (other->dest.x + other->dest.w > dest.x &&
+		other->dest.x < dest.x + dest.w && other->dest.y < dest.y + dest.h &&
+		other->dest.y + other->dest.h > dest.y) {
+		return true;
+	}
+    return false;
+}
 
 /*void Bullet::Clean() {
     SDL_DestroyTexture(objTexture);

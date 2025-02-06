@@ -211,8 +211,11 @@ CMakeFiles/mygame.dir/src/Bullet.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Bu
   /usr/include/c++/14.2.1/bits/istream.tcc \
   /usr/include/c++/14.2.1/bits/locale_classes.h \
   /usr/include/c++/14.2.1/bits/locale_classes.tcc \
+  /usr/include/c++/14.2.1/bits/locale_conv.h \
   /usr/include/c++/14.2.1/bits/locale_facets.h \
   /usr/include/c++/14.2.1/bits/locale_facets.tcc \
+  /usr/include/c++/14.2.1/bits/locale_facets_nonio.h \
+  /usr/include/c++/14.2.1/bits/locale_facets_nonio.tcc \
   /usr/include/c++/14.2.1/bits/localefwd.h \
   /usr/include/c++/14.2.1/bits/memoryfwd.h \
   /usr/include/c++/14.2.1/bits/move.h \
@@ -276,11 +279,13 @@ CMakeFiles/mygame.dir/src/Bullet.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Bu
   /usr/include/c++/14.2.1/ext/type_traits.h \
   /usr/include/c++/14.2.1/fstream \
   /usr/include/c++/14.2.1/initializer_list \
+  /usr/include/c++/14.2.1/iomanip \
   /usr/include/c++/14.2.1/ios \
   /usr/include/c++/14.2.1/iosfwd \
   /usr/include/c++/14.2.1/iostream \
   /usr/include/c++/14.2.1/istream \
   /usr/include/c++/14.2.1/limits \
+  /usr/include/c++/14.2.1/locale \
   /usr/include/c++/14.2.1/math.h \
   /usr/include/c++/14.2.1/new \
   /usr/include/c++/14.2.1/ostream \
@@ -306,7 +311,9 @@ CMakeFiles/mygame.dir/src/Bullet.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Bu
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/error_constants.h \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/gthr-default.h \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/gthr.h \
+  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/messages_members.h \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
+  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/time_members.h \
   /usr/include/ctype.h \
   /usr/include/endian.h \
   /usr/include/errno.h \
@@ -315,6 +322,7 @@ CMakeFiles/mygame.dir/src/Bullet.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Bu
   /usr/include/gnu/stubs-64.h \
   /usr/include/gnu/stubs.h \
   /usr/include/inttypes.h \
+  /usr/include/libintl.h \
   /usr/include/linux/close_range.h \
   /usr/include/linux/errno.h \
   /usr/include/locale.h \
@@ -586,6 +594,7 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/mbstate_t.h \
   /usr/include/bits/types/sigset_t.h \
+  /usr/include/bits/types/stack_t.h \
   /usr/include/bits/types/struct_FILE.h \
   /usr/include/bits/types/struct___jmp_buf_tag.h \
   /usr/include/bits/types/struct_itimerspec.h \
@@ -614,6 +623,7 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   /usr/include/c++/14.2.1/bits/basic_string.tcc \
   /usr/include/c++/14.2.1/bits/char_traits.h \
   /usr/include/c++/14.2.1/bits/charconv.h \
+  /usr/include/c++/14.2.1/bits/codecvt.h \
   /usr/include/c++/14.2.1/bits/concept_check.h \
   /usr/include/c++/14.2.1/bits/cpp_type_traits.h \
   /usr/include/c++/14.2.1/bits/cxxabi_forced.h \
@@ -630,8 +640,11 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   /usr/include/c++/14.2.1/bits/istream.tcc \
   /usr/include/c++/14.2.1/bits/locale_classes.h \
   /usr/include/c++/14.2.1/bits/locale_classes.tcc \
+  /usr/include/c++/14.2.1/bits/locale_conv.h \
   /usr/include/c++/14.2.1/bits/locale_facets.h \
   /usr/include/c++/14.2.1/bits/locale_facets.tcc \
+  /usr/include/c++/14.2.1/bits/locale_facets_nonio.h \
+  /usr/include/c++/14.2.1/bits/locale_facets_nonio.tcc \
   /usr/include/c++/14.2.1/bits/localefwd.h \
   /usr/include/c++/14.2.1/bits/memoryfwd.h \
   /usr/include/c++/14.2.1/bits/move.h \
@@ -682,6 +695,7 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   /usr/include/c++/14.2.1/cstdint \
   /usr/include/c++/14.2.1/cstdio \
   /usr/include/c++/14.2.1/cstdlib \
+  /usr/include/c++/14.2.1/ctime \
   /usr/include/c++/14.2.1/cwchar \
   /usr/include/c++/14.2.1/cwctype \
   /usr/include/c++/14.2.1/debug/assertions.h \
@@ -695,11 +709,13 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   /usr/include/c++/14.2.1/ext/type_traits.h \
   /usr/include/c++/14.2.1/fenv.h \
   /usr/include/c++/14.2.1/initializer_list \
+  /usr/include/c++/14.2.1/iomanip \
   /usr/include/c++/14.2.1/ios \
   /usr/include/c++/14.2.1/iosfwd \
   /usr/include/c++/14.2.1/iostream \
   /usr/include/c++/14.2.1/istream \
   /usr/include/c++/14.2.1/limits \
+  /usr/include/c++/14.2.1/locale \
   /usr/include/c++/14.2.1/math.h \
   /usr/include/c++/14.2.1/new \
   /usr/include/c++/14.2.1/ostream \
@@ -724,7 +740,9 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/error_constants.h \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/gthr-default.h \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/gthr.h \
+  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/messages_members.h \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
+  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/time_members.h \
   /usr/include/ctype.h \
   /usr/include/endian.h \
   /usr/include/errno.h \
@@ -734,6 +752,7 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   /usr/include/gnu/stubs-64.h \
   /usr/include/gnu/stubs.h \
   /usr/include/inttypes.h \
+  /usr/include/libintl.h \
   /usr/include/linux/errno.h \
   /usr/include/locale.h \
   /usr/include/math.h \
@@ -749,6 +768,7 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   /usr/include/sys/select.h \
   /usr/include/sys/single_threaded.h \
   /usr/include/sys/types.h \
+  /usr/include/sys/ucontext.h \
   /usr/include/time.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
@@ -1117,6 +1137,7 @@ CMakeFiles/mygame.dir/src/GameObject.cpp.o: /home/matko/Desktop/igrca-za-RPAv/sr
   /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/mbstate_t.h \
   /usr/include/bits/types/sigset_t.h \
+  /usr/include/bits/types/stack_t.h \
   /usr/include/bits/types/struct_FILE.h \
   /usr/include/bits/types/struct___jmp_buf_tag.h \
   /usr/include/bits/types/struct_itimerspec.h \
@@ -1165,8 +1186,11 @@ CMakeFiles/mygame.dir/src/GameObject.cpp.o: /home/matko/Desktop/igrca-za-RPAv/sr
   /usr/include/c++/14.2.1/bits/istream.tcc \
   /usr/include/c++/14.2.1/bits/locale_classes.h \
   /usr/include/c++/14.2.1/bits/locale_classes.tcc \
+  /usr/include/c++/14.2.1/bits/locale_conv.h \
   /usr/include/c++/14.2.1/bits/locale_facets.h \
   /usr/include/c++/14.2.1/bits/locale_facets.tcc \
+  /usr/include/c++/14.2.1/bits/locale_facets_nonio.h \
+  /usr/include/c++/14.2.1/bits/locale_facets_nonio.tcc \
   /usr/include/c++/14.2.1/bits/localefwd.h \
   /usr/include/c++/14.2.1/bits/memoryfwd.h \
   /usr/include/c++/14.2.1/bits/move.h \
@@ -1231,11 +1255,13 @@ CMakeFiles/mygame.dir/src/GameObject.cpp.o: /home/matko/Desktop/igrca-za-RPAv/sr
   /usr/include/c++/14.2.1/ext/type_traits.h \
   /usr/include/c++/14.2.1/fstream \
   /usr/include/c++/14.2.1/initializer_list \
+  /usr/include/c++/14.2.1/iomanip \
   /usr/include/c++/14.2.1/ios \
   /usr/include/c++/14.2.1/iosfwd \
   /usr/include/c++/14.2.1/iostream \
   /usr/include/c++/14.2.1/istream \
   /usr/include/c++/14.2.1/limits \
+  /usr/include/c++/14.2.1/locale \
   /usr/include/c++/14.2.1/math.h \
   /usr/include/c++/14.2.1/new \
   /usr/include/c++/14.2.1/ostream \
@@ -1261,7 +1287,9 @@ CMakeFiles/mygame.dir/src/GameObject.cpp.o: /home/matko/Desktop/igrca-za-RPAv/sr
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/error_constants.h \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/gthr-default.h \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/gthr.h \
+  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/messages_members.h \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
+  /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/time_members.h \
   /usr/include/ctype.h \
   /usr/include/endian.h \
   /usr/include/errno.h \
@@ -1270,6 +1298,7 @@ CMakeFiles/mygame.dir/src/GameObject.cpp.o: /home/matko/Desktop/igrca-za-RPAv/sr
   /usr/include/gnu/stubs-64.h \
   /usr/include/gnu/stubs.h \
   /usr/include/inttypes.h \
+  /usr/include/libintl.h \
   /usr/include/limits.h \
   /usr/include/linux/errno.h \
   /usr/include/linux/limits.h \
@@ -1287,6 +1316,7 @@ CMakeFiles/mygame.dir/src/GameObject.cpp.o: /home/matko/Desktop/igrca-za-RPAv/sr
   /usr/include/sys/select.h \
   /usr/include/sys/single_threaded.h \
   /usr/include/sys/types.h \
+  /usr/include/sys/ucontext.h \
   /usr/include/time.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
@@ -2009,6 +2039,7 @@ CMakeFiles/mygame.dir/src/Scientist.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src
   /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/mbstate_t.h \
   /usr/include/bits/types/sigset_t.h \
+  /usr/include/bits/types/stack_t.h \
   /usr/include/bits/types/struct_FILE.h \
   /usr/include/bits/types/struct___jmp_buf_tag.h \
   /usr/include/bits/types/struct_itimerspec.h \
@@ -2134,6 +2165,7 @@ CMakeFiles/mygame.dir/src/Scientist.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src
   /usr/include/c++/14.2.1/ext/string_conversions.h \
   /usr/include/c++/14.2.1/ext/type_traits.h \
   /usr/include/c++/14.2.1/initializer_list \
+  /usr/include/c++/14.2.1/iomanip \
   /usr/include/c++/14.2.1/ios \
   /usr/include/c++/14.2.1/iosfwd \
   /usr/include/c++/14.2.1/iostream \
@@ -2195,6 +2227,7 @@ CMakeFiles/mygame.dir/src/Scientist.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src
   /usr/include/sys/select.h \
   /usr/include/sys/single_threaded.h \
   /usr/include/sys/types.h \
+  /usr/include/sys/ucontext.h \
   /usr/include/time.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
@@ -3148,17 +3181,9 @@ CMakeFiles/mygame.dir/src/Bullet.cpp.o:
 
 /home/matko/Desktop/igrca-za-RPAv/src/TextureManager.cpp:
 
-/usr/include/libintl.h:
-
-/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/time_members.h:
-
-/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/messages_members.h:
-
 /usr/include/c++/14.2.1/tuple:
 
 /usr/include/c++/14.2.1/ratio:
-
-/usr/include/c++/14.2.1/locale:
 
 /usr/include/c++/14.2.1/experimental/filesystem:
 
@@ -3179,8 +3204,6 @@ CMakeFiles/mygame.dir/src/Bullet.cpp.o:
 /usr/include/c++/14.2.1/bits/quoted_string.h:
 
 /usr/include/c++/14.2.1/bits/parse_numbers.h:
-
-/usr/include/c++/14.2.1/bits/locale_conv.h:
 
 /home/matko/Desktop/igrca-za-RPAv/src/Scientist.cpp:
 
@@ -3236,6 +3259,16 @@ _deps/glm-src/glm/ext/vector_uint3_sized.hpp:
 
 _deps/glm-src/glm/ext/vector_uint2_sized.hpp:
 
+_deps/glm-src/glm/ext/vector_uint2.hpp:
+
+_deps/glm-src/glm/ext/vector_int4.hpp:
+
+_deps/glm-src/glm/ext/vector_int3.hpp:
+
+_deps/glm-src/glm/ext/vector_int2_sized.hpp:
+
+_deps/glm-src/glm/ext/vector_int2.hpp:
+
 _deps/glm-src/glm/ext/vector_float4_precision.hpp:
 
 /usr/include/c++/14.2.1/cerrno:
@@ -3282,13 +3315,15 @@ _deps/glm-src/glm/ext/matrix_float2x2_precision.hpp:
 
 /usr/include/c++/14.2.1/bits/new_allocator.h:
 
-_deps/glm-src/glm/ext/vector_uint2.hpp:
-
 /usr/include/c++/14.2.1/bits/requires_hosted.h:
 
 /usr/include/c++/14.2.1/bits/memoryfwd.h:
 
 _deps/glm-src/glm/detail/type_mat3x3.inl:
+
+_deps/glm-src/glm/detail/func_exponential.inl:
+
+_deps/glm-src/glm/detail/type_mat4x2.inl:
 
 /usr/include/c++/14.2.1/bits/locale_classes.tcc:
 
@@ -3315,6 +3350,10 @@ _deps/glm-src/glm/detail/type_mat3x4.inl:
 /usr/include/bits/signum-arch.h:
 
 /usr/include/c++/14.2.1/bits/stl_relops.h:
+
+/home/matko/Desktop/igrca-za-RPAv/src/TextureManager.h:
+
+/usr/include/c++/14.2.1/bits/algorithmfwd.h:
 
 /usr/include/bits/select.h:
 
@@ -3354,10 +3393,6 @@ _deps/glm-src/glm/detail/func_common.inl:
 
 /usr/include/bits/types/struct_timespec.h:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h:
-
-/usr/include/bits/types/struct_sigstack.h:
-
 /usr/include/c++/14.2.1/cstdlib:
 
 _deps/glm-src/glm/mat2x4.hpp:
@@ -3371,6 +3406,8 @@ _deps/glm-src/glm/mat2x4.hpp:
 /usr/include/bits/types/mbstate_t.h:
 
 /usr/include/bits/signal_ext.h:
+
+/usr/include/c++/14.2.1/bits/locale_conv.h:
 
 /usr/include/bits/types/error_t.h:
 
@@ -3461,6 +3498,12 @@ _deps/glm-src/glm/detail/_fixes.hpp:
 /home/matko/Desktop/igrca-za-RPAv/src/Bullet.cpp:
 
 /usr/include/SDL2/SDL_gesture.h:
+
+_deps/glm-src/glm/ext/vector_int4_sized.hpp:
+
+/usr/include/gnu/stubs.h:
+
+/usr/include/SDL2/SDL_main.h:
 
 /usr/include/bits/types/clock_t.h:
 
@@ -3576,12 +3619,6 @@ _deps/glm-src/glm/detail/type_vec4.hpp:
 
 _deps/glm-src/glm/simd/platform.h:
 
-/usr/include/c++/14.2.1/cstddef:
-
-/usr/include/bits/wchar.h:
-
-/usr/include/c++/14.2.1/fstream:
-
 /usr/include/bits/types/stack_t.h:
 
 /usr/include/bits/sigevent-consts.h:
@@ -3603,10 +3640,6 @@ _deps/glm-src/glm/simd/platform.h:
 /usr/include/SDL2/SDL_render.h:
 
 /usr/include/c++/14.2.1/bits/cpp_type_traits.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vnniintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx5124vnniwintrin.h:
 
 /usr/include/SDL2/SDL_loadso.h:
 
@@ -3637,14 +3670,6 @@ _deps/glm-src/glm/ext/matrix_float2x2.hpp:
 /usr/include/SDL2/SDL_locale.h:
 
 /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/c++locale.h:
-
-/usr/include/c++/14.2.1/bits/algorithmfwd.h:
-
-/home/matko/Desktop/igrca-za-RPAv/src/TextureManager.h:
-
-_deps/glm-src/glm/detail/func_exponential.inl:
-
-_deps/glm-src/glm/detail/type_mat4x2.inl:
 
 /usr/include/SDL2/SDL_joystick.h:
 
@@ -3796,6 +3821,8 @@ _deps/glm-src/glm/detail/func_vector_relational.inl:
 
 /usr/include/c++/14.2.1/sstream:
 
+/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/messages_members.h:
+
 /usr/include/bits/sigstksz.h:
 
 /usr/include/alloca.h:
@@ -3860,6 +3887,8 @@ _deps/glm-src/glm/ext/vector_double2.hpp:
 
 /usr/include/c++/14.2.1/cassert:
 
+/usr/include/libintl.h:
+
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h:
 
 /usr/include/bits/environments.h:
@@ -3899,10 +3928,6 @@ _deps/glm-src/glm/detail/type_vec3.inl:
 /usr/include/c++/14.2.1/ext/aligned_buffer.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/movdirintrin.h:
-
-/usr/include/c++/14.2.1/cstdint:
-
-/usr/include/c++/14.2.1/bits/stl_set.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/raointintrin.h:
 
@@ -3956,6 +3981,8 @@ _deps/glm-src/glm/ext/matrix_double2x4_precision.hpp:
 
 /usr/include/bits/getopt_core.h:
 
+/usr/include/c++/14.2.1/locale:
+
 /usr/include/bits/sigstack.h:
 
 _deps/glm-src/glm/integer.hpp:
@@ -3967,6 +3994,24 @@ _deps/glm-src/glm/integer.hpp:
 /usr/lib/libgcc_s.so:
 
 _deps/glm-src/glm/ext/matrix_double3x3.hpp:
+
+/usr/include/bits/wchar.h:
+
+/usr/include/c++/14.2.1/fstream:
+
+/usr/include/c++/14.2.1/cstddef:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx5124vnniwintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vnniintrin.h:
+
+/usr/include/bits/types/struct_sigstack.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h:
+
+/usr/include/c++/14.2.1/bits/stl_set.h:
+
+/usr/include/c++/14.2.1/cstdint:
 
 /usr/lib/libwebp.so.7:
 
@@ -3993,6 +4038,8 @@ _deps/glm-src/glm/detail/type_mat4x3.inl:
 /usr/include/c++/14.2.1/ext/string_conversions.h:
 
 /usr/include/c++/14.2.1/initializer_list:
+
+/usr/include/c++/14.2.1/iomanip:
 
 /usr/include/c++/14.2.1/ios:
 
@@ -4028,6 +4075,10 @@ _deps/glm-src/glm/ext/matrix_float2x3.hpp:
 
 _deps/glm-src/glm/ext/matrix_double3x3_precision.hpp:
 
+_deps/glm-src/glm/ext/vector_int3_sized.hpp:
+
+/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/basic_file.h:
+
 /usr/include/fenv.h:
 
 /usr/include/bits/errno.h:
@@ -4037,6 +4088,8 @@ _deps/glm-src/glm/ext/matrix_double3x3_precision.hpp:
 /usr/include/sys/types.h:
 
 /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/os_defines.h:
+
+/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/time_members.h:
 
 /usr/include/c++/14.2.1/bits/allocator.h:
 
@@ -4093,8 +4146,6 @@ _deps/glm-src/glm/ext/vector_float2_precision.hpp:
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtbeginS.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxtileintrin.h:
-
-_deps/glm-src/glm/ext/vector_int2.hpp:
 
 /usr/include/c++/14.2.1/bits/hash_bytes.h:
 
@@ -4204,6 +4255,14 @@ _deps/glm-src/glm/detail/type_mat2x3.hpp:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/popcntintrin.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/bmi2intrin.h:
+
+/usr/include/bits/typesizes.h:
+
+_deps/glm-src/glm/ext/matrix_float2x3_precision.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/rdseedintrin.h:
+
 /usr/include/c++/14.2.1/typeinfo:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/serializeintrin.h:
@@ -4245,12 +4304,6 @@ _deps/glm-src/glm/detail/type_vec2.inl:
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/gfniintrin.h:
 
 _deps/glm-src/glm/geometric.hpp:
-
-/usr/include/gnu/stubs.h:
-
-/usr/include/SDL2/SDL_main.h:
-
-_deps/glm-src/glm/ext/vector_int4_sized.hpp:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/waitpkgintrin.h:
 
@@ -4318,14 +4371,6 @@ _deps/glm-src/glm/ext/matrix_double4x4.hpp:
 
 _deps/glm-src/glm/ext/matrix_double4x4_precision.hpp:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/bmi2intrin.h:
-
-/usr/include/bits/typesizes.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/rdseedintrin.h:
-
-_deps/glm-src/glm/ext/matrix_float2x3_precision.hpp:
-
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sha512intrin.h:
 
 _deps/glm-src/glm/ext/matrix_float3x3.hpp:
@@ -4379,13 +4424,3 @@ _deps/glm-src/glm/packing.hpp:
 /usr/include/gnu/stubs-64.h:
 
 _deps/glm-src/glm/ext/vector_double4_precision.hpp:
-
-_deps/glm-src/glm/ext/vector_int2_sized.hpp:
-
-_deps/glm-src/glm/ext/vector_int3.hpp:
-
-/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/basic_file.h:
-
-_deps/glm-src/glm/ext/vector_int3_sized.hpp:
-
-_deps/glm-src/glm/ext/vector_int4.hpp:
