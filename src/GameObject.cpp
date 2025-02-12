@@ -6,7 +6,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <ctime>
-#include <fstream>
+#include<fstream>
 #include <glm/glm.hpp>
 #include <glm/vec2.hpp>
 #include <iostream>
@@ -23,18 +23,18 @@
 #include "SDL_timer.h"
 #include "TextureManager.h"
 #include "glm/geometric.hpp"
-GameObject::GameObject(const char* textureSheet, int x, int y) {
+GameObject::GameObject(const char* textureSheet, int x, int y,int h,int w) {
 	objTexture = TextureManager::LoadTexture(textureSheet);
 	SDL_QueryTexture(objTexture, NULL, NULL, &dest.w, &dest.h);
 	posx = x;
 	posy = y;
 	isFlipped = false;
-	dest.w = 75;
+	dest.w = w;
 	dest.y = posy;
 	dest.x = posx;
-	dest.h = 75;
+	dest.h = h;
 }
-GameObject::GameObject(const char* textureSheet, int x, int y, int nFrames,
+/*GameObject::GameObject(const char* textureSheet, int x, int y, int nFrames,
 					   int mSpeed) {
 	isAnimated = true;
 	frames = nFrames;
@@ -51,13 +51,13 @@ GameObject::GameObject(const char* textureSheet, int x, int y, int nFrames,
 	srcRect.w = 100;
 	srcRect.x = 0;
 	srcRect.y = 1080;
-}
+}*/
 
 void GameObject::Update(Clock* ura) {
-	if (isAnimated) {
+/*	if (isAnimated) {
 		srcRect.x =
 			srcRect.w * static_cast<int>((SDL_GetTicks() / speed) % frames);
-	}
+	}*/
 
 	const Uint8* state = SDL_GetKeyboardState(NULL);
 	moving_left = state[SDL_SCANCODE_A];
@@ -69,7 +69,6 @@ void GameObject::Update(Clock* ura) {
     oldY = posy;
 	move.x = 0;
 	move.y = 0;
-	glm::vec2 FinalMove;
 	if (moving_up) move.y -= 1 * ura->delta * 0.6;
 	if (moving_down) move.y += 1 * ura->delta * 0.6;
 	if (moving_right) {
@@ -80,10 +79,12 @@ void GameObject::Update(Clock* ura) {
 		move.x -= 1 * ura->delta * 0.6;
 		isFlipped = false;
 	}
-	FinalMove = move;
-	posx += FinalMove.x;
-	posy += FinalMove.y;
-
+    if(moving_up && moving_right || moving_up && moving_left || moving_down && moving_right || moving_down && moving_left){
+        move.x /= 1.414;
+        move.y /= 1.414;
+    }
+    posx += move.x;
+    posy += move.y;
 	if (posx + dest.w > 1920) posx = 1920 - dest.w;
 
 	// left boundary

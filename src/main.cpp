@@ -6,7 +6,7 @@ Game* game = nullptr;
 
 int main(int argc, char* argv[]) {
 	game = new Game();
-	game->init("zivali", 1920, 1080, false);
+	game->init("zivali", 1920, 1088, false);
 	while (game->running()) {
 		ura->tick();
 		game->handleEvents();

@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/mygame.dir/src/Game.cpp.o.d"
   "CMakeFiles/mygame.dir/src/GameObject.cpp.o"
   "CMakeFiles/mygame.dir/src/GameObject.cpp.o.d"
+  "CMakeFiles/mygame.dir/src/Map.cpp.o"
+  "CMakeFiles/mygame.dir/src/Map.cpp.o.d"
   "CMakeFiles/mygame.dir/src/Mouse.cpp.o"
   "CMakeFiles/mygame.dir/src/Mouse.cpp.o.d"
   "CMakeFiles/mygame.dir/src/Scientist.cpp.o"

@@ -1,4 +1,5 @@
 #include "TextureManager.h"
+#include "SDL_surface.h"
 
 SDL_Texture* TextureManager::LoadTexture(const char* fileName)
 {
@@ -13,3 +14,11 @@ SDL_Texture* TextureManager::LoadTexture(const char* fileName)
 {
 	SDL_RenderCopy(Game::renderer, tex, &src, &dest);
 }*/
+SDL_Texture* TextureManager::LoadBeatmapTexture(const char* fileName)
+{
+    SDL_Surface* tempSurface = SDL_LoadBMP(fileName);
+    SDL_Texture* tex = SDL_CreateTextureFromSurface(Game::renderer, tempSurface);
+    SDL_FreeSurface(tempSurface);
+    
+    return tex;
+}

@@ -15,9 +15,8 @@
 
 class Bullet : public GameObject {
    public:
-	Bullet(const char* textureSheet, int x, int y): GameObject(textureSheet, x, y){
-        dest.w = 70;
-        dest.h = 70;
+	Bullet(const char* textureSheet, int x, int y,int h ,int w): GameObject(textureSheet, x, y, h, w){                                                                        
+
 	};
     glm::vec2 pos;
     int firerate = 3000;
