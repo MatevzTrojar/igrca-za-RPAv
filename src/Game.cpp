@@ -57,8 +57,8 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 	srand(time(NULL));
 map = new Map("assets/textures/Tile.png");
 	player = new GameObject("assets/textures/Test2.png", 1920 / 2, 1080 / 2,75,75);
-    neki = new GameObject("assets/textures/Test3.png",300,300,75,75);
-    for(int i = 0;i<3;i++){
+    neki = new GameObject("assets/textures/chest.jpg",300,300,75,75);
+    for(int i = 0;i<1;i++){
         scientists.insert(new Scientist("assets/textures/scientist.png", rand() % (1920),
                               rand() % (1080),75,75));
 
@@ -86,8 +86,12 @@ void Game::handleEvents() {
 }
 glm::vec2 FinalMove;
 int TimeSinceLastBullet = 1e9;
+
+
+
 void Game::update(Clock* ura) {
 	player->Update(ura);
+    map->offsetX=player->dest.x;
     std::cout << player->posx << " " << player->posy << std::endl;
     player -> CollisionDetect(neki);
     for(Scientist* scientist:scientists)
@@ -124,8 +128,9 @@ void Game::update(Clock* ura) {
 		if (!bullet->Active) {
 			toDelete.push_back(bullet);
 		}
-
+    
 	}
+
 	for (Bullet* bullet : toDelete) {
 		bullets.erase(bullet);
 		delete bullet;

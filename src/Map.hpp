@@ -5,7 +5,8 @@
 class Map {
 public:
     SDL_Texture* Beatmap;
-    int map[60][34];
+    int offsetX=0,offsetY=0;
+    int map[120][34];
     SDL_Rect tile[60][34];
     SDL_Rect tile1 = {0,0,32,32};
     SDL_Rect tile2 = {32,0,32,32};
