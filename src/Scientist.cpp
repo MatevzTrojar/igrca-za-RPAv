@@ -2,11 +2,14 @@
 
 #include <cctype>
 #include <experimental/filesystem>
+#include <functional>
 #include <glm/glm.hpp>
 #include <glm/vec2.hpp>
 #include <type_traits>
 
+#include "Game.h"
 #include "GameObject.h"
+#include "SDL_render.h"
 
 void Scientist::Update(Clock* ura, GameObject* player) {
 	glm::vec2 move;
@@ -23,15 +26,6 @@ void Scientist::Update(Clock* ura, GameObject* player) {
 	GameObject::posy += Finalmove.y * ura->delta * 0.2;
 	dest.x = posx;
 	dest.y = posy;
-
-	if (dest.x + dest.w > 1920) dest.x = 1920 - dest.w;
-
-	if (dest.x < 0) dest.x = 0;
-
-	if (dest.y + dest.h > 1080) dest.y = 1080 - dest.h;
-	if (dest.y < 0) dest.y = 0;
-	dest.w = 75;
-	dest.h = 75;
 }
 bool Scientist::CollisionDetect(GameObject* other) {
 // right collision
@@ -63,3 +57,4 @@ if (other->dest.x + other->dest.w > dest.x &&
 }
 return false;
 }
+

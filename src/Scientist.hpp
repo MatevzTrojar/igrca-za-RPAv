@@ -1,4 +1,5 @@
 #pragma once
+#include "Game.h"
 #include "GameObject.h"
 
 class Scientist :public GameObject{
@@ -8,6 +9,4 @@ class Scientist :public GameObject{
 
      };
  bool CollisionDetect(GameObject* other);
-
-
 };

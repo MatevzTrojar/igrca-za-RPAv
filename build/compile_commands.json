@@ -46,5 +46,11 @@
   "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/Map.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/Map.cpp",
   "file": "/home/matko/Desktop/igrca-za-RPAv/src/Map.cpp",
   "output": "CMakeFiles/mygame.dir/src/Map.cpp.o"
+},
+{
+  "directory": "/home/matko/Desktop/igrca-za-RPAv/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/player.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/player.cpp",
+  "file": "/home/matko/Desktop/igrca-za-RPAv/src/player.cpp",
+  "output": "CMakeFiles/mygame.dir/src/player.cpp.o"
 }
 ]

@@ -15,6 +15,7 @@
 #include "Mouse.hpp"
 #include "SDL_cpuinfo.h"
 #include "SDL_mutex.h"
+#include "SDL_pixels.h"
 #include "SDL_platform.h"
 #include "SDL_render.h"
 #include "SDL_stdinc.h"
@@ -24,8 +25,10 @@
 #include "glm/ext/vector_float2.hpp"
 #include "glm/geometric.hpp"
 #include "Map.hpp"
+#include "player.hpp"
 std::set<Bullet*>bullets;
-GameObject* player,*neki;
+Player* player;
+GameObject* neki;
 std::set<Scientist*> scientists;
 Mouse mouse;
 Map* map;
@@ -55,8 +58,8 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 		isRunning = true;
     }
 	srand(time(NULL));
-map = new Map("assets/textures/Tile.png");
-	player = new GameObject("assets/textures/Test2.png", 1920 / 2, 1080 / 2,75,75);
+map = new Map("assets/textures/Tiles.png");
+	player = new Player("assets/textures/Test2.png", 1920 / 2-75, 1088 / 2,75,75);
     neki = new GameObject("assets/textures/chest.jpg",300,300,75,75);
     for(int i = 0;i<1;i++){
         scientists.insert(new Scientist("assets/textures/scientist.png", rand() % (1920),
@@ -91,8 +94,8 @@ int TimeSinceLastBullet = 1e9;
 
 void Game::update(Clock* ura) {
 	player->Update(ura);
-    map->offsetX=player->dest.x;
-    std::cout << player->posx << " " << player->posy << std::endl;
+    neki->Update(player);
+   // std::cout << player->posx << " " << player->posy << std::endl;
     player -> CollisionDetect(neki);
     for(Scientist* scientist:scientists)
 	scientist->Update(ura, player);
@@ -102,8 +105,8 @@ void Game::update(Clock* ura) {
 									player->dest.x, player->dest.y,70,70);
 		bullet->Active = true;
 		glm::vec2 vec;
-		vec.x = mouse.xpos - player->posx;
-		vec.y = mouse.ypos - player->posy;
+		vec.x = mouse.xpos - player->dest.x;
+		vec.y = mouse.ypos - player->dest.y;
 		FinalMove = glm::normalize(vec);
 		bullet->pos = FinalMove;
 		bullets.insert(bullet);
@@ -149,6 +152,9 @@ void Game::update(Clock* ura) {
 void Game::render() {
 
 	SDL_RenderClear(renderer);
+    map->offsetX = player->posx/32;
+    map->offsetY = player->posy/32;
+    std::cout << map->offsetX << " " << map->offsetY << std::endl;
     map->Render();
 	player->Render();
     neki->Render();

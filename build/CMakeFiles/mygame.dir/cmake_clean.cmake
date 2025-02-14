@@ -16,6 +16,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/mygame.dir/src/TextureManager.cpp.o.d"
   "CMakeFiles/mygame.dir/src/main.cpp.o"
   "CMakeFiles/mygame.dir/src/main.cpp.o.d"
+  "CMakeFiles/mygame.dir/src/player.cpp.o"
+  "CMakeFiles/mygame.dir/src/player.cpp.o.d"
   "mygame"
   "mygame.pdb"
 )

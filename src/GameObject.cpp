@@ -23,6 +23,7 @@
 #include "SDL_timer.h"
 #include "TextureManager.h"
 #include "glm/geometric.hpp"
+#include "player.hpp"
 GameObject::GameObject(const char* textureSheet, int x, int y,int h,int w) {
 	objTexture = TextureManager::LoadTexture(textureSheet);
 	SDL_QueryTexture(objTexture, NULL, NULL, &dest.w, &dest.h);
@@ -53,50 +54,10 @@ GameObject::GameObject(const char* textureSheet, int x, int y,int h,int w) {
 	srcRect.y = 1080;
 }*/
 
-void GameObject::Update(Clock* ura) {
-/*	if (isAnimated) {
-		srcRect.x =
-			srcRect.w * static_cast<int>((SDL_GetTicks() / speed) % frames);
-	}*/
+void GameObject::Update(GameObject* player) {
+dest.x -= player->posx;
+dest.y -= player->posy;
 
-	const Uint8* state = SDL_GetKeyboardState(NULL);
-	moving_left = state[SDL_SCANCODE_A];
-	moving_up = state[SDL_SCANCODE_W];
-	moving_down = state[SDL_SCANCODE_S];
-	moving_right = state[SDL_SCANCODE_D];
-	glm::vec2 move;
-    oldX = posx;
-    oldY = posy;
-	move.x = 0;
-	move.y = 0;
-	if (moving_up) move.y -= 1 * ura->delta * 0.6;
-	if (moving_down) move.y += 1 * ura->delta * 0.6;
-	if (moving_right) {
-		move.x += 1 * ura->delta * 0.6;
-		isFlipped = true;
-	}
-	if (moving_left) {
-		move.x -= 1 * ura->delta * 0.6;
-		isFlipped = false;
-	}
-    if(moving_up && moving_right || moving_up && moving_left || moving_down && moving_right || moving_down && moving_left){
-        move.x /= 1.414;
-        move.y /= 1.414;
-    }
-    posx += move.x;
-    posy += move.y;
-	if (posx + dest.w > 1920) posx = 1920 - dest.w;
-
-	// left boundary
-	if (posx < 0) posx = 0;
-
-	// bottom boundary
-	if (posy + dest.h > 1080) posy = 1080 - dest.h;
-	// upper boundary
-	if (posy < 0) posy = 0;
-
-	dest.x = posx;
-	dest.y = posy;
 }
 bool GameObject::CollisionDetect(GameObject* other) {
 	if (posy + dest.h > other->posy && !(oldY + dest.h > other->posy))

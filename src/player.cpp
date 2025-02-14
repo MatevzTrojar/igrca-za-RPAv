@@ -1,0 +1,9 @@
+#include "player.hpp"
+void Player:: Render(){
+	if (!isFlipped)
+		SDL_RenderCopyEx(Game::renderer, objTexture, NULL, &dest, 0, NULL,
+						 SDL_FLIP_HORIZONTAL);
+	else
+		SDL_RenderCopy(Game::renderer, objTexture, NULL, &dest);
+
+}
