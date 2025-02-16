@@ -15,7 +15,7 @@ class GameObject {
         SDL_DestroyTexture(objTexture);
     }
 
-	void Update(GameObject* player);
+	void Update();
 	void Render();
 
 	SDL_Texture* objTexture;

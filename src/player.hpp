@@ -31,6 +31,10 @@ class Player : public GameObject {
     }
     posx += move.x;
     posy += move.y;
+    dest.x = posx-Game::Camera.x;
+    dest.y = posy-Game::Camera.y;
+    
+    
 
     }
     void Render();

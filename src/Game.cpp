@@ -12,6 +12,7 @@
 
 #include "Bullet.hpp"
 #include "GameObject.h"
+#include "Map.hpp"
 #include "Mouse.hpp"
 #include "SDL_cpuinfo.h"
 #include "SDL_mutex.h"
@@ -24,15 +25,14 @@
 #include "glm/detail/type_vec4.hpp"
 #include "glm/ext/vector_float2.hpp"
 #include "glm/geometric.hpp"
-#include "Map.hpp"
 #include "player.hpp"
-std::set<Bullet*>bullets;
+std::set<Bullet*> bullets;
 Player* player;
 GameObject* neki;
 std::set<Scientist*> scientists;
 Mouse mouse;
 Map* map;
-
+SDL_Rect Game::Camera = {0, 0, 1920, 1080};
 
 SDL_Renderer* Game::renderer = nullptr;
 
@@ -52,22 +52,21 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 								  SDL_WINDOWPOS_CENTERED, width, height, flags);
 		renderer = SDL_CreateRenderer(window, -1, 0);
 		if (renderer) {
-		//	SDL_SetRenderDrawColor(renderer, 100, 100,100, 100);
+			//	SDL_SetRenderDrawColor(renderer, 100, 100,100, 100);
 		}
 
 		isRunning = true;
-    }
+	}
 	srand(time(NULL));
-map = new Map("assets/textures/Tiles.png");
-	player = new Player("assets/textures/Test2.png", 1920 / 2-75, 1088 / 2,75,75);
-    neki = new GameObject("assets/textures/chest.jpg",300,300,75,75);
-    for(int i = 0;i<1;i++){
-        scientists.insert(new Scientist("assets/textures/scientist.png", rand() % (1920),
-                              rand() % (1080),75,75));
-
-    }
-
-
+	map = new Map("assets/textures/Tiles.png");
+	player = new Player("assets/textures/Test2.png", 1920 / 2 - 75, 1088 / 2,
+						75, 75);
+	neki = new GameObject("assets/textures/chest.jpg", 300, 300, 75, 75);
+	for (int i = 0; i < 1; i++) {
+		scientists.insert(new Scientist("assets/textures/scientist.png",
+										rand() % (1920), rand() % (1080), 75,
+										75));
+	}
 }
 
 void Game::handleEvents() {
@@ -90,19 +89,34 @@ void Game::handleEvents() {
 glm::vec2 FinalMove;
 int TimeSinceLastBullet = 1e9;
 
-
-
 void Game::update(Clock* ura) {
 	player->Update(ura);
-    neki->Update(player);
-   // std::cout << player->posx << " " << player->posy << std::endl;
-    player -> CollisionDetect(neki);
-    for(Scientist* scientist:scientists)
-	scientist->Update(ura, player);
+	Camera.x = player->posx - 1920 / 2;
+	Camera.y = player->posy - 1080 / 2;
+	if (Camera.x < 0) {
+		Camera.x = 0;
+	}
+	if (Camera.y < 0) {
+		Camera.y = 0;
+	}
+	if (Camera.x > Camera.w) {
+		Camera.x = Camera.w;
+	}
+	if (Camera.y > Camera.h) {
+		Camera.y = Camera.h;
+	}
+	if (Camera.y > 1080) {
+		Camera.y = 1080;
+	}
+    neki->Update();
+    std::cout<<Camera.x<<" "<<Camera.y<<std::endl; 
+	// std::cout << player->posx << " " << player->posy << std::endl;
+	player->CollisionDetect(neki);
+	for (Scientist* scientist : scientists) scientist->Update(ura, player);
 	if (mouse.click && TimeSinceLastBullet > 750) {
 		if (TimeSinceLastBullet > 750) TimeSinceLastBullet = 0;
 		Bullet* bullet = new Bullet("assets/textures/bullet.png",
-									player->dest.x, player->dest.y,70,70);
+									player->dest.x, player->dest.y, 70, 70);
 		bullet->Active = true;
 		glm::vec2 vec;
 		vec.x = mouse.xpos - player->dest.x;
@@ -119,47 +133,41 @@ void Game::update(Clock* ura) {
 		}
 	}
 	std::vector<Bullet*> toDelete;
-    std::set<Scientist*> toDeleteScientist;
+	std::set<Scientist*> toDeleteScientist;
 
 	for (Bullet* bullet : bullets) {
-        for(Scientist* scientist:scientists){
-            if(bullet->CollisionDetect(scientist)){
-                toDeleteScientist.insert(scientist);
-                toDelete.push_back(bullet);
-            }
-        }
+		for (Scientist* scientist : scientists) {
+			if (bullet->CollisionDetect(scientist)) {
+				toDeleteScientist.insert(scientist);
+				toDelete.push_back(bullet);
+			}
+		}
 		if (!bullet->Active) {
 			toDelete.push_back(bullet);
 		}
-    
 	}
 
 	for (Bullet* bullet : toDelete) {
 		bullets.erase(bullet);
 		delete bullet;
 	}
-    for(Scientist* scientist:toDeleteScientist){
-        scientists.erase(scientist);
-        delete scientist;
-    }
-    for(Scientist* scientist:scientists){
-        if(scientist->CollisionDetect(player)){
-            isRunning = false;
-        }
-    }
+	for (Scientist* scientist : toDeleteScientist) {
+		scientists.erase(scientist);
+		delete scientist;
+	}
+	for (Scientist* scientist : scientists) {
+		if (scientist->CollisionDetect(player)) {
+			isRunning = false;
+		}
+	}
 }
 
 void Game::render() {
-
 	SDL_RenderClear(renderer);
-    map->offsetX = player->posx/32;
-    map->offsetY = player->posy/32;
-    std::cout << map->offsetX << " " << map->offsetY << std::endl;
     map->Render();
 	player->Render();
-    neki->Render();
-    for(Scientist* scientist:scientists)
-	scientist->Render();
+	neki->Render();
+	for (Scientist* scientist : scientists) scientist->Render();
 	for (Bullet* bullet : bullets) {
 		if (bullet != NULL && bullet->Active) {
 			bullet->Render();

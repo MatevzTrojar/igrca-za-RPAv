@@ -54,9 +54,11 @@ GameObject::GameObject(const char* textureSheet, int x, int y,int h,int w) {
 	srcRect.y = 1080;
 }*/
 
-void GameObject::Update(GameObject* player) {
-dest.x -= player->posx;
-dest.y -= player->posy;
+void GameObject::Update() {
+    oldX = posx;
+    oldY = posy;
+dest.x = posx - Game::Camera.x;
+dest.y = posy- Game::Camera.y;
 
 }
 bool GameObject::CollisionDetect(GameObject* other) {

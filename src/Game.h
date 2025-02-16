@@ -19,7 +19,7 @@ public:
 	void clean();
 
 	static SDL_Renderer* renderer;
-
+    static SDL_Rect Camera;
 private:
 	bool isRunning = false;
 	int cnt = 0;

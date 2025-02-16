@@ -4,8 +4,7 @@
 #include "TextureManager.h"
 class Map {
 public:
-    SDL_Texture* Beatmap;
-    int offsetX=0,offsetY=0;
+    SDL_Texture* Bitmap;
     int map[120][72];
     SDL_Rect tile[120][72];
     SDL_Rect tile1 = {0,0,32,32};
@@ -26,7 +25,7 @@ public:
     SDL_Rect tile16 = {96,96,32,32};
 
     Map(const char *a){
-       Beatmap = TextureManager::LoadTexture(a);
+       Bitmap = TextureManager::LoadTexture(a);
     AssignRand();
     LoadMap();
     };

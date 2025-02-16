@@ -17,15 +17,16 @@ void Bullet::Update( Clock *ura) {
     posy+=pos.y * ura ->delta;
     dest.x = posx;
     dest.y =posy;
-    if(posx > 1920){
+    if(posx > Game::Camera.x + 1920){
         Active = false;
     }
-    if(posy>1080)
+    if(posy>Game::Camera.y + 1080)
         Active = false;
-    if(posx< 0)
+    if(posx< -Game::Camera.x)
         Active = false;
-    if(posy<0)
+    if(posy< -Game::Camera.y)
         Active = false;
+
 
 }
 
@@ -55,6 +56,7 @@ bool Bullet::CollisionDetect(GameObject* other) {
 	if (other->dest.x + other->dest.w > dest.x &&
 		other->dest.x < dest.x + dest.w && other->dest.y < dest.y + dest.h &&
 		other->dest.y + other->dest.h > dest.y) {
+        dest.y = other->dest.y - dest.h;
 		return true;
 	}
     return false;

@@ -26,6 +26,8 @@ void Scientist::Update(Clock* ura, GameObject* player) {
 	GameObject::posy += Finalmove.y * ura->delta * 0.2;
 	dest.x = posx;
 	dest.y = posy;
+    dest.x = posx-Game::Camera.x;
+    dest.y = posy-Game::Camera.y;
 }
 bool Scientist::CollisionDetect(GameObject* other) {
 // right collision
