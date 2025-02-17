@@ -59,13 +59,13 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 	}
 	srand(time(NULL));
 	map = new Map("assets/textures/Tiles.png");
-	player = new Player("assets/textures/Test2.png", 1920 / 2 - 75, 1088 / 2,
-						75, 75);
-	neki = new GameObject("assets/textures/chest.jpg", 300, 300, 75, 75);
+	player = new Player("assets/textures/Test2.png", 1920 / 2, 1088 / 2,
+						48, 48);
+	neki = new GameObject("assets/textures/chest.jpg", 300, 300, 32, 32);
 	for (int i = 0; i < 1; i++) {
 		scientists.insert(new Scientist("assets/textures/scientist.png",
-										rand() % (1920), rand() % (1080), 75,
-										75));
+										rand() % (1920), rand() % (1080), 48,
+										48));
 	}
 }
 
@@ -109,8 +109,8 @@ void Game::update(Clock* ura) {
 		Camera.y = 1080;
 	}
     neki->Update();
-    std::cout<<Camera.x<<" "<<Camera.y<<std::endl; 
-	// std::cout << player->posx << " " << player->posy << std::endl;
+    //std::cout<<Camera.x<<" "<<Camera.y<<std::endl; 
+	 std::cout << player->posx << " " << player->posy << std::endl;
 	player->CollisionDetect(neki);
 	for (Scientist* scientist : scientists) scientist->Update(ura, player);
 	if (mouse.click && TimeSinceLastBullet > 750) {

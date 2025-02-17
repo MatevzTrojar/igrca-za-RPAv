@@ -15,14 +15,14 @@ class Player : public GameObject {
     oldY = posy;
 	move.x = 0;
 	move.y = 0;
-	if (moving_up) move.y -= 1 * ura->delta * 0.6;
-	if (moving_down) move.y += 1 * ura->delta * 0.6;
+	if (moving_up) move.y -= 1 * ura->delta * 0.5;
+	if (moving_down) move.y += 1 * ura->delta * 0.5;
 	if (moving_right) {
-		move.x += 1 * ura->delta * 0.6;
+		move.x += 1 * ura->delta * 0.5;
 		isFlipped = true;
 	}
 	if (moving_left) {
-		move.x -= 1 * ura->delta * 0.6;
+		move.x -= 1 * ura->delta * 0.5;
 		isFlipped = false;
 	}
     if(moving_up && moving_right || moving_up && moving_left || moving_down && moving_right || moving_down && moving_left){
@@ -34,8 +34,18 @@ class Player : public GameObject {
     dest.x = posx-Game::Camera.x;
     dest.y = posy-Game::Camera.y;
     
-    
-
+    if(posx<0){
+        posx = 0; 
+    }
+    if(posy<0){
+        posy = 0;
+    }
+    if(posx>120*32-dest.h){
+        posx = 120*32-dest.h;
+    }
+    if(posy>63*32){
+        posy = 63*32;
+    }
     }
     void Render();
 
