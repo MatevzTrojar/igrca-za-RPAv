@@ -1,8 +1,8 @@
 #include <ios>
 #include <SDL2/SDL.h>
-class Tile{
+#include "GameObject.h"
+class Tile :public GameObject{
     public:
-        SDL_Rect tile;
-        bool isWall,isRendered=false;
+        bool isRendered=false;
         bool IsOffScreen();
 };

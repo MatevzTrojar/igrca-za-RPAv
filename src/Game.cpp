@@ -32,7 +32,7 @@ GameObject* neki;
 std::set<Scientist*> scientists;
 Mouse mouse;
 Map* map;
-SDL_Rect Game::Camera = {0, 0, 1920, 72*32};
+SDL_Rect Game::Camera = {0, 0, 1920, 1080};
 
 SDL_Renderer* Game::renderer = nullptr;
 
@@ -59,8 +59,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 	}
 	srand(time(NULL));
 	map = new Map("assets/textures/DungenTileset.png");
-	player =
-		new Player("assets/textures/Test2.png", 1920 / 2, 1088 / 2, 48, 48);
+	player =new Player("assets/textures/Test2.png", 56*32, 25*32, 48, 48);
 	neki = new GameObject("assets/textures/chest.jpg", 300, 300, 32, 32);
 	for (int i = 0; i < 1; i++) {
 		scientists.insert(new Scientist("assets/textures/scientist.png",
@@ -89,6 +88,26 @@ int TimeSinceLastBullet = 1e9;
 
 void Game::update(Clock* ura) {
 	player->Update(ura);
+   //collision detect for player and tiles:
+    /* 
+player->CollisionDetect(&map->tile[(int)player->posx/32-1][(int)player->posy/32]);
+player->CollisionDetect(&map->tile[(int)player->posx/32][(int)player->posy/32-1]);
+player->CollisionDetect(&map->tile[(int)player->posx/32+1][(int)player->posy/32-1]);
+player->CollisionDetect(&map->tile[(int)player->posx/32-1][(int)player->posy/32+1]);
+player->CollisionDetect(&map->tile[(int)player->posx/32+2][(int)player->posy/32]);
+player->CollisionDetect(&map->tile[(int)player->posx/32+2][(int)player->posy/32+1]);
+player->CollisionDetect(&map->tile[(int)player->posx/32+1][(int)player->posy/32+2]);
+player->CollisionDetect(&map->tile[(int)player->posx/32][(int)player->posy/32+2]);
+*/
+ for(int x=0;x<120;x++){
+       for(int y =0; y<72;y++){
+           if(map->tile[x][y].isWall){
+               player->CollisionDetect(&map->tile[x][y]);
+           }
+           else
+               continue;
+       }
+   }
 	Camera.x = player->posx - 1920 / 2;
 	Camera.y = player->posy - 1080 / 2;
 	if (Camera.x < 0) {
@@ -102,13 +121,14 @@ void Game::update(Clock* ura) {
 		Camera.x = Camera.w;
 	}
 
-	if (Camera.y >=  1292) {
-		Camera.y =  1292;
+	if (Camera.y >= 1292) {
+		Camera.y = 1292;
 	}
 	neki->Update();
-    std::	cout << Camera.x << " " << Camera.y << std::endl;
-//	std::cout << player->posx << " " << player->posy << std::endl;
-	player->CollisionDetect(neki);
+    neki->isWall = true;
+	//std::cout << Camera.x << " " << Camera.y << std::endl;
+		//std::cout << player->posx << " " << player->posy << std::endl;
+        player->CollisionDetect(neki);
 	for (Scientist* scientist : scientists) scientist->Update(ura, player);
 	if (mouse.click && TimeSinceLastBullet > 750) {
 		if (TimeSinceLastBullet > 750) TimeSinceLastBullet = 0;
@@ -128,6 +148,7 @@ void Game::update(Clock* ura) {
 		if (bullet != NULL && bullet->Active) {
 			bullet->Update(ura);
 		}
+
 	}
 	std::vector<Bullet*> toDelete;
 	std::set<Scientist*> toDeleteScientist;

@@ -1530,6 +1530,7 @@ CMakeFiles/mygame.dir/src/GameObject.cpp.o: /home/matko/Desktop/igrca-za-RPAv/sr
 
 CMakeFiles/mygame.dir/src/Map.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Map.cpp \
   /home/matko/Desktop/igrca-za-RPAv/src/Game.h \
+  /home/matko/Desktop/igrca-za-RPAv/src/GameObject.h \
   /home/matko/Desktop/igrca-za-RPAv/src/Map.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/TextureManager.h \
   /home/matko/Desktop/igrca-za-RPAv/src/Tile.hpp \
@@ -1642,6 +1643,7 @@ CMakeFiles/mygame.dir/src/Map.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Map.c
   /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/mbstate_t.h \
   /usr/include/bits/types/sigset_t.h \
+  /usr/include/bits/types/stack_t.h \
   /usr/include/bits/types/struct_FILE.h \
   /usr/include/bits/types/struct___jmp_buf_tag.h \
   /usr/include/bits/types/struct_itimerspec.h \
@@ -1673,6 +1675,7 @@ CMakeFiles/mygame.dir/src/Map.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Map.c
   /usr/include/c++/14.2.1/bits/cpp_type_traits.h \
   /usr/include/c++/14.2.1/bits/cxxabi_forced.h \
   /usr/include/c++/14.2.1/bits/cxxabi_init_exception.h \
+  /usr/include/c++/14.2.1/bits/erase_if.h \
   /usr/include/c++/14.2.1/bits/exception.h \
   /usr/include/c++/14.2.1/bits/exception_defines.h \
   /usr/include/c++/14.2.1/bits/exception_ptr.h \
@@ -1700,6 +1703,7 @@ CMakeFiles/mygame.dir/src/Map.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Map.c
   /usr/include/c++/14.2.1/bits/range_access.h \
   /usr/include/c++/14.2.1/bits/refwrap.h \
   /usr/include/c++/14.2.1/bits/requires_hosted.h \
+  /usr/include/c++/14.2.1/bits/sstream.tcc \
   /usr/include/c++/14.2.1/bits/std_abs.h \
   /usr/include/c++/14.2.1/bits/stl_algobase.h \
   /usr/include/c++/14.2.1/bits/stl_construct.h \
@@ -1707,7 +1711,10 @@ CMakeFiles/mygame.dir/src/Map.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Map.c
   /usr/include/c++/14.2.1/bits/stl_iterator.h \
   /usr/include/c++/14.2.1/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/14.2.1/bits/stl_iterator_base_types.h \
+  /usr/include/c++/14.2.1/bits/stl_multiset.h \
   /usr/include/c++/14.2.1/bits/stl_pair.h \
+  /usr/include/c++/14.2.1/bits/stl_set.h \
+  /usr/include/c++/14.2.1/bits/stl_tree.h \
   /usr/include/c++/14.2.1/bits/streambuf.tcc \
   /usr/include/c++/14.2.1/bits/streambuf_iterator.h \
   /usr/include/c++/14.2.1/bits/stringfwd.h \
@@ -1717,6 +1724,7 @@ CMakeFiles/mygame.dir/src/Map.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Map.c
   /usr/include/c++/14.2.1/cerrno \
   /usr/include/c++/14.2.1/clocale \
   /usr/include/c++/14.2.1/cmath \
+  /usr/include/c++/14.2.1/complex \
   /usr/include/c++/14.2.1/cstdio \
   /usr/include/c++/14.2.1/cstdlib \
   /usr/include/c++/14.2.1/ctime \
@@ -1725,6 +1733,7 @@ CMakeFiles/mygame.dir/src/Map.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Map.c
   /usr/include/c++/14.2.1/debug/assertions.h \
   /usr/include/c++/14.2.1/debug/debug.h \
   /usr/include/c++/14.2.1/exception \
+  /usr/include/c++/14.2.1/ext/aligned_buffer.h \
   /usr/include/c++/14.2.1/ext/alloc_traits.h \
   /usr/include/c++/14.2.1/ext/atomicity.h \
   /usr/include/c++/14.2.1/ext/numeric_traits.h \
@@ -1739,6 +1748,8 @@ CMakeFiles/mygame.dir/src/Map.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Map.c
   /usr/include/c++/14.2.1/math.h \
   /usr/include/c++/14.2.1/new \
   /usr/include/c++/14.2.1/ostream \
+  /usr/include/c++/14.2.1/set \
+  /usr/include/c++/14.2.1/sstream \
   /usr/include/c++/14.2.1/stdexcept \
   /usr/include/c++/14.2.1/stdlib.h \
   /usr/include/c++/14.2.1/streambuf \
@@ -1782,6 +1793,7 @@ CMakeFiles/mygame.dir/src/Map.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Map.c
   /usr/include/sys/select.h \
   /usr/include/sys/single_threaded.h \
   /usr/include/sys/types.h \
+  /usr/include/sys/ucontext.h \
   /usr/include/time.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
@@ -3157,7 +3169,10 @@ CMakeFiles/mygame.dir/src/TextureManager.cpp.o: /home/matko/Desktop/igrca-za-RPA
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xtestintrin.h
 
 CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile.cpp \
+  /home/matko/Desktop/igrca-za-RPAv/src/Game.h \
+  /home/matko/Desktop/igrca-za-RPAv/src/GameObject.h \
   /home/matko/Desktop/igrca-za-RPAv/src/Tile.hpp \
+  /home/matko/Desktop/igrca-za-RPAv/src/clock.hpp \
   /usr/include/SDL2/SDL.h \
   /usr/include/SDL2/SDL_assert.h \
   /usr/include/SDL2/SDL_atomic.h \
@@ -3176,6 +3191,7 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/include/SDL2/SDL_haptic.h \
   /usr/include/SDL2/SDL_hidapi.h \
   /usr/include/SDL2/SDL_hints.h \
+  /usr/include/SDL2/SDL_image.h \
   /usr/include/SDL2/SDL_joystick.h \
   /usr/include/SDL2/SDL_keyboard.h \
   /usr/include/SDL2/SDL_keycode.h \
@@ -3265,6 +3281,7 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/mbstate_t.h \
   /usr/include/bits/types/sigset_t.h \
+  /usr/include/bits/types/stack_t.h \
   /usr/include/bits/types/struct_FILE.h \
   /usr/include/bits/types/struct___jmp_buf_tag.h \
   /usr/include/bits/types/struct_itimerspec.h \
@@ -3295,6 +3312,7 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/include/c++/14.2.1/bits/cpp_type_traits.h \
   /usr/include/c++/14.2.1/bits/cxxabi_forced.h \
   /usr/include/c++/14.2.1/bits/cxxabi_init_exception.h \
+  /usr/include/c++/14.2.1/bits/erase_if.h \
   /usr/include/c++/14.2.1/bits/exception.h \
   /usr/include/c++/14.2.1/bits/exception_defines.h \
   /usr/include/c++/14.2.1/bits/exception_ptr.h \
@@ -3303,6 +3321,7 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/include/c++/14.2.1/bits/hash_bytes.h \
   /usr/include/c++/14.2.1/bits/invoke.h \
   /usr/include/c++/14.2.1/bits/ios_base.h \
+  /usr/include/c++/14.2.1/bits/istream.tcc \
   /usr/include/c++/14.2.1/bits/locale_classes.h \
   /usr/include/c++/14.2.1/bits/locale_classes.tcc \
   /usr/include/c++/14.2.1/bits/locale_facets.h \
@@ -3312,6 +3331,7 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/include/c++/14.2.1/bits/move.h \
   /usr/include/c++/14.2.1/bits/nested_exception.h \
   /usr/include/c++/14.2.1/bits/new_allocator.h \
+  /usr/include/c++/14.2.1/bits/ostream.tcc \
   /usr/include/c++/14.2.1/bits/ostream_insert.h \
   /usr/include/c++/14.2.1/bits/postypes.h \
   /usr/include/c++/14.2.1/bits/predefined_ops.h \
@@ -3319,6 +3339,7 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/include/c++/14.2.1/bits/range_access.h \
   /usr/include/c++/14.2.1/bits/refwrap.h \
   /usr/include/c++/14.2.1/bits/requires_hosted.h \
+  /usr/include/c++/14.2.1/bits/sstream.tcc \
   /usr/include/c++/14.2.1/bits/std_abs.h \
   /usr/include/c++/14.2.1/bits/stl_algobase.h \
   /usr/include/c++/14.2.1/bits/stl_construct.h \
@@ -3326,7 +3347,10 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/include/c++/14.2.1/bits/stl_iterator.h \
   /usr/include/c++/14.2.1/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/14.2.1/bits/stl_iterator_base_types.h \
+  /usr/include/c++/14.2.1/bits/stl_multiset.h \
   /usr/include/c++/14.2.1/bits/stl_pair.h \
+  /usr/include/c++/14.2.1/bits/stl_set.h \
+  /usr/include/c++/14.2.1/bits/stl_tree.h \
   /usr/include/c++/14.2.1/bits/streambuf.tcc \
   /usr/include/c++/14.2.1/bits/streambuf_iterator.h \
   /usr/include/c++/14.2.1/bits/stringfwd.h \
@@ -3336,6 +3360,7 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/include/c++/14.2.1/cerrno \
   /usr/include/c++/14.2.1/clocale \
   /usr/include/c++/14.2.1/cmath \
+  /usr/include/c++/14.2.1/complex \
   /usr/include/c++/14.2.1/cstdio \
   /usr/include/c++/14.2.1/cstdlib \
   /usr/include/c++/14.2.1/cwchar \
@@ -3343,6 +3368,7 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/include/c++/14.2.1/debug/assertions.h \
   /usr/include/c++/14.2.1/debug/debug.h \
   /usr/include/c++/14.2.1/exception \
+  /usr/include/c++/14.2.1/ext/aligned_buffer.h \
   /usr/include/c++/14.2.1/ext/alloc_traits.h \
   /usr/include/c++/14.2.1/ext/atomicity.h \
   /usr/include/c++/14.2.1/ext/numeric_traits.h \
@@ -3351,8 +3377,13 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/include/c++/14.2.1/initializer_list \
   /usr/include/c++/14.2.1/ios \
   /usr/include/c++/14.2.1/iosfwd \
+  /usr/include/c++/14.2.1/iostream \
+  /usr/include/c++/14.2.1/istream \
   /usr/include/c++/14.2.1/math.h \
   /usr/include/c++/14.2.1/new \
+  /usr/include/c++/14.2.1/ostream \
+  /usr/include/c++/14.2.1/set \
+  /usr/include/c++/14.2.1/sstream \
   /usr/include/c++/14.2.1/stdexcept \
   /usr/include/c++/14.2.1/stdlib.h \
   /usr/include/c++/14.2.1/streambuf \
@@ -3394,6 +3425,7 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/include/sys/select.h \
   /usr/include/sys/single_threaded.h \
   /usr/include/sys/types.h \
+  /usr/include/sys/ucontext.h \
   /usr/include/time.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \

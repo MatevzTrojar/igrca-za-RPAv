@@ -1,10 +1,11 @@
 #include "GameObject.h"
+#include "SDL_rwops.h"
 #include <glm/glm.hpp>
 class Player : public GameObject {
     public:
     Player(const char* textureSheet, int x, int y, int h, int w) : GameObject(textureSheet, x, y, h, w) {}
     void Update(Clock* ura) {
-
+    
 	const Uint8* state = SDL_GetKeyboardState(NULL);
 	moving_left = state[SDL_SCANCODE_A];
 	moving_up = state[SDL_SCANCODE_W];

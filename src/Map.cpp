@@ -25,10 +25,12 @@ void Map::AssignRand() {
 void Map::LoadMap() {
 	for (int y = 0; y < 72; y++) {
 		for (int x = 0; x < 72; x++) {
-			tile[x][y].tile.x = x * 32;
-			tile[x][y].tile.y = y * 32;
-			tile[x][y].tile.w = 32;
-			tile[x][y].tile.h = 32;
+			tile[x][y].dest.x = x * 32;
+			tile[x][y].dest.y = y * 32;
+			tile[x][y].dest.w = 32;
+			tile[x][y].dest.h = 32;
+            tile[x][y].posx = tile[x][y].dest.x;
+            tile[x][y].posy = tile[x][y].dest.y;
 		}
 	}
 }
@@ -45,12 +47,14 @@ for (int x = 0; x < 60; x++)  {	// screen width
 			}*/
 			switch (map[x + OffsetX][y + OffsetY]) {
 				case '1':
+                    tile[x][y].isWall = false;
 					SDL_RenderCopy(Game::renderer, Bitmap, &tile1,
-								   &tile[x][y].tile);
+								   &tile[x][y].dest);
 					break;
 				case '2':
+                    tile[x][y].isWall = true;
 					SDL_RenderCopy(Game::renderer, Bitmap, &tile2,
-								   &tile[x][y].tile);
+								   &tile[x][y].dest);
 					break;
 					/*
 				case '3':
