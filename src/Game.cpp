@@ -32,7 +32,7 @@ GameObject* neki;
 std::set<Scientist*> scientists;
 Mouse mouse;
 Map* map;
-SDL_Rect Game::Camera = {0, 0, 1920, 1080};
+SDL_Rect Game::Camera = {0, 0, 1920, 72*32};
 
 SDL_Renderer* Game::renderer = nullptr;
 
@@ -58,9 +58,9 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 		isRunning = true;
 	}
 	srand(time(NULL));
-	map = new Map("assets/textures/Tiles.png");
-	player = new Player("assets/textures/Test2.png", 1920 / 2, 1088 / 2,
-						48, 48);
+	map = new Map("assets/textures/DungenTileset.png");
+	player =
+		new Player("assets/textures/Test2.png", 1920 / 2, 1088 / 2, 48, 48);
 	neki = new GameObject("assets/textures/chest.jpg", 300, 300, 32, 32);
 	for (int i = 0; i < 1; i++) {
 		scientists.insert(new Scientist("assets/textures/scientist.png",
@@ -83,8 +83,6 @@ void Game::handleEvents() {
 	}
 	mouse.XY(event);
 	mouse.Clicked(event);
-	//	std::cout << mouse.x << "   " << mouse.y << "  " << mouse.click
-	//			  << std::endl;
 }
 glm::vec2 FinalMove;
 int TimeSinceLastBullet = 1e9;
@@ -99,18 +97,17 @@ void Game::update(Clock* ura) {
 	if (Camera.y < 0) {
 		Camera.y = 0;
 	}
+
 	if (Camera.x > Camera.w) {
 		Camera.x = Camera.w;
 	}
-	if (Camera.y > Camera.h) {
-		Camera.y = Camera.h;
+
+	if (Camera.y >=  1292) {
+		Camera.y =  1292;
 	}
-	if (Camera.y > 1080) {
-		Camera.y = 1080;
-	}
-    neki->Update();
-    //std::cout<<Camera.x<<" "<<Camera.y<<std::endl; 
-	 std::cout << player->posx << " " << player->posy << std::endl;
+	neki->Update();
+    std::	cout << Camera.x << " " << Camera.y << std::endl;
+//	std::cout << player->posx << " " << player->posy << std::endl;
 	player->CollisionDetect(neki);
 	for (Scientist* scientist : scientists) scientist->Update(ura, player);
 	if (mouse.click && TimeSinceLastBullet > 750) {
@@ -164,7 +161,7 @@ void Game::update(Clock* ura) {
 
 void Game::render() {
 	SDL_RenderClear(renderer);
-    map->Render();
+	map->Render();
 	player->Render();
 	neki->Render();
 	for (Scientist* scientist : scientists) scientist->Render();

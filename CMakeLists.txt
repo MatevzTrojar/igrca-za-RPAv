@@ -8,7 +8,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
 
 add_executable(${PROJECT_NAME} src/main.cpp src/GameObject.cpp src/TextureManager.cpp src/Game.cpp src/Scientist.cpp src/Mouse.cpp src/Bullet.cpp
     src/Map.cpp
-    src/player.cpp)
+    src/player.cpp
+src/Tile.cpp)
 
 INCLUDE(FindPkgConfig)
 include(FetchContent)

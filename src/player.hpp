@@ -40,11 +40,11 @@ class Player : public GameObject {
     if(posy<0){
         posy = 0;
     }
-    if(posx>120*32-dest.h){
-        posx = 120*32-dest.h;
+    if(posx>120*32-dest.w){
+        posx = 120*32-dest.w;
     }
-    if(posy>63*32){
-        posy = 63*32;
+    if(posy>72*32-dest.h){
+        posy = 72*32-dest.h;
     }
     }
     void Render();

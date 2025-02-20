@@ -310,6 +310,30 @@ src/TextureManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/src/TextureManager.cpp.s
 .PHONY : src/TextureManager.cpp.s
 
+src/Tile.o: src/Tile.cpp.o
+.PHONY : src/Tile.o
+
+# target to build an object file
+src/Tile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/src/Tile.cpp.o
+.PHONY : src/Tile.cpp.o
+
+src/Tile.i: src/Tile.cpp.i
+.PHONY : src/Tile.i
+
+# target to preprocess a source file
+src/Tile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/src/Tile.cpp.i
+.PHONY : src/Tile.cpp.i
+
+src/Tile.s: src/Tile.cpp.s
+.PHONY : src/Tile.s
+
+# target to generate assembly for a file
+src/Tile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/src/Tile.cpp.s
+.PHONY : src/Tile.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -389,6 +413,9 @@ help:
 	@echo "... src/TextureManager.o"
 	@echo "... src/TextureManager.i"
 	@echo "... src/TextureManager.s"
+	@echo "... src/Tile.o"
+	@echo "... src/Tile.i"
+	@echo "... src/Tile.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

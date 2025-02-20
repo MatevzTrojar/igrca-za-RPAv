@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/matko/Desktop/igrca-za-RPAv/src/Mouse.cpp" "CMakeFiles/mygame.dir/src/Mouse.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/Mouse.cpp.o.d"
   "/home/matko/Desktop/igrca-za-RPAv/src/Scientist.cpp" "CMakeFiles/mygame.dir/src/Scientist.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/Scientist.cpp.o.d"
   "/home/matko/Desktop/igrca-za-RPAv/src/TextureManager.cpp" "CMakeFiles/mygame.dir/src/TextureManager.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/TextureManager.cpp.o.d"
+  "/home/matko/Desktop/igrca-za-RPAv/src/Tile.cpp" "CMakeFiles/mygame.dir/src/Tile.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/Tile.cpp.o.d"
   "/home/matko/Desktop/igrca-za-RPAv/src/main.cpp" "CMakeFiles/mygame.dir/src/main.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/main.cpp.o.d"
   "/home/matko/Desktop/igrca-za-RPAv/src/player.cpp" "CMakeFiles/mygame.dir/src/player.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/player.cpp.o.d"
   "" "mygame" "gcc" "CMakeFiles/mygame.dir/link.d"

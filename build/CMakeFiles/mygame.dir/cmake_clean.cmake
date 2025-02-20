@@ -14,6 +14,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/mygame.dir/src/Scientist.cpp.o.d"
   "CMakeFiles/mygame.dir/src/TextureManager.cpp.o"
   "CMakeFiles/mygame.dir/src/TextureManager.cpp.o.d"
+  "CMakeFiles/mygame.dir/src/Tile.cpp.o"
+  "CMakeFiles/mygame.dir/src/Tile.cpp.o.d"
   "CMakeFiles/mygame.dir/src/main.cpp.o"
   "CMakeFiles/mygame.dir/src/main.cpp.o.d"
   "CMakeFiles/mygame.dir/src/player.cpp.o"
