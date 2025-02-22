@@ -15,6 +15,7 @@
 #include "Map.hpp"
 #include "Mouse.hpp"
 #include "SDL_cpuinfo.h"
+#include "SDL_hints.h"
 #include "SDL_mutex.h"
 #include "SDL_pixels.h"
 #include "SDL_platform.h"
@@ -59,12 +60,12 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 	}
 	srand(time(NULL));
 	map = new Map("assets/textures/DungenTileset.png");
-	player =new Player("assets/textures/Test2.png", 56*32, 25*32, 48, 48);
+	player =new Player("assets/textures/Test3.png", 56*32, 25*32, 32, 32);
 	neki = new GameObject("assets/textures/chest.jpg", 300, 300, 32, 32);
 	for (int i = 0; i < 1; i++) {
 		scientists.insert(new Scientist("assets/textures/scientist.png",
-										rand() % (1920), rand() % (1080), 48,
-										48));
+										rand() % (1920), rand() % (1080), 32,
+										32));
 	}
 }
 
@@ -88,26 +89,11 @@ int TimeSinceLastBullet = 1e9;
 
 void Game::update(Clock* ura) {
 	player->Update(ura);
+    for(SDL_Rect Border : map->Borders){
+        player->BorderCollisionDetect(Border);
+    }
    //collision detect for player and tiles:
-    /* 
-player->CollisionDetect(&map->tile[(int)player->posx/32-1][(int)player->posy/32]);
-player->CollisionDetect(&map->tile[(int)player->posx/32][(int)player->posy/32-1]);
-player->CollisionDetect(&map->tile[(int)player->posx/32+1][(int)player->posy/32-1]);
-player->CollisionDetect(&map->tile[(int)player->posx/32-1][(int)player->posy/32+1]);
-player->CollisionDetect(&map->tile[(int)player->posx/32+2][(int)player->posy/32]);
-player->CollisionDetect(&map->tile[(int)player->posx/32+2][(int)player->posy/32+1]);
-player->CollisionDetect(&map->tile[(int)player->posx/32+1][(int)player->posy/32+2]);
-player->CollisionDetect(&map->tile[(int)player->posx/32][(int)player->posy/32+2]);
-*/
- for(int x=0;x<120;x++){
-       for(int y =0; y<72;y++){
-           if(map->tile[x][y].isWall){
-               player->CollisionDetect(&map->tile[x][y]);
-           }
-           else
-               continue;
-       }
-   }
+
 	Camera.x = player->posx - 1920 / 2;
 	Camera.y = player->posy - 1080 / 2;
 	if (Camera.x < 0) {

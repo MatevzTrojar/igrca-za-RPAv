@@ -1,8 +1,10 @@
 #include "GameObject.h"
 #include "SDL_rwops.h"
+#include "glm/integer.hpp"
 #include <glm/glm.hpp>
 class Player : public GameObject {
     public:
+        glm::vec2 delta;
     Player(const char* textureSheet, int x, int y, int h, int w) : GameObject(textureSheet, x, y, h, w) {}
     void Update(Clock* ura) {
     
@@ -28,10 +30,12 @@ class Player : public GameObject {
 	}
     if(moving_up && moving_right || moving_up && moving_left || moving_down && moving_right || moving_down && moving_left){
         move.x /= 1.414;
-        move.y /= 1.414;
+       move.y /= 1.414;
     }
     posx += move.x;
     posy += move.y;
+    delta.x = posx - oldX;
+    delta.y = posy - oldY;
     dest.x = posx-Game::Camera.x;
     dest.y = posy-Game::Camera.y;
     
@@ -49,5 +53,6 @@ class Player : public GameObject {
     }
     }
     void Render();
+    bool BorderCollisionDetect(SDL_Rect Border);
 
 };

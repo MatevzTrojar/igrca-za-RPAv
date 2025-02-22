@@ -3,8 +3,10 @@
 #include "SDL.h"
 #include "TextureManager.h"
 #include "Tile.hpp"
+#include<vector>
 class Map {
 public:
+    std::vector<SDL_Rect> Borders;
     SDL_Texture* Bitmap;
     char map[120][72];
      Tile tile[120][72];
@@ -16,10 +18,12 @@ public:
        Bitmap = TextureManager::LoadTexture(a);
     AssignRand();
     LoadMap();
+    AssignBorders();
     };
     void AssignRand();
     void LoadMap();
     void Render();
+    void AssignBorders();
 
 };
 

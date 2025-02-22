@@ -4,6 +4,7 @@
 #include <ctime>
 #include <fstream>
 #include <iostream>
+#include <iterator>
 void Map::AssignRand() {
 	srand(time(NULL));
 	std::ifstream file("assets/Map.txt");
@@ -22,37 +23,51 @@ void Map::AssignRand() {
 		}
 	}*/
 }
+void Map::AssignBorders() {
+	for (int y = 0; y < 72; y++) {
+		for (int x = 0; x < 120; x++) {
+			if (map[x][y] == '2') {
+				if (map[x + 1][y] != '2' || map[x - 1][y] != '2' ||
+					map[x][y + 1] != '2' || map[x][y - 1] != '2') {
+					Borders.push_back(tile[x][y].dest);
+				}
+			}
+		}
+	}
+    
+
+
+}
 void Map::LoadMap() {
 	for (int y = 0; y < 72; y++) {
-		for (int x = 0; x < 72; x++) {
+		for (int x = 0; x < 120; x++) {
 			tile[x][y].dest.x = x * 32;
 			tile[x][y].dest.y = y * 32;
 			tile[x][y].dest.w = 32;
 			tile[x][y].dest.h = 32;
-            tile[x][y].posx = tile[x][y].dest.x;
-            tile[x][y].posy = tile[x][y].dest.y;
+			tile[x][y].posx = tile[x][y].dest.x;
+			tile[x][y].posy = tile[x][y].dest.y;
 		}
 	}
 }
 void Map::Render() {
 	int OffsetX = Game::Camera.x / 32;
 	int OffsetY = Game::Camera.y / 32;
-	//std::cout << OffsetX << " " << OffsetY << std::endl;
-		for (int y = 0; y < 34; y++)	{		// screen size
-for (int x = 0; x < 60; x++)  {	// screen width
+	// std::cout << OffsetX << " " << OffsetY << std::endl;
+	for (int y = 0; y < 34; y++) {		// screen size
+		for (int x = 0; x < 60; x++) {	// screen width
 
-		/*	if (tile[x][y].IsOffScreen()) {
-				tile[x][y].isRendered = false;
-				break;
-			}*/
+			/*	if (tile[x][y].IsOffScreen()) {
+					tile[x][y].isRendered = false;
+					break;
+				}*/
 			switch (map[x + OffsetX][y + OffsetY]) {
 				case '1':
-                    tile[x][y].isWall = false;
+					tile[x][y].isWall = false;
 					SDL_RenderCopy(Game::renderer, Bitmap, &tile1,
 								   &tile[x][y].dest);
 					break;
 				case '2':
-                    tile[x][y].isWall = true;
 					SDL_RenderCopy(Game::renderer, Bitmap, &tile2,
 								   &tile[x][y].dest);
 					break;
@@ -136,5 +151,4 @@ for (int x = 0; x < 60; x++)  {	// screen width
 			}
 		}
 	}
-
 }

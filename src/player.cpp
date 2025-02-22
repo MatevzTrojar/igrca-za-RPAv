@@ -1,4 +1,5 @@
 #include "player.hpp"
+#include "glm/detail/qualifier.hpp"
 void Player:: Render(){
 	if (!isFlipped)
 		SDL_RenderCopyEx(Game::renderer, objTexture, NULL, &dest, 0, NULL,
@@ -7,3 +8,47 @@ void Player:: Render(){
 		SDL_RenderCopy(Game::renderer, objTexture, NULL, &dest);
 
 }
+    bool Player:: BorderCollisionDetect(SDL_Rect Border){
+const float OFFSET = 3;
+        glm::vec2 pos = delta;
+        pos.x += posx;
+        pos.y += posy;
+        pos.x = round(pos.x);
+        pos.y = round(pos.y);
+        std::cout<<"Oldpos: "<<oldX<<" "<<oldY<<" delta: "<<delta.x<<" "<<delta.y<<" vector: "<<pos.x<<" "<<pos.y<<" Position: "<<posx<<" "<<posy<<std::endl;
+        	if (pos.y + dest.h > Border.y && !(oldY + dest.h > Border.y))
+		if (!(pos.x + dest.w < Border.x ||
+			  pos.x > Border.x + Border.w)) {
+			posy = Border.y - dest.h- OFFSET;
+            delta.y = 0;
+			return true;
+		}
+	// spodnja plast
+	if (pos.y < Border.y + Border.h &&
+		!(oldY < Border.y + Border.h))
+		if (!(pos.x + dest.w < Border.x ||
+			  pos.x > Border.x + Border.w)) {
+			posy = Border.y + Border.h+ OFFSET;
+            delta.y = 0;
+			return true;
+		}
+	// leva plast
+	if (pos.x + dest.w > Border.x && !(oldX + dest.w > Border.x))
+		if (!(pos.y + dest.h < Border.y ||
+			  pos.y > Border.y + Border.h)) {
+			posx = Border.x - dest.w- OFFSET;
+            delta.x = 0;
+			return true;
+		}
+	// desna plast
+	if (pos.x < Border.x + Border.w &&
+		!(oldX < Border.x + Border.w))
+		if (!(pos.y + dest.h < Border.y ||
+			  pos.y > Border.y + Border.h)) {
+			posx = Border.x + Border.w+ OFFSET;
+            delta.x = 0;
+			return true;
+		}
+	return false;
+    }
+
