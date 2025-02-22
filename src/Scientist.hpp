@@ -11,6 +11,4 @@ class Scientist :public GameObject{
      Scientist(const char* a,int x,int y,int h,int w):GameObject(a,x,y,h,w){
 
      };
- bool CollisionDetect(GameObject* other);
- bool BorderCollisionDetect(SDL_Rect Border);
 };

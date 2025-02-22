@@ -50,7 +50,18 @@ CMakeFiles/mygame.dir/src/Bullet.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Bu
   _deps/glm-src/glm/ext/matrix_float4x3_precision.hpp \
   _deps/glm-src/glm/ext/matrix_float4x4.hpp \
   _deps/glm-src/glm/ext/matrix_float4x4_precision.hpp \
+  _deps/glm-src/glm/common.hpp \
+  _deps/glm-src/glm/detail/func_vector_relational.inl \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/vector_relational.hpp \
+  _deps/glm-src/glm/detail/_fixes.hpp \
+  _deps/glm-src/glm/detail/_vectorize.hpp \
+  _deps/glm-src/glm/detail/compute_common.hpp \
+  _deps/glm-src/glm/detail/func_common.inl \
   _deps/glm-src/glm/detail/func_exponential.inl \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/type_vec1.hpp \
+  _deps/glm-src/glm/detail/type_vec1.inl \
   _deps/glm-src/glm/exponential.hpp \
   _deps/glm-src/glm/detail/func_geometric.inl \
   _deps/glm-src/glm/geometric.hpp \
@@ -65,9 +76,17 @@ CMakeFiles/mygame.dir/src/Bullet.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Bu
   _deps/glm-src/glm/mat4x3.hpp \
   _deps/glm-src/glm/mat4x4.hpp \
   _deps/glm-src/glm/matrix.hpp \
+  _deps/glm-src/glm/detail/compute_vector_relational.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
   _deps/glm-src/glm/detail/setup.hpp \
   _deps/glm-src/glm/detail/type_mat2x2.hpp \
   _deps/glm-src/glm/detail/type_mat2x2.inl \
+  _deps/glm-src/glm/detail/type_vec2.hpp \
+  _deps/glm-src/glm/detail/type_vec2.inl \
+  _deps/glm-src/glm/detail/type_vec3.hpp \
+  _deps/glm-src/glm/detail/type_vec3.inl \
+  _deps/glm-src/glm/detail/type_vec4.hpp \
+  _deps/glm-src/glm/detail/type_vec4.inl \
   _deps/glm-src/glm/detail/setup.hpp \
   _deps/glm-src/glm/ext/scalar_int_sized.hpp \
   _deps/glm-src/glm/ext/scalar_uint_sized.hpp \
@@ -87,6 +106,7 @@ CMakeFiles/mygame.dir/src/Bullet.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Bu
   _deps/glm-src/glm/ext/vector_double3_precision.hpp \
   _deps/glm-src/glm/ext/vector_double4.hpp \
   _deps/glm-src/glm/ext/vector_double4_precision.hpp \
+  _deps/glm-src/glm/ext/vector_float2.hpp \
   _deps/glm-src/glm/ext/vector_float2_precision.hpp \
   _deps/glm-src/glm/ext/vector_float3.hpp \
   _deps/glm-src/glm/ext/vector_float3_precision.hpp \
@@ -104,17 +124,8 @@ CMakeFiles/mygame.dir/src/Bullet.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Bu
   _deps/glm-src/glm/ext/vector_uint3_sized.hpp \
   _deps/glm-src/glm/ext/vector_uint4.hpp \
   _deps/glm-src/glm/ext/vector_uint4_sized.hpp \
-  _deps/glm-src/glm/common.hpp \
-  _deps/glm-src/glm/detail/func_vector_relational.inl \
-  _deps/glm-src/glm/detail/setup.hpp \
   _deps/glm-src/glm/simd/platform.h \
-  _deps/glm-src/glm/vector_relational.hpp \
-  _deps/glm-src/glm/detail/compute_vector_relational.hpp \
-  _deps/glm-src/glm/detail/setup.hpp \
   _deps/glm-src/glm/detail/_fixes.hpp \
-  _deps/glm-src/glm/detail/_vectorize.hpp \
-  _deps/glm-src/glm/detail/compute_common.hpp \
-  _deps/glm-src/glm/detail/func_common.inl \
   _deps/glm-src/glm/detail/func_integer.inl \
   _deps/glm-src/glm/detail/func_packing.inl \
   _deps/glm-src/glm/detail/func_trigonometric.inl \
@@ -122,15 +133,6 @@ CMakeFiles/mygame.dir/src/Bullet.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Bu
   _deps/glm-src/glm/detail/setup.hpp \
   _deps/glm-src/glm/detail/type_half.hpp \
   _deps/glm-src/glm/detail/type_half.inl \
-  _deps/glm-src/glm/detail/type_vec1.hpp \
-  _deps/glm-src/glm/detail/type_vec1.inl \
-  _deps/glm-src/glm/detail/type_vec2.hpp \
-  _deps/glm-src/glm/detail/type_vec2.inl \
-  _deps/glm-src/glm/detail/type_vec3.hpp \
-  _deps/glm-src/glm/detail/type_vec3.inl \
-  _deps/glm-src/glm/detail/type_vec4.hpp \
-  _deps/glm-src/glm/detail/type_vec4.inl \
-  _deps/glm-src/glm/ext/vector_float2.hpp \
   _deps/glm-src/glm/fwd.hpp \
   _deps/glm-src/glm/glm.hpp \
   _deps/glm-src/glm/integer.hpp \
@@ -862,7 +864,18 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   _deps/glm-src/glm/ext/matrix_float4x3_precision.hpp \
   _deps/glm-src/glm/ext/matrix_float4x4.hpp \
   _deps/glm-src/glm/ext/matrix_float4x4_precision.hpp \
+  _deps/glm-src/glm/common.hpp \
+  _deps/glm-src/glm/detail/func_vector_relational.inl \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/vector_relational.hpp \
+  _deps/glm-src/glm/detail/_fixes.hpp \
+  _deps/glm-src/glm/detail/_vectorize.hpp \
+  _deps/glm-src/glm/detail/compute_common.hpp \
+  _deps/glm-src/glm/detail/func_common.inl \
   _deps/glm-src/glm/detail/func_exponential.inl \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/type_vec1.hpp \
+  _deps/glm-src/glm/detail/type_vec1.inl \
   _deps/glm-src/glm/exponential.hpp \
   _deps/glm-src/glm/detail/func_geometric.inl \
   _deps/glm-src/glm/geometric.hpp \
@@ -877,9 +890,17 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   _deps/glm-src/glm/mat4x3.hpp \
   _deps/glm-src/glm/mat4x4.hpp \
   _deps/glm-src/glm/matrix.hpp \
+  _deps/glm-src/glm/detail/compute_vector_relational.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
   _deps/glm-src/glm/detail/setup.hpp \
   _deps/glm-src/glm/detail/type_mat2x2.hpp \
   _deps/glm-src/glm/detail/type_mat2x2.inl \
+  _deps/glm-src/glm/detail/type_vec2.hpp \
+  _deps/glm-src/glm/detail/type_vec2.inl \
+  _deps/glm-src/glm/detail/type_vec3.hpp \
+  _deps/glm-src/glm/detail/type_vec3.inl \
+  _deps/glm-src/glm/detail/type_vec4.hpp \
+  _deps/glm-src/glm/detail/type_vec4.inl \
   _deps/glm-src/glm/detail/setup.hpp \
   _deps/glm-src/glm/ext/scalar_int_sized.hpp \
   _deps/glm-src/glm/ext/scalar_uint_sized.hpp \
@@ -899,6 +920,7 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   _deps/glm-src/glm/ext/vector_double3_precision.hpp \
   _deps/glm-src/glm/ext/vector_double4.hpp \
   _deps/glm-src/glm/ext/vector_double4_precision.hpp \
+  _deps/glm-src/glm/ext/vector_float2.hpp \
   _deps/glm-src/glm/ext/vector_float2_precision.hpp \
   _deps/glm-src/glm/ext/vector_float3.hpp \
   _deps/glm-src/glm/ext/vector_float3_precision.hpp \
@@ -916,17 +938,8 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   _deps/glm-src/glm/ext/vector_uint3_sized.hpp \
   _deps/glm-src/glm/ext/vector_uint4.hpp \
   _deps/glm-src/glm/ext/vector_uint4_sized.hpp \
-  _deps/glm-src/glm/common.hpp \
-  _deps/glm-src/glm/detail/func_vector_relational.inl \
-  _deps/glm-src/glm/detail/setup.hpp \
   _deps/glm-src/glm/simd/platform.h \
-  _deps/glm-src/glm/vector_relational.hpp \
-  _deps/glm-src/glm/detail/compute_vector_relational.hpp \
-  _deps/glm-src/glm/detail/setup.hpp \
   _deps/glm-src/glm/detail/_fixes.hpp \
-  _deps/glm-src/glm/detail/_vectorize.hpp \
-  _deps/glm-src/glm/detail/compute_common.hpp \
-  _deps/glm-src/glm/detail/func_common.inl \
   _deps/glm-src/glm/detail/func_integer.inl \
   _deps/glm-src/glm/detail/func_packing.inl \
   _deps/glm-src/glm/detail/func_trigonometric.inl \
@@ -934,15 +947,6 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   _deps/glm-src/glm/detail/setup.hpp \
   _deps/glm-src/glm/detail/type_half.hpp \
   _deps/glm-src/glm/detail/type_half.inl \
-  _deps/glm-src/glm/detail/type_vec1.hpp \
-  _deps/glm-src/glm/detail/type_vec1.inl \
-  _deps/glm-src/glm/detail/type_vec2.hpp \
-  _deps/glm-src/glm/detail/type_vec2.inl \
-  _deps/glm-src/glm/detail/type_vec3.hpp \
-  _deps/glm-src/glm/detail/type_vec3.inl \
-  _deps/glm-src/glm/detail/type_vec4.hpp \
-  _deps/glm-src/glm/detail/type_vec4.inl \
-  _deps/glm-src/glm/ext/vector_float2.hpp \
   _deps/glm-src/glm/fwd.hpp \
   _deps/glm-src/glm/glm.hpp \
   _deps/glm-src/glm/integer.hpp \
@@ -1499,6 +1503,7 @@ CMakeFiles/mygame.dir/src/GameObject.cpp.o: /home/matko/Desktop/igrca-za-RPAv/sr
   _deps/glm-src/glm/vec3.hpp \
   _deps/glm-src/glm/vec4.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/Bullet.hpp \
+  /home/matko/Desktop/igrca-za-RPAv/src/Collision.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/Game.h \
   /home/matko/Desktop/igrca-za-RPAv/src/GameObject.h \
   /home/matko/Desktop/igrca-za-RPAv/src/Mouse.hpp \
@@ -1901,6 +1906,146 @@ CMakeFiles/mygame.dir/src/GameObject.cpp.o: /home/matko/Desktop/igrca-za-RPAv/sr
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xtestintrin.h
 
 CMakeFiles/mygame.dir/src/Map.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Map.cpp \
+  _deps/glm-src/glm/detail/type_mat2x3.hpp \
+  _deps/glm-src/glm/detail/type_mat2x3.inl \
+  _deps/glm-src/glm/detail/type_mat2x4.hpp \
+  _deps/glm-src/glm/detail/type_mat2x4.inl \
+  _deps/glm-src/glm/detail/type_mat3x2.hpp \
+  _deps/glm-src/glm/detail/type_mat3x2.inl \
+  _deps/glm-src/glm/detail/type_mat3x3.hpp \
+  _deps/glm-src/glm/detail/type_mat3x3.inl \
+  _deps/glm-src/glm/detail/type_mat3x4.hpp \
+  _deps/glm-src/glm/detail/type_mat3x4.inl \
+  _deps/glm-src/glm/detail/type_mat4x2.hpp \
+  _deps/glm-src/glm/detail/type_mat4x2.inl \
+  _deps/glm-src/glm/detail/type_mat4x3.hpp \
+  _deps/glm-src/glm/detail/type_mat4x3.inl \
+  _deps/glm-src/glm/detail/type_mat4x4.hpp \
+  _deps/glm-src/glm/detail/type_mat4x4.inl \
+  _deps/glm-src/glm/ext/matrix_double2x3.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x4.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x2.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x3.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x4.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x2.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x3.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x4.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x3.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x4.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x2.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x3.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x4.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x2.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x3.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x4.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x4_precision.hpp \
+  _deps/glm-src/glm/common.hpp \
+  _deps/glm-src/glm/detail/func_vector_relational.inl \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/vector_relational.hpp \
+  _deps/glm-src/glm/detail/_fixes.hpp \
+  _deps/glm-src/glm/detail/_vectorize.hpp \
+  _deps/glm-src/glm/detail/compute_common.hpp \
+  _deps/glm-src/glm/detail/func_common.inl \
+  _deps/glm-src/glm/detail/func_exponential.inl \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/type_vec1.hpp \
+  _deps/glm-src/glm/detail/type_vec1.inl \
+  _deps/glm-src/glm/exponential.hpp \
+  _deps/glm-src/glm/detail/func_geometric.inl \
+  _deps/glm-src/glm/geometric.hpp \
+  _deps/glm-src/glm/detail/func_matrix.inl \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/mat2x3.hpp \
+  _deps/glm-src/glm/mat2x4.hpp \
+  _deps/glm-src/glm/mat3x2.hpp \
+  _deps/glm-src/glm/mat3x3.hpp \
+  _deps/glm-src/glm/mat3x4.hpp \
+  _deps/glm-src/glm/mat4x2.hpp \
+  _deps/glm-src/glm/mat4x3.hpp \
+  _deps/glm-src/glm/mat4x4.hpp \
+  _deps/glm-src/glm/matrix.hpp \
+  _deps/glm-src/glm/detail/compute_vector_relational.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/type_mat2x2.hpp \
+  _deps/glm-src/glm/detail/type_mat2x2.inl \
+  _deps/glm-src/glm/detail/type_vec2.hpp \
+  _deps/glm-src/glm/detail/type_vec2.inl \
+  _deps/glm-src/glm/detail/type_vec3.hpp \
+  _deps/glm-src/glm/detail/type_vec3.inl \
+  _deps/glm-src/glm/detail/type_vec4.hpp \
+  _deps/glm-src/glm/detail/type_vec4.inl \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/ext/scalar_int_sized.hpp \
+  _deps/glm-src/glm/ext/scalar_uint_sized.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x2.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x2.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x2_precision.hpp \
+  _deps/glm-src/glm/ext/vector_bool2.hpp \
+  _deps/glm-src/glm/ext/vector_bool2_precision.hpp \
+  _deps/glm-src/glm/ext/vector_bool3.hpp \
+  _deps/glm-src/glm/ext/vector_bool3_precision.hpp \
+  _deps/glm-src/glm/ext/vector_bool4.hpp \
+  _deps/glm-src/glm/ext/vector_bool4_precision.hpp \
+  _deps/glm-src/glm/ext/vector_double2.hpp \
+  _deps/glm-src/glm/ext/vector_double2_precision.hpp \
+  _deps/glm-src/glm/ext/vector_double3.hpp \
+  _deps/glm-src/glm/ext/vector_double3_precision.hpp \
+  _deps/glm-src/glm/ext/vector_double4.hpp \
+  _deps/glm-src/glm/ext/vector_double4_precision.hpp \
+  _deps/glm-src/glm/ext/vector_float2.hpp \
+  _deps/glm-src/glm/ext/vector_float2_precision.hpp \
+  _deps/glm-src/glm/ext/vector_float3.hpp \
+  _deps/glm-src/glm/ext/vector_float3_precision.hpp \
+  _deps/glm-src/glm/ext/vector_float4.hpp \
+  _deps/glm-src/glm/ext/vector_float4_precision.hpp \
+  _deps/glm-src/glm/ext/vector_int2.hpp \
+  _deps/glm-src/glm/ext/vector_int2_sized.hpp \
+  _deps/glm-src/glm/ext/vector_int3.hpp \
+  _deps/glm-src/glm/ext/vector_int3_sized.hpp \
+  _deps/glm-src/glm/ext/vector_int4.hpp \
+  _deps/glm-src/glm/ext/vector_int4_sized.hpp \
+  _deps/glm-src/glm/ext/vector_uint2.hpp \
+  _deps/glm-src/glm/ext/vector_uint2_sized.hpp \
+  _deps/glm-src/glm/ext/vector_uint3.hpp \
+  _deps/glm-src/glm/ext/vector_uint3_sized.hpp \
+  _deps/glm-src/glm/ext/vector_uint4.hpp \
+  _deps/glm-src/glm/ext/vector_uint4_sized.hpp \
+  _deps/glm-src/glm/simd/platform.h \
+  _deps/glm-src/glm/detail/_fixes.hpp \
+  _deps/glm-src/glm/detail/func_integer.inl \
+  _deps/glm-src/glm/detail/func_packing.inl \
+  _deps/glm-src/glm/detail/func_trigonometric.inl \
+  _deps/glm-src/glm/detail/qualifier.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/type_half.hpp \
+  _deps/glm-src/glm/detail/type_half.inl \
+  _deps/glm-src/glm/fwd.hpp \
+  _deps/glm-src/glm/glm.hpp \
+  _deps/glm-src/glm/integer.hpp \
+  _deps/glm-src/glm/mat2x2.hpp \
+  _deps/glm-src/glm/packing.hpp \
+  _deps/glm-src/glm/trigonometric.hpp \
+  _deps/glm-src/glm/vec2.hpp \
+  _deps/glm-src/glm/vec3.hpp \
+  _deps/glm-src/glm/vec4.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/Game.h \
   /home/matko/Desktop/igrca-za-RPAv/src/GameObject.h \
   /home/matko/Desktop/igrca-za-RPAv/src/Map.hpp \
@@ -1962,6 +2107,7 @@ CMakeFiles/mygame.dir/src/Map.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Map.c
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/asm/errno.h \
+  /usr/include/assert.h \
   /usr/include/bits/atomic_wide_counter.h \
   /usr/include/bits/byteswap.h \
   /usr/include/bits/cpu-set.h \
@@ -1976,12 +2122,15 @@ CMakeFiles/mygame.dir/src/Map.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Map.c
   /usr/include/bits/iscanonical.h \
   /usr/include/bits/libc-header-start.h \
   /usr/include/bits/libm-simd-decl-stubs.h \
+  /usr/include/bits/local_lim.h \
   /usr/include/bits/locale.h \
   /usr/include/bits/long-double.h \
   /usr/include/bits/math-vector.h \
   /usr/include/bits/mathcalls-helper-functions.h \
   /usr/include/bits/mathcalls-narrow.h \
   /usr/include/bits/mathcalls.h \
+  /usr/include/bits/posix1_lim.h \
+  /usr/include/bits/posix2_lim.h \
   /usr/include/bits/pthread_stack_min-dynamic.h \
   /usr/include/bits/pthreadtypes-arch.h \
   /usr/include/bits/pthreadtypes.h \
@@ -2028,11 +2177,13 @@ CMakeFiles/mygame.dir/src/Map.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Map.c
   /usr/include/bits/types/wint_t.h \
   /usr/include/bits/typesizes.h \
   /usr/include/bits/uintn-identity.h \
+  /usr/include/bits/uio_lim.h \
   /usr/include/bits/waitflags.h \
   /usr/include/bits/waitstatus.h \
   /usr/include/bits/wchar.h \
   /usr/include/bits/wctype-wchar.h \
   /usr/include/bits/wordsize.h \
+  /usr/include/bits/xopen_lim.h \
   /usr/include/c++/14.2.1/backward/binders.h \
   /usr/include/c++/14.2.1/bits/alloc_traits.h \
   /usr/include/c++/14.2.1/bits/allocator.h \
@@ -2097,11 +2248,16 @@ CMakeFiles/mygame.dir/src/Map.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Map.c
   /usr/include/c++/14.2.1/bits/utility.h \
   /usr/include/c++/14.2.1/bits/vector.tcc \
   /usr/include/c++/14.2.1/bits/version.h \
+  /usr/include/c++/14.2.1/cassert \
   /usr/include/c++/14.2.1/cctype \
   /usr/include/c++/14.2.1/cerrno \
+  /usr/include/c++/14.2.1/cfloat \
+  /usr/include/c++/14.2.1/climits \
   /usr/include/c++/14.2.1/clocale \
   /usr/include/c++/14.2.1/cmath \
   /usr/include/c++/14.2.1/complex \
+  /usr/include/c++/14.2.1/cstddef \
+  /usr/include/c++/14.2.1/cstdint \
   /usr/include/c++/14.2.1/cstdio \
   /usr/include/c++/14.2.1/cstdlib \
   /usr/include/c++/14.2.1/ctime \
@@ -2123,6 +2279,7 @@ CMakeFiles/mygame.dir/src/Map.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Map.c
   /usr/include/c++/14.2.1/iostream \
   /usr/include/c++/14.2.1/istream \
   /usr/include/c++/14.2.1/iterator \
+  /usr/include/c++/14.2.1/limits \
   /usr/include/c++/14.2.1/math.h \
   /usr/include/c++/14.2.1/new \
   /usr/include/c++/14.2.1/ostream \
@@ -2157,7 +2314,9 @@ CMakeFiles/mygame.dir/src/Map.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Map.c
   /usr/include/gnu/stubs-64.h \
   /usr/include/gnu/stubs.h \
   /usr/include/inttypes.h \
+  /usr/include/limits.h \
   /usr/include/linux/errno.h \
+  /usr/include/linux/limits.h \
   /usr/include/locale.h \
   /usr/include/math.h \
   /usr/include/pthread.h \
@@ -2237,6 +2396,7 @@ CMakeFiles/mygame.dir/src/Map.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Map.c
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/ia32intrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/immintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/keylockerintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mm_malloc.h \
@@ -2263,6 +2423,7 @@ CMakeFiles/mygame.dir/src/Map.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Map.c
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tbmintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tmmintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h \
@@ -3548,6 +3709,146 @@ CMakeFiles/mygame.dir/src/TextureManager.cpp.o: /home/matko/Desktop/igrca-za-RPA
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xtestintrin.h
 
 CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile.cpp \
+  _deps/glm-src/glm/detail/type_mat2x3.hpp \
+  _deps/glm-src/glm/detail/type_mat2x3.inl \
+  _deps/glm-src/glm/detail/type_mat2x4.hpp \
+  _deps/glm-src/glm/detail/type_mat2x4.inl \
+  _deps/glm-src/glm/detail/type_mat3x2.hpp \
+  _deps/glm-src/glm/detail/type_mat3x2.inl \
+  _deps/glm-src/glm/detail/type_mat3x3.hpp \
+  _deps/glm-src/glm/detail/type_mat3x3.inl \
+  _deps/glm-src/glm/detail/type_mat3x4.hpp \
+  _deps/glm-src/glm/detail/type_mat3x4.inl \
+  _deps/glm-src/glm/detail/type_mat4x2.hpp \
+  _deps/glm-src/glm/detail/type_mat4x2.inl \
+  _deps/glm-src/glm/detail/type_mat4x3.hpp \
+  _deps/glm-src/glm/detail/type_mat4x3.inl \
+  _deps/glm-src/glm/detail/type_mat4x4.hpp \
+  _deps/glm-src/glm/detail/type_mat4x4.inl \
+  _deps/glm-src/glm/ext/matrix_double2x3.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x4.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x2.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x3.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x4.hpp \
+  _deps/glm-src/glm/ext/matrix_double3x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x2.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x3.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x4.hpp \
+  _deps/glm-src/glm/ext/matrix_double4x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x3.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x4.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x2.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x3.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x4.hpp \
+  _deps/glm-src/glm/ext/matrix_float3x4_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x2.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x3.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x3_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x4.hpp \
+  _deps/glm-src/glm/ext/matrix_float4x4_precision.hpp \
+  _deps/glm-src/glm/common.hpp \
+  _deps/glm-src/glm/detail/func_vector_relational.inl \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/vector_relational.hpp \
+  _deps/glm-src/glm/detail/_fixes.hpp \
+  _deps/glm-src/glm/detail/_vectorize.hpp \
+  _deps/glm-src/glm/detail/compute_common.hpp \
+  _deps/glm-src/glm/detail/func_common.inl \
+  _deps/glm-src/glm/detail/func_exponential.inl \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/type_vec1.hpp \
+  _deps/glm-src/glm/detail/type_vec1.inl \
+  _deps/glm-src/glm/exponential.hpp \
+  _deps/glm-src/glm/detail/func_geometric.inl \
+  _deps/glm-src/glm/geometric.hpp \
+  _deps/glm-src/glm/detail/func_matrix.inl \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/mat2x3.hpp \
+  _deps/glm-src/glm/mat2x4.hpp \
+  _deps/glm-src/glm/mat3x2.hpp \
+  _deps/glm-src/glm/mat3x3.hpp \
+  _deps/glm-src/glm/mat3x4.hpp \
+  _deps/glm-src/glm/mat4x2.hpp \
+  _deps/glm-src/glm/mat4x3.hpp \
+  _deps/glm-src/glm/mat4x4.hpp \
+  _deps/glm-src/glm/matrix.hpp \
+  _deps/glm-src/glm/detail/compute_vector_relational.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/type_mat2x2.hpp \
+  _deps/glm-src/glm/detail/type_mat2x2.inl \
+  _deps/glm-src/glm/detail/type_vec2.hpp \
+  _deps/glm-src/glm/detail/type_vec2.inl \
+  _deps/glm-src/glm/detail/type_vec3.hpp \
+  _deps/glm-src/glm/detail/type_vec3.inl \
+  _deps/glm-src/glm/detail/type_vec4.hpp \
+  _deps/glm-src/glm/detail/type_vec4.inl \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/ext/scalar_int_sized.hpp \
+  _deps/glm-src/glm/ext/scalar_uint_sized.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x2.hpp \
+  _deps/glm-src/glm/ext/matrix_double2x2_precision.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x2.hpp \
+  _deps/glm-src/glm/ext/matrix_float2x2_precision.hpp \
+  _deps/glm-src/glm/ext/vector_bool2.hpp \
+  _deps/glm-src/glm/ext/vector_bool2_precision.hpp \
+  _deps/glm-src/glm/ext/vector_bool3.hpp \
+  _deps/glm-src/glm/ext/vector_bool3_precision.hpp \
+  _deps/glm-src/glm/ext/vector_bool4.hpp \
+  _deps/glm-src/glm/ext/vector_bool4_precision.hpp \
+  _deps/glm-src/glm/ext/vector_double2.hpp \
+  _deps/glm-src/glm/ext/vector_double2_precision.hpp \
+  _deps/glm-src/glm/ext/vector_double3.hpp \
+  _deps/glm-src/glm/ext/vector_double3_precision.hpp \
+  _deps/glm-src/glm/ext/vector_double4.hpp \
+  _deps/glm-src/glm/ext/vector_double4_precision.hpp \
+  _deps/glm-src/glm/ext/vector_float2.hpp \
+  _deps/glm-src/glm/ext/vector_float2_precision.hpp \
+  _deps/glm-src/glm/ext/vector_float3.hpp \
+  _deps/glm-src/glm/ext/vector_float3_precision.hpp \
+  _deps/glm-src/glm/ext/vector_float4.hpp \
+  _deps/glm-src/glm/ext/vector_float4_precision.hpp \
+  _deps/glm-src/glm/ext/vector_int2.hpp \
+  _deps/glm-src/glm/ext/vector_int2_sized.hpp \
+  _deps/glm-src/glm/ext/vector_int3.hpp \
+  _deps/glm-src/glm/ext/vector_int3_sized.hpp \
+  _deps/glm-src/glm/ext/vector_int4.hpp \
+  _deps/glm-src/glm/ext/vector_int4_sized.hpp \
+  _deps/glm-src/glm/ext/vector_uint2.hpp \
+  _deps/glm-src/glm/ext/vector_uint2_sized.hpp \
+  _deps/glm-src/glm/ext/vector_uint3.hpp \
+  _deps/glm-src/glm/ext/vector_uint3_sized.hpp \
+  _deps/glm-src/glm/ext/vector_uint4.hpp \
+  _deps/glm-src/glm/ext/vector_uint4_sized.hpp \
+  _deps/glm-src/glm/simd/platform.h \
+  _deps/glm-src/glm/detail/_fixes.hpp \
+  _deps/glm-src/glm/detail/func_integer.inl \
+  _deps/glm-src/glm/detail/func_packing.inl \
+  _deps/glm-src/glm/detail/func_trigonometric.inl \
+  _deps/glm-src/glm/detail/qualifier.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/type_half.hpp \
+  _deps/glm-src/glm/detail/type_half.inl \
+  _deps/glm-src/glm/fwd.hpp \
+  _deps/glm-src/glm/glm.hpp \
+  _deps/glm-src/glm/integer.hpp \
+  _deps/glm-src/glm/mat2x2.hpp \
+  _deps/glm-src/glm/packing.hpp \
+  _deps/glm-src/glm/trigonometric.hpp \
+  _deps/glm-src/glm/vec2.hpp \
+  _deps/glm-src/glm/vec3.hpp \
+  _deps/glm-src/glm/vec4.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/Game.h \
   /home/matko/Desktop/igrca-za-RPAv/src/GameObject.h \
   /home/matko/Desktop/igrca-za-RPAv/src/Tile.hpp \
@@ -3607,6 +3908,7 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/asm/errno.h \
+  /usr/include/assert.h \
   /usr/include/bits/atomic_wide_counter.h \
   /usr/include/bits/byteswap.h \
   /usr/include/bits/cpu-set.h \
@@ -3621,12 +3923,15 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/include/bits/iscanonical.h \
   /usr/include/bits/libc-header-start.h \
   /usr/include/bits/libm-simd-decl-stubs.h \
+  /usr/include/bits/local_lim.h \
   /usr/include/bits/locale.h \
   /usr/include/bits/long-double.h \
   /usr/include/bits/math-vector.h \
   /usr/include/bits/mathcalls-helper-functions.h \
   /usr/include/bits/mathcalls-narrow.h \
   /usr/include/bits/mathcalls.h \
+  /usr/include/bits/posix1_lim.h \
+  /usr/include/bits/posix2_lim.h \
   /usr/include/bits/pthread_stack_min-dynamic.h \
   /usr/include/bits/pthreadtypes-arch.h \
   /usr/include/bits/pthreadtypes.h \
@@ -3673,11 +3978,13 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/include/bits/types/wint_t.h \
   /usr/include/bits/typesizes.h \
   /usr/include/bits/uintn-identity.h \
+  /usr/include/bits/uio_lim.h \
   /usr/include/bits/waitflags.h \
   /usr/include/bits/waitstatus.h \
   /usr/include/bits/wchar.h \
   /usr/include/bits/wctype-wchar.h \
   /usr/include/bits/wordsize.h \
+  /usr/include/bits/xopen_lim.h \
   /usr/include/c++/14.2.1/backward/binders.h \
   /usr/include/c++/14.2.1/bits/alloc_traits.h \
   /usr/include/c++/14.2.1/bits/allocator.h \
@@ -3735,11 +4042,16 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/include/c++/14.2.1/bits/stringfwd.h \
   /usr/include/c++/14.2.1/bits/utility.h \
   /usr/include/c++/14.2.1/bits/version.h \
+  /usr/include/c++/14.2.1/cassert \
   /usr/include/c++/14.2.1/cctype \
   /usr/include/c++/14.2.1/cerrno \
+  /usr/include/c++/14.2.1/cfloat \
+  /usr/include/c++/14.2.1/climits \
   /usr/include/c++/14.2.1/clocale \
   /usr/include/c++/14.2.1/cmath \
   /usr/include/c++/14.2.1/complex \
+  /usr/include/c++/14.2.1/cstddef \
+  /usr/include/c++/14.2.1/cstdint \
   /usr/include/c++/14.2.1/cstdio \
   /usr/include/c++/14.2.1/cstdlib \
   /usr/include/c++/14.2.1/cwchar \
@@ -3758,6 +4070,7 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/include/c++/14.2.1/iosfwd \
   /usr/include/c++/14.2.1/iostream \
   /usr/include/c++/14.2.1/istream \
+  /usr/include/c++/14.2.1/limits \
   /usr/include/c++/14.2.1/math.h \
   /usr/include/c++/14.2.1/new \
   /usr/include/c++/14.2.1/ostream \
@@ -3789,7 +4102,9 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/include/gnu/stubs-64.h \
   /usr/include/gnu/stubs.h \
   /usr/include/inttypes.h \
+  /usr/include/limits.h \
   /usr/include/linux/errno.h \
+  /usr/include/linux/limits.h \
   /usr/include/locale.h \
   /usr/include/math.h \
   /usr/include/pthread.h \
@@ -3869,6 +4184,7 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/ia32intrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/immintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/keylockerintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mm_malloc.h \
@@ -3895,6 +4211,7 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tbmintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tmmintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h \
@@ -4316,7 +4633,18 @@ CMakeFiles/mygame.dir/src/player.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/pl
   _deps/glm-src/glm/ext/matrix_float4x3_precision.hpp \
   _deps/glm-src/glm/ext/matrix_float4x4.hpp \
   _deps/glm-src/glm/ext/matrix_float4x4_precision.hpp \
+  _deps/glm-src/glm/common.hpp \
+  _deps/glm-src/glm/detail/func_vector_relational.inl \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/vector_relational.hpp \
+  _deps/glm-src/glm/detail/_fixes.hpp \
+  _deps/glm-src/glm/detail/_vectorize.hpp \
+  _deps/glm-src/glm/detail/compute_common.hpp \
+  _deps/glm-src/glm/detail/func_common.inl \
   _deps/glm-src/glm/detail/func_exponential.inl \
+  _deps/glm-src/glm/detail/setup.hpp \
+  _deps/glm-src/glm/detail/type_vec1.hpp \
+  _deps/glm-src/glm/detail/type_vec1.inl \
   _deps/glm-src/glm/exponential.hpp \
   _deps/glm-src/glm/detail/func_geometric.inl \
   _deps/glm-src/glm/geometric.hpp \
@@ -4331,9 +4659,17 @@ CMakeFiles/mygame.dir/src/player.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/pl
   _deps/glm-src/glm/mat4x3.hpp \
   _deps/glm-src/glm/mat4x4.hpp \
   _deps/glm-src/glm/matrix.hpp \
+  _deps/glm-src/glm/detail/compute_vector_relational.hpp \
+  _deps/glm-src/glm/detail/setup.hpp \
   _deps/glm-src/glm/detail/setup.hpp \
   _deps/glm-src/glm/detail/type_mat2x2.hpp \
   _deps/glm-src/glm/detail/type_mat2x2.inl \
+  _deps/glm-src/glm/detail/type_vec2.hpp \
+  _deps/glm-src/glm/detail/type_vec2.inl \
+  _deps/glm-src/glm/detail/type_vec3.hpp \
+  _deps/glm-src/glm/detail/type_vec3.inl \
+  _deps/glm-src/glm/detail/type_vec4.hpp \
+  _deps/glm-src/glm/detail/type_vec4.inl \
   _deps/glm-src/glm/detail/setup.hpp \
   _deps/glm-src/glm/ext/scalar_int_sized.hpp \
   _deps/glm-src/glm/ext/scalar_uint_sized.hpp \
@@ -4371,17 +4707,8 @@ CMakeFiles/mygame.dir/src/player.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/pl
   _deps/glm-src/glm/ext/vector_uint3_sized.hpp \
   _deps/glm-src/glm/ext/vector_uint4.hpp \
   _deps/glm-src/glm/ext/vector_uint4_sized.hpp \
-  _deps/glm-src/glm/common.hpp \
-  _deps/glm-src/glm/detail/func_vector_relational.inl \
-  _deps/glm-src/glm/detail/setup.hpp \
   _deps/glm-src/glm/simd/platform.h \
-  _deps/glm-src/glm/vector_relational.hpp \
-  _deps/glm-src/glm/detail/compute_vector_relational.hpp \
-  _deps/glm-src/glm/detail/setup.hpp \
   _deps/glm-src/glm/detail/_fixes.hpp \
-  _deps/glm-src/glm/detail/_vectorize.hpp \
-  _deps/glm-src/glm/detail/compute_common.hpp \
-  _deps/glm-src/glm/detail/func_common.inl \
   _deps/glm-src/glm/detail/func_integer.inl \
   _deps/glm-src/glm/detail/func_packing.inl \
   _deps/glm-src/glm/detail/func_trigonometric.inl \
@@ -4389,14 +4716,6 @@ CMakeFiles/mygame.dir/src/player.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/pl
   _deps/glm-src/glm/detail/setup.hpp \
   _deps/glm-src/glm/detail/type_half.hpp \
   _deps/glm-src/glm/detail/type_half.inl \
-  _deps/glm-src/glm/detail/type_vec1.hpp \
-  _deps/glm-src/glm/detail/type_vec1.inl \
-  _deps/glm-src/glm/detail/type_vec2.hpp \
-  _deps/glm-src/glm/detail/type_vec2.inl \
-  _deps/glm-src/glm/detail/type_vec3.hpp \
-  _deps/glm-src/glm/detail/type_vec3.inl \
-  _deps/glm-src/glm/detail/type_vec4.hpp \
-  _deps/glm-src/glm/detail/type_vec4.inl \
   _deps/glm-src/glm/fwd.hpp \
   _deps/glm-src/glm/glm.hpp \
   _deps/glm-src/glm/integer.hpp \
@@ -5321,17 +5640,31 @@ _deps/glm-src/glm/ext/vector_int2_sized.hpp:
 
 /usr/include/bits/types/__sigval_t.h:
 
-/usr/include/bits/sigstack.h:
+_deps/glm-src/glm/ext/vector_bool4.hpp:
 
-_deps/glm-src/glm/integer.hpp:
+/usr/include/bits/flt-eval-method.h:
 
-/usr/include/bits/siginfo-consts-arch.h:
+_deps/glm-src/glm/vec3.hpp:
 
-/usr/include/SDL2/SDL_image.h:
+/usr/include/c++/14.2.1/backward/binders.h:
 
-/usr/include/bits/getopt_core.h:
+/usr/include/c++/14.2.1/limits:
 
-_deps/glm-src/glm/mat2x3.hpp:
+/usr/include/unistd.h:
+
+/usr/include/bits/sigthread.h:
+
+/usr/include/asm-generic/errno-base.h:
+
+/home/matko/Desktop/igrca-za-RPAv/src/Scientist.hpp:
+
+/usr/include/bits/types/struct_sched_param.h:
+
+_deps/glm-src/glm/detail/type_mat4x4.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/float.h:
+
+_deps/glm-src/glm/ext/matrix_double2x2_precision.hpp:
 
 _deps/glm-src/glm/detail/setup.hpp:
 
@@ -5363,20 +5696,6 @@ _deps/glm-src/glm/ext/matrix_float3x2_precision.hpp:
 
 /usr/include/SDL2/SDL_sensor.h:
 
-/usr/include/bits/sigthread.h:
-
-/usr/include/asm-generic/errno-base.h:
-
-/home/matko/Desktop/igrca-za-RPAv/src/Scientist.hpp:
-
-/usr/include/bits/types/struct_sched_param.h:
-
-_deps/glm-src/glm/detail/type_mat4x4.hpp:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/float.h:
-
-_deps/glm-src/glm/ext/matrix_double2x2_precision.hpp:
-
 _deps/glm-src/glm/ext/matrix_double4x4.hpp:
 
 _deps/glm-src/glm/ext/matrix_float2x3.hpp:
@@ -5393,15 +5712,9 @@ _deps/glm-src/glm/ext/vector_bool4_precision.hpp:
 
 /usr/include/bits/mathcalls.h:
 
-_deps/glm-src/glm/mat4x3.hpp:
-
 /usr/include/c++/14.2.1/bits/exception_defines.h:
 
 /usr/include/c++/14.2.1/bits/stl_tree.h:
-
-_deps/glm-src/glm/exponential.hpp:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mmintrin.h:
 
 /home/matko/Desktop/igrca-za-RPAv/src/player.hpp:
 
@@ -5429,6 +5742,20 @@ _deps/glm-src/glm/fwd.hpp:
 
 /usr/include/c++/14.2.1/bits/cxxabi_forced.h:
 
+/usr/include/SDL2/SDL_messagebox.h:
+
+_deps/glm-src/glm/detail/func_common.inl:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/uintrintrin.h:
+
+/usr/include/bits/siginfo-arch.h:
+
+/usr/include/c++/14.2.1/bits/localefwd.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512fintrin.h:
+
+_deps/glm-src/glm/ext/matrix_double3x4.hpp:
+
 _deps/glm-src/glm/packing.hpp:
 
 /usr/include/gnu/stubs-64.h:
@@ -5441,29 +5768,31 @@ _deps/glm-src/glm/ext/matrix_double3x4_precision.hpp:
 
 _deps/glm-src/glm/mat4x4.hpp:
 
+/usr/lib/libsharpyuv.so.0:
+
+/usr/include/SDL2/SDL_video.h:
+
+/usr/include/SDL2/SDL_rect.h:
+
+_deps/glm-src/glm/detail/func_vector_relational.inl:
+
+/home/matko/Desktop/igrca-za-RPAv/src/Collision.cpp:
+
+/usr/include/c++/14.2.1/ext/numeric_traits.h:
+
 _deps/glm-src/glm/ext/scalar_int_sized.hpp:
 
 _deps/glm-src/glm/ext/matrix_double2x4.hpp:
 
-_deps/glm-src/glm/ext/vector_int3.hpp:
-
-/usr/include/bits/long-double.h:
-
-/home/matko/Desktop/igrca-za-RPAv/src/clock.hpp:
-
-_deps/glm-src/glm/detail/type_vec4.inl:
-
-/usr/include/c++/14.2.1/type_traits:
-
-_deps/glm-src/glm/ext/matrix_double4x2_precision.hpp:
-
 /usr/include/bits/pthread_stack_min-dynamic.h:
+
+_deps/glm-src/glm/detail/type_vec1.hpp:
+
+_deps/glm-src/glm/detail/type_mat2x2.inl:
 
 /usr/include/SDL2/SDL_gesture.h:
 
 /home/matko/Desktop/igrca-za-RPAv/src/Bullet.cpp:
-
-_deps/glm-src/glm/ext/vector_bool4.hpp:
 
 _deps/glm-src/glm/detail/type_vec3.hpp:
 
@@ -5481,6 +5810,24 @@ _deps/glm-src/glm/mat2x2.hpp:
 
 /usr/include/bits/mathcalls-helper-functions.h:
 
+/usr/include/c++/14.2.1/type_traits:
+
+_deps/glm-src/glm/ext/matrix_double4x2_precision.hpp:
+
+_deps/glm-src/glm/detail/type_vec4.inl:
+
+_deps/glm-src/glm/detail/_vectorize.hpp:
+
+/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/gthr-default.h:
+
+_deps/glm-src/glm/mat4x2.hpp:
+
+/usr/lib32/libbrotlidec.so.1:
+
+/usr/include/stdlib.h:
+
+_deps/glm-src/glm/detail/type_mat3x3.hpp:
+
 _deps/glm-src/glm/detail/func_integer.inl:
 
 _deps/glm-src/glm/detail/qualifier.hpp:
@@ -5489,11 +5836,55 @@ _deps/glm-src/glm/detail/func_matrix.inl:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/fxsrintrin.h:
 
-/usr/lib/libsharpyuv.so.0:
-
-/usr/include/SDL2/SDL_video.h:
-
 _deps/glm-src/glm/ext/matrix_float4x2.hpp:
+
+_deps/glm-src/glm/detail/type_mat4x4.inl:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sgxintrin.h:
+
+/usr/include/c++/14.2.1/bits/locale_facets_nonio.tcc:
+
+_deps/glm-src/glm/detail/type_mat4x2.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/shaintrin.h:
+
+/usr/include/c++/14.2.1/system_error:
+
+/usr/include/bits/select.h:
+
+/home/matko/Desktop/igrca-za-RPAv/src/TextureManager.h:
+
+/usr/include/c++/14.2.1/bits/algorithmfwd.h:
+
+_deps/glm-src/glm/ext/matrix_float3x4_precision.hpp:
+
+_deps/glm-src/glm/detail/type_mat3x4.hpp:
+
+_deps/glm-src/glm/simd/platform.h:
+
+_deps/glm-src/glm/common.hpp:
+
+_deps/glm-src/glm/ext/matrix_float2x4_precision.hpp:
+
+_deps/glm-src/glm/detail/type_vec1.inl:
+
+/usr/include/bits/floatn.h:
+
+_deps/glm-src/glm/ext/vector_int2.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtbeginS.o:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxtileintrin.h:
+
+/home/matko/Desktop/igrca-za-RPAv/src/Bullet.hpp:
+
+_deps/glm-src/glm/mat3x4.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mmintrin.h:
+
+_deps/glm-src/glm/exponential.hpp:
+
+_deps/glm-src/glm/mat4x3.hpp:
 
 /usr/include/bits/sched.h:
 
@@ -5511,51 +5902,35 @@ CMakeFiles/mygame.dir/src/Map.cpp.o:
 
 /usr/include/bits/types/timer_t.h:
 
-_deps/glm-src/glm/detail/type_mat4x4.inl:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sgxintrin.h:
-
-/usr/include/c++/14.2.1/bits/locale_facets_nonio.tcc:
-
-_deps/glm-src/glm/detail/type_mat4x2.hpp:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/shaintrin.h:
-
-/usr/include/c++/14.2.1/system_error:
-
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tbmintrin.h:
 
 /usr/include/SDL2/SDL_hidapi.h:
 
 /usr/include/bits/types/struct_timespec.h:
 
-/usr/include/bits/select.h:
+/usr/include/SDL2/SDL_main.h:
 
-/home/matko/Desktop/igrca-za-RPAv/src/TextureManager.h:
+/usr/include/gnu/stubs.h:
 
-/usr/include/c++/14.2.1/bits/algorithmfwd.h:
+_deps/glm-src/glm/ext/vector_int4_sized.hpp:
 
-_deps/glm-src/glm/ext/matrix_float3x4_precision.hpp:
+/usr/include/bits/long-double.h:
 
-_deps/glm-src/glm/detail/type_mat3x4.hpp:
+/home/matko/Desktop/igrca-za-RPAv/src/clock.hpp:
 
-_deps/glm-src/glm/simd/platform.h:
+_deps/glm-src/glm/ext/vector_int3.hpp:
 
-/usr/include/bits/floatn.h:
+/usr/include/bits/sigstack.h:
 
-_deps/glm-src/glm/ext/vector_int2.hpp:
+_deps/glm-src/glm/integer.hpp:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtbeginS.o:
+/usr/include/bits/siginfo-consts-arch.h:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxtileintrin.h:
+/usr/include/SDL2/SDL_image.h:
 
-/home/matko/Desktop/igrca-za-RPAv/src/Bullet.hpp:
+/usr/include/bits/getopt_core.h:
 
-_deps/glm-src/glm/mat3x4.hpp:
-
-_deps/glm-src/glm/ext/matrix_float2x4_precision.hpp:
-
-_deps/glm-src/glm/detail/type_vec1.inl:
+_deps/glm-src/glm/mat2x3.hpp:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h:
 
@@ -5573,34 +5948,6 @@ _deps/glm-src/glm/detail/type_mat4x3.hpp:
 
 _deps/glm-src/glm/ext/vector_double3_precision.hpp:
 
-_deps/glm-src/glm/vec3.hpp:
-
-/usr/include/c++/14.2.1/backward/binders.h:
-
-/usr/include/c++/14.2.1/limits:
-
-/usr/include/unistd.h:
-
-/usr/include/SDL2/SDL_messagebox.h:
-
-_deps/glm-src/glm/ext/matrix_double3x4.hpp:
-
-_deps/glm-src/glm/detail/func_common.inl:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/uintrintrin.h:
-
-/usr/include/bits/siginfo-arch.h:
-
-/usr/include/c++/14.2.1/bits/localefwd.h:
-
-/usr/include/SDL2/SDL_main.h:
-
-_deps/glm-src/glm/ext/vector_int4_sized.hpp:
-
-/usr/include/gnu/stubs.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512fintrin.h:
-
 /usr/lib/libc.so.6:
 
 /usr/include/c++/14.2.1/experimental/bits/fs_dir.h:
@@ -5615,39 +5962,7 @@ _deps/glm-src/glm/ext/vector_int4_sized.hpp:
 
 _deps/glm-src/glm/detail/type_mat2x2.hpp:
 
-_deps/glm-src/glm/ext/matrix_double3x3_precision.hpp:
-
-/usr/include/c++/14.2.1/vector:
-
-_deps/glm-src/glm/ext/matrix_double2x2.hpp:
-
-/usr/include/SDL2/SDL_loadso.h:
-
-_deps/glm-src/glm/ext/matrix_double4x2.hpp:
-
-/usr/include/c++/14.2.1/bits/cpp_type_traits.h:
-
-/usr/include/SDL2/SDL_guid.h:
-
-/usr/include/c++/14.2.1/bits/stl_pair.h:
-
-_deps/glm-src/glm/mat3x2.hpp:
-
-_deps/glm-src/glm/ext/vector_bool2_precision.hpp:
-
-/usr/include/bits/types/FILE.h:
-
-_deps/glm-src/glm/ext/vector_double3.hpp:
-
-/usr/include/c++/14.2.1/cctype:
-
-/usr/include/SDL2/SDL_surface.h:
-
-/usr/include/bits/cpu-set.h:
-
-/usr/include/c++/14.2.1/bits/locale_classes.h:
-
-_deps/glm-src/glm/ext/vector_bool2.hpp:
+/usr/include/SDL2/SDL_config.h:
 
 /usr/include/c++/14.2.1/bits/std_function.h:
 
@@ -5667,19 +5982,73 @@ _deps/glm-src/glm/ext/vector_double2_precision.hpp:
 
 /usr/include/linux/limits.h:
 
-/usr/include/SDL2/SDL_config.h:
+/usr/include/bits/types/FILE.h:
+
+_deps/glm-src/glm/ext/vector_bool2_precision.hpp:
+
+_deps/glm-src/glm/ext/vector_double3.hpp:
+
+/usr/include/c++/14.2.1/cctype:
+
+/usr/lib/libmvec.so.1:
+
+/usr/include/bits/fp-logb.h:
+
+_deps/glm-src/glm/detail/type_vec3.inl:
+
+_deps/glm-src/glm/ext/vector_bool3.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bwintrin.h:
+
+_deps/glm-src/glm/detail/compute_common.hpp:
+
+_deps/glm-src/glm/detail/func_packing.inl:
+
+/usr/include/SDL2/SDL_thread.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512ifmaintrin.h:
+
+_deps/glm-src/glm/ext/matrix_double3x3_precision.hpp:
+
+/usr/include/c++/14.2.1/vector:
+
+_deps/glm-src/glm/ext/matrix_double2x2.hpp:
+
+/usr/include/SDL2/SDL_loadso.h:
+
+_deps/glm-src/glm/ext/matrix_double4x2.hpp:
+
+/usr/include/c++/14.2.1/bits/cpp_type_traits.h:
+
+/usr/include/SDL2/SDL_guid.h:
+
+/usr/include/c++/14.2.1/bits/stl_pair.h:
+
+_deps/glm-src/glm/mat3x2.hpp:
+
+/usr/include/SDL2/SDL_surface.h:
+
+/usr/include/bits/cpu-set.h:
+
+/usr/include/c++/14.2.1/bits/locale_classes.h:
+
+_deps/glm-src/glm/ext/vector_bool2.hpp:
+
+_deps/glm-src/glm/ext/vector_float2.hpp:
+
+/usr/include/bits/types/sigset_t.h:
+
+_deps/glm-src/glm/vec4.hpp:
+
+_deps/glm-src/glm/ext/vector_uint3_sized.hpp:
 
 _deps/glm-src/glm/ext/vector_bool3_precision.hpp:
 
 _deps/glm-src/glm/ext/vector_float2_precision.hpp:
 
-/usr/include/SDL2/SDL_rect.h:
+/usr/include/asm-generic/errno.h:
 
-_deps/glm-src/glm/detail/func_vector_relational.inl:
-
-/home/matko/Desktop/igrca-za-RPAv/src/Collision.cpp:
-
-/usr/include/c++/14.2.1/ext/numeric_traits.h:
+/usr/include/sys/single_threaded.h:
 
 _deps/glm-src/glm/ext/vector_float4_precision.hpp:
 
@@ -5699,65 +6068,15 @@ _deps/glm-src/glm/detail/type_half.hpp:
 
 _deps/glm-src/glm/ext/vector_uint3.hpp:
 
-_deps/glm-src/glm/vec4.hpp:
-
-_deps/glm-src/glm/ext/vector_uint3_sized.hpp:
-
 /home/matko/Desktop/igrca-za-RPAv/src/Map.cpp:
 
 _deps/glm-src/glm/ext/matrix_float2x3_precision.hpp:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/bmi2intrin.h:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/rdseedintrin.h:
-
 /usr/include/bits/typesizes.h:
 
-_deps/glm-src/glm/ext/vector_float2.hpp:
-
-/usr/include/bits/types/sigset_t.h:
-
-_deps/glm-src/glm/common.hpp:
-
-/usr/include/bits/flt-eval-method.h:
-
-_deps/glm-src/glm/detail/type_mat2x2.inl:
-
-_deps/glm-src/glm/detail/type_vec1.hpp:
-
-_deps/glm-src/glm/mat4x2.hpp:
-
-/usr/lib32/libbrotlidec.so.1:
-
-/usr/include/stdlib.h:
-
-_deps/glm-src/glm/detail/type_mat3x3.hpp:
-
-_deps/glm-src/glm/detail/_vectorize.hpp:
-
-/usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/gthr-default.h:
-
-_deps/glm-src/glm/ext/vector_bool3.hpp:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bwintrin.h:
-
-_deps/glm-src/glm/detail/compute_common.hpp:
-
-_deps/glm-src/glm/detail/func_packing.inl:
-
-/usr/include/SDL2/SDL_thread.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512ifmaintrin.h:
-
-/usr/lib/libmvec.so.1:
-
-/usr/include/bits/fp-logb.h:
-
-/usr/include/sys/single_threaded.h:
-
-/usr/include/asm-generic/errno.h:
-
-_deps/glm-src/glm/detail/type_vec3.inl:
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/rdseedintrin.h:
 
 /usr/include/SDL2/SDL_clipboard.h:
 
@@ -6199,9 +6518,9 @@ _deps/glm-src/glm/geometric.hpp:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/serializeintrin.h:
 
-/usr/include/SDL2/SDL_haptic.h:
-
 _deps/glm-src/glm/detail/type_vec2.inl:
+
+/usr/include/SDL2/SDL_haptic.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sm4intrin.h:
 

@@ -53,14 +53,7 @@ class Player : public GameObject {
     }
     }
     void Render();
-     enum CollisionSide {
-        NONE,
-        LEFT,
-        RIGHT,
-        TOP,
-        BOTTOM
-    };
-   CollisionSide BorderCollisionDetect(SDL_Rect Border);
+
 
 
 };

@@ -1,9 +1,10 @@
 #include "Game.h"
-#include "Collision.hpp"
+
 #include <algorithm>
 #include <cfenv>
 #include <cmath>
 #include <cstdlib>
+#include <glm/glm.hpp>
 #include <ios>
 #include <iostream>
 #include <set>
@@ -11,21 +12,11 @@
 #include <vector>
 
 #include "Bullet.hpp"
+#include "Collision.hpp"
 #include "GameObject.h"
 #include "Map.hpp"
 #include "Mouse.hpp"
-#include "SDL_cpuinfo.h"
-#include "SDL_hints.h"
-#include "SDL_mutex.h"
-#include "SDL_pixels.h"
-#include "SDL_platform.h"
 #include "SDL_render.h"
-#include "SDL_stdinc.h"
-#include "SDL_timer.h"
-#include "TextureManager.h"
-#include "glm/detail/type_vec4.hpp"
-#include "glm/ext/vector_float2.hpp"
-#include "glm/geometric.hpp"
 #include "player.hpp"
 std::set<Bullet*> bullets;
 Player* player;
@@ -60,7 +51,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 	}
 	srand(time(NULL));
 	map = new Map("assets/textures/DungenTileset.png");
-	player =new Player("assets/textures/Test2.png", 56*32, 25*32, 48, 48);
+	player = new Player("assets/textures/Test3.png", 56 * 32, 25 * 32, 48, 48);
 	neki = new GameObject("assets/textures/chest.jpg", 300, 300, 48, 48);
 	for (int i = 0; i < 1; i++) {
 		scientists.insert(new Scientist("assets/textures/scientist.png",
@@ -88,33 +79,16 @@ glm::vec2 FinalMove;
 int TimeSinceLastBullet = 1e9;
 
 void Game::update(Clock* ura) {
+	// playe movement
 	player->Update(ura);
-    for(SDL_Rect Border : map->Borders){
-        Player::CollisionSide side = player->BorderCollisionDetect(Border);
-        if(!player->Collided){}
-        switch(side){
-            case Player::LEFT:
-                player->delta.x = 0;
-                std::cout << "LEFT" << std::endl;
-                break;
-            case Player::RIGHT:
-                player->delta.x = 0;
-                std::cout << "RIGHT" << std::endl;
-                break;
-            case Player::TOP:
-                player->delta.y = 0;
-                std::cout << "TOP" << std::endl;
-                break;
-            case Player::BOTTOM:
-                player->delta.y = 0;
-                std::cout << "BOTTOM" << std::endl;
-                break;
-            default:
-                break;
-        }
-    }
-   //collision detect for player and tiles:
-
+	// Border collision(player,scientist)
+	for (SDL_Rect Border : map->Borders) {
+		player->CheckCollisionSide(Border);
+		for (Scientist* scientist : scientists) {
+			scientist->CheckCollisionSide(Border);
+		}
+	}
+	// kamera
 	Camera.x = player->posx - 1920 / 2;
 	Camera.y = player->posy - 1080 / 2;
 	if (Camera.x < 0) {
@@ -132,11 +106,10 @@ void Game::update(Clock* ura) {
 		Camera.y = 1292;
 	}
 	neki->Update();
-    neki->isWall = true;
-	//std::cout << Camera.x << " " << Camera.y << std::endl;
-		//std::cout << player->posx << " " << player->posy << std::endl;
-        player->CollisionDetect(neki);
+	player->CheckCollisionSide(neki->dest);
+	// Scientist movement
 	for (Scientist* scientist : scientists) scientist->Update(ura, player);
+	// bullet init
 	if (mouse.click && TimeSinceLastBullet > 750) {
 		if (TimeSinceLastBullet > 750) TimeSinceLastBullet = 0;
 		Bullet* bullet = new Bullet("assets/textures/bullet.png",
@@ -151,18 +124,19 @@ void Game::update(Clock* ura) {
 	}
 	TimeSinceLastBullet += ura->delta;
 
+	// bullet movement
 	for (Bullet* bullet : bullets) {
 		if (bullet != NULL && bullet->Active) {
 			bullet->Update(ura);
 		}
-
 	}
+	// bullet collision
 	std::vector<Bullet*> toDelete;
 	std::set<Scientist*> toDeleteScientist;
 
 	for (Bullet* bullet : bullets) {
 		for (Scientist* scientist : scientists) {
-			if (bullet->CollisionDetect(scientist)) {
+			if (Collision::AABB(bullet->dest, scientist->dest)) {
 				toDeleteScientist.insert(scientist);
 				toDelete.push_back(bullet);
 			}
@@ -181,12 +155,15 @@ void Game::update(Clock* ura) {
 		delete scientist;
 	}
 	for (Scientist* scientist : scientists) {
-		if (scientist->CollisionDetect(player)) {
+		SDL_Rect tempPlayer{(int)player->posx, (int)player->posy,
+							player->dest.w, player->dest.h};
+		SDL_Rect tempScientist{(int)scientist->posx, (int)scientist->posy,
+							   scientist->dest.w, scientist->dest.h};
+		if (Collision::AABB(tempPlayer, tempScientist)) {
 			isRunning = false;
 		}
 	}
 }
-
 void Game::render() {
 	SDL_RenderClear(renderer);
 	map->Render();

@@ -26,6 +26,7 @@
 #include "TextureManager.h"
 #include "glm/geometric.hpp"
 #include "player.hpp"
+#include "Collision.hpp"
 GameObject::GameObject(const char* textureSheet, int x, int y, int h, int w) {
 	objTexture = TextureManager::LoadTexture(textureSheet);
 	SDL_QueryTexture(objTexture, NULL, NULL, &dest.w, &dest.h);
@@ -62,7 +63,10 @@ void GameObject::Update() {
 	dest.x = posx - Game::Camera.x;
 	dest.y = posy - Game::Camera.y;
 }
+/*
 bool GameObject::CollisionDetect(GameObject* other) {
+
+    
 	if (posy + dest.h > other->posy && !(oldY + dest.h > other->posy))
 		if (!(posx + dest.w < other->posx ||
 			  posx > other->posx + other->dest.w)) {
@@ -93,6 +97,84 @@ bool GameObject::CollisionDetect(GameObject* other) {
 			return true;
 		}
 	return false;
+    
+}
+*/
+GameObject::CollisionSide GameObject::CollisionDetect(SDL_Rect Border) {
+    SDL_Rect ObjRect = {(int)posx, (int)posy, dest.w, dest.h};
+    
+    if (!Collision::AABB(ObjRect, Border)) {
+        return  NONE;
+    }
+
+    glm::vec2 pos = delta;
+    pos.x += posx;
+    pos.y += posy;
+
+    glm::vec2 oldPos(oldX, oldY);
+
+    float overlapX = std::min((int)pos.x + dest.w, Border.x + Border.w) - 
+                     std::max((int)pos.x, Border.x);
+    float overlapY = std::min((int)pos.y + dest.h, Border.y + Border.h) - 
+                     std::max((int)pos.y, Border.y);
+
+    if (overlapX <= 0 || overlapY <= 0){
+        return NONE;
+    }
+
+    const float OFFSET = 0.1f;
+    Collided = true;
+
+    if (overlapX < overlapY) { 
+        // Horizontal collision (LEFT or RIGHT)
+        if (oldPos.x < Border.x) {
+         posx = Border.x - dest.w - OFFSET; // Left collision
+            delta.x = 0; // Stop horizontal movement
+            return LEFT;
+        } else {
+            posx = Border.x + Border.w + OFFSET; // Right collision
+            delta.x = 0; // Stop horizontal movement
+            return RIGHT;
+        }
+    } else { 
+        // Vertical collision (TOP or BOTTOM)
+        if (oldPos.y < Border.y) {
+            posy = Border.y - dest.h - OFFSET; // Top collision
+            delta.y = 0; // Stop vertical movement
+            return TOP;
+        } else {
+            posy = Border.y + Border.h + OFFSET; // Bottom collision
+            delta.y = 0; // Stop vertical movement
+            return BOTTOM;
+        }
+    }
+}
+void GameObject::CheckCollisionSide(SDL_Rect Border){
+   const float OFFSET = 0.1f;
+    CollisionSide side = this->CollisionDetect(Border);
+    switch(side){
+        case LEFT:
+         posx = Border.x - dest.w - OFFSET; // Left collision
+            delta.x = 0; // Stop horizontal movementcal movement
+            break;
+        case RIGHT:
+            posx = Border.x + Border.w + OFFSET; // Right collision
+            delta.x = 0; // Stop horizontal movement
+            break;
+        case TOP:
+            posy = Border.y - dest.h - OFFSET; // Top collision
+            delta.y = 0; // Stop vertical movement
+            posy = oldY;
+            break;
+        case BOTTOM:
+            posy = Border.y + Border.h + OFFSET; // Bottom collision
+            delta.y = 0; // Stop vertical movement
+            break;
+        default:
+            Collided = false;
+            break;
+    }
+
 }
 void GameObject::Render() {
 	if (!isFlipped)

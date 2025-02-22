@@ -5,8 +5,12 @@
 #include <ios>
 #include <set>
 #include "Game.h"
+#include "SDL_audio.h"
+#include "SDL_mutex.h"
 #include "SDL_rect.h"
 #include "SDL_render.h"
+#include <glm/glm.hpp>
+#include "glm/detail/qualifier.hpp"
 #include <set>
 class GameObject {
    public:
@@ -19,9 +23,9 @@ class GameObject {
         SDL_DestroyTexture(objTexture);
     }
     SDL_Rect right,left,up,down;
+    glm::vec2 delta{0,0};
 	void Update();
 	void Render();
-    bool isWall= false;
 	SDL_Texture* objTexture;
 	SDL_Rect srcRect, dest;
 	bool moving_left = false, moving_right = false, moving_up = false,
@@ -32,8 +36,16 @@ class GameObject {
 	int speed = 100;
     bool Collided = false;
 	float posx,oldX;
-	float posy,oldY;
-    bool CollisionDetect(GameObject* other);
+	float posy,oldY; 
+    enum CollisionSide {
+        NONE,
+        LEFT,
+        RIGHT,
+        TOP,
+        BOTTOM
+    };
+    CollisionSide CollisionDetect(SDL_Rect Border);
+    void CheckCollisionSide(SDL_Rect );
 
 
 
