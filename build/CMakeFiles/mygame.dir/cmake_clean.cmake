@@ -2,6 +2,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/mygame.dir/link.d"
   "CMakeFiles/mygame.dir/src/Bullet.cpp.o"
   "CMakeFiles/mygame.dir/src/Bullet.cpp.o.d"
+  "CMakeFiles/mygame.dir/src/Collision.cpp.o"
+  "CMakeFiles/mygame.dir/src/Collision.cpp.o.d"
   "CMakeFiles/mygame.dir/src/Game.cpp.o"
   "CMakeFiles/mygame.dir/src/Game.cpp.o.d"
   "CMakeFiles/mygame.dir/src/GameObject.cpp.o"

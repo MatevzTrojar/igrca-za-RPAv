@@ -30,9 +30,11 @@ class GameObject {
 	bool isAnimated = false;
 	int frames = 0;
 	int speed = 100;
+    bool Collided = false;
 	float posx,oldX;
 	float posy,oldY;
     bool CollisionDetect(GameObject* other);
+
 
 
 };

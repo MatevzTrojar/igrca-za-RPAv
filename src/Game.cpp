@@ -1,5 +1,5 @@
 #include "Game.h"
-
+#include "Collision.hpp"
 #include <algorithm>
 #include <cfenv>
 #include <cmath>
@@ -60,8 +60,8 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 	}
 	srand(time(NULL));
 	map = new Map("assets/textures/DungenTileset.png");
-	player =new Player("assets/textures/Test3.png", 56*32, 25*32, 32, 32);
-	neki = new GameObject("assets/textures/chest.jpg", 300, 300, 32, 32);
+	player =new Player("assets/textures/Test2.png", 56*32, 25*32, 48, 48);
+	neki = new GameObject("assets/textures/chest.jpg", 300, 300, 48, 48);
 	for (int i = 0; i < 1; i++) {
 		scientists.insert(new Scientist("assets/textures/scientist.png",
 										rand() % (1920), rand() % (1080), 32,
@@ -90,7 +90,28 @@ int TimeSinceLastBullet = 1e9;
 void Game::update(Clock* ura) {
 	player->Update(ura);
     for(SDL_Rect Border : map->Borders){
-        player->BorderCollisionDetect(Border);
+        Player::CollisionSide side = player->BorderCollisionDetect(Border);
+        if(!player->Collided){}
+        switch(side){
+            case Player::LEFT:
+                player->delta.x = 0;
+                std::cout << "LEFT" << std::endl;
+                break;
+            case Player::RIGHT:
+                player->delta.x = 0;
+                std::cout << "RIGHT" << std::endl;
+                break;
+            case Player::TOP:
+                player->delta.y = 0;
+                std::cout << "TOP" << std::endl;
+                break;
+            case Player::BOTTOM:
+                player->delta.y = 0;
+                std::cout << "BOTTOM" << std::endl;
+                break;
+            default:
+                break;
+        }
     }
    //collision detect for player and tiles:
 

@@ -58,5 +58,11 @@
   "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/Tile.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/Tile.cpp",
   "file": "/home/matko/Desktop/igrca-za-RPAv/src/Tile.cpp",
   "output": "CMakeFiles/mygame.dir/src/Tile.cpp.o"
+},
+{
+  "directory": "/home/matko/Desktop/igrca-za-RPAv/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/Collision.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/Collision.cpp",
+  "file": "/home/matko/Desktop/igrca-za-RPAv/src/Collision.cpp",
+  "output": "CMakeFiles/mygame.dir/src/Collision.cpp.o"
 }
 ]

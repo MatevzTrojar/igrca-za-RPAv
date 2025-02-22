@@ -129,12 +129,12 @@ _deps/glm-build/glm/clean:
 CMakeFiles/mygame.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/matko/Desktop/igrca-za-RPAv/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Built target mygame"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/matko/Desktop/igrca-za-RPAv/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Built target mygame"
 .PHONY : CMakeFiles/mygame.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mygame.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/matko/Desktop/igrca-za-RPAv/build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/matko/Desktop/igrca-za-RPAv/build/CMakeFiles 12
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/mygame.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/matko/Desktop/igrca-za-RPAv/build/CMakeFiles 0
 .PHONY : CMakeFiles/mygame.dir/rule
@@ -146,7 +146,7 @@ mygame: CMakeFiles/mygame.dir/rule
 # codegen rule for target.
 CMakeFiles/mygame.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mygame.dir/build.make CMakeFiles/mygame.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/matko/Desktop/igrca-za-RPAv/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Finished codegen for target mygame"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/matko/Desktop/igrca-za-RPAv/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Finished codegen for target mygame"
 .PHONY : CMakeFiles/mygame.dir/codegen
 
 # clean rule for target.

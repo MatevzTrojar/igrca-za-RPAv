@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/matko/Desktop/igrca-za-RPAv/src/Bullet.cpp" "CMakeFiles/mygame.dir/src/Bullet.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/Bullet.cpp.o.d"
+  "/home/matko/Desktop/igrca-za-RPAv/src/Collision.cpp" "CMakeFiles/mygame.dir/src/Collision.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/Collision.cpp.o.d"
   "/home/matko/Desktop/igrca-za-RPAv/src/Game.cpp" "CMakeFiles/mygame.dir/src/Game.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/Game.cpp.o.d"
   "/home/matko/Desktop/igrca-za-RPAv/src/GameObject.cpp" "CMakeFiles/mygame.dir/src/GameObject.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/GameObject.cpp.o.d"
   "/home/matko/Desktop/igrca-za-RPAv/src/Map.cpp" "CMakeFiles/mygame.dir/src/Map.cpp.o" "gcc" "CMakeFiles/mygame.dir/src/Map.cpp.o.d"

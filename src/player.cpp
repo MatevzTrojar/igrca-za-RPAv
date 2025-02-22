@@ -1,4 +1,6 @@
 #include "player.hpp"
+#include "Collision.hpp"
+#include <algorithm>
 #include "glm/detail/qualifier.hpp"
 void Player:: Render(){
 	if (!isFlipped)
@@ -8,7 +10,60 @@ void Player:: Render(){
 		SDL_RenderCopy(Game::renderer, objTexture, NULL, &dest);
 
 }
-    bool Player:: BorderCollisionDetect(SDL_Rect Border){
+
+
+Player::CollisionSide Player::BorderCollisionDetect(SDL_Rect Border) {
+    SDL_Rect PlayerRect = {(int)posx, (int)posy, dest.w, dest.h};
+    
+    if (!Collision::AABB(PlayerRect, Border)) {
+        return NONE;
+    }
+
+    glm::vec2 pos = delta;
+    pos.x += posx;
+    pos.y += posy;
+
+    glm::vec2 oldPos(oldX, oldY);
+
+    float overlapX = std::min(pos.x + dest.w, (float)Border.x + Border.w) - 
+                     std::max(pos.x, (float)Border.x);
+    float overlapY = std::min(pos.y + dest.h, (float)Border.y + Border.h) - 
+                     std::max(pos.y, (float)Border.y);
+
+    if (overlapX <= 0 || overlapY <= 0)
+        return NONE;
+
+    const float OFFSET = 0.1f;
+    Collided = true;
+
+    if (overlapX < overlapY) { 
+        // Horizontal collision (LEFT or RIGHT)
+        if (oldPos.x < Border.x) {
+            posx = Border.x - dest.w - OFFSET; // Left collision
+            delta.x = 0; // Stop horizontal movement
+            return LEFT;
+        } else {
+            posx = Border.x + Border.w + OFFSET; // Right collision
+            delta.x = 0; // Stop horizontal movement
+            return RIGHT;
+        }
+    } else { 
+        // Vertical collision (TOP or BOTTOM)
+        if (oldPos.y < Border.y) {
+            posy = Border.y - dest.h - OFFSET; // Top collision
+            delta.y = 0; // Stop vertical movement
+            return TOP;
+        } else {
+            posy = Border.y + Border.h + OFFSET; // Bottom collision
+            delta.y = 0; // Stop vertical movement
+            return BOTTOM;
+        }
+    }
+}
+
+    
+        /*
+        
 const float OFFSET = 3;
         glm::vec2 pos = delta;
         pos.x += posx;
@@ -50,5 +105,8 @@ const float OFFSET = 3;
 			return true;
 		}
 	return false;
-    }
+    */
+    
+
+    
 
