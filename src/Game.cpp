@@ -7,6 +7,7 @@
 #include <glm/glm.hpp>
 #include <ios>
 #include <iostream>
+#include <memory>
 #include <set>
 #include <utility>
 #include <vector>
@@ -16,7 +17,10 @@
 #include "GameObject.h"
 #include "Map.hpp"
 #include "Mouse.hpp"
+#include "SDL_audio.h"
+#include "SDL_rect.h"
 #include "SDL_render.h"
+#include "glm/geometric.hpp"
 #include "player.hpp"
 std::set<Bullet*> bullets;
 Player* player;
@@ -51,12 +55,11 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 	}
 	srand(time(NULL));
 	map = new Map("assets/textures/DungenTileset.png");
-	player = new Player("assets/textures/Test3.png", 56 * 32, 25 * 32, 48, 48);
+	player = new Player("assets/textures/Test2.png", 56 * 32, 25 * 32, 48, 48);
 	neki = new GameObject("assets/textures/chest.jpg", 300, 300, 48, 48);
 	for (int i = 0; i < 1; i++) {
-		scientists.insert(new Scientist("assets/textures/scientist.png",
-										rand() % (1920), rand() % (1080), 32,
-										32));
+		scientists.insert(
+			new Scientist("assets/textures/scientist.png", 400, 400, 32, 32));
 	}
 }
 
@@ -75,7 +78,6 @@ void Game::handleEvents() {
 	mouse.XY(event);
 	mouse.Clicked(event);
 }
-glm::vec2 FinalMove;
 int TimeSinceLastBullet = 1e9;
 
 void Game::update(Clock* ura) {
@@ -112,14 +114,12 @@ void Game::update(Clock* ura) {
 	// bullet init
 	if (mouse.click && TimeSinceLastBullet > 750) {
 		if (TimeSinceLastBullet > 750) TimeSinceLastBullet = 0;
-		Bullet* bullet = new Bullet("assets/textures/bullet.png",
-									player->dest.x, player->dest.y, 70, 70);
+		Bullet* bullet = new Bullet("assets/textures/bullet.png", player->posx,
+									player->posy, 70, 70);
 		bullet->Active = true;
-		glm::vec2 vec;
-		vec.x = mouse.xpos - player->dest.x;
-		vec.y = mouse.ypos - player->dest.y;
-		FinalMove = glm::normalize(vec);
-		bullet->pos = FinalMove;
+		bullet->pos.x = mouse.xpos + Camera.x - player->posx;
+		bullet->pos.y = mouse.ypos + Camera.y - player->posy;
+		bullet->pos = glm::normalize(bullet->pos);
 		bullets.insert(bullet);
 	}
 	TimeSinceLastBullet += ura->delta;
@@ -127,13 +127,22 @@ void Game::update(Clock* ura) {
 	// bullet movement
 	for (Bullet* bullet : bullets) {
 		if (bullet != NULL && bullet->Active) {
-			bullet->Update(ura);
+			bullet->Update(ura,player);
 		}
-	}
+	} 	
+
+    for(Bullet* bullet : bullets){
+        for(SDL_Rect Border : map->Borders){
+            SDL_Rect tempBullet{(int)bullet->posx, (int)bullet->posy, bullet->dest.w, bullet->dest.h};
+            if(Collision::AABB(tempBullet,Border)){
+                bullet->Active = false;
+            }
+        }
+    }
+		 		 
 	// bullet collision
 	std::vector<Bullet*> toDelete;
 	std::set<Scientist*> toDeleteScientist;
-
 	for (Bullet* bullet : bullets) {
 		for (Scientist* scientist : scientists) {
 			if (Collision::AABB(bullet->dest, scientist->dest)) {

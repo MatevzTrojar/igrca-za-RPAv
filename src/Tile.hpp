@@ -5,4 +5,5 @@ class Tile :public GameObject{
     public:
         bool isRendered=false;
         bool IsOffScreen();
+        bool isWall=false;
 };

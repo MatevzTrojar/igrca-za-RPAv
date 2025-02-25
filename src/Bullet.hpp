@@ -23,7 +23,7 @@ class Bullet : public GameObject {
 	~Bullet(){
     //    Clean();
     };
-	void Update(Clock *ura);
+	void Update(Clock *ura,GameObject *player);
     bool Active = false;
     };
 

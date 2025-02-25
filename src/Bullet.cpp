@@ -1,5 +1,6 @@
 #include "Bullet.hpp"
 #include <algorithm>
+#include "Game.h"
 #include "clock.hpp" 
 #include <cmath>
 #include <csignal>
@@ -12,11 +13,11 @@
 #include "SDL_stdinc.h"
 #include "glm/common.hpp"
 #include "glm/ext/vector_float2.hpp"
-void Bullet::Update( Clock *ura) {
+void Bullet::Update( Clock *ura,GameObject *player) {
     posx+=pos.x *ura->delta;
     posy+=pos.y * ura ->delta;
-    dest.x = posx;
-    dest.y =posy;
+    dest.x = posx - Game::Camera.x; 
+    dest.y =posy - Game::Camera.y;
     if(posx > Game::Camera.x + 1920){
         Active = false;
     }
@@ -26,7 +27,6 @@ void Bullet::Update( Clock *ura) {
         Active = false;
     if(posy< -Game::Camera.y)
         Active = false;
-
 
 }
 
