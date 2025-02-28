@@ -30,11 +30,12 @@ void Map::AssignBorders() {
 				if (map[x + 1][y] != '2' || map[x - 1][y] != '2' ||
 					map[x][y + 1] != '2' || map[x][y - 1] != '2') {
 					Borders.push_back(tile[x][y].dest);
+                    tile[x][y].isWall = true;
 				}
 			}
 		}
 	}
-    
+
 
 
 }

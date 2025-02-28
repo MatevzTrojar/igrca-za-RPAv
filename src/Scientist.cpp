@@ -17,7 +17,16 @@ void Scientist::Update(Clock* ura, GameObject* player) {
     oldY = posy;
 	move.x = player->posx - posx;
 	move.y = player->posy - posy;
+    float distance = glm::length(move);
 	glm::vec2 Finalmove = glm::normalize(move);
+
+
+    // If the player is more than 200 pixels away, don't move
+    if (distance > 500.0f) {
+    Finalmove.x =0;
+    Finalmove.y =0;
+    }
+    
     if(Finalmove.x > 0){
         isFlipped = true;
     }
@@ -28,8 +37,6 @@ void Scientist::Update(Clock* ura, GameObject* player) {
 	GameObject::posy += Finalmove.y * ura->delta * 0.2;
 	dest.x = posx;
 	dest.y = posy;
-    delta.x = posx - oldX;
-    delta.y = posy - oldY;  
     dest.x = posx-Game::Camera.x;
     dest.y = posy-Game::Camera.y;
 }

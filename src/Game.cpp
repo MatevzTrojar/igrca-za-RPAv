@@ -22,6 +22,7 @@
 #include "SDL_render.h"
 #include "glm/geometric.hpp"
 #include "player.hpp"
+#include <iterator>
 std::set<Bullet*> bullets;
 Player* player;
 GameObject* neki;
@@ -55,13 +56,43 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 	}
 	srand(time(NULL));
 	map = new Map("assets/textures/DungenTileset.png");
-	player = new Player("assets/textures/Test2.png", 56 * 32, 25 * 32, 48, 48);
+	player = new Player("assets/textures/Test2.png", 56 * 32, 25 * 32, 64, 64);
 	neki = new GameObject("assets/textures/chest.jpg", 300, 300, 48, 48);
+    std::vector<std::vector<int>> RoomSpawn;
+    RoomSpawn.push_back({400,370});
+    RoomSpawn.push_back({42*32,30*32,72*32,14*32});
+    RoomSpawn.push_back({72*32,43*32,102*32,50*32});
+    RoomSpawn.push_back({111*32,11*32});
+    RoomSpawn.push_back({5*32,53*32,28*32,70*32});
+    int ScientistX;
+    int ScientistY;
+    for(std::vector<int> i : RoomSpawn){
+            int counter = 0;
+        for(int j : i){
+            if(counter%2 == 0){
+                ScientistX = j;
+            }
+            else{
+                ScientistY = j;
+            }
+            counter++;
+            if(counter == 2){
+                scientists.insert(new Scientist("assets/textures/scientist.png",ScientistX,ScientistY,64,64));
+                counter = 0;
+            }
+        }
+
+
+        }
+            
+    }
+    /*
 	for (int i = 0; i < 1; i++) {
 		scientists.insert(
-			new Scientist("assets/textures/scientist.png", 400, 400, 32, 32));
+			new Scientist("assets/textures/scientist.png", 370, 300, 64, 64));
 	}
-}
+    */
+
 
 void Game::handleEvents() {
 	SDL_Event event;
@@ -85,9 +116,9 @@ void Game::update(Clock* ura) {
 	player->Update(ura);
 	// Border collision(player,scientist)
 	for (SDL_Rect Border : map->Borders) {
-		player->CheckCollisionSide(Border);
+		player->CollisionDetect(Border);
 		for (Scientist* scientist : scientists) {
-			scientist->CheckCollisionSide(Border);
+			scientist->CollisionDetect(Border);
 		}
 	}
 	// kamera
@@ -108,7 +139,7 @@ void Game::update(Clock* ura) {
 		Camera.y = 1292;
 	}
 	neki->Update();
-	player->CheckCollisionSide(neki->dest);
+	player->CollisionDetect(neki->dest);
 	// Scientist movement
 	for (Scientist* scientist : scientists) scientist->Update(ura, player);
 	// bullet init

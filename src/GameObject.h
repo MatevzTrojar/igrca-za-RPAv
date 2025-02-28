@@ -23,7 +23,6 @@ class GameObject {
         SDL_DestroyTexture(objTexture);
     }
     SDL_Rect right,left,up,down;
-    glm::vec2 delta{0,0};
 	void Update();
 	void Render();
 	SDL_Texture* objTexture;
@@ -37,15 +36,7 @@ class GameObject {
     bool Collided = false;
 	float posx,oldX;
 	float posy,oldY; 
-    enum CollisionSide {
-        NONE,
-        LEFT,
-        RIGHT,
-        TOP,
-        BOTTOM
-    };
-    CollisionSide CollisionDetect(SDL_Rect Border);
-    void CheckCollisionSide(SDL_Rect );
+    void CollisionDetect(SDL_Rect Border);
 
 
 

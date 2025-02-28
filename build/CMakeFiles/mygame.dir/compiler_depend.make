@@ -1171,6 +1171,7 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   /usr/include/c++/14.2.1/bits/stl_tree.h \
   /usr/include/c++/14.2.1/bits/stl_uninitialized.h \
   /usr/include/c++/14.2.1/bits/stl_vector.h \
+  /usr/include/c++/14.2.1/bits/stream_iterator.h \
   /usr/include/c++/14.2.1/bits/streambuf.tcc \
   /usr/include/c++/14.2.1/bits/streambuf_iterator.h \
   /usr/include/c++/14.2.1/bits/stringfwd.h \
@@ -1211,6 +1212,7 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   /usr/include/c++/14.2.1/iosfwd \
   /usr/include/c++/14.2.1/iostream \
   /usr/include/c++/14.2.1/istream \
+  /usr/include/c++/14.2.1/iterator \
   /usr/include/c++/14.2.1/limits \
   /usr/include/c++/14.2.1/math.h \
   /usr/include/c++/14.2.1/memory \
@@ -5299,8 +5301,6 @@ CMakeFiles/mygame.dir/src/Bullet.cpp.o:
 
 /home/matko/Desktop/igrca-za-RPAv/src/Mouse.cpp:
 
-/usr/include/c++/14.2.1/iterator:
-
 CMakeFiles/mygame.dir/src/player.cpp.o:
 
 /home/matko/Desktop/igrca-za-RPAv/src/GameObject.cpp:
@@ -5314,6 +5314,8 @@ CMakeFiles/mygame.dir/src/player.cpp.o:
 /usr/include/c++/14.2.1/tuple:
 
 /usr/include/c++/14.2.1/memory:
+
+/usr/include/c++/14.2.1/iterator:
 
 /usr/include/c++/14.2.1/cfenv:
 

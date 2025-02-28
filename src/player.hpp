@@ -34,8 +34,6 @@ class Player : public GameObject {
     }
     posx += move.x;
     posy += move.y;
-    delta.x = posx - oldX;
-    delta.y = posy - oldY;
     dest.x = posx-Game::Camera.x;
     dest.y = posy-Game::Camera.y;
     
