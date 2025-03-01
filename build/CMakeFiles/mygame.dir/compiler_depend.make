@@ -145,8 +145,10 @@ CMakeFiles/mygame.dir/src/Bullet.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Bu
   /home/matko/Desktop/igrca-za-RPAv/src/Bullet.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/Game.h \
   /home/matko/Desktop/igrca-za-RPAv/src/GameObject.h \
+  /home/matko/Desktop/igrca-za-RPAv/src/Map.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/Scientist.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/TextureManager.h \
+  /home/matko/Desktop/igrca-za-RPAv/src/Tile.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/clock.hpp \
   /usr/include/SDL2/SDL.h \
   /usr/include/SDL2/SDL_assert.h \
@@ -1523,9 +1525,11 @@ CMakeFiles/mygame.dir/src/GameObject.cpp.o: /home/matko/Desktop/igrca-za-RPAv/sr
   /home/matko/Desktop/igrca-za-RPAv/src/Collision.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/Game.h \
   /home/matko/Desktop/igrca-za-RPAv/src/GameObject.h \
+  /home/matko/Desktop/igrca-za-RPAv/src/Map.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/Mouse.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/Scientist.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/TextureManager.h \
+  /home/matko/Desktop/igrca-za-RPAv/src/Tile.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/clock.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/player.hpp \
   /usr/include/SDL2/SDL.h \
@@ -2955,9 +2959,13 @@ CMakeFiles/mygame.dir/src/Scientist.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src
   _deps/glm-src/glm/vec2.hpp \
   _deps/glm-src/glm/vec3.hpp \
   _deps/glm-src/glm/vec4.hpp \
+  /home/matko/Desktop/igrca-za-RPAv/src/Collision.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/Game.h \
   /home/matko/Desktop/igrca-za-RPAv/src/GameObject.h \
+  /home/matko/Desktop/igrca-za-RPAv/src/Map.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/Scientist.hpp \
+  /home/matko/Desktop/igrca-za-RPAv/src/TextureManager.h \
+  /home/matko/Desktop/igrca-za-RPAv/src/Tile.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/clock.hpp \
   /usr/include/SDL2/SDL.h \
   /usr/include/SDL2/SDL_assert.h \
@@ -5335,8 +5343,6 @@ CMakeFiles/mygame.dir/src/player.cpp.o:
 
 /usr/include/c++/14.2.1/bits/atomic_base.h:
 
-/home/matko/Desktop/igrca-za-RPAv/src/Tile.hpp:
-
 /home/matko/Desktop/igrca-za-RPAv/src/Mouse.hpp:
 
 /usr/lib/libhwy.so.1:
@@ -5371,7 +5377,7 @@ CMakeFiles/mygame.dir/src/player.cpp.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h:
 
-/usr/include/bits/types.h:
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/smmintrin.h:
 
 /usr/include/bits/thread-shared-types.h:
 
@@ -5803,6 +5809,8 @@ _deps/glm-src/glm/mat4x4.hpp:
 
 /usr/include/SDL2/SDL_rect.h:
 
+/home/matko/Desktop/igrca-za-RPAv/src/Tile.hpp:
+
 _deps/glm-src/glm/detail/func_vector_relational.inl:
 
 /home/matko/Desktop/igrca-za-RPAv/src/Collision.cpp:
@@ -5959,6 +5967,12 @@ _deps/glm-src/glm/integer.hpp:
 
 /usr/include/bits/getopt_core.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sm4intrin.h:
+
+_deps/glm-src/glm/detail/type_vec2.inl:
+
+/usr/include/SDL2/SDL_haptic.h:
+
 _deps/glm-src/glm/mat2x3.hpp:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h:
@@ -6011,14 +6025,6 @@ _deps/glm-src/glm/ext/vector_double2_precision.hpp:
 
 /usr/include/linux/limits.h:
 
-/usr/include/bits/types/FILE.h:
-
-_deps/glm-src/glm/ext/vector_bool2_precision.hpp:
-
-_deps/glm-src/glm/ext/vector_double3.hpp:
-
-/usr/include/c++/14.2.1/cctype:
-
 /usr/lib/libmvec.so.1:
 
 /usr/include/bits/fp-logb.h:
@@ -6055,6 +6061,14 @@ _deps/glm-src/glm/ext/matrix_double4x2.hpp:
 
 _deps/glm-src/glm/mat3x2.hpp:
 
+_deps/glm-src/glm/ext/vector_bool2_precision.hpp:
+
+/usr/include/bits/types/FILE.h:
+
+_deps/glm-src/glm/ext/vector_double3.hpp:
+
+/usr/include/c++/14.2.1/cctype:
+
 /usr/include/SDL2/SDL_surface.h:
 
 /usr/include/bits/cpu-set.h:
@@ -6078,6 +6092,8 @@ _deps/glm-src/glm/ext/vector_float2_precision.hpp:
 /usr/include/asm-generic/errno.h:
 
 /usr/include/sys/single_threaded.h:
+
+/usr/include/bits/types.h:
 
 _deps/glm-src/glm/ext/vector_float4_precision.hpp:
 
@@ -6550,11 +6566,3 @@ _deps/glm-src/glm/geometric.hpp:
 /usr/include/c++/14.2.1/typeinfo:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/serializeintrin.h:
-
-_deps/glm-src/glm/detail/type_vec2.inl:
-
-/usr/include/SDL2/SDL_haptic.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sm4intrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/smmintrin.h:

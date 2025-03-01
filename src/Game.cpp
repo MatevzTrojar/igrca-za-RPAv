@@ -15,7 +15,6 @@
 #include "Bullet.hpp"
 #include "Collision.hpp"
 #include "GameObject.h"
-#include "Map.hpp"
 #include "Mouse.hpp"
 #include "SDL_audio.h"
 #include "SDL_rect.h"
@@ -55,15 +54,15 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 		isRunning = true;
 	}
 	srand(time(NULL));
-	map = new Map("assets/textures/DungenTileset.png");
+	map = new Map("assets/textures/Dungeon.png");
 	player = new Player("assets/textures/Test2.png", 56 * 32, 25 * 32, 64, 64);
 	neki = new GameObject("assets/textures/chest.jpg", 300, 300, 48, 48);
     std::vector<std::vector<int>> RoomSpawn;
-    RoomSpawn.push_back({400,370});
-    RoomSpawn.push_back({42*32,30*32,72*32,14*32});
-    RoomSpawn.push_back({72*32,43*32,102*32,50*32});
-    RoomSpawn.push_back({111*32,11*32});
-    RoomSpawn.push_back({5*32,53*32,28*32,70*32});
+    RoomSpawn.push_back({400,300});//room1
+    RoomSpawn.push_back({42*32,30*32,72*32,14*32});//room2
+    RoomSpawn.push_back({72*32,43*32,102*32,50*32});//room3
+    RoomSpawn.push_back({111*32,11*32});//room4
+    RoomSpawn.push_back({5*32,53*32,28*32,70*32});//room5
     int ScientistX;
     int ScientistY;
     for(std::vector<int> i : RoomSpawn){
@@ -119,11 +118,12 @@ void Game::update(Clock* ura) {
 		player->CollisionDetect(Border);
 		for (Scientist* scientist : scientists) {
 			scientist->CollisionDetect(Border);
-		}
+            }
+		
 	}
 	// kamera
-	Camera.x = player->posx - 1920 / 2;
-	Camera.y = player->posy - 1080 / 2;
+	Camera.x = (int)player->posx - 1920 / 2;
+	Camera.y = (int)player->posy - 1080 / 2;
 	if (Camera.x < 0) {
 		Camera.x = 0;
 	}
@@ -141,12 +141,12 @@ void Game::update(Clock* ura) {
 	neki->Update();
 	player->CollisionDetect(neki->dest);
 	// Scientist movement
-	for (Scientist* scientist : scientists) scientist->Update(ura, player);
+	for (Scientist* scientist : scientists) scientist->Update(ura, player,map);
 	// bullet init
 	if (mouse.click && TimeSinceLastBullet > 750) {
 		if (TimeSinceLastBullet > 750) TimeSinceLastBullet = 0;
-		Bullet* bullet = new Bullet("assets/textures/bullet.png", player->posx,
-									player->posy, 70, 70);
+		Bullet* bullet = new Bullet("assets/textures/bullet.png", player->posx + 10,
+									player->posy + 10, 48, 48);
 		bullet->Active = true;
 		bullet->pos.x = mouse.xpos + Camera.x - player->posx;
 		bullet->pos.y = mouse.ypos + Camera.y - player->posy;

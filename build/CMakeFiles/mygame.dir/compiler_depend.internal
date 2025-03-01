@@ -146,8 +146,10 @@ CMakeFiles/mygame.dir/src/Bullet.cpp.o
  /home/matko/Desktop/igrca-za-RPAv/src/Bullet.hpp
  /home/matko/Desktop/igrca-za-RPAv/src/Game.h
  /home/matko/Desktop/igrca-za-RPAv/src/GameObject.h
+ /home/matko/Desktop/igrca-za-RPAv/src/Map.hpp
  /home/matko/Desktop/igrca-za-RPAv/src/Scientist.hpp
  /home/matko/Desktop/igrca-za-RPAv/src/TextureManager.h
+ /home/matko/Desktop/igrca-za-RPAv/src/Tile.hpp
  /home/matko/Desktop/igrca-za-RPAv/src/clock.hpp
  /usr/include/SDL2/SDL.h
  /usr/include/SDL2/SDL_assert.h
@@ -1527,9 +1529,11 @@ CMakeFiles/mygame.dir/src/GameObject.cpp.o
  /home/matko/Desktop/igrca-za-RPAv/src/Collision.hpp
  /home/matko/Desktop/igrca-za-RPAv/src/Game.h
  /home/matko/Desktop/igrca-za-RPAv/src/GameObject.h
+ /home/matko/Desktop/igrca-za-RPAv/src/Map.hpp
  /home/matko/Desktop/igrca-za-RPAv/src/Mouse.hpp
  /home/matko/Desktop/igrca-za-RPAv/src/Scientist.hpp
  /home/matko/Desktop/igrca-za-RPAv/src/TextureManager.h
+ /home/matko/Desktop/igrca-za-RPAv/src/Tile.hpp
  /home/matko/Desktop/igrca-za-RPAv/src/clock.hpp
  /home/matko/Desktop/igrca-za-RPAv/src/player.hpp
  /usr/include/SDL2/SDL.h
@@ -2962,9 +2966,13 @@ CMakeFiles/mygame.dir/src/Scientist.cpp.o
  /home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/vec2.hpp
  /home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/vec3.hpp
  /home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/vec4.hpp
+ /home/matko/Desktop/igrca-za-RPAv/src/Collision.hpp
  /home/matko/Desktop/igrca-za-RPAv/src/Game.h
  /home/matko/Desktop/igrca-za-RPAv/src/GameObject.h
+ /home/matko/Desktop/igrca-za-RPAv/src/Map.hpp
  /home/matko/Desktop/igrca-za-RPAv/src/Scientist.hpp
+ /home/matko/Desktop/igrca-za-RPAv/src/TextureManager.h
+ /home/matko/Desktop/igrca-za-RPAv/src/Tile.hpp
  /home/matko/Desktop/igrca-za-RPAv/src/clock.hpp
  /usr/include/SDL2/SDL.h
  /usr/include/SDL2/SDL_assert.h
