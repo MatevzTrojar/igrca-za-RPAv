@@ -13,10 +13,11 @@
 #include "Game.h"
 #include "GameObject.h"
 #include "SDL_render.h"
-bool Scientist::HasLineOfSight(GameObject* player, Map* map) {
-// Step size for ray traversal
-    const float stepSize = 5.0f;  
 
+
+
+bool Scientist::HasLineOfSight(GameObject* player, Map* map) {
+    const float stepSize = 5.0f;  
     glm::vec2 direction = glm::normalize(glm::vec2(player->posx - posx, player->posy - posy));
     glm::vec2 currentPos = glm::vec2(posx, posy);
 
@@ -24,66 +25,89 @@ bool Scientist::HasLineOfSight(GameObject* player, Map* map) {
         currentPos += direction * stepSize;
 
         SDL_Rect CheckRect = {
-            (int)std::floor(currentPos.x),
-            (int)std::floor(currentPos.y),
-            dest.w, dest.h};
+            (int)currentPos.x, (int)currentPos.y, dest.w, dest.h
+        };
 
-        for (SDL_Rect Border : map->Borders) {
+        for ( SDL_Rect& Border : map->Borders) {
             if (Collision::AABB(CheckRect, Border)) {
-                return false;  // Wall detected, player is hidden
+                return false;  // Wall blocks view
             }
         }
     }
-
-    return true;  // No wall blocking the path
-
+    return true;  
 }
+
+
 void Scientist::Update(Clock* ura, GameObject* player, Map* map) {
-	glm::vec2 move;
-	oldX = posx;
-	oldY = posy;
-	move.x = player->posx - posx;
-	move.y = player->posy - posy;
-	float distance = glm::length(move);
-    bool CanSeePlayer = HasLineOfSight(player, map) && distance < 750;
-	if (CanSeePlayer) {
-		// Chase the player
-		glm::vec2 Finalmove = glm::normalize(move);
+    glm::vec2 move = glm::vec2(player->posx - posx, player->posy - posy);
+    float distance = glm::length(move);
+    bool CanSeePlayer = (distance < 750) && HasLineOfSight(player, map);
 
-		if (Finalmove.x > 0) {
-			isFlipped = true;
-		} else if (Finalmove.x < 0) {
-			isFlipped = false;
-		}
+    float movementSpeed = ura->delta * 0.15f;
+    glm::vec2 newPos = glm::vec2(posx, posy);  
 
-		GameObject::posx += Finalmove.x * ura->delta * 0.2;
-		GameObject::posy += Finalmove.y * ura->delta * 0.2;
-	} else {
-		// Move randomly
-		randomMoveTime -= ura->delta;
+    if (CanSeePlayer) {
+        if (distance > 0.1f) {  
+            glm::vec2 Finalmove = glm::normalize(move);
+            newPos += Finalmove * movementSpeed;
+        }
+        isFlipped = (move.x > 0);
+    } else {
+        // Handle Random Movement
+        randomMoveTime -= ura->delta;
 
-		if (randomMoveTime <= 0) {
-			// Pick a new random direction every 2-5 seconds
-			randomMoveTime = (rand() % 3 + 2) * 1000;  // 2-5 seconds
-			float angle = (rand() % 360) *
-						  (3.14159265f / 180.0f);  // Convert degrees to radians
-			randomDirection = glm::vec2(cos(angle), sin(angle));
-			SDL_Rect NextDest = {
-				(int)std::floor(posx + randomDirection.x * ura->delta * 0.1),
-				(int)std::floor(posy + randomDirection.y * ura->delta * 0.1),
-				dest.w, dest.h};
-			for (SDL_Rect Border : map->Borders) {
-				if (Collision::AABB(NextDest, Border)) {
-                    randomMoveTime = 0; 
-                    break;
-				}
-			}
-		}
+        if (randomMoveTime <= 0) {
+            randomMoveTime = (rand() % 3 + 2) * 1000;  
+            float angle = (rand() % 360) * (3.14159265f / 180.0f);
+            randomDirection = glm::vec2(cos(angle), sin(angle));
+        }
 
-		GameObject::posx += randomDirection.x * ura->delta * 0.1;
-		GameObject::posy += randomDirection.y * ura->delta * 0.1;
-	}
+        newPos += randomDirection * movementSpeed * 0.7f;
+    }
 
-	dest.x = posx - Game::Camera.x;
-	dest.y = posy - Game::Camera.y;
+    // Check for collisions BEFORE updating position
+    SDL_Rect FutureRect = { (int)newPos.x, (int)newPos.y, dest.w, dest.h };
+    bool isColliding = false;
+
+    for ( SDL_Rect& Border : map->Borders) {
+        if (Collision::AABB(FutureRect, Border)) {
+            isColliding = true;
+            break;
+        }
+    }
+
+    if (!isColliding) {
+        posx = newPos.x;
+        posy = newPos.y;
+    } else {
+        if (!CanSeePlayer) {
+            // If random movement collides, pick a new direction immediately
+            float angle = (rand() % 360) * (3.14159265f / 180.0f);
+            randomDirection = glm::vec2(cos(angle), sin(angle));
+            newPos = glm::vec2(posx, posy) + randomDirection * movementSpeed * 0.7f;
+        } else {
+            // If chasing player but colliding, try slight movement adjustment
+            newPos = glm::vec2(posx, posy) + glm::normalize(glm::vec2(rand() % 2 - 1, rand() % 2 - 1)) * movementSpeed * 0.5f;
+        }
+    }
+
+    // Final collision check
+    FutureRect = { (int)newPos.x, (int)newPos.y, dest.w, dest.h };
+    bool finalCollision = false;
+    for ( SDL_Rect& Border : map->Borders) {
+        if (Collision::AABB(FutureRect, Border)) {
+            finalCollision = true;
+            break;
+        }
+    }
+
+    if (!finalCollision) {
+        posx = newPos.x;
+        posy = newPos.y;
+    }
+
+    // Update rendering position
+    dest.x = posx - Game::Camera.x;
+    dest.y = posy - Game::Camera.y;
 }
+

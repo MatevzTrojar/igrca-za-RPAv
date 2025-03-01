@@ -51,105 +51,40 @@ void Map::LoadMap() {
 		}
 	}
 }
+
 void Map::Render() {
-	int OffsetX = Game::Camera.x / 32;
-	int OffsetY = Game::Camera.y / 32;
-	// std::cout << OffsetX << " " << OffsetY << std::endl;
-	for (int y = 0; y < 34; y++) {		// screen size
-		for (int x = 0; x < 60; x++) {	// screen width
+    int OffsetX = Game::Camera.x / 32;
+    int OffsetY = Game::Camera.y / 32;
 
-			/*	if (tile[x][y].IsOffScreen()) {
-					tile[x][y].isRendered = false;
-					break;
-				}*/
-			switch (map[x + OffsetX][y + OffsetY]) {
-				case '1':
-					tile[x][y].isWall = false;
-					SDL_RenderCopy(Game::renderer, Bitmap, &tile1,
-								   &tile[x][y].dest);
-					break;
-				case '2':
-					SDL_RenderCopy(Game::renderer, Bitmap, &tile2,
-								   &tile[x][y].dest);
-					break;
-					/*
-				case '3':
-					SDL_RenderCopy(Game::renderer, Bitmap, &tile3, &tile[x][y]);
-					break;
-				case '4':
-					SDL_RenderCopy(Game::renderer, Bitmap, &tile4, &tile[x][y]);
-					break;
-				case '5':
-					SDL_RenderCopy(Game::renderer, Bitmap, &tile5, &tile[x][y]);
-					break;
-				case '6':
-					SDL_RenderCopy(Game::renderer, Bitmap, &tile6, &tile[x][y]);
-					break;
-				case '7':
-					SDL_RenderCopy(Game::renderer, Bitmap, &tile7, &tile[x][y]);
-					break;
-				case '8':
-					SDL_RenderCopy(Game::renderer, Bitmap, &tile8, &tile[x][y]);
-					break;
-				case '9':
-					SDL_RenderCopy(Game::renderer, Bitmap, &tile9, &tile[x][y]);
-					break;
-				case '10':
-					SDL_RenderCopy(Game::renderer, Bitmap, &tile10,
-				&tile[x][y]); break; case '11': SDL_RenderCopy(Game::renderer,
-				Bitmap, &tile11, &tile[x][y]); break; case '12':
-					SDL_RenderCopy(Game::renderer, Bitmap, &tile12,
-				&tile[x][y]); break; case '13': SDL_RenderCopy(Game::renderer,
-				Bitmap, &tile13, &tile[x][y]); break; case '14':
-					SDL_RenderCopy(Game::renderer, Bitmap, &tile14,
-				&tile[x][y]); break; case '15': SDL_RenderCopy(Game::renderer,
-				Bitmap, &tile15, &tile[x][y]); break; case '16':
-					SDL_RenderCopy(Game::renderer, Bitmap, &tile16,
-				&tile[x][y]); break;
-					  */
-					/*
+    int pixelOffsetX = Game::Camera.x % 32; // Sub-tile offset
+    int pixelOffsetY = Game::Camera.y % 32; // Sub-tile offset
 
-								   case 1:
-									   tile[x][y].isRendered = true;
-									   tile[x][y].isWall = false;
+    int maxX = std::min(OffsetX + 61, 120); // +1 to prevent gaps at screen edges
+    int maxY = std::min(OffsetY + 35, 72);
 
-									   SDL_RenderCopy(Game::renderer, Bitmap,
-					   &tile1, &tile[x][y].tile); break; case 2:
-									   tile[x][y].isWall = true;
-									   SDL_RenderCopy(Game::renderer,Bitmap,
-					   &tile2, &tile[x][y].tile); tile[x][y].isRendered = true;
-									   break;
-													  case 3:
-									   SDL_RenderCopy(Game::renderer, Bitmap,
-					   &tile3, &tile[x][y]); break; case 4:
-									   SDL_RenderCopy(Game::renderer, Bitmap,
-					   &tile4, &tile[x][y]); break; case 5:
-									   SDL_RenderCopy(Game::renderer, Bitmap,
-					   &tile5, &tile[x][y]); break; case 6:
-									   SDL_RenderCopy(Game::renderer, Bitmap,
-					   &tile6, &tile[x][y]); break; case 7:
-									   SDL_RenderCopy(Game::renderer, Bitmap,
-					   &tile7, &tile[x][y]); break; case 8:
-									   SDL_RenderCopy(Game::renderer, Bitmap,
-					   &tile8, &tile[x][y]); break; case 9:
-									   SDL_RenderCopy(Game::renderer, Bitmap,
-					   &tile9, &tile[x][y]); break; case 10:
-									   SDL_RenderCopy(Game::renderer, Bitmap,
-					   &tile10, &tile[x][y]); break; case 11:
-									   SDL_RenderCopy(Game::renderer, Bitmap,
-					   &tile11, &tile[x][y]); break; case 12:
-									   SDL_RenderCopy(Game::renderer, Bitmap,
-					   &tile12, &tile[x][y]); break; case 13:
-									   SDL_RenderCopy(Game::renderer, Bitmap,
-					   &tile13, &tile[x][y]); break; case 14:
-									   SDL_RenderCopy(Game::renderer, Bitmap,
-					   &tile14, &tile[x][y]); break; case 15:
-									   SDL_RenderCopy(Game::renderer, Bitmap,
-					   &tile15, &tile[x][y]); break; case 16:
-									   SDL_RenderCopy(Game::renderer, Bitmap,
-					   &tile16, &tile[x][y]); break;
-									   */
-			}
-		}
-	}
+    for (int y = OffsetY; y < maxY; y++) {
+        for (int x = OffsetX; x < maxX; x++) {
+            char tileType = map[x][y];
+
+            // Calculate screen position with smooth pixel offset
+            SDL_Rect dest = { 
+                (x - OffsetX) * 32 - pixelOffsetX, 
+                (y - OffsetY) * 32 - pixelOffsetY, 
+                32, 32 
+            };
+
+            switch (tileType) {
+                case '1':
+                    SDL_RenderCopy(Game::renderer, Bitmap, &tile1, &dest);
+                    break;
+                case '2':
+                    SDL_RenderCopy(Game::renderer, Bitmap, &tile2, &dest);
+                    break;
+                default:
+                    break; // Skip empty tiles or unknown types
+            }
+        }
+    }
 }
+
+
