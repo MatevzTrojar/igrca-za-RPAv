@@ -19,6 +19,9 @@ include(FetchContent)
 pkg_search_module(SDL2 REQUIRED sdl2)
 pkg_search_module(SDL2IMAGE REQUIRED SDL2_image>=2.0.0)
 
+#---------------- SDL_ttf ----------------
+pkg_search_module(SDL2TTF REQUIRED SDL2_ttf>=2.0.0)
+
 #---------------- GLM ----------------
 FetchContent_Declare(
     glm
@@ -28,13 +31,16 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(glm)
 
-INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS} ${SDL2IMAGE_INCLUDE_DIRS})
+
+INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS} ${SDL2IMAGE_INCLUDE_DIRS} ${SDL2TTF_INCLUDE_DIRS})
+
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} PRIVATE
     ${SDL2_LIBRARIES}
     ${SDL2IMAGE_LIBRARIES}
+    ${SDL2TTF_LIBRARIES}
     glm::glm
+)
 
-    )
 set(ASSETS_DIR ${CMAKE_SOURCE_DIR}/assets)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
@@ -42,4 +48,4 @@ add_custom_target(CopyAssets ALL
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${ASSETS_DIR} ${CMAKE_BINARY_DIR}/assets
 )
 
-
+#

@@ -197,6 +197,7 @@ CMakeFiles/mygame.dir/src/Bullet.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Bu
   /usr/include/SDL2/SDL_thread.h \
   /usr/include/SDL2/SDL_timer.h \
   /usr/include/SDL2/SDL_touch.h \
+  /usr/include/SDL2/SDL_ttf.h \
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_video.h \
   /usr/include/SDL2/begin_code.h \
@@ -1016,6 +1017,7 @@ CMakeFiles/mygame.dir/src/Game.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Game
   /usr/include/SDL2/SDL_thread.h \
   /usr/include/SDL2/SDL_timer.h \
   /usr/include/SDL2/SDL_touch.h \
+  /usr/include/SDL2/SDL_ttf.h \
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_video.h \
   /usr/include/SDL2/begin_code.h \
@@ -1579,6 +1581,7 @@ CMakeFiles/mygame.dir/src/GameObject.cpp.o: /home/matko/Desktop/igrca-za-RPAv/sr
   /usr/include/SDL2/SDL_thread.h \
   /usr/include/SDL2/SDL_timer.h \
   /usr/include/SDL2/SDL_touch.h \
+  /usr/include/SDL2/SDL_ttf.h \
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_video.h \
   /usr/include/SDL2/begin_code.h \
@@ -2120,6 +2123,7 @@ CMakeFiles/mygame.dir/src/Map.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Map.c
   /usr/include/SDL2/SDL_thread.h \
   /usr/include/SDL2/SDL_timer.h \
   /usr/include/SDL2/SDL_touch.h \
+  /usr/include/SDL2/SDL_ttf.h \
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_video.h \
   /usr/include/SDL2/begin_code.h \
@@ -2514,6 +2518,7 @@ CMakeFiles/mygame.dir/src/Mouse.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Mou
   /usr/include/SDL2/SDL_thread.h \
   /usr/include/SDL2/SDL_timer.h \
   /usr/include/SDL2/SDL_touch.h \
+  /usr/include/SDL2/SDL_ttf.h \
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_video.h \
   /usr/include/SDL2/begin_code.h \
@@ -3014,6 +3019,7 @@ CMakeFiles/mygame.dir/src/Scientist.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src
   /usr/include/SDL2/SDL_thread.h \
   /usr/include/SDL2/SDL_timer.h \
   /usr/include/SDL2/SDL_touch.h \
+  /usr/include/SDL2/SDL_ttf.h \
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_video.h \
   /usr/include/SDL2/begin_code.h \
@@ -3430,6 +3436,7 @@ CMakeFiles/mygame.dir/src/TextureManager.cpp.o: /home/matko/Desktop/igrca-za-RPA
   /usr/include/SDL2/SDL_thread.h \
   /usr/include/SDL2/SDL_timer.h \
   /usr/include/SDL2/SDL_touch.h \
+  /usr/include/SDL2/SDL_ttf.h \
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_video.h \
   /usr/include/SDL2/begin_code.h \
@@ -3925,6 +3932,7 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   /usr/include/SDL2/SDL_thread.h \
   /usr/include/SDL2/SDL_timer.h \
   /usr/include/SDL2/SDL_touch.h \
+  /usr/include/SDL2/SDL_ttf.h \
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_video.h \
   /usr/include/SDL2/begin_code.h \
@@ -4305,6 +4313,7 @@ CMakeFiles/mygame.dir/src/main.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/main
   /usr/include/SDL2/SDL_thread.h \
   /usr/include/SDL2/SDL_timer.h \
   /usr/include/SDL2/SDL_touch.h \
+  /usr/include/SDL2/SDL_ttf.h \
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_video.h \
   /usr/include/SDL2/begin_code.h \
@@ -4802,6 +4811,7 @@ CMakeFiles/mygame.dir/src/player.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/pl
   /usr/include/SDL2/SDL_thread.h \
   /usr/include/SDL2/SDL_timer.h \
   /usr/include/SDL2/SDL_touch.h \
+  /usr/include/SDL2/SDL_ttf.h \
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_video.h \
   /usr/include/SDL2/begin_code.h \
@@ -5143,6 +5153,7 @@ mygame: /usr/lib/Scrt1.o \
   /usr/lib/crtn.o \
   /usr/lib/libSDL2.so \
   /usr/lib/libSDL2_image.so \
+  /usr/lib/libSDL2_ttf.so \
   /usr/lib/libc.so \
   /usr/lib/libgcc_s.so \
   /usr/lib/libgcc_s.so.1 \
@@ -5158,9 +5169,14 @@ mygame: /usr/lib/Scrt1.o \
   /usr/lib/libbrotlicommon.so.1 \
   /usr/lib/libbrotlidec.so.1 \
   /usr/lib/libbrotlienc.so.1 \
+  /usr/lib/libbz2.so.1.0 \
   /usr/lib/libc.so.6 \
   /usr/lib/libc_nonshared.a \
   /usr/lib/libdav1d.so.7 \
+  /usr/lib/libfreetype.so.6 \
+  /usr/lib/libglib-2.0.so.0 \
+  /usr/lib/libgraphite2.so.3 \
+  /usr/lib/libharfbuzz.so.0 \
   /usr/lib/libhwy.so.1 \
   /usr/lib/libjbig.so.2.1 \
   /usr/lib/libjpeg.so.8 \
@@ -5169,6 +5185,7 @@ mygame: /usr/lib/Scrt1.o \
   /usr/lib/liblzma.so.5 \
   /usr/lib/libm.so.6 \
   /usr/lib/libmvec.so.1 \
+  /usr/lib/libpcre2-8.so.0 \
   /usr/lib/libpng16.so.16 \
   /usr/lib/librav1e.so.0.7 \
   /usr/lib/libsharpyuv.so.0 \
@@ -5181,8 +5198,13 @@ mygame: /usr/lib/Scrt1.o \
   /usr/lib32/libbrotlicommon.so.1 \
   /usr/lib32/libbrotlidec.so.1 \
   /usr/lib32/libbrotlienc.so.1 \
+  /usr/lib32/libbz2.so.1.0 \
+  /usr/lib32/libfreetype.so.6 \
+  /usr/lib32/libglib-2.0.so.0 \
+  /usr/lib32/libharfbuzz.so.0 \
   /usr/lib32/libjpeg.so.8 \
   /usr/lib32/liblzma.so.5 \
+  /usr/lib32/libpcre2-8.so.0 \
   /usr/lib32/libpng16.so.16 \
   /usr/lib32/libsharpyuv.so.0 \
   /usr/lib32/libtiff.so.6 \
@@ -5231,6 +5253,10 @@ CMakeFiles/mygame.dir/src/Bullet.cpp.o:
 
 /usr/lib32/libjpeg.so.8:
 
+/usr/lib32/libfreetype.so.6:
+
+/usr/lib32/libbz2.so.1.0:
+
 /usr/lib32/libbrotlicommon.so.1:
 
 /usr/lib/libz.so.1:
@@ -5241,6 +5267,8 @@ CMakeFiles/mygame.dir/src/Bullet.cpp.o:
 
 /usr/lib/libpng16.so.16:
 
+/usr/lib/libpcre2-8.so.0:
+
 /usr/lib/libm.so.6:
 
 /usr/lib/libjxl_cms.so.0.11:
@@ -5249,7 +5277,13 @@ CMakeFiles/mygame.dir/src/Bullet.cpp.o:
 
 /usr/lib/libjpeg.so.8:
 
+/usr/lib/libharfbuzz.so.0:
+
+/usr/lib/libgraphite2.so.3:
+
 /usr/lib/libdav1d.so.7:
+
+/usr/lib/libbz2.so.1.0:
 
 /usr/lib/libbrotlienc.so.1:
 
@@ -5335,8 +5369,6 @@ CMakeFiles/mygame.dir/src/player.cpp.o:
 
 /usr/include/c++/14.2.1/bits/stl_raw_storage_iter.h:
 
-/usr/include/c++/14.2.1/bits/shared_ptr_base.h:
-
 /usr/include/c++/14.2.1/bits/shared_ptr_atomic.h:
 
 /usr/include/c++/14.2.1/bits/atomic_lockfree_defines.h:
@@ -5367,6 +5399,8 @@ CMakeFiles/mygame.dir/src/player.cpp.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/vaesintrin.h:
 
+/usr/lib/libSDL2_ttf.so:
+
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tmmintrin.h:
@@ -5386,6 +5420,12 @@ CMakeFiles/mygame.dir/src/player.cpp.o:
 /usr/include/c++/14.2.1/bits/locale_classes.tcc:
 
 /usr/include/bits/time64.h:
+
+/home/matko/Desktop/igrca-za-RPAv/src/Tile.cpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sm3intrin.h:
+
+/usr/include/SDL2/SDL_metal.h:
 
 /usr/include/bits/time.h:
 
@@ -5483,6 +5523,8 @@ _deps/glm-src/glm/ext/vector_double2.hpp:
 
 _deps/glm-src/glm/ext/matrix_float2x4.hpp:
 
+/usr/lib/libglib-2.0.so.0:
+
 _deps/glm-src/glm/detail/compute_vector_relational.hpp:
 
 /usr/include/errno.h:
@@ -5506,6 +5548,10 @@ _deps/glm-src/glm/ext/vector_uint2_sized.hpp:
 /usr/include/SDL2/SDL_version.h:
 
 /usr/include/bits/uintn-identity.h:
+
+/usr/include/c++/14.2.1/bits/shared_ptr_base.h:
+
+/usr/include/SDL2/SDL_ttf.h:
 
 /usr/include/SDL2/SDL_system.h:
 
@@ -5559,6 +5605,8 @@ _deps/glm-src/glm/ext/matrix_float4x4.hpp:
 
 /usr/include/SDL2/SDL_locale.h:
 
+/usr/lib32/libpcre2-8.so.0:
+
 _deps/glm-src/glm/detail/type_mat2x4.inl:
 
 /usr/include/SDL2/SDL_keycode.h:
@@ -5574,12 +5622,6 @@ _deps/glm-src/glm/detail/type_mat3x2.inl:
 /usr/include/bits/sigstksz.h:
 
 /usr/include/alloca.h:
-
-/home/matko/Desktop/igrca-za-RPAv/src/Tile.cpp:
-
-/usr/include/SDL2/SDL_metal.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sm3intrin.h:
 
 /usr/lib/libbrotlicommon.so.1:
 
@@ -5689,6 +5731,8 @@ _deps/glm-src/glm/vec3.hpp:
 
 /usr/include/asm-generic/errno-base.h:
 
+/usr/lib32/libharfbuzz.so.0:
+
 /home/matko/Desktop/igrca-za-RPAv/src/Scientist.hpp:
 
 /usr/include/bits/types/struct_sched_param.h:
@@ -5702,6 +5746,8 @@ _deps/glm-src/glm/ext/matrix_double2x2_precision.hpp:
 _deps/glm-src/glm/detail/setup.hpp:
 
 _deps/glm-src/glm/detail/type_mat2x3.hpp:
+
+/usr/lib32/libglib-2.0.so.0:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mwaitxintrin.h:
 
@@ -5905,6 +5951,12 @@ _deps/glm-src/glm/ext/matrix_float2x4_precision.hpp:
 
 _deps/glm-src/glm/detail/type_vec1.inl:
 
+/usr/include/inttypes.h:
+
+/usr/include/c++/14.2.1/bits/allocator.h:
+
+/usr/include/c++/14.2.1/debug/debug.h:
+
 /usr/include/bits/floatn.h:
 
 _deps/glm-src/glm/ext/vector_int2.hpp:
@@ -6018,6 +6070,8 @@ _deps/glm-src/glm/detail/type_mat2x2.hpp:
 /usr/include/c++/14.2.1/bits/stl_bvector.h:
 
 /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h:
+
+/usr/lib/libfreetype.so.6:
 
 _deps/glm-src/glm/ext/vector_double2_precision.hpp:
 
@@ -6408,12 +6462,6 @@ _deps/glm-src/glm/ext/vector_int3_sized.hpp:
 /usr/include/sys/types.h:
 
 /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/os_defines.h:
-
-/usr/include/c++/14.2.1/bits/allocator.h:
-
-/usr/include/c++/14.2.1/debug/debug.h:
-
-/usr/include/inttypes.h:
 
 /usr/include/limits.h:
 
