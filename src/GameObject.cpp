@@ -40,6 +40,14 @@ GameObject::GameObject(const char* textureSheet, int x, int y, int h, int w) {
 	dest.y = posy;
 	dest.x = posx;
 	dest.h = h;
+	isRunning = false;
+	isIdle = true;
+	FrameWidth = w;
+	FrameHeight = h;
+    lastFrameTime = 0;
+    CurrentFrame = 0;
+	// Set initial srcRect for animation
+	srcRect = {0, 0, FrameWidth, FrameHeight};
 }
 
 void GameObject::Update() {
@@ -47,9 +55,12 @@ void GameObject::Update() {
 	oldY = posy;
 	dest.x = posx - Game::Camera.x;
 	dest.y = posy - Game::Camera.y;
+    Animate();
 }
 
+
 void GameObject::FollowPlayer(GameObject* player, Clock* ura) {
+    isAnimated = true;
 	glm::vec2 move = glm::vec2(player->posx - posx, player->posy - posy);
 	float distance = glm::length(move);
 
@@ -64,7 +75,13 @@ void GameObject::FollowPlayer(GameObject* player, Clock* ura) {
 						   player->dest.h};
 
 	if (Collision::AABB(AnimalDest, PlayerDest)) {
+        isIdle = true;
+        isRunning = false;
+        objTexture = idleTexture;
 	} else {
+        isIdle = false;
+        isRunning = true;
+        objTexture = runningTexture;
 		posx += move.x * 0.2f * ura->delta;	 // Adjust speed as needed
 		posy += move.y * 0.2f * ura->delta;
 	}
@@ -72,6 +89,25 @@ void GameObject::FollowPlayer(GameObject* player, Clock* ura) {
 	// Adjust for camera position
 	dest.x = posx - Game::Camera.x;
 	dest.y = posy - Game::Camera.y;
+}
+
+void GameObject::Animate() {
+    
+    Uint32 currentTime = SDL_GetTicks();
+    // Only change the frame if enough time has passed (for smoother animation)
+    if (currentTime - lastFrameTime > frameDelay) {
+        lastFrameTime = currentTime;
+
+        // Handle animation based on whether the object is running or idle
+        if (isRunning || isIdle) {
+            CurrentFrame++;
+            if (CurrentFrame >= 7)  // Assuming there are 7 frames per animation
+                CurrentFrame = 0;
+
+            srcRect.x = CurrentFrame * FrameWidth;  // Update srcRect for the next frame
+        }
+    }
+    
 }
 
 void GameObject::CollisionDetect(SDL_Rect Border) {
@@ -106,9 +142,16 @@ void GameObject::CollisionDetect(SDL_Rect Border) {
 }
 
 void GameObject::Render() {
+    if(!isAnimated){
+
 	if (!isFlipped)
 		SDL_RenderCopyEx(Game::renderer, objTexture, NULL, &dest, 0, NULL,
 						 SDL_FLIP_HORIZONTAL);
+    
 	else
 		SDL_RenderCopy(Game::renderer, objTexture, NULL, &dest);
+    }
+    else{
+        SDL_RenderCopy(Game::renderer, objTexture, &srcRect, &dest);
+    }
 }

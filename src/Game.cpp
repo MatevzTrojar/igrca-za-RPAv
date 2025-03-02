@@ -35,6 +35,7 @@ Map* map;
 SDL_Rect Game::Camera = {0, 0, 1920, 1080};
 int life = 3;
 SDL_Renderer* Game::renderer = nullptr;
+bool isInnitialized = false;
 void Game::RestartGame() {
 	victory = false;
 	gameOver = false;
@@ -140,6 +141,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 			}
 		}
 	}
+isInnitialized = true;
 }
 
 void Game::handleEvents() {
@@ -166,6 +168,9 @@ int TimeSinceLastBullet = 1e9;
 float collisionCooldown = 0;
 bool FollowPlayer = false;
 void Game::update(Clock* ura) {
+    if(!isInnitialized){
+        return;
+    }
 	player->Update(ura);
 	for (SDL_Rect Border : map->Borders) {
 		player->CollisionDetect(Border);
@@ -179,8 +184,8 @@ void Game::update(Clock* ura) {
     if(Collision::AABB(player->dest, neki->dest)){
         neki->objTexture = TextureManager::LoadTexture("assets/textures/hamster.png");
         FollowPlayer = true;
-        neki->dest.w = 32;
-        neki->dest.h = 32;
+        neki->dest.w = 64;
+        neki->dest.h = 64;
     }
     if(FollowPlayer){
         neki->FollowPlayer(player, ura);

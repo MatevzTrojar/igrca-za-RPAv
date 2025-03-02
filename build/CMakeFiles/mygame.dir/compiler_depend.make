@@ -3898,6 +3898,7 @@ CMakeFiles/mygame.dir/src/Tile.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/Tile
   _deps/glm-src/glm/vec4.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/Game.h \
   /home/matko/Desktop/igrca-za-RPAv/src/GameObject.h \
+  /home/matko/Desktop/igrca-za-RPAv/src/TextureManager.h \
   /home/matko/Desktop/igrca-za-RPAv/src/Tile.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/clock.hpp \
   /usr/include/SDL2/SDL.h \
@@ -4777,6 +4778,7 @@ CMakeFiles/mygame.dir/src/player.cpp.o: /home/matko/Desktop/igrca-za-RPAv/src/pl
   /home/matko/Desktop/igrca-za-RPAv/src/Collision.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/Game.h \
   /home/matko/Desktop/igrca-za-RPAv/src/GameObject.h \
+  /home/matko/Desktop/igrca-za-RPAv/src/TextureManager.h \
   /home/matko/Desktop/igrca-za-RPAv/src/clock.hpp \
   /home/matko/Desktop/igrca-za-RPAv/src/player.hpp \
   /usr/include/SDL2/SDL.h \
