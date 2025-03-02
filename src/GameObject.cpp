@@ -1,4 +1,6 @@
 
+#include "GameObject.h"
+
 #include <endian.h>
 
 #include <algorithm>
@@ -9,6 +11,7 @@
 #include <glm/glm.hpp>
 #include <glm/vec2.hpp>
 #include <iostream>
+#include <memory>
 #include <ostream>
 #include <set>
 #include <system_error>
@@ -24,6 +27,7 @@
 #include "SDL_stdinc.h"
 #include "SDL_timer.h"
 #include "TextureManager.h"
+#include "clock.hpp"
 #include "glm/geometric.hpp"
 #include "player.hpp"
 GameObject::GameObject(const char* textureSheet, int x, int y, int h, int w) {
@@ -41,6 +45,31 @@ GameObject::GameObject(const char* textureSheet, int x, int y, int h, int w) {
 void GameObject::Update() {
 	oldX = posx;
 	oldY = posy;
+	dest.x = posx - Game::Camera.x;
+	dest.y = posy - Game::Camera.y;
+}
+
+void GameObject::FollowPlayer(GameObject* player, Clock* ura) {
+	glm::vec2 move = glm::vec2(player->posx - posx, player->posy - posy);
+	float distance = glm::length(move);
+
+	// Normalize movement vector if distance is greater than 0
+	if (distance > 0) {
+		move = glm::normalize(move);
+	}
+
+	// Collision detection
+	SDL_Rect AnimalDest = {(int)posx, (int)posy, dest.w, dest.h};
+	SDL_Rect PlayerDest = {(int)player->posx, (int)player->posy, player->dest.w,
+						   player->dest.h};
+
+	if (Collision::AABB(AnimalDest, PlayerDest)) {
+	} else {
+		posx += move.x * 0.2f * ura->delta;	 // Adjust speed as needed
+		posy += move.y * 0.2f * ura->delta;
+	}
+
+	// Adjust for camera position
 	dest.x = posx - Game::Camera.x;
 	dest.y = posy - Game::Camera.y;
 }

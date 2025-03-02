@@ -22,8 +22,8 @@ class GameObject {
 	~GameObject() {
         SDL_DestroyTexture(objTexture);
     }
-    SDL_Rect right,left,up,down;
 	void Update();
+    void FollowPlayer(GameObject* player,Clock* ura);
 	void Render();
 	SDL_Texture* objTexture;
 	SDL_Rect srcRect, dest;

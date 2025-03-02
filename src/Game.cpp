@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <cfenv>
+#include <climits>
 #include <cmath>
 #include <cstdlib>
 #include <glm/glm.hpp>
@@ -35,23 +36,19 @@ SDL_Rect Game::Camera = {0, 0, 1920, 1080};
 int life = 3;
 SDL_Renderer* Game::renderer = nullptr;
 void Game::RestartGame() {
-	// Reset game variables
 	victory = false;
 	gameOver = false;
 	life = 3;
 
-	// Clear existing bullets and scientists
 	for (Bullet* bullet : bullets) delete bullet;
 	bullets.clear();
 
 	for (Scientist* scientist : scientists) delete scientist;
 	scientists.clear();
 
-	// Reinitialize player and scientists
 	player->posx = 56 * 32;
 	player->posy = 25 * 32;
 
-	// Reload scientists in their original positions
 	std::vector<std::vector<int>> RoomSpawn = {
 		{400, 300},
 		{42 * 32, 30 * 32, 72 * 32, 14 * 32},
@@ -106,7 +103,6 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 								  SDL_WINDOWPOS_CENTERED, width, height, flags);
 		renderer = SDL_CreateRenderer(window, -1, 0);
 		if (renderer) {
-			//	SDL_SetRenderDrawColor(renderer, 100, 100,100, 100);
 		}
 
 		isRunning = true;
@@ -114,16 +110,17 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 	srand(time(NULL));
 	map = new Map("assets/textures/Dungeon.png");
 	player = new Player("assets/textures/Test2.png", 56 * 32, 25 * 32, 64, 64);
-	neki = new GameObject("assets/textures/chest.jpg", 300, 300, 48, 48);
+	neki = new GameObject("assets/textures/cage.png", 300, 300, 64, 64);
 	victoryScreen = TextureManager::LoadTexture("assets/textures/victory.png");
-	gameOverScreen =TextureManager::LoadTexture("assets/textures/gameover.png");
+	gameOverScreen =
+		TextureManager::LoadTexture("assets/textures/gameover.png");
 
 	std::vector<std::vector<int>> RoomSpawn;
-	RoomSpawn.push_back({400, 300});							 // room1
-	RoomSpawn.push_back({42 * 32, 30 * 32, 72 * 32, 14 * 32});	 // room2
-	RoomSpawn.push_back({72 * 32, 43 * 32, 102 * 32, 50 * 32});	 // room3
-	RoomSpawn.push_back({111 * 32, 11 * 32});					 // room4
-	RoomSpawn.push_back({14 * 32, 56 * 32, 24 * 32, 65 * 32});	 // room5
+	RoomSpawn.push_back({400, 300});
+	RoomSpawn.push_back({42 * 32, 30 * 32, 72 * 32, 14 * 32});
+	RoomSpawn.push_back({72 * 32, 43 * 32, 102 * 32, 50 * 32});
+	RoomSpawn.push_back({111 * 32, 11 * 32});
+	RoomSpawn.push_back({14 * 32, 56 * 32, 24 * 32, 65 * 32});
 	int ScientistX;
 	int ScientistY;
 	for (std::vector<int> i : RoomSpawn) {
@@ -144,12 +141,6 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 		}
 	}
 }
-/*
-for (int i = 0; i < 1; i++) {
-	scientists.insert(
-		new Scientist("assets/textures/scientist.png", 370, 300, 64, 64));
-}
-*/
 
 void Game::handleEvents() {
 	SDL_Event event;
@@ -172,25 +163,29 @@ void Game::handleEvents() {
 	mouse.Clicked(event);
 }
 int TimeSinceLastBullet = 1e9;
-float collisionCooldown =
-	0;	// Cooldown timer for collision-based life loss (in seconds)
+float collisionCooldown = 0;
+bool FollowPlayer = false;
 void Game::update(Clock* ura) {
-	// playe movement
 	player->Update(ura);
-	// Border collision(player,scientist)
 	for (SDL_Rect Border : map->Borders) {
 		player->CollisionDetect(Border);
 		for (Scientist* scientist : scientists) {
 			scientist->CollisionDetect(Border);
-		}
+    }
+    neki->CollisionDetect(Border);
 	}
-	// kamera
-
+    
 	neki->Update();
-	player->CollisionDetect(neki->dest);
-	// Scientist movement
+    if(Collision::AABB(player->dest, neki->dest)){
+        neki->objTexture = TextureManager::LoadTexture("assets/textures/hamster.png");
+        FollowPlayer = true;
+        neki->dest.w = 32;
+        neki->dest.h = 32;
+    }
+    if(FollowPlayer){
+        neki->FollowPlayer(player, ura);
+    }
 	for (Scientist* scientist : scientists) scientist->Update(ura, player, map);
-	// bullet init
 	if (mouse.click && TimeSinceLastBullet > 750) {
 		if (TimeSinceLastBullet > 750) TimeSinceLastBullet = 0;
 		Bullet* bullet =
@@ -204,7 +199,6 @@ void Game::update(Clock* ura) {
 	}
 	TimeSinceLastBullet += ura->delta;
 
-	// bullet movement
 	for (Bullet* bullet : bullets) {
 		if (bullet != NULL && bullet->Active) {
 			bullet->Update(ura, player);
@@ -221,7 +215,6 @@ void Game::update(Clock* ura) {
 		}
 	}
 
-	// bullet collision
 	std::vector<Bullet*> toDelete;
 	std::set<Scientist*> toDeleteScientist;
 	for (Bullet* bullet : bullets) {
@@ -253,11 +246,9 @@ void Game::update(Clock* ura) {
 							   scientist->dest.w, scientist->dest.h};
 
 		if (Collision::AABB(tempPlayer, tempScientist)) {
-			// Only decrease life if cooldown has passed
 			if (collisionCooldown <= 0) {
 				life--;
-				collisionCooldown = 1000.0f;  // Reset cooldown to 1 second (or
-											  // whatever time works best)
+				collisionCooldown = 1000.0f;
 			}
 
 			break;
@@ -270,15 +261,13 @@ void Game::update(Clock* ura) {
 	lifeTextTexture = TextureManager::RenderText(font, lifeText, textColor);
 
 	if (victory || gameOver) {
-		return;	 // Stop updating game logic if the game is over or won
+		return;
 	}
 
-	// Victory condition
 	if (scientists.empty()) {
 		victory = true;
 	}
 
-	// Game over condition
 	if (life <= 0) {
 		gameOver = true;
 	}
@@ -302,32 +291,31 @@ void Game::update(Clock* ura) {
 }
 
 void Game::render() {
-    SDL_RenderClear(renderer);
-    SDL_Rect Fullscreen = {0, 0, 1920, 1080};
+	SDL_RenderClear(renderer);
+	SDL_Rect Fullscreen = {0, 0, 1920, 1080};
 
-    if (victory) {
-        SDL_RenderCopy(renderer, victoryScreen, nullptr, &Fullscreen);
-    } else if (gameOver) {
-        SDL_RenderCopy(renderer, gameOverScreen, nullptr, &Fullscreen);
-    } else {
-        map->Render();
-        player->Render();
-        neki->Render();
-        for (Scientist* scientist : scientists) scientist->Render();
-        for (Bullet* bullet : bullets) {
-            if (bullet != nullptr && bullet->Active) {
-                bullet->Render();
-            }
-        }
+	if (victory) {
+		SDL_RenderCopy(renderer, victoryScreen, nullptr, &Fullscreen);
+	} else if (gameOver) {
+		SDL_RenderCopy(renderer, gameOverScreen, nullptr, &Fullscreen);
+	} else {
+		map->Render();
+		player->Render();
+		neki->Render();
+		for (Scientist* scientist : scientists) scientist->Render();
+		for (Bullet* bullet : bullets) {
+			if (bullet != nullptr && bullet->Active) {
+				bullet->Render();
+			}
+		}
 
-        // Render life text **only if the game is still running**
-        if (!victory && !gameOver && lifeTextTexture) {
-            SDL_Rect lifeRect = {1720, 20, 180, 50};  // Upper-right corner
-            SDL_RenderCopy(renderer, lifeTextTexture, nullptr, &lifeRect);
-        }
-    }
+		if (!victory && !gameOver && lifeTextTexture) {
+			SDL_Rect lifeRect = {1720, 20, 180, 50};
+			SDL_RenderCopy(renderer, lifeTextTexture, nullptr, &lifeRect);
+		}
+	}
 
-    SDL_RenderPresent(renderer);
+	SDL_RenderPresent(renderer);
 }
 void Game::clean() {
 	if (lifeTextTexture) SDL_DestroyTexture(lifeTextTexture);

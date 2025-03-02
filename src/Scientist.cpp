@@ -47,11 +47,11 @@ void Scientist::Update(Clock* ura, GameObject* player, Map* map) {
     glm::vec2 newPos = glm::vec2(posx, posy);  
 
     if (CanSeePlayer) {
-        if (distance > 0.1f) {  
+    if (distance > 0.1f) {  
             glm::vec2 Finalmove = glm::normalize(move);
             newPos += Finalmove * movementSpeed;
         }
-        isFlipped = (move.x > 0);
+    isFlipped = (move.x > 0);
     } else {
         // Handle Random Movement
         randomMoveTime -= ura->delta;
