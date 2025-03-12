@@ -51,11 +51,11 @@ void Game::RestartGame() {
 	player->posy = 25 * 32;
 
 	std::vector<std::vector<int>> RoomSpawn = {
-		{400, 300},
-		{42 * 32, 30 * 32, 72 * 32, 14 * 32},
-		{72 * 32, 43 * 32, 102 * 32, 50 * 32},
-		{111 * 32, 11 * 32},
-		{5 * 32, 53 * 32, 28 * 32, 70 * 32}};
+		{400, 300},//room1
+		{42 * 32, 30 * 32, 72 * 32, 14 * 32},//room2
+		{72 * 32, 43 * 32, 102 * 32, 50 * 32}, //room3
+		{111 * 32, 11 * 32}, //room4
+		{5 * 32, 53 * 32, 28 * 32, 70 * 32}}; //room5
 
 	int ScientistX, ScientistY;
 	for (std::vector<int> i : RoomSpawn) {
@@ -110,7 +110,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 	}
 	srand(time(NULL));
 	map = new Map("assets/textures/Dungeon.png");
-	player = new Player("assets/textures/Test2.png", 56 * 32, 25 * 32, 64, 64);
+	player = new Player("assets/textures/Chewbacca.png", 56 * 32, 25 * 32, 64, 64);
 	neki = new GameObject("assets/textures/cage.png", 300, 300, 64, 64);
 	victoryScreen = TextureManager::LoadTexture("assets/textures/victory.png");
 	gameOverScreen =

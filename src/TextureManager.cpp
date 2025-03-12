@@ -20,18 +20,6 @@ SDL_Texture* TextureManager::LoadTexture(const char* fileName)
 	return tex;
 }
 
-/*void TextureManager::Draw(SDL_Texture* tex, SDL_Rect src, SDL_Rect dest)
-{
-	SDL_RenderCopy(Game::renderer, tex, &src, &dest);
-}*/
-SDL_Texture* TextureManager::LoadBeatmapTexture(const char* fileName)
-{
-    SDL_Surface* tempSurface = SDL_LoadBMP(fileName);
-    SDL_Texture* tex = SDL_CreateTextureFromSurface(Game::renderer, tempSurface);
-    SDL_FreeSurface(tempSurface);
-    
-    return tex;
-}
 SDL_Texture* TextureManager:: RenderText(TTF_Font* font,std::string text, SDL_Color color) {
     SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), color);
     if (!surface) return nullptr;

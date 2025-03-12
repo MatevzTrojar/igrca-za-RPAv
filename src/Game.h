@@ -32,6 +32,7 @@ bool victory = false;
 
 private:
 	bool isRunning = false;
+    int level = 0;
 	int cnt = 0;
 	SDL_Window* window;
 };
