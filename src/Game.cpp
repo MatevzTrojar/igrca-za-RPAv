@@ -24,6 +24,7 @@
 #include "SDL_rect.h"
 #include "SDL_render.h"
 #include "TextureManager.h"
+#include "glm/detail/type_half.hpp"
 #include "glm/geometric.hpp"
 #include "player.hpp"
 std::set<Bullet*> bullets;
@@ -36,47 +37,20 @@ SDL_Rect Game::Camera = {0, 0, 1920, 1080};
 int life = 3;
 SDL_Renderer* Game::renderer = nullptr;
 bool isInnitialized = false;
+bool Game::overworld = true;
 void Game::RestartGame() {
-	victory = false;
-	gameOver = false;
-	life = 3;
-
-	for (Bullet* bullet : bullets) delete bullet;
-	bullets.clear();
-
-	for (Scientist* scientist : scientists) delete scientist;
-	scientists.clear();
-
-	player->posx = 56 * 32;
-	player->posy = 25 * 32;
-
-	std::vector<std::vector<int>> RoomSpawn = {
-		{400, 300},//room1
-		{42 * 32, 30 * 32, 72 * 32, 14 * 32},//room2
-		{72 * 32, 43 * 32, 102 * 32, 50 * 32}, //room3
-		{111 * 32, 11 * 32}, //room4
-		{5 * 32, 53 * 32, 28 * 32, 70 * 32}}; //room5
-
-	int ScientistX, ScientistY;
-	for (std::vector<int> i : RoomSpawn) {
-		int counter = 0;
-		for (int j : i) {
-			if (counter % 2 == 0) {
-				ScientistX = j;
-			} else {
-				ScientistY = j;
-			}
-			counter++;
-			if (counter == 2) {
-				scientists.insert(new Scientist("assets/textures/scientist.png",
-												ScientistX, ScientistY, 64,
-												64));
-				counter = 0;
-			}
-		}
-	}
+    victory = false;
+    gameOver = false;
+    life = 3;
+    if (!overworld) {
+        for (Bullet* bullet : bullets) delete bullet;
+        bullets.clear();
+        for (Scientist* scientist : scientists) delete scientist;
+        scientists.clear();
+        player->posx = 56 * 32;
+        player->posy = 25 * 32;
+    }
 }
-
 Game::Game() {}
 
 Game::~Game() {}
@@ -108,40 +82,46 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 
 		isRunning = true;
 	}
+		Overworldinit();
+
 	srand(time(NULL));
-	map = new Map("assets/textures/Dungeon.png");
-	player = new Player("assets/textures/Chewbacca.png", 56 * 32, 25 * 32, 64, 64);
-	neki = new GameObject("assets/textures/cage.png", 300, 300, 64, 64);
 	victoryScreen = TextureManager::LoadTexture("assets/textures/victory.png");
 	gameOverScreen =
 		TextureManager::LoadTexture("assets/textures/gameover.png");
 
-	std::vector<std::vector<int>> RoomSpawn;
-	RoomSpawn.push_back({400, 300});
-	RoomSpawn.push_back({42 * 32, 30 * 32, 72 * 32, 14 * 32});
-	RoomSpawn.push_back({72 * 32, 43 * 32, 102 * 32, 50 * 32});
-	RoomSpawn.push_back({111 * 32, 11 * 32});
-	RoomSpawn.push_back({14 * 32, 56 * 32, 24 * 32, 65 * 32});
-	int ScientistX;
-	int ScientistY;
-	for (std::vector<int> i : RoomSpawn) {
-		int counter = 0;
-		for (int j : i) {
-			if (counter % 2 == 0) {
-				ScientistX = j;
-			} else {
-				ScientistY = j;
-			}
-			counter++;
-			if (counter == 2) {
-				scientists.insert(new Scientist("assets/textures/scientist.png",
-												ScientistX, ScientistY, 64,
-												64));
-				counter = 0;
-			}
-		}
-	}
-isInnitialized = true;
+	isInnitialized = true;
+}
+
+bool just_spawned = false;
+void Game::Dungeoninit() {
+    player->posx = 56 * 32;
+    player->posy = 25 * 32;
+    map->Bitmap = TextureManager::LoadTexture("assets/textures/Dungeon.png");
+    map->checkOverWorld();
+    map->AssignRand();
+    map->LoadMap();
+    map->AssignBorders();
+
+    just_spawned = true;
+
+    std::vector<std::vector<int>> RoomSpawn = {
+        {400, 300}, 
+        {42 * 32, 30 * 32, 72 * 32, 14 * 32},
+        {72 * 32, 43 * 32, 102 * 32, 50 * 32}, 
+        {111 * 32, 11 * 32},
+        {14 * 32, 56 * 32, 24 * 32, 65 * 32}};
+    for (const std::vector<int>& room : RoomSpawn) {
+        for (size_t i = 0; i < room.size(); i += 2) {
+            scientists.insert(new Scientist("assets/textures/scientist.png", room[i], room[i + 1], 64, 64));
+        }
+    }
+    neki = new GameObject("assets/textures/cage.png", 300, 300, 64, 64);
+}
+void Game::Overworldinit() {
+
+	player =
+		new Player("assets/textures/Chewbacca.png", 30 * 32, 25 * 32, 64, 64);
+	map = new Map("assets/textures/overworld.xcf");
 }
 
 void Game::handleEvents() {
@@ -168,28 +148,66 @@ int TimeSinceLastBullet = 1e9;
 float collisionCooldown = 0;
 bool FollowPlayer = false;
 void Game::update(Clock* ura) {
-    if(!isInnitialized){
+	if (!isInnitialized) {
+		return;
+	}
+    if(just_spawned){
+        just_spawned = false;
         return;
     }
 	player->Update(ura);
+    std::cout<<player->posx<<" "<<player->posy<<std::endl;
+	if (overworld) {
+		Overworldupdate(ura);
+	} else {
+		Dungeonupdate(ura);
+	}
+	if (lifeTextTexture) SDL_DestroyTexture(lifeTextTexture);
+
+	std::string lifeText = "Lives: " + std::to_string(life);
+	lifeTextTexture = TextureManager::RenderText(font, lifeText, textColor);
+
+	if (victory || gameOver) {
+		return;
+	}
+
+	if (scientists.empty() && FollowPlayer) {
+		victory = true;
+	}
+
+	if (life <= 0) {
+		gameOver = true;
+	}
+
+	Camera.x = (int)player->posx - 1920 / 2;
+	Camera.y = (int)player->posy - 1080 / 2;
+int mapWidth = 120 * 32;
+int mapHeight = 72 * 32;
+if (Camera.x < 0) Camera.x = 0;
+if (Camera.y < 0) Camera.y = 0;
+if (Camera.x > (mapWidth - Camera.w)) Camera.x = mapWidth - Camera.w;
+if (Camera.y > (mapHeight - Camera.h)) Camera.y = mapHeight - Camera.h;
+}
+void Game::Dungeonupdate(Clock* ura) {
 	for (SDL_Rect Border : map->Borders) {
 		player->CollisionDetect(Border);
 		for (Scientist* scientist : scientists) {
 			scientist->CollisionDetect(Border);
-    }
-    neki->CollisionDetect(Border);
+		}
+		neki->CollisionDetect(Border);
 	}
-    
+
 	neki->Update();
-    if(Collision::AABB(player->dest, neki->dest)){
-        neki->objTexture = TextureManager::LoadTexture("assets/textures/hamster.png");
-        FollowPlayer = true;
-        neki->dest.w = 64;
-        neki->dest.h = 64;
-    }
-    if(FollowPlayer){
-        neki->FollowPlayer(player, ura);
-    }
+	if (Collision::AABB(player->dest, neki->dest)) {
+		neki->objTexture =
+			TextureManager::LoadTexture("assets/textures/hamster.png");
+		FollowPlayer = true;
+		neki->dest.w = 64;
+		neki->dest.h = 64;
+	}
+	if (FollowPlayer) {
+		neki->FollowPlayer(player, ura);
+	}
 	for (Scientist* scientist : scientists) scientist->Update(ura, player, map);
 	if (mouse.click && TimeSinceLastBullet > 750) {
 		if (TimeSinceLastBullet > 750) TimeSinceLastBullet = 0;
@@ -259,40 +277,16 @@ void Game::update(Clock* ura) {
 			break;
 		}
 	}
-
-	if (lifeTextTexture) SDL_DestroyTexture(lifeTextTexture);
-
-	std::string lifeText = "Lives: " + std::to_string(life);
-	lifeTextTexture = TextureManager::RenderText(font, lifeText, textColor);
-
-	if (victory || gameOver) {
-		return;
-	}
-
-	if (scientists.empty()) {
-		victory = true;
-	}
-
-	if (life <= 0) {
-		gameOver = true;
-	}
-
-	Camera.x = (int)player->posx - 1920 / 2;
-	Camera.y = (int)player->posy - 1080 / 2;
-	if (Camera.x < 0) {
-		Camera.x = 0;
-	}
-	if (Camera.y < 0) {
-		Camera.y = 0;
-	}
-
-	if (Camera.x > Camera.w) {
-		Camera.x = Camera.w;
-	}
-
-	if (Camera.y >= 1292) {
-		Camera.y = 1292;
-	}
+}
+void Game::Overworldupdate(Clock* ura) {
+    for (SDL_Rect Border : map->OWBorders) {
+        player->CollisionDetect(Border);
+        if (Collision::AABB(player->dest, Border) && map->map[(int)player->posx / 32][(int)player->posy / 32] == '4') {
+            Game::overworld = false;
+            Dungeoninit();
+            return;
+        }
+    }
 }
 
 void Game::render() {
@@ -300,28 +294,70 @@ void Game::render() {
 	SDL_Rect Fullscreen = {0, 0, 1920, 1080};
 
 	if (victory) {
-		SDL_RenderCopy(renderer, victoryScreen, nullptr, &Fullscreen);
+		if (victoryScreen) {
+			SDL_RenderCopy(renderer, victoryScreen, nullptr, &Fullscreen);
+		} else {
+			std::cerr << "Error: victoryScreen texture is null!\n";
+		}
 	} else if (gameOver) {
-		SDL_RenderCopy(renderer, gameOverScreen, nullptr, &Fullscreen);
+		if (gameOverScreen) {
+			SDL_RenderCopy(renderer, gameOverScreen, nullptr, &Fullscreen);
+		} else {
+			std::cerr << "Error: gameOverScreen texture is null!\n";
+		}
 	} else {
-		map->Render();
-		player->Render();
-		neki->Render();
-		for (Scientist* scientist : scientists) scientist->Render();
-		for (Bullet* bullet : bullets) {
-			if (bullet != nullptr && bullet->Active) {
-				bullet->Render();
+		// SAFETY CHECKS
+		if (map) {
+			map->Render();
+		} else {
+			std::cerr << "Error: map is null!\n";
+		}
+
+		if (player) {
+			player->Render();
+		} else {
+			std::cerr << "Error: player is null!\n";
+		}
+
+		if (!overworld) {
+			if (neki) {
+				neki->Render();
+			} else {
+				std::cerr << "Error: neki is null!\n";
+			}
+
+			// Check for nullptr in scientists list
+			for (Scientist* scientist : scientists) {
+				if (scientist) {
+					scientist->Render();
+				} else {
+					std::cerr << "Error: scientist is null!\n";
+				}
 			}
 		}
 
+		// Check for nullptr in bullets list
+		for (Bullet* bullet : bullets) {
+			if (bullet && bullet->Active) {
+				bullet->Render();
+			} else if (bullet == nullptr) {
+				std::cerr << "Error: bullet is null!\n";
+			}
+		}
+
+		// Check if lifeTextTexture is valid before rendering
 		if (!victory && !gameOver && lifeTextTexture) {
 			SDL_Rect lifeRect = {1720, 20, 180, 50};
 			SDL_RenderCopy(renderer, lifeTextTexture, nullptr, &lifeRect);
+		} else if (!victory && !gameOver) {
+			std::cerr << "Warning: lifeTextTexture is null!\n";
 		}
 	}
 
 	SDL_RenderPresent(renderer);
 }
+
+
 void Game::clean() {
 	if (lifeTextTexture) SDL_DestroyTexture(lifeTextTexture);
 	TTF_CloseFont(font);
