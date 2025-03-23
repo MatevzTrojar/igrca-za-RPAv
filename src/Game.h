@@ -27,6 +27,7 @@ public:
 	static SDL_Renderer* renderer;
     static SDL_Rect Camera;
     static bool overworld;
+    static int level;
 TTF_Font* font;
 SDL_Texture* lifeTextTexture = nullptr;
 SDL_Color textColor = {255, 255, 255, 255}; // White
@@ -34,11 +35,11 @@ SDL_Texture* victoryScreen = nullptr;
 SDL_Texture* gameOverScreen = nullptr;
 bool gameOver = false;
 bool victory = false;
+void ContinueGame();
 
 
 private:
 	bool isRunning = false;
-    int level = 0;
 	int cnt = 0;
 	SDL_Window* window;
 };

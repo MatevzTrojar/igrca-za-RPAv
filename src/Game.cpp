@@ -38,18 +38,19 @@ int life = 3;
 SDL_Renderer* Game::renderer = nullptr;
 bool isInnitialized = false;
 bool Game::overworld = true;
+int Game::level = 0;
 void Game::RestartGame() {
+	victory = false;
+	gameOver = false;
+	life = 3;
+    overworld = true;
+    level = 0;
+}
+void Game::ContinueGame() {
     victory = false;
     gameOver = false;
-    life = 3;
-    if (!overworld) {
-        for (Bullet* bullet : bullets) delete bullet;
-        bullets.clear();
-        for (Scientist* scientist : scientists) delete scientist;
-        scientists.clear();
-        player->posx = 56 * 32;
-        player->posy = 25 * 32;
-    }
+    overworld = true;
+    Overworldinit();
 }
 Game::Game() {}
 
@@ -82,10 +83,10 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 
 		isRunning = true;
 	}
-		Overworldinit();
+	Overworldinit();
 
 	srand(time(NULL));
-	victoryScreen = TextureManager::LoadTexture("assets/textures/victory.png");
+	victoryScreen = TextureManager::LoadTexture("assets/textures/victory.xcf");
 	gameOverScreen =
 		TextureManager::LoadTexture("assets/textures/gameover.png");
 
@@ -93,35 +94,70 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 }
 
 bool just_spawned = false;
+
+bool FollowPlayer = false;
 void Game::Dungeoninit() {
-    player->posx = 56 * 32;
-    player->posy = 25 * 32;
-    map->Bitmap = TextureManager::LoadTexture("assets/textures/Dungeon.png");
-    map->checkOverWorld();
-    map->AssignRand();
-    map->LoadMap();
-    map->AssignBorders();
+	map->Bitmap = TextureManager::LoadTexture("assets/textures/Dungeon.png");
+	map->checkOverWorld();
+	map->AssignRand();
+	map->LoadMap();
+	map->AssignBorders();
 
-    just_spawned = true;
+	just_spawned = true;
+	std::vector<std::vector<int>> RoomSpawn; 
+    if(level == 1){
+	player->posx = 56 * 32;
+	player->posy = 25 * 32;
 
-    std::vector<std::vector<int>> RoomSpawn = {
-        {400, 300}, 
-        {42 * 32, 30 * 32, 72 * 32, 14 * 32},
-        {72 * 32, 43 * 32, 102 * 32, 50 * 32}, 
-        {111 * 32, 11 * 32},
-        {14 * 32, 56 * 32, 24 * 32, 65 * 32}};
-    for (const std::vector<int>& room : RoomSpawn) {
-        for (size_t i = 0; i < room.size(); i += 2) {
-            scientists.insert(new Scientist("assets/textures/scientist.png", room[i], room[i + 1], 64, 64));
-        }
-    }
-    neki = new GameObject("assets/textures/cage.png", 300, 300, 64, 64);
+	 RoomSpawn = {
+		{400, 300},
+		{42 * 32, 30 * 32, 72 * 32, 14 * 32},
+		{72 * 32, 43 * 32, 102 * 32, 50 * 32},
+		{111 * 32, 11 * 32},
+		{14 * 32, 56 * 32, 24 * 32, 65 * 32}};
+
+	neki = new GameObject("assets/textures/cage.png", 300, 300, 64, 64);
+}
+else if(level == 2){
+    player->posx = 26 * 32;
+    player->posy = 22 * 32;
+    RoomSpawn = {
+        {12*32,28*32, 41*32,28*32},
+        {49*32,4*32, 72*32,5*32},
+        {98*32,13*32, 110*32,25*32},
+        {61*32,39*32},
+        {51*32,53*32, 59*32,62*32, 98*32,63*32, 92*32,55*32}
+    };
+    neki = new GameObject("assets/textures/cage.png", 71*32, 58*32, 64, 64);
+    FollowPlayer = false;
+
+}
+	for (const std::vector<int>& room : RoomSpawn) {
+		for (size_t i = 0; i < room.size(); i += 2) {
+			scientists.insert(new Scientist("assets/textures/scientist.png",
+											room[i], room[i + 1], 64, 64));
+		}
+	}
 }
 void Game::Overworldinit() {
-
+    if(level == 0){
 	player =
 		new Player("assets/textures/Chewbacca.png", 30 * 32, 25 * 32, 64, 64);
 	map = new Map("assets/textures/overworld.xcf");
+
+}
+else{
+    player -> posx = 30*32;
+    player -> posy = 25*32;
+    map->Bitmap = TextureManager::LoadTexture("assets/textures/overworld.xcf");
+	map->checkOverWorld();
+	map->AssignRand();
+	map->LoadMap();
+	map->AssignBorders();
+    
+
+}
+
 }
 
 void Game::handleEvents() {
@@ -146,17 +182,16 @@ void Game::handleEvents() {
 }
 int TimeSinceLastBullet = 1e9;
 float collisionCooldown = 0;
-bool FollowPlayer = false;
 void Game::update(Clock* ura) {
 	if (!isInnitialized) {
 		return;
 	}
-    if(just_spawned){
-        just_spawned = false;
-        return;
-    }
+	if (just_spawned) {
+		just_spawned = false;
+		return;
+	}
 	player->Update(ura);
-    std::cout<<player->posx<<" "<<player->posy<<std::endl;
+//	std::cout << player->posx << " " << player->posy << std::endl;
 	if (overworld) {
 		Overworldupdate(ura);
 	} else {
@@ -171,9 +206,7 @@ void Game::update(Clock* ura) {
 		return;
 	}
 
-	if (scientists.empty() && FollowPlayer) {
-		victory = true;
-	}
+
 
 	if (life <= 0) {
 		gameOver = true;
@@ -181,12 +214,13 @@ void Game::update(Clock* ura) {
 
 	Camera.x = (int)player->posx - 1920 / 2;
 	Camera.y = (int)player->posy - 1080 / 2;
-int mapWidth = 120 * 32;
-int mapHeight = 72 * 32;
-if (Camera.x < 0) Camera.x = 0;
-if (Camera.y < 0) Camera.y = 0;
-if (Camera.x > (mapWidth - Camera.w)) Camera.x = mapWidth - Camera.w;
-if (Camera.y > (mapHeight - Camera.h)) Camera.y = mapHeight - Camera.h;
+	int mapWidth = 120 * 32;
+	int mapHeight = 72 * 32;
+	if (Camera.x < 0) Camera.x = 0;
+	if (Camera.y < 0) Camera.y = 0;
+	if (Camera.x > (mapWidth - Camera.w)) Camera.x = mapWidth - Camera.w;
+	if (Camera.y > (mapHeight - Camera.h)) Camera.y = mapHeight - Camera.h;
+
 }
 void Game::Dungeonupdate(Clock* ura) {
 	for (SDL_Rect Border : map->Borders) {
@@ -277,16 +311,29 @@ void Game::Dungeonupdate(Clock* ura) {
 			break;
 		}
 	}
+	if (scientists.empty() && FollowPlayer) {
+		victory = true;
+	}
 }
 void Game::Overworldupdate(Clock* ura) {
-    for (SDL_Rect Border : map->OWBorders) {
-        player->CollisionDetect(Border);
-        if (Collision::AABB(player->dest, Border) && map->map[(int)player->posx / 32][(int)player->posy / 32] == '4') {
-            Game::overworld = false;
-            Dungeoninit();
-            return;
-        }
-    }
+	for (SDL_Rect Border : map->OWBorders) {
+		player->CollisionDetect(Border);
+	}
+	SDL_Rect tempPlayer{(int)player->posx, (int)player->posy, player->dest.w,
+						player->dest.h};
+	Tile* playerTile =
+		&map->tile[(int)player->posx / 32][(int)player->posy / 32];
+	if (Collision::AABB(tempPlayer, playerTile->dest) &&
+		((map->map[(int)player->posx / 32][(int)player->posy / 32] == '4' ||
+		  map->map[(int)player->posx / 32][(int)player->posy / 32] == '7') &&
+		 !playerTile->Used)) {
+		Game::overworld = false;
+		playerTile->Used = true;
+		level++;
+        map->Borders.clear();
+		Dungeoninit();
+		return;
+	}
 }
 
 void Game::render() {
@@ -295,6 +342,11 @@ void Game::render() {
 
 	if (victory) {
 		if (victoryScreen) {
+    SDL_Rect ContinueButton = {488,381,1000,117},mouseRect = {(int)mouse.xpos,(int)mouse.ypos,1,1};
+    if(Collision::AABB(ContinueButton,mouseRect) && mouse.click && victory){
+        std::cout<<"Continue"<<std::endl;
+        ContinueGame();
+    }
 			SDL_RenderCopy(renderer, victoryScreen, nullptr, &Fullscreen);
 		} else {
 			std::cerr << "Error: victoryScreen texture is null!\n";
@@ -356,7 +408,6 @@ void Game::render() {
 
 	SDL_RenderPresent(renderer);
 }
-
 
 void Game::clean() {
 	if (lifeTextTexture) SDL_DestroyTexture(lifeTextTexture);

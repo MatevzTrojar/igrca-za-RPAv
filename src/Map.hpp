@@ -22,6 +22,7 @@ public:
     SDL_Rect tile4;
     SDL_Rect tile5;
     SDL_Rect tile6;
+    SDL_Rect tile7;
 
     Map(const char *a){
        Bitmap = TextureManager::LoadTexture(a);

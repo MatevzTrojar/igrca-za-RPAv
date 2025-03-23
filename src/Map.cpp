@@ -10,7 +10,8 @@
 #include "glm/detail/type_half.hpp"
 void Map::AssignRand() {
 	if (!Game::overworld) {
-		std::ifstream file("assets/Map.txt");
+        if(Game::level == 1){
+		std::ifstream file("assets/Levels/Level1.txt");
 		char type;
 		for (int y = 0; y < 72; y++) {
 			for (int x = 0; x < 120; x++) {
@@ -18,6 +19,17 @@ void Map::AssignRand() {
 				map[x][y] = type;
 			}
 		}
+        }
+        if(Game::level == 2){
+            std::ifstream file("assets/Levels/Level2.txt");
+            char type;
+            for(int y = 0; y < 72; y++){
+                for(int x = 0; x < 120; x++){
+                    file >> type;
+                    map[x][y] = type;
+                }
+            }
+        }
 	} else {
 		std::ifstream file("assets/overworld.txt");
 		char type;
@@ -30,7 +42,7 @@ void Map::AssignRand() {
 	}
 }
 void Map::AssignBorders() {
-	if (!Game::overworld) {
+if (!Game::overworld) {
 		for (int y = 0; y < 72; y++) {
 			for (int x = 0; x < 120; x++) {
 				if (map[x][y] == '2') {
@@ -59,13 +71,17 @@ void Map::AssignBorders() {
 						tile[x][y].isWall = true;
 					}
 				}
+                /*
 				if (map[x][y] == '4') {
 					if (map[x + 1][y] != '4' || map[x - 1][y] != '4' ||
 						map[x][y + 1] != '4' || map[x][y - 1] != '4') {
 						OWBorders.push_back(tile[x][y].dest);
 						tile[x][y].isWall = true;
+                    
 					}
+                    
 				}
+                */
 			}
 		}
     }
@@ -74,6 +90,7 @@ void Map::AssignBorders() {
 		void Map::LoadMap() {
 			for (int y = 0; y < 72; y++) {
 				for (int x = 0; x < 120; x++) {
+                    
 					tile[x][y].dest.x = x * 32;
 					tile[x][y].dest.y = y * 32;
 					tile[x][y].dest.w = 32;
@@ -92,7 +109,8 @@ void Map::AssignBorders() {
 				tile1 = {0, 271, 32, 32};	 // normal grass
 				tile2 = {0, 298, 32, 32};	 // grass z rozicami
 				tile3 = {209, 263, 32, 32};	 // gozd
-				tile4 = {89, 600, 32, 32};	 // dungeon door
+				tile4 = {121, 633, 32, 32};	 // dungeon door
+                tile7 = {421,754,32,32}; //dungeon second door
 				tile5 = {211, 720, 32, 32};	 // dungeon wall
 				tile6 = {30, 569, 32, 32};	 // dungeon roof
 			}
@@ -142,6 +160,9 @@ void Map::AssignBorders() {
 							SDL_RenderCopy(Game::renderer, Bitmap, &tile6,
 										   &dest);
 							break;
+                        case '7':
+                            SDL_RenderCopy(Game::renderer, Bitmap, &tile7,
+                                           &dest);
 						default:
 							break;	// Skip empty tiles or unknown types
 					}
