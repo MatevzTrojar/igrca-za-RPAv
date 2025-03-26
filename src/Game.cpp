@@ -44,7 +44,14 @@ void Game::RestartGame() {
 	gameOver = false;
 	life = 3;
     overworld = true;
+    Overworldinit();
     level = 0;
+    for(int x = 0; x<120;x++){
+        for(int y = 0; y<72;y++){
+            map->tile[x][y].Used = false;
+        }
+    }
+    scientists.clear();
 }
 void Game::ContinueGame() {
     victory = false;
@@ -68,7 +75,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 	if (!font) {
 		std::cerr << "Failed to load font: " << TTF_GetError() << std::endl;
 	}
-	TextureManager::RenderText(font, "Lives: " + std::to_string(life),
+	TextureManager::RenderText(font, "Hitpoints: " + std::to_string(life),
 							   textColor);
 	if (fullscreen) {
 		flags = SDL_WINDOW_FULLSCREEN;
@@ -132,6 +139,22 @@ else if(level == 2){
     FollowPlayer = false;
 
 }
+if(level == 3){
+    player->posx = 16*32;
+    player->posy = 4*32;
+    RoomSpawn = {
+        {33*32,5*32},
+        {97*32,5*32, 105*32,10*32},
+        {60*32,23*32, 70*32,27*32},
+        {14*32,24*32, 27*32,28*32},
+        {111*32,25*32},
+        {20*32,48*32, 33*32,53*32, 34*32,48*32},
+        {66*32,67*32, 79*32,64*32},
+        {101*32, 50*32 , 107*32, 52*32}
+    };
+    neki = new GameObject("assets/textures/cage.png", 71*32, 65*32, 64, 64);
+    FollowPlayer = false;
+}
 	for (const std::vector<int>& room : RoomSpawn) {
 		for (size_t i = 0; i < room.size(); i += 2) {
 			scientists.insert(new Scientist("assets/textures/scientist.png",
@@ -170,7 +193,7 @@ void Game::handleEvents() {
 			isRunning = false;
 			break;
 		case SDL_KEYDOWN:
-			if (event.key.keysym.sym == SDLK_r && (victory || gameOver)) {
+			if (event.key.keysym.sym == SDLK_r) {
 				RestartGame();
 			}
 			break;
@@ -199,7 +222,7 @@ void Game::update(Clock* ura) {
 	}
 	if (lifeTextTexture) SDL_DestroyTexture(lifeTextTexture);
 
-	std::string lifeText = "Lives: " + std::to_string(life);
+	std::string lifeText = "Hitpoints: " + std::to_string(life);
 	lifeTextTexture = TextureManager::RenderText(font, lifeText, textColor);
 
 	if (victory || gameOver) {
@@ -334,6 +357,7 @@ void Game::Overworldupdate(Clock* ura) {
 		Dungeoninit();
 		return;
 	}
+    
 }
 
 void Game::render() {
