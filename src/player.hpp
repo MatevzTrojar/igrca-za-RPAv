@@ -6,7 +6,7 @@ class Player : public GameObject {
     public:
         glm::vec2 delta;
     Player(const char* textureSheet, int x, int y, int h, int w) : GameObject(textureSheet, x, y, h, w) {}
-    void Update(Clock* ura) {
+    void Update() {
     
 	const Uint8* state = SDL_GetKeyboardState(NULL);
 	moving_left = state[SDL_SCANCODE_A];
@@ -18,14 +18,14 @@ class Player : public GameObject {
     oldY = posy;
 	move.x = 0;
 	move.y = 0;
-	if (moving_up) move.y -= 1 * ura->delta * 0.5;
-	if (moving_down) move.y += 1 * ura->delta * 0.5;
+	if (moving_up) move.y -= 1 * Clock::delta * 0.5;
+	if (moving_down) move.y += 1 * Clock::delta * 0.5;
 	if (moving_right) {
-		move.x += 1 * ura->delta * 0.5;
+		move.x += 1 * Clock::delta * 0.5;
 		isFlipped = true;
 	}
 	if (moving_left) {
-		move.x -= 1 * ura->delta * 0.5;
+		move.x -= 1 * Clock::delta * 0.5;
 		isFlipped = false;
 	}
     if(moving_up && moving_right || moving_up && moving_left || moving_down && moving_right || moving_down && moving_left){

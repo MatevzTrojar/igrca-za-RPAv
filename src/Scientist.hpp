@@ -11,7 +11,7 @@ class Scientist :public GameObject{
     glm::vec2 randomDirection;
     public:
         glm::vec2 delta;
-     void Update(Clock *,GameObject *,Map* );
+     void Update(GameObject *,Map* );
      Scientist(const char* a,int x,int y,int h,int w):GameObject(a,x,y,h,w){
     randomMoveTime = (rand() % 3 + 2) * 1000;  // Random start time (2-5 sec)
     float angle = (rand() % 360) * (3.14159265f / 180.0f);  // Random angle

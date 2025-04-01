@@ -13,9 +13,9 @@
 #include "SDL_stdinc.h"
 #include "glm/common.hpp"
 #include "glm/ext/vector_float2.hpp"
-void Bullet::Update( Clock *ura,GameObject *player) {
-    posx+=pos.x *ura->delta;
-    posy+=pos.y * ura ->delta;
+void Bullet::Update(GameObject *player) {
+    posx+=pos.x *Clock::delta;
+    posy+=pos.y * Clock::delta;
     dest.x = posx - Game::Camera.x; 
     dest.y =posy - Game::Camera.y;
     if(posx > Game::Camera.x + 1920){

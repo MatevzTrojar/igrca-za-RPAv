@@ -24,9 +24,10 @@ class GameObject {
         SDL_DestroyTexture(objTexture);
     }
 	void Update();
-    void FollowPlayer(GameObject* player,Clock* ura);
+    void FollowPlayer(GameObject* player);
 	void Render();
     void Animate();
+    void ShelterDetect();
 	SDL_Texture* objTexture;
     SDL_Texture* runningTexture= TextureManager::LoadTexture("assets/textures/hampter_running.png");
     SDL_Texture* idleTexture= TextureManager::LoadTexture("assets/textures/hampter.png");
@@ -40,6 +41,8 @@ class GameObject {
     bool Collided = false;
 	float posx,oldX;
 	float posy,oldY; 
+    bool Follow = false;
+    bool inShelter = false;
 int frameDelay = 100;
 bool	isRunning;
 bool	isIdle;
@@ -47,6 +50,8 @@ int	FrameWidth;
 int	FrameHeight;
 int  lastFrameTime;
 int   CurrentFrame;
+float ShelterX = 0;
+float ShelterY = 0;
     void CollisionDetect(SDL_Rect Border);
 
 

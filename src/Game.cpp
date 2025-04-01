@@ -2,34 +2,29 @@
 
 #include <SDL_ttf.h>
 
-#include <algorithm>
-#include <cfenv>
 #include <climits>
-#include <cmath>
-#include <cstdlib>
+#include <cstddef>
+#include <fstream>
 #include <glm/glm.hpp>
-#include <ios>
 #include <iostream>
-#include <iterator>
-#include <memory>
 #include <set>
-#include <utility>
 #include <vector>
 
 #include "Bullet.hpp"
 #include "Collision.hpp"
 #include "GameObject.h"
 #include "Mouse.hpp"
-#include "SDL_audio.h"
 #include "SDL_rect.h"
 #include "SDL_render.h"
+#include "Scientist.hpp"
 #include "TextureManager.h"
 #include "glm/detail/type_half.hpp"
-#include "glm/geometric.hpp"
 #include "player.hpp"
 std::set<Bullet*> bullets;
 Player* player;
-GameObject* neki;
+GameObject* Level1Pet;
+GameObject* Level2Pet;
+GameObject* Level3Pet;
 std::set<Scientist*> scientists;
 Mouse mouse;
 Map* map;
@@ -40,24 +35,38 @@ bool isInnitialized = false;
 bool Game::overworld = true;
 int Game::level = 0;
 void Game::RestartGame() {
+    if(Level1Pet){
+        delete Level1Pet;
+        Level1Pet = nullptr;
+    }
+    if(Level2Pet){
+        delete Level2Pet;
+        Level2Pet = nullptr;
+    }
+    if(Level3Pet){
+        delete Level3Pet;
+        Level3Pet = nullptr;
+    }
 	victory = false;
 	gameOver = false;
 	life = 3;
-    overworld = true;
-    Overworldinit();
-    level = 0;
-    for(int x = 0; x<120;x++){
-        for(int y = 0; y<72;y++){
-            map->tile[x][y].Used = false;
-        }
+    if(!overworld){
+	overworld = true;
+	Overworldinit();
     }
-    scientists.clear();
+	level = 0;
+	for (int x = 0; x < 120; x++) {
+		for (int y = 0; y < 72; y++) {
+			map->tile[x][y].Used = false;
+		}
+	}
+	scientists.clear();
 }
 void Game::ContinueGame() {
-    victory = false;
-    gameOver = false;
-    overworld = true;
-    Overworldinit();
+	victory = false;
+	gameOver = false;
+	overworld = true;
+	Overworldinit();
 }
 Game::Game() {}
 
@@ -102,59 +111,60 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 
 bool just_spawned = false;
 
-bool FollowPlayer = false;
 void Game::Dungeoninit() {
 	map->Bitmap = TextureManager::LoadTexture("assets/textures/Dungeon.png");
 	map->checkOverWorld();
 	map->AssignRand();
 	map->LoadMap();
 	map->AssignBorders();
-
 	just_spawned = true;
-	std::vector<std::vector<int>> RoomSpawn; 
-    if(level == 1){
-	player->posx = 56 * 32;
-	player->posy = 25 * 32;
+	std::vector<std::vector<int>> RoomSpawn;
+	if (level == 1) {
+		player->posx = 56 * 32;
+		player->posy = 25 * 32;
 
-	 RoomSpawn = {
-		{400, 300},
-		{42 * 32, 30 * 32, 72 * 32, 14 * 32},
-		{72 * 32, 43 * 32, 102 * 32, 50 * 32},
-		{111 * 32, 11 * 32},
-		{14 * 32, 56 * 32, 24 * 32, 65 * 32}};
+		RoomSpawn = {{400, 300},
+					 {42 * 32, 30 * 32, 72 * 32, 14 * 32},
+					 {72 * 32, 43 * 32, 102 * 32, 50 * 32},
+					 {111 * 32, 11 * 32},
+					 {14 * 32, 56 * 32, 24 * 32, 65 * 32}};
 
-	neki = new GameObject("assets/textures/cage.png", 300, 300, 64, 64);
-}
-else if(level == 2){
-    player->posx = 26 * 32;
-    player->posy = 22 * 32;
-    RoomSpawn = {
-        {12*32,28*32, 41*32,28*32},
-        {49*32,4*32, 72*32,5*32},
-        {98*32,13*32, 110*32,25*32},
-        {61*32,39*32},
-        {51*32,53*32, 59*32,62*32, 98*32,63*32, 92*32,55*32}
-    };
-    neki = new GameObject("assets/textures/cage.png", 71*32, 58*32, 64, 64);
-    FollowPlayer = false;
+		Level1Pet =
+			new GameObject("assets/textures/cage.png", 300, 300, 64, 64);
+	} else if (level == 2) {
+        Level1Pet->posx = -100;
+        Level1Pet->posy = -100;
+		player->posx = 26 * 32;
+		player->posy = 22 * 32;
+		RoomSpawn = {{12 * 32, 28 * 32, 41 * 32, 28 * 32},
+					 {49 * 32, 4 * 32, 72 * 32, 5 * 32},
+					 {98 * 32, 13 * 32, 110 * 32, 25 * 32},
+					 {61 * 32, 39 * 32},
+					 {51 * 32, 53 * 32, 59 * 32, 62 * 32, 98 * 32, 63 * 32,
+					  92 * 32, 55 * 32}};
+		Level2Pet = new GameObject("assets/textures/cage.png", 71 * 32, 58 * 32,
+								   64, 64);
+	}
+	if (level == 3) {
+        Level1Pet->posx = -100;
+        Level1Pet->posy = -100;
 
-}
-if(level == 3){
-    player->posx = 16*32;
-    player->posy = 4*32;
-    RoomSpawn = {
-        {33*32,5*32},
-        {97*32,5*32, 105*32,10*32},
-        {60*32,23*32, 70*32,27*32},
-        {14*32,24*32, 27*32,28*32},
-        {111*32,25*32},
-        {20*32,48*32, 33*32,53*32, 34*32,48*32},
-        {66*32,67*32, 79*32,64*32},
-        {101*32, 50*32 , 107*32, 52*32}
-    };
-    neki = new GameObject("assets/textures/cage.png", 71*32, 65*32, 64, 64);
-    FollowPlayer = false;
-}
+        Level2Pet->posx = -100;
+        Level2Pet->posy = -100;
+
+		player->posx = 16 * 32;
+		player->posy = 4 * 32;
+		RoomSpawn = {{33 * 32, 5 * 32},
+					 {97 * 32, 5 * 32, 105 * 32, 10 * 32},
+					 {60 * 32, 23 * 32, 70 * 32, 27 * 32},
+					 {14 * 32, 24 * 32, 27 * 32, 28 * 32},
+					 {111 * 32, 25 * 32},
+					 {20 * 32, 48 * 32, 33 * 32, 53 * 32, 34 * 32, 48 * 32},
+					 {66 * 32, 67 * 32, 79 * 32, 64 * 32},
+					 {101 * 32, 50 * 32, 107 * 32, 52 * 32}};
+		Level3Pet = new GameObject("assets/textures/cage.png", 71 * 32, 65 * 32,
+								   64, 64);
+	}
 	for (const std::vector<int>& room : RoomSpawn) {
 		for (size_t i = 0; i < room.size(); i += 2) {
 			scientists.insert(new Scientist("assets/textures/scientist.png",
@@ -163,24 +173,33 @@ if(level == 3){
 	}
 }
 void Game::Overworldinit() {
-    if(level == 0){
-	player =
-		new Player("assets/textures/Chewbacca.png", 30 * 32, 25 * 32, 64, 64);
-	map = new Map("assets/textures/overworld.xcf");
+	if (level == 0) {
+		player = new Player("assets/textures/Chewbacca.png", 30 * 32, 25 * 32,
+							64, 64);
+		map = new Map("assets/textures/overworld.xcf");
 
-}
-else{
-    player -> posx = 30*32;
-    player -> posy = 25*32;
-    map->Bitmap = TextureManager::LoadTexture("assets/textures/overworld.xcf");
-	map->checkOverWorld();
-	map->AssignRand();
-	map->LoadMap();
-	map->AssignBorders();
-    
+	} else {
+		player->posx = 30 * 32;
+		player->posy = 25 * 32;
+		map->Bitmap =
+			TextureManager::LoadTexture("assets/textures/overworld.xcf");
+		map->checkOverWorld();
+		map->AssignRand();
+		map->LoadMap();
+		map->AssignBorders();
+        
+		if (Level1Pet && level == 1) {
+			Level1Pet->posx = 33 * 32;
+			Level1Pet->posy = 19 * 32;
+		} else if (Level2Pet && level == 2) {
+			Level2Pet->posx = 33 * 32;
+			Level2Pet->posy = 19 * 32;
+         		} else if (Level3Pet && level == 3) {
+			Level3Pet->posx = 33 * 32;
+			Level3Pet->posy = 19 * 32;
 
-}
-
+		}
+	}
 }
 
 void Game::handleEvents() {
@@ -205,7 +224,7 @@ void Game::handleEvents() {
 }
 int TimeSinceLastBullet = 1e9;
 float collisionCooldown = 0;
-void Game::update(Clock* ura) {
+void Game::update() {
 	if (!isInnitialized) {
 		return;
 	}
@@ -213,12 +232,12 @@ void Game::update(Clock* ura) {
 		just_spawned = false;
 		return;
 	}
-	player->Update(ura);
-//	std::cout << player->posx << " " << player->posy << std::endl;
+	player->Update();
+	//	std::cout << player->posx << " " << player->posy << std::endl;
 	if (overworld) {
-		Overworldupdate(ura);
+		Overworldupdate();
 	} else {
-		Dungeonupdate(ura);
+		Dungeonupdate();
 	}
 	if (lifeTextTexture) SDL_DestroyTexture(lifeTextTexture);
 
@@ -228,8 +247,6 @@ void Game::update(Clock* ura) {
 	if (victory || gameOver) {
 		return;
 	}
-
-
 
 	if (life <= 0) {
 		gameOver = true;
@@ -243,31 +260,61 @@ void Game::update(Clock* ura) {
 	if (Camera.y < 0) Camera.y = 0;
 	if (Camera.x > (mapWidth - Camera.w)) Camera.x = mapWidth - Camera.w;
 	if (Camera.y > (mapHeight - Camera.h)) Camera.y = mapHeight - Camera.h;
-
 }
-void Game::Dungeonupdate(Clock* ura) {
+void Game::Dungeonupdate() {
+    std::cout<<"Posx: "<<Level1Pet->posx<<" Posxy:  " <<Level1Pet->posy <<" ShelterX:  "<< Level1Pet->ShelterX<<" Shelter y: "<<Level1Pet->ShelterY <<std::endl;
 	for (SDL_Rect Border : map->Borders) {
 		player->CollisionDetect(Border);
 		for (Scientist* scientist : scientists) {
 			scientist->CollisionDetect(Border);
 		}
-		neki->CollisionDetect(Border);
+		if (level == 1) {
+			Level1Pet->CollisionDetect(Border);
+		} else if (level == 2) {
+			Level2Pet->CollisionDetect(Border);
+		} else if (level == 3) {
+			Level3Pet->CollisionDetect(Border);
+		}
+	}
+	if (level == 1) {
+		Level1Pet->Update();
+	} else if (level == 2) {
+		Level2Pet->Update();
+	} else if (level == 3) {
+		Level3Pet->Update();
+	}
+	if (level == 1) {
+		if (Collision::AABB(player->dest, Level1Pet->dest)) {
+			Level1Pet->Follow = true;
+			Level1Pet->dest.w = 64;
+			Level1Pet->dest.h = 64;
+		}
+		if (Level1Pet->Follow) {
+			Level1Pet->FollowPlayer(player);
+		}
+	} else if (level == 2) {
+		if (Collision::AABB(player->dest, Level2Pet->dest)) {
+			Level2Pet->Follow = true;
+			Level2Pet->dest.w = 64;
+			Level2Pet->dest.h = 64;
+		}
+		if (Level2Pet->Follow) {
+			Level2Pet->FollowPlayer(player);
+		}
+	} else if (level == 3) {
+		if (Collision::AABB(player->dest, Level3Pet->dest)) {
+			Level3Pet->Follow = true;
+			Level3Pet->dest.w = 64;
+			Level3Pet->dest.h = 64;
+		}
+		if (Level3Pet->Follow) {
+			Level3Pet->FollowPlayer(player);
+		}
 	}
 
-	neki->Update();
-	if (Collision::AABB(player->dest, neki->dest)) {
-		neki->objTexture =
-			TextureManager::LoadTexture("assets/textures/hamster.png");
-		FollowPlayer = true;
-		neki->dest.w = 64;
-		neki->dest.h = 64;
-	}
-	if (FollowPlayer) {
-		neki->FollowPlayer(player, ura);
-	}
-	for (Scientist* scientist : scientists) scientist->Update(ura, player, map);
+	for (Scientist* scientist : scientists) scientist->Update(player, map);
 	if (mouse.click && TimeSinceLastBullet > 750) {
-		if (TimeSinceLastBullet > 750) TimeSinceLastBullet = 0;
+		TimeSinceLastBullet = 0;
 		Bullet* bullet =
 			new Bullet("assets/textures/bullet.png", player->posx + 10,
 					   player->posy + 10, 48, 48);
@@ -277,11 +324,11 @@ void Game::Dungeonupdate(Clock* ura) {
 		bullet->pos = glm::normalize(bullet->pos);
 		bullets.insert(bullet);
 	}
-	TimeSinceLastBullet += ura->delta;
+	TimeSinceLastBullet += Clock::delta;
 
 	for (Bullet* bullet : bullets) {
 		if (bullet != NULL && bullet->Active) {
-			bullet->Update(ura, player);
+			bullet->Update(player);
 		}
 	}
 
@@ -318,7 +365,7 @@ void Game::Dungeonupdate(Clock* ura) {
 		delete scientist;
 	}
 
-	collisionCooldown -= ura->delta;
+	collisionCooldown -= Clock::delta;
 	for (Scientist* scientist : scientists) {
 		SDL_Rect tempPlayer{(int)player->posx, (int)player->posy,
 							player->dest.w, player->dest.h};
@@ -334,73 +381,139 @@ void Game::Dungeonupdate(Clock* ura) {
 			break;
 		}
 	}
-	if (scientists.empty() && FollowPlayer) {
+	if (scientists.empty()){
 		victory = true;
 	}
 }
-void Game::Overworldupdate(Clock* ura) {
+
+void Game::Overworldupdate() {
+    if(level == 2){
+        Level1Pet->posx = Level1Pet->ShelterX;
+        Level1Pet->posy = Level1Pet->ShelterY;
+    }
+    if(level == 3){
+        Level1Pet->posx = Level1Pet->ShelterX;
+        Level1Pet->posy = Level1Pet->ShelterY;
+        Level2Pet->posx = Level2Pet->ShelterX;
+        Level2Pet->posy = Level2Pet->ShelterY;
+    }
+	map->Borders.clear();
+	if (Level1Pet) {
+		Level1Pet->Update();
+        Level1Pet->ShelterDetect();
+		Level1Pet->FollowPlayer(player);
+       // std::cout << Level1Pet->inShelter << std::endl;
+	}
+	if (Level2Pet) {
+		Level2Pet->Update();
+        Level2Pet->ShelterDetect();
+		Level2Pet->FollowPlayer(player);
+	}
+	if (Level3Pet) {
+		Level3Pet->Update();
+        Level3Pet->ShelterDetect();
+		Level3Pet->FollowPlayer(player);
+	}
+
 	for (SDL_Rect Border : map->OWBorders) {
 		player->CollisionDetect(Border);
+        if(Level1Pet)
+        Level1Pet->CollisionDetect(Border);
+        if(Level2Pet)
+        Level2Pet->CollisionDetect(Border);
+        if(Level3Pet)
+        Level3Pet->CollisionDetect(Border);
 	}
+    if(Level1Pet)
+    std::cout<<"Posx: "<<Level1Pet->posx<<" Posxy:  " <<Level1Pet->posy <<" ShelterX:  "<< Level1Pet->ShelterX<<" Shelter y: "<<Level1Pet->ShelterY <<std::endl;
+    player->ShelterDetect();
 	SDL_Rect tempPlayer{(int)player->posx, (int)player->posy, player->dest.w,
 						player->dest.h};
-	Tile* playerTile =
-		&map->tile[(int)player->posx / 32][(int)player->posy / 32];
+	Tile* playerTile = &map->tile[(int)player->posx / 32][(int)player->posy / 32];
 	if (Collision::AABB(tempPlayer, playerTile->dest) &&
 		((map->map[(int)player->posx / 32][(int)player->posy / 32] == '4' ||
 		  map->map[(int)player->posx / 32][(int)player->posy / 32] == '7') &&
 		 !playerTile->Used)) {
-		Game::overworld = false;
-		playerTile->Used = true;
-		level++;
-        map->Borders.clear();
-		Dungeoninit();
-		return;
+		if (Level1Pet && Level1Pet->inShelter && level == 1) {
+        Level1Pet->ShelterX = Level1Pet->posx; 
+        Level1Pet->ShelterY = Level1Pet->posy;
+			Game::overworld = false;
+			playerTile->Used = true;
+			level++;
+			Dungeoninit();
+			return;
+		}
+        else if (Level2Pet && Level2Pet->inShelter && Level1Pet &&
+			Level2Pet->inShelter && level == 2) {
+            Level1Pet->ShelterX = Level1Pet->posx;
+            Level1Pet->ShelterY = Level1Pet->posy;
+            Level2Pet->ShelterX = Level2Pet->posx;
+            Level2Pet->ShelterY = Level2Pet->posy;
+
+			Game::overworld = false;
+			playerTile->Used = true;
+			level++;
+
+			Dungeoninit();
+			return;
+		}
+        else  if (Level3Pet && Level3Pet->inShelter && Level2Pet &&
+            Level3Pet->inShelter &&Level1Pet && Level1Pet->inShelter && level == 3) {
+            Game::overworld = false;
+            playerTile->Used = true;
+            level++;
+            Dungeoninit();
+            return;
+        }
+        if(level == 0){
+            Game::overworld = false;
+            playerTile->Used = true;
+            level++;
+            Dungeoninit();
+            return;
+        }
 	}
-    
+
 }
+	void Game::render() {
+		SDL_RenderClear(renderer);
+		SDL_Rect Fullscreen = {0, 0, 1920, 1080};
 
-void Game::render() {
-	SDL_RenderClear(renderer);
-	SDL_Rect Fullscreen = {0, 0, 1920, 1080};
-
-	if (victory) {
-		if (victoryScreen) {
-    SDL_Rect ContinueButton = {488,381,1000,117},mouseRect = {(int)mouse.xpos,(int)mouse.ypos,1,1};
-    if(Collision::AABB(ContinueButton,mouseRect) && mouse.click && victory){
-        std::cout<<"Continue"<<std::endl;
-        ContinueGame();
-    }
-			SDL_RenderCopy(renderer, victoryScreen, nullptr, &Fullscreen);
-		} else {
-			std::cerr << "Error: victoryScreen texture is null!\n";
-		}
-	} else if (gameOver) {
-		if (gameOverScreen) {
-			SDL_RenderCopy(renderer, gameOverScreen, nullptr, &Fullscreen);
-		} else {
-			std::cerr << "Error: gameOverScreen texture is null!\n";
-		}
-	} else {
-		// SAFETY CHECKS
-		if (map) {
-			map->Render();
-		} else {
-			std::cerr << "Error: map is null!\n";
-		}
-
-		if (player) {
-			player->Render();
-		} else {
-			std::cerr << "Error: player is null!\n";
-		}
-
-		if (!overworld) {
-			if (neki) {
-				neki->Render();
+		if (victory) {
+			if (victoryScreen) {
+				SDL_Rect ContinueButton = {488, 381, 1000, 117},
+						 mouseRect = {(int)mouse.xpos, (int)mouse.ypos, 1, 1};
+				if (Collision::AABB(ContinueButton, mouseRect) && mouse.click &&
+					victory) {
+					std::cout << "Continue" << std::endl;
+					ContinueGame();
+				}
+				SDL_RenderCopy(renderer, victoryScreen, nullptr, &Fullscreen);
 			} else {
-				std::cerr << "Error: neki is null!\n";
+				std::cerr << "Error: victoryScreen texture is null!\n";
 			}
+		} else if (gameOver) {
+			if (gameOverScreen) {
+				SDL_RenderCopy(renderer, gameOverScreen, nullptr, &Fullscreen);
+			} else {
+				std::cerr << "Error: gameOverScreen texture is null!\n";
+			}
+		} else {
+			// SAFETY CHECKS
+			if (map) {
+				map->Render();
+			} else {
+				std::cerr << "Error: map is null!\n";
+			}
+
+			if (player) {
+				player->Render();
+			} else {
+				std::cerr << "Error: player is null!\n";
+			}
+			if (Level1Pet) Level1Pet->Render();
+			if (Level2Pet) Level2Pet->Render();
+			if (Level3Pet) Level3Pet->Render();
 
 			// Check for nullptr in scientists list
 			for (Scientist* scientist : scientists) {
@@ -410,37 +523,36 @@ void Game::render() {
 					std::cerr << "Error: scientist is null!\n";
 				}
 			}
-		}
 
-		// Check for nullptr in bullets list
-		for (Bullet* bullet : bullets) {
-			if (bullet && bullet->Active) {
-				bullet->Render();
-			} else if (bullet == nullptr) {
-				std::cerr << "Error: bullet is null!\n";
+			// Check for nullptr in bullets list
+			for (Bullet* bullet : bullets) {
+				if (bullet && bullet->Active) {
+					bullet->Render();
+				} else if (bullet == nullptr) {
+					std::cerr << "Error: bullet is null!\n";
+				}
+			}
+
+			// Check if lifeTextTexture is valid before rendering
+			if (!victory && !gameOver && lifeTextTexture) {
+				SDL_Rect lifeRect = {1720, 20, 180, 50};
+				SDL_RenderCopy(renderer, lifeTextTexture, nullptr, &lifeRect);
+			} else if (!victory && !gameOver) {
+				std::cerr << "Warning: lifeTextTexture is null!\n";
 			}
 		}
 
-		// Check if lifeTextTexture is valid before rendering
-		if (!victory && !gameOver && lifeTextTexture) {
-			SDL_Rect lifeRect = {1720, 20, 180, 50};
-			SDL_RenderCopy(renderer, lifeTextTexture, nullptr, &lifeRect);
-		} else if (!victory && !gameOver) {
-			std::cerr << "Warning: lifeTextTexture is null!\n";
-		}
+		SDL_RenderPresent(renderer);
 	}
 
-	SDL_RenderPresent(renderer);
-}
+	void Game::clean() {
+		if (lifeTextTexture) SDL_DestroyTexture(lifeTextTexture);
+		TTF_CloseFont(font);
+		TTF_Quit();
+		if (victoryScreen) SDL_DestroyTexture(victoryScreen);
+		if (gameOverScreen) SDL_DestroyTexture(gameOverScreen);
 
-void Game::clean() {
-	if (lifeTextTexture) SDL_DestroyTexture(lifeTextTexture);
-	TTF_CloseFont(font);
-	TTF_Quit();
-	if (victoryScreen) SDL_DestroyTexture(victoryScreen);
-	if (gameOverScreen) SDL_DestroyTexture(gameOverScreen);
-
-	SDL_DestroyWindow(window);
-	SDL_DestroyRenderer(renderer);
-	SDL_Quit();
-}
+		SDL_DestroyWindow(window);
+		SDL_DestroyRenderer(renderer);
+		SDL_Quit();
+	}

@@ -38,12 +38,12 @@ bool Scientist::HasLineOfSight(GameObject* player, Map* map) {
 }
 
 
-void Scientist::Update(Clock* ura, GameObject* player, Map* map) {
+void Scientist::Update( GameObject* player, Map* map) {
     glm::vec2 move = glm::vec2(player->posx - posx, player->posy - posy);
     float distance = glm::length(move);
     bool CanSeePlayer = (distance < 750) && HasLineOfSight(player, map);
 
-    float movementSpeed = ura->delta * 0.15f;
+    float movementSpeed = Clock::delta * 0.15f;
     glm::vec2 newPos = glm::vec2(posx, posy);  
 
     if (CanSeePlayer) {
@@ -54,7 +54,7 @@ void Scientist::Update(Clock* ura, GameObject* player, Map* map) {
     isFlipped = (move.x > 0);
     } else {
         // Handle Random Movement
-        randomMoveTime -= ura->delta;
+        randomMoveTime -= Clock::delta;
 
         if (randomMoveTime <= 0) {
             randomMoveTime = (rand() % 3 + 2) * 1000;  

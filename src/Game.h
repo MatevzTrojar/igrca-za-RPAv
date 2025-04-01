@@ -16,9 +16,9 @@ public:
     void Overworldinit();
     void Dungeoninit();
 	void handleEvents();
-	void update(Clock *);
-    void Dungeonupdate(Clock *);
-    void Overworldupdate(Clock *);
+	void update();
+    void Dungeonupdate();
+    void Overworldupdate();
 
 	bool running() { return isRunning; }
 	void render();

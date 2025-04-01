@@ -4,6 +4,7 @@
 #include <endian.h>
 
 #include <algorithm>
+#include <bit>
 #include <cmath>
 #include <cstdlib>
 #include <ctime>
@@ -59,36 +60,45 @@ void GameObject::Update() {
 }
 
 
-void GameObject::FollowPlayer(GameObject* player, Clock* ura) {
-    isAnimated = true;
-	glm::vec2 move = glm::vec2(player->posx - posx, player->posy - posy);
-	float distance = glm::length(move);
 
-	// Normalize movement vector if distance is greater than 0
-	if (distance > 0) {
-		move = glm::normalize(move);
-	}
-
-	// Collision detection
-	SDL_Rect AnimalDest = {(int)posx, (int)posy, dest.w, dest.h};
-	SDL_Rect PlayerDest = {(int)player->posx, (int)player->posy, player->dest.w,
-						   player->dest.h};
-
-	if (Collision::AABB(AnimalDest, PlayerDest)) {
+void GameObject::FollowPlayer(GameObject* player) {
+    // Stop movement if pet is in the shelter
+    if (inShelter) {
         isIdle = true;
         isRunning = false;
         objTexture = idleTexture;
-	} else {
+        return; // Prevent any movement update
+    }
+
+    isAnimated = true;
+    glm::vec2 move = glm::vec2(player->posx - posx, player->posy - posy);
+    float distance = glm::length(move);
+
+    // Normalize movement vector if distance is greater than 0
+    if (distance > 0) {
+        move = glm::normalize(move);
+    }
+
+    // Collision detection
+    SDL_Rect AnimalDest = {(int)posx, (int)posy, dest.w, dest.h};
+    SDL_Rect PlayerDest = {(int)player->posx, (int)player->posy, player->dest.w,
+                           player->dest.h};
+
+    if (Collision::AABB(AnimalDest, PlayerDest)) {
+        isIdle = true;
+        isRunning = false;
+        objTexture = idleTexture;
+    } else {
         isIdle = false;
         isRunning = true;
         objTexture = runningTexture;
-		posx += move.x * 0.2f * ura->delta;	 // Adjust speed as needed
-		posy += move.y * 0.2f * ura->delta;
-	}
+        posx += move.x * 0.2f * Clock::delta;  // Adjust speed as needed
+        posy += move.y * 0.2f * Clock::delta;
+    }
 
-	// Adjust for camera position
-	dest.x = posx - Game::Camera.x;
-	dest.y = posy - Game::Camera.y;
+    // Adjust for camera position
+    dest.x = posx - Game::Camera.x;
+    dest.y = posy - Game::Camera.y;
 }
 
 void GameObject::Animate() {
@@ -139,6 +149,19 @@ void GameObject::CollisionDetect(SDL_Rect Border) {
 			posy += overlapY;  // Push player back from bottom collision
 		}
 	}
+}
+
+void GameObject::ShelterDetect() {
+    SDL_Rect Shelter = {150, 480, 494 - 127, 120}; // Make sure width and height are correct
+    SDL_Rect tempDest = {(int)posx, (int)posy, dest.w, dest.h};
+    SDL_Rect* ShelterPtr = &Shelter;
+    SDL_Rect* tempDestPtr = &tempDest;
+    if (SDL_HasIntersection(ShelterPtr,tempDestPtr) && Game::overworld) {
+        inShelter = true;
+
+    } else {
+        inShelter = false;
+    }
 }
 
 void GameObject::Render() {
