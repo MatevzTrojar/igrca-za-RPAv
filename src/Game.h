@@ -34,9 +34,20 @@ SDL_Color textColor = {255, 255, 255, 255}; // White
 SDL_Texture* victoryScreen = nullptr;
 SDL_Texture* gameOverScreen = nullptr;
 SDL_Texture* pauseScreen = nullptr;
+SDL_Texture* mainMenuTexture = nullptr;
+SDL_Texture* settingsScreen = nullptr;
+SDL_Texture* leaderboardScreen = nullptr;
+SDL_Texture* EndGameScreen = nullptr;
 static bool gameOver;
 static bool victory;
+static bool MainMenu;
 static bool Paused;
+static bool EndGame;
+SDL_Rect playButton = {447, 169, 500, 127};
+SDL_Rect loadButton = {447, 169 + 203, 500, 127};
+SDL_Rect settingsButton = {447, 169 + 2 * 203, 500, 127};
+SDL_Rect leaderboardButton = {447, 169 + 3 * 203, 500, 127};
+
 void ContinueGame();
 
 

@@ -17,6 +17,7 @@
 #include "SDL_blendmode.h"
 #include "SDL_events.h"
 #include "SDL_log.h"
+#include "SDL_mutex.h"
 #include "SDL_rect.h"
 #include "SDL_render.h"
 #include "SDL_stdinc.h"
@@ -42,6 +43,8 @@ bool isInnitialized = false;
 bool Game::overworld = true;
 bool Game::victory = false;
 bool Game::gameOver = false;
+bool Game::MainMenu = true;
+bool Game::EndGame = false;
 bool Game::Paused = false;
 int Game::level = 0;
 TTF_Font* pauseFont = nullptr;
@@ -119,8 +122,8 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 	victoryScreen = TextureManager::LoadTexture("assets/textures/victory.xcf");
 	gameOverScreen =
 		TextureManager::LoadTexture("assets/textures/gameover.png");
-	pauseScreen =
-		TextureManager::LoadTexture("assets/textures/blackscreen.jpg");
+    mainMenuTexture = TextureManager::LoadTexture("assets/textures/MainMenu.png");
+
 
 	isInnitialized = true;
 }
@@ -226,6 +229,27 @@ void Game::handleEvents() {
 		case SDL_QUIT:
 			isRunning = false;
 			break;
+case SDL_MOUSEBUTTONDOWN:{
+            SDL_Rect mouseRect = {(int)mouse.xpos, (int)mouse.ypos, 1, 1};
+            if (MainMenu) {
+                // Play button clicked
+                if (Collision::AABB(playButton, mouseRect)) {
+                    MainMenu = false; // Start the game
+                    RestartGame();
+                }
+                // Load button clicked
+                else if (Collision::AABB(loadButton, mouseRect)) {
+                    //load
+                }
+                else if (Collision::AABB(settingsButton, mouseRect)) {
+                    //settings
+                }
+                else if (Collision::AABB(leaderboardButton, mouseRect)) {
+                    //leaderboard
+                }
+            }
+    }
+            break;
 		case SDL_KEYDOWN:
 			if (event.key.keysym.sym == SDLK_r) {
 				RestartGame();
@@ -412,6 +436,9 @@ void Game::Dungeonupdate() {
 }
 
 void Game::Overworldupdate() {
+    if(Level1Pet->inShelter && Level2Pet->inShelter && Level3Pet->inShelter) {
+       EndGame = true; 
+    }
 	if (level == 2) {
 		Level1Pet->posx = Level1Pet->ShelterX;
 		Level1Pet->posy = Level1Pet->ShelterY;
@@ -496,8 +523,11 @@ void Game::Overworldupdate() {
 void Game::render() {
 	SDL_RenderClear(renderer);
 	SDL_Rect Fullscreen = {0, 0, 1920, 1080};
-
-	if (victory) {
+    if (MainMenu) {
+        // Render the main menu background
+        SDL_RenderCopy(renderer, mainMenuTexture, nullptr, nullptr);
+    }
+        else if (victory) {
 		if (victoryScreen) {
 			SDL_Rect ContinueButton = {488, 381, 1000, 117},
 					 mouseRect = {(int)mouse.xpos, (int)mouse.ypos, 1, 1};
@@ -516,6 +546,7 @@ void Game::render() {
 			std::cerr << "Error: gameOverScreen texture is null!\n";
 		}
 	}
+
 
 	else {
 		// SAFETY CHECKS
