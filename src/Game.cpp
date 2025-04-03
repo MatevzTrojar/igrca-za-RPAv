@@ -6,6 +6,7 @@
 #include <cstddef>
 #include <fstream>
 #include <glm/glm.hpp>
+#include <iomanip>
 #include <iostream>
 #include <set>
 #include <vector>
@@ -81,6 +82,7 @@ void Game::ContinueGame() {
 	victory = false;
 	gameOver = false;
 	overworld = true;
+	EndGame = false;
 	Overworldinit();
 }
 Game::Game() {}
@@ -96,16 +98,16 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 		return;
 	}
 	font = TTF_OpenFont("assets/fonts/Aerial.ttf", 24);
-    pauseFont = TTF_OpenFont("assets/fonts/Aerial.ttf", 72);
-    if (!pauseFont) {
-        std::cerr << "Failed to load font: " << TTF_GetError() << std::endl;
-    }
+	pauseFont = TTF_OpenFont("assets/fonts/Aerial.ttf", 72);
+	if (!pauseFont) {
+		std::cerr << "Failed to load font: " << TTF_GetError() << std::endl;
+	}
 	if (!font) {
 		std::cerr << "Failed to load font: " << TTF_GetError() << std::endl;
 	}
 	TextureManager::RenderText(font, "Hitpoints: " + std::to_string(life),
 							   textColor);
-    TextureManager::RenderText(pauseFont, "Paused", textColor);
+	TextureManager::RenderText(pauseFont, "Paused", textColor);
 	if (fullscreen) {
 		flags = SDL_WINDOW_FULLSCREEN;
 	}
@@ -120,11 +122,12 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 
 	srand(time(NULL));
 	victoryScreen = TextureManager::LoadTexture("assets/textures/victory.xcf");
+	EndGameScreen = TextureManager::LoadTexture("assets/textures/EndGame.png");
 	gameOverScreen =
 		TextureManager::LoadTexture("assets/textures/gameover.png");
-    mainMenuTexture = TextureManager::LoadTexture("assets/textures/MainMenu.png");
-
-
+	mainMenuTexture =
+		TextureManager::LoadTexture("assets/textures/MainMenu.png");
+    EndGameScreen = TextureManager::LoadTexture("assets/textures/EndGame.PNG");
 	isInnitialized = true;
 }
 
@@ -229,27 +232,24 @@ void Game::handleEvents() {
 		case SDL_QUIT:
 			isRunning = false;
 			break;
-case SDL_MOUSEBUTTONDOWN:{
-            SDL_Rect mouseRect = {(int)mouse.xpos, (int)mouse.ypos, 1, 1};
-            if (MainMenu) {
-                // Play button clicked
-                if (Collision::AABB(playButton, mouseRect)) {
-                    MainMenu = false; // Start the game
-                    RestartGame();
-                }
-                // Load button clicked
-                else if (Collision::AABB(loadButton, mouseRect)) {
-                    //load
-                }
-                else if (Collision::AABB(settingsButton, mouseRect)) {
-                    //settings
-                }
-                else if (Collision::AABB(leaderboardButton, mouseRect)) {
-                    //leaderboard
-                }
-            }
-    }
-            break;
+		case SDL_MOUSEBUTTONDOWN: {
+			SDL_Rect mouseRect = {(int)mouse.xpos, (int)mouse.ypos, 1, 1};
+			if (MainMenu) {
+				// Play button clicked
+				if (Collision::AABB(playButton, mouseRect)) {
+					MainMenu = false;  // Start the game
+					RestartGame();
+				}
+				// Load button clicked
+				else if (Collision::AABB(loadButton, mouseRect)) {
+					// load
+				} else if (Collision::AABB(settingsButton, mouseRect)) {
+					// settings
+				} else if (Collision::AABB(leaderboardButton, mouseRect)) {
+					// leaderboard
+				}
+			}
+		} break;
 		case SDL_KEYDOWN:
 			if (event.key.keysym.sym == SDLK_r) {
 				RestartGame();
@@ -271,6 +271,7 @@ case SDL_MOUSEBUTTONDOWN:{
 }
 int TimeSinceLastBullet = 1e9;
 float collisionCooldown = 0;
+
 void Game::update() {
 	if (Paused) {
 		return;
@@ -294,7 +295,7 @@ void Game::update() {
 	std::string lifeText = "Hitpoints: " + std::to_string(life);
 	lifeTextTexture = TextureManager::RenderText(font, lifeText, textColor);
 
-	if (victory || gameOver) {
+	if (victory || gameOver || EndGame) {
 		return;
 	}
 
@@ -436,9 +437,9 @@ void Game::Dungeonupdate() {
 }
 
 void Game::Overworldupdate() {
-    if(Level1Pet->inShelter && Level2Pet->inShelter && Level3Pet->inShelter) {
-       EndGame = true; 
-    }
+	if (Level1Pet && Level1Pet->inShelter && Level2Pet&& Level2Pet->inShelter && Level3Pet && Level3Pet->inShelter) {
+		EndGame = true;
+	}
 	if (level == 2) {
 		Level1Pet->posx = Level1Pet->ShelterX;
 		Level1Pet->posy = Level1Pet->ShelterY;
@@ -523,11 +524,18 @@ void Game::Overworldupdate() {
 void Game::render() {
 	SDL_RenderClear(renderer);
 	SDL_Rect Fullscreen = {0, 0, 1920, 1080};
-    if (MainMenu) {
-        // Render the main menu background
-        SDL_RenderCopy(renderer, mainMenuTexture, nullptr, nullptr);
-    }
-        else if (victory) {
+	if (MainMenu) {
+		// Render the main menu background
+		SDL_RenderCopy(renderer, mainMenuTexture, nullptr, nullptr);
+	} else if (EndGame) {
+		SDL_Rect ContinueButton = {406, 852, 947, 100},
+				 mouseRect = {(int)mouse.xpos, (int)mouse.ypos, 1, 1};
+		if (Collision::AABB(ContinueButton, mouseRect) && mouse.click) {
+			RestartGame();
+			MainMenu = true;
+		}
+		SDL_RenderCopy(renderer, EndGameScreen, nullptr, &Fullscreen);
+	} else if (victory) {
 		if (victoryScreen) {
 			SDL_Rect ContinueButton = {488, 381, 1000, 117},
 					 mouseRect = {(int)mouse.xpos, (int)mouse.ypos, 1, 1};
@@ -546,7 +554,6 @@ void Game::render() {
 			std::cerr << "Error: gameOverScreen texture is null!\n";
 		}
 	}
-
 
 	else {
 		// SAFETY CHECKS
@@ -597,16 +604,15 @@ void Game::render() {
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0,
 							   128);				// Semi-transparent black
 		SDL_RenderFillRect(renderer, &Fullscreen);	// Draw the overlay
-        SDL_Texture * pauseTexture =
-            TextureManager::RenderText(pauseFont, "Paused", textColor);
-        SDL_Rect pauseRect = {SCREEN_WIDTH / 2 - 200, SCREEN_HEIGHT / 2 - 50,
-                              400, 100};
-        SDL_RenderCopy(renderer, pauseTexture, nullptr, &pauseRect);
-        SDL_DestroyTexture(pauseTexture);
-
+		SDL_Texture* pauseTexture =
+			TextureManager::RenderText(pauseFont, "Paused", textColor);
+		SDL_Rect pauseRect = {SCREEN_WIDTH / 2 - 200, SCREEN_HEIGHT / 2 - 50,
+							  400, 100};
+		SDL_RenderCopy(renderer, pauseTexture, nullptr, &pauseRect);
+		SDL_DestroyTexture(pauseTexture);
 	}
 
-	SDL_RenderPresent(renderer);
+SDL_RenderPresent(renderer);
 }
 
 void Game::clean() {
