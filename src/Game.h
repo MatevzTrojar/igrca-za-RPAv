@@ -33,8 +33,10 @@ SDL_Texture* lifeTextTexture = nullptr;
 SDL_Color textColor = {255, 255, 255, 255}; // White
 SDL_Texture* victoryScreen = nullptr;
 SDL_Texture* gameOverScreen = nullptr;
-bool gameOver = false;
-bool victory = false;
+SDL_Texture* pauseScreen = nullptr;
+static bool gameOver;
+static bool victory;
+static bool Paused;
 void ContinueGame();
 
 
