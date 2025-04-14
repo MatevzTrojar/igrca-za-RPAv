@@ -100,7 +100,9 @@ void GameObject::FollowPlayer(GameObject* player) {
     dest.x = posx - Game::Camera.x;
     dest.y = posy - Game::Camera.y;
 }
-
+   void GameObject::ResetAnimation() {
+       this->CurrentFrame = 0;
+   }
 void GameObject::Animate() {
     
     Uint32 currentTime = SDL_GetTicks();

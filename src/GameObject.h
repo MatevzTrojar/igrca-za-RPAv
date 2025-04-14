@@ -13,6 +13,13 @@
 #include "glm/detail/qualifier.hpp"
 #include "TextureManager.h"
 #include <set>
+struct SaveObjectData {
+    float posx;
+    float posy;
+    SDL_Rect dest;
+    int shelterX;
+    int shelterY;
+};
 class GameObject {
    public:
 
@@ -52,8 +59,24 @@ int  lastFrameTime;
 int   CurrentFrame;
 float ShelterX = 0;
 float ShelterY = 0;
+static bool Loaded;
     void CollisionDetect(SDL_Rect Border);
-
-
-
+SaveObjectData GetSaveData() {
+    SaveObjectData data;
+    data.posx = posx;
+    data.posy = posy;
+    data.dest = dest;
+    data.shelterX = ShelterX;
+    data.shelterY = ShelterY;
+    return data;
+}
+void SetSaveData(SaveObjectData data) {
+    posx = data.posx;
+    posy = data.posy;
+    dest = data.dest;
+    ShelterX = data.shelterX;
+    ShelterY = data.shelterY;
+}
+void ResetAnimation();
 };
+
