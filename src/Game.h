@@ -4,6 +4,7 @@
 #include "SDL_image.h"
 #include <iostream>
 #include "SDL_joystick.h"
+#include "SDL_render.h"
 #include "clock.hpp"
 #include "SDL_ttf.h"
 class Game
@@ -38,6 +39,7 @@ SDL_Texture* mainMenuTexture = nullptr;
 SDL_Texture* settingsScreen = nullptr;
 SDL_Texture* leaderboardScreen = nullptr;
 SDL_Texture* EndGameScreen = nullptr;
+SDL_Texture* renderTarget = nullptr;
 static bool gameOver;
 static bool victory;
 static bool MainMenu;
@@ -49,6 +51,7 @@ SDL_Rect playButton = {447, 169, 500, 127};
 SDL_Rect loadButton = {447, 169 + 203, 500, 127};
 SDL_Rect settingsButton = {447, 169 + 2 * 203, 500, 127};
 SDL_Rect leaderboardButton = {447, 169 + 3 * 203, 500, 127};
+SDL_Rect continueButton ={586,386,800,102};
 void SaveGame();
 void LoadGame();
 void ContinueGame();
