@@ -11,6 +11,7 @@
 #include <ios>
 #include <iostream>
 #include <iterator>
+#include <memory>
 #include <set>
 #include <vector>
 
@@ -50,6 +51,12 @@ bool Game::gameOver = false;
 bool Game::MainMenu = true;
 bool Game::EndGame = false;
 bool Game::Paused = false;
+std::vector<SDL_Point> playerReplayPath;
+bool Game::recordingReplay = false;
+bool Game::playingReplay = false;
+int Game::replayFrame = 0;
+Player* ghostPlayer = nullptr;
+
 int Game::level = 0;
 TTF_Font* pauseFont = nullptr;
 
@@ -118,14 +125,14 @@ void Game::SaveGame() {
 	data.Follow1 = Level1Pet ? Level1Pet->Follow : false;
 	data.Follow2 = Level2Pet ? Level2Pet->Follow : false;
 	data.Follow3 = Level3Pet ? Level3Pet->Follow : false;
-	if (overworld)
+//	if (overworld)
 		data.PetCount = (Level1Pet != nullptr) + (Level2Pet != nullptr) +
 						(Level3Pet != nullptr);
-	else
-		data.PetCount = 0;
+//	else
+//		data.PetCount = 0;
 
 	SaveFile.write(reinterpret_cast<const char*>(&data), sizeof(SaveData));
-	if (overworld) {
+//	if (overworld) {
 		SaveObjectData saveData;
 		if (Level1Pet) {
 			// GetSaveData() should now also return shelter coordinates.
@@ -143,7 +150,10 @@ void Game::SaveGame() {
 			SaveFile.write(reinterpret_cast<char*>(&saveData),
 						   sizeof(saveData));
 		}
-	}
+if(overworld){
+SaveObjectData playerData = player->GetSaveData();
+SaveFile.write(reinterpret_cast<char*>(&playerData), sizeof(SaveObjectData));
+}
 
 	SaveFile.close();
 	std::cout << "Level: " << level << std::endl;
@@ -152,6 +162,19 @@ void Game::SaveGame() {
 	std::cout << "Victory: " << victory << std::endl;
 	std::cout << "GameOver: " << gameOver << std::endl;
 	std::cout << "EndGame: " << EndGame << std::endl;
+	if (Level1Pet) {
+		std::cout << "Level1Pet: " << Level1Pet->posx << ", " << Level1Pet->posy
+				  << std::endl;
+	}
+	if (Level2Pet) {
+		std::cout << "Level2Pet: " << Level2Pet->posx << ", " << Level2Pet->posy
+				  << std::endl;
+	}
+	if (Level3Pet) {
+		std::cout << "Level3Pet: " << Level3Pet->posx << ", " << Level3Pet->posy
+				  << std::endl;
+	}
+	std::cout << "Game saved successfully!" << std::endl;
 }
 
 bool Game::Loaded = false;
@@ -171,34 +194,90 @@ void Game::LoadGame() {
 	gameOver = data.gameOver;
 	EndGame = data.EndGame;
 
-	if (overworld) {
-		// Updated lambda now creates the pet using saved coordinates.
-		auto loadPet = [&](GameObject*& pet, bool followState,
-						   const char* texture) {
-			SaveObjectData petData;
-			if (!LoadFile.read(reinterpret_cast<char*>(&petData),
-							   sizeof(petData))) {
-				std::cerr << "Failed to read pet data!" << std::endl;
-				return;
-			}
-			// Create the pet using the saved position from petData.
-			pet = new GameObject(texture, petData.posx, petData.posy, 64, 64);
-			pet->SetSaveData(petData);	// This should restore position,
-										// shelterX, shelterY, etc.
-			pet->Follow = followState;
-			pet->ResetAnimation();
-		};
+	auto loadPet = [&](GameObject*& pet, bool followState, const char* texture) {
+		SaveObjectData loadData;
+		if (!LoadFile.read(reinterpret_cast<char*>(&loadData), sizeof(loadData))) {
+			std::cerr << "Failed to read pet data!" << std::endl;
+			return;
+		}
+		pet = new GameObject(texture, loadData.posx, loadData.posy, 64, 64);
+		pet->SetSaveData(loadData);
+		pet->Follow = followState;
+		pet->ResetAnimation();
+	};
 
-		if (data.PetCount >= 1)
-			loadPet(Level1Pet, data.Follow1,
-					"assets/textures/animated_pet.png");
-		if (data.PetCount >= 2)
-			loadPet(Level2Pet, data.Follow2,
-					"assets/textures/animated_pet.png");
-		if (data.PetCount >= 3)
-			loadPet(Level3Pet, data.Follow3,
-					"assets/textures/animated_pet.png");
+	if (data.PetCount >= 1){
+		loadPet(Level1Pet, data.Follow1, "assets/textures/hampter.png");
+        std::cout<<"Level1Pet shelter x/y: "<<Level1Pet->ShelterX<<", "<<Level1Pet->ShelterY<<std::endl;
+    }
+	if (data.PetCount >= 2)
+		loadPet(Level2Pet, data.Follow2, "assets/textures/hampter.png");
+	if (data.PetCount >= 3)
+		loadPet(Level3Pet, data.Follow3, "assets/textures/hampter.png");
+if (overworld) {
+
+	SaveObjectData playerData;
+	if (!LoadFile.read(reinterpret_cast<char*>(&playerData), sizeof(playerData))) {
+		std::cerr << "Failed to read player data!" << std::endl;
+		return;
 	}
+    if(!player){
+        player = new Player("assets/textures/Chewbacca.png", 30 * 32, 25 * 32,
+                            64, 64);
+    }
+
+	player->SetSaveData(playerData);
+}
+else{
+    if(level == 1){
+        if(Level1Pet){
+            Level1Pet->posx = -100;
+            Level1Pet->posy = -100;
+        }
+        else{
+            Level1Pet = new GameObject("assets/textures/hampter.png", -100, -100,
+                                       64, 64);
+        }
+    }
+    if(level == 2){
+        if(Level1Pet){
+            Level1Pet->posx = -100;
+            Level1Pet->posy = -100;
+        }
+        else{
+            Level1Pet = new GameObject("assets/textures/hampter.png", -100, -100,
+                                       64, 64);
+        }
+        if(Level2Pet){
+            Level2Pet->posx = -100;
+            Level2Pet->posy = -100;
+        }
+        else{
+            Level2Pet = new GameObject("assets/textures/hampter.png", -100, -100,
+                                       64, 64);
+        }
+    }
+    if(level == 3){
+        if(Level1Pet){
+            Level1Pet->posx = -100;
+            Level1Pet->posy = -100;
+        }
+        else{
+            Level1Pet = new GameObject("assets/textures/hampter.png", -100, -100,
+                                       64, 64);
+        }
+        if(Level2Pet){
+            Level2Pet->posx = -100;
+            Level2Pet->posy = -100;
+        }
+        else{
+            Level2Pet = new GameObject("assets/textures/hampter.png", -100, -100,
+                                       64, 64);
+        }
+            Level3Pet = new GameObject("assets/textures/hampter.png",71*32 ,65*32,
+                                       64, 64);
+    }
+}
 	LoadFile.close();
 	std::cout << "Level: " << level << std::endl;
 	std::cout << "Life: " << life << std::endl;
@@ -206,10 +285,24 @@ void Game::LoadGame() {
 	std::cout << "Victory: " << victory << std::endl;
 	std::cout << "GameOver: " << gameOver << std::endl;
 	std::cout << "EndGame: " << EndGame << std::endl;
+	if (Level1Pet) {
+		std::cout << "Level1Pet: " << Level1Pet->posx << ", " << Level1Pet->posy
+				  << std::endl;
+	}
+	if (Level2Pet) {
+		std::cout << "Level2Pet: " << Level2Pet->posx << ", " << Level2Pet->posy
+				  << std::endl;
+	}
+	if (Level3Pet) {
+		std::cout << "Level3Pet: " << Level3Pet->posx << ", " << Level3Pet->posy
+				  << std::endl;
+	}
+	std::cout << "Game loaded successfully!" << std::endl;
 	if (overworld) {
 		Overworldinit();
 	} else {
-		Dungeoninit();
+        if(Level1Pet)std::cout<<"Level1Pet shelter x/y: "<<Level1Pet->ShelterX<<", "<<Level1Pet->ShelterY<<std::endl;
+		Dungeoninit();  
 	}
 	Loaded = false;
 }
@@ -294,12 +387,19 @@ void Game::Dungeoninit() {
 					 {111 * 32, 11 * 32},
 					 {14 * 32, 56 * 32, 24 * 32, 65 * 32}};
 
-		// Use the animated texture if needed.
 		Level1Pet =
 			new GameObject("assets/textures/cage.png", 300, 300, 64, 64);
 	} else if (level == 2) {
-		Level1Pet->posx = -100;
-		Level1Pet->posy = -100;
+        if(Level1Pet){
+            Level1Pet->posx = -100;
+            Level1Pet->posy = -100;
+            std::cout<<"Dungeon init Level1Pet shelter x/y: "<<Level1Pet->ShelterX<<", "<<Level1Pet->ShelterY<<std::endl;
+        }
+        else{
+            Level1Pet = new GameObject("assets/textures/hampter.png", -100, -100,
+                                       64, 64);
+        }
+
 		player->posx = 26 * 32;
 		player->posy = 22 * 32;
 		RoomSpawn = {{12 * 32, 28 * 32, 41 * 32, 28 * 32},
@@ -313,12 +413,22 @@ void Game::Dungeoninit() {
 		Level2Pet->ResetAnimation();
 	}
 	if (level == 3) {
-		Level1Pet->posx = -100;
-		Level1Pet->posy = -100;
-
-		Level2Pet->posx = -100;
-		Level2Pet->posy = -100;
-
+        if(Level1Pet){
+            Level1Pet->posx = -100;
+            Level1Pet->posy = -100;
+        }
+        else{
+            Level1Pet = new GameObject("assets/textures/hampter.png", -100, -100,
+                                       64, 64);
+        }
+    if(Level2Pet){
+            Level2Pet->posx = -100;
+            Level2Pet->posy = -100;
+        }
+        else{
+            Level2Pet = new GameObject("assets/textures/hampter.png", -100, -100,
+                                       64, 64);
+        }
 		player->posx = 16 * 32;
 		player->posy = 4 * 32;
 		RoomSpawn = {{33 * 32, 5 * 32},
@@ -329,8 +439,10 @@ void Game::Dungeoninit() {
 					 {20 * 32, 48 * 32, 33 * 32, 53 * 32, 34 * 32, 48 * 32},
 					 {66 * 32, 67 * 32, 79 * 32, 64 * 32},
 					 {101 * 32, 50 * 32, 107 * 32, 52 * 32}};
+        if(!Loaded && !Level3Pet)
 		Level3Pet = new GameObject("assets/textures/cage.png", 71 * 32, 65 * 32,
 								   64, 64);
+        Level3Pet->objTexture = TextureManager::LoadTexture("assets/textures/cage.png");
 		Level3Pet->ResetAnimation();
 	}
 	for (const std::vector<int>& room : RoomSpawn) {
@@ -347,72 +459,43 @@ void Game::Overworldinit() {
 							64, 64);
 		map = new Map("assets/textures/overworld.xcf");
 	} else {
-		// Reposition player regardless of loaded state.
-		player->posx = 30 * 32;
-		player->posy = 25 * 32;
 		map->Bitmap =
 			TextureManager::LoadTexture("assets/textures/overworld.xcf");
 		map->checkOverWorld();
 		map->AssignRand();
 		map->LoadMap();
 		map->AssignBorders();
-
-		// Reposition pets if they were not loaded from file.
-		if (Level1Pet && level == 1 && !Loaded) {
-			Level1Pet->posx = 33 * 32;
-			Level1Pet->posy = 19 * 32;
-			Level1Pet->ResetAnimation();
-		}
-		if (Level2Pet && level == 2 && !Loaded) {
-			Level2Pet->posx = 33 * 32;
-			Level2Pet->posy = 19 * 32;
-			Level2Pet->ResetAnimation();
-		}
-		if (Level3Pet && level == 3 && !Loaded) {
-			Level3Pet->posx = 33 * 32;
-			Level3Pet->posy = 19 * 32;
-			Level3Pet->ResetAnimation();
-		}
-        if(level == 1 && Loaded){
-            Level1Pet->posx = Level1Pet->ShelterX;
-            Level1Pet->posy = Level1Pet->ShelterY;
-            Level1Pet->objTexture =
-                TextureManager::LoadTexture("assets/textures/hampter.png");
+		if (Level1Pet){
             Level1Pet->FollowPlayer(player);
         }
-		if (level == 2 && Loaded) {
-			Level1Pet->posx = Level1Pet->ShelterX;
-			Level1Pet->posy = Level1Pet->ShelterY;
-			Level1Pet->objTexture =
-				TextureManager::LoadTexture("assets/textures/hampter.png");
-			Level1Pet->FollowPlayer(player);
-			if (Level2Pet) {
-				Level2Pet->posx = Level2Pet->ShelterX;
-				Level2Pet->posy = Level2Pet->ShelterY;
-				Level2Pet->objTexture =
-					TextureManager::LoadTexture("assets/textures/hampter.png");
-				Level2Pet->FollowPlayer(player);
+
+		if (Level2Pet){
+            Level2Pet->FollowPlayer(player);
+        }
+		if (Level3Pet){
+            Level3Pet->FollowPlayer(player);
+        }
+		if (!Loaded) {
+			player->posx = 30 * 32;
+			player->posy = 25 * 32;
+
+			if (Level1Pet && level == 1) {
+				Level1Pet->posx = 33 * 32;
+				Level1Pet->posy = 19 * 32;
+				Level1Pet->ResetAnimation();
+			}
+			if (Level2Pet && level == 2) {
+				Level2Pet->posx = 33 * 32;
+				Level2Pet->posy = 19 * 32;
+				Level2Pet->ResetAnimation();
+			}
+			if (Level3Pet && level == 3) {
+				Level3Pet->posx = 33 * 32;
+				Level3Pet->posy = 19 * 32;
+				Level3Pet->ResetAnimation();
 			}
 		}
-		if (level == 3 && Loaded) {
-			Level1Pet->posx = Level1Pet->ShelterX;
-			Level1Pet->posy = Level1Pet->ShelterY;
-			Level1Pet->objTexture =
-				TextureManager::LoadTexture("assets/textures/hampter.png");
-			Level1Pet->FollowPlayer(player);
-			Level2Pet->posx = Level2Pet->ShelterX;
-			Level2Pet->posy = Level2Pet->ShelterY;
-			Level2Pet->objTexture =
-				TextureManager::LoadTexture("assets/textures/hampter.png");
-			Level2Pet->FollowPlayer(player);
-			if (Level3Pet) {
-				Level3Pet->posx = Level3Pet->ShelterX;
-				Level3Pet->posy = Level3Pet->ShelterY;
-				Level3Pet->objTexture =
-					TextureManager::LoadTexture("assets/textures/hampter.png");
-				Level3Pet->FollowPlayer(player);
-			}
-		}
+
 	}
 }
 
@@ -462,11 +545,17 @@ void Game::handleEvents() {
 				}
 				if (victory) {
 					if (Collision::AABB(continueButton, mouseRect)) {
-                        victory = false;
+						victory = false;
 						ContinueGame();
 					}
-
 				}
+                if(EndGame){
+                    if (Collision::AABB(BackToMainMenu, mouseRect)) {
+                        EndGame = false;
+                        MainMenu = true;
+                        RestartGame();
+                    } 
+                }
 			} break;
 			case SDL_KEYDOWN:
 				if (event.key.keysym.sym == SDLK_r) {
@@ -488,10 +577,11 @@ int TimeSinceLastBullet = 1e9;
 float collisionCooldown = 0;
 
 void Game::update() {
+
 	if (Paused) {
 		return;
 	}
-	std::cout << Paused << std::endl;
+	// std::cout << Paused << std::endl;
 	if (!isInnitialized) {
 		return;
 	}
@@ -660,15 +750,21 @@ void Game::Overworldupdate() {
 		EndGame = true;
 	}
 	if (level == 2) {
-		// Reposition using the loaded shelter coordinates
+        if(Level1Pet){
 		Level1Pet->posx = Level1Pet->ShelterX;
 		Level1Pet->posy = Level1Pet->ShelterY;
+
+        }
 	}
 	if (level == 3) {
+        if(Level1Pet){
 		Level1Pet->posx = Level1Pet->ShelterX;
 		Level1Pet->posy = Level1Pet->ShelterY;
+        }
+        if(Level2Pet){
 		Level2Pet->posx = Level2Pet->ShelterX;
 		Level2Pet->posy = Level2Pet->ShelterY;
+        }
 	}
 	map->Borders.clear();
 	if (Level1Pet) {
