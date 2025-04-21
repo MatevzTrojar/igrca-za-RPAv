@@ -12,7 +12,6 @@ int main(int argc, char* argv[]) {
 	while (game->running()) {
         Clock::tick();
 		game->handleEvents();
-        if(!game->victory)
 		game->update();
 		game->render();
 	}

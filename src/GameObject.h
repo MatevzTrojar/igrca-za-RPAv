@@ -1,16 +1,9 @@
 #pragma once
-
 #include <sys/ucontext.h>
 #include <complex>
 #include <ios>
 #include <set>
-#include "Game.h"
-#include "SDL_audio.h"
-#include "SDL_mutex.h"
-#include "SDL_rect.h"
-#include "SDL_render.h"
 #include <glm/glm.hpp>
-#include "glm/detail/qualifier.hpp"
 #include "TextureManager.h"
 #include <set>
 struct SaveObjectData {

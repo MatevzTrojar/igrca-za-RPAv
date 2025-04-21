@@ -11,7 +11,6 @@
 #include "glm/common.hpp"
 #include "glm/ext/vector_float2.hpp"
 #include <set>
-#include "Scientist.hpp"
 
 class Bullet : public GameObject {
    public:

@@ -1,5 +1,4 @@
-#include "Map.hpp"
-
+#include "Game.h"
 #include <cstdlib>
 #include <ctime>
 #include <fstream>
@@ -62,11 +61,15 @@ void Map::AssignBorders() {
 						tile[x][y].isWall = true;
 					}
 				}
+
+                }
 			}
-		}
 	} else {
 		for (int y = 0; y < 72; y++) {
 			for (int x = 0; x < 120; x++) {
+                if(map[x][y] == '4' || map[x][y] == '7'){
+                        DoorTiles.push_back(&tile[x][y]); 
+                    }
 				if (map[x][y] == '5') {
 					if (map[x + 1][y] != '5' || map[x - 1][y] != '5' ||
 						map[x][y + 1] != '5' || map[x][y - 1] != '5') {
@@ -116,6 +119,7 @@ void Map::LoadMap() {
 			tile[x][y].posy = tile[x][y].dest.y;
 		}
 	}
+
 }
 void Map::checkOverWorld() {
 	if (!Game::overworld) {

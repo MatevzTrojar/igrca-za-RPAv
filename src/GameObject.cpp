@@ -30,7 +30,6 @@
 #include "TextureManager.h"
 #include "clock.hpp"
 #include "glm/geometric.hpp"
-#include "player.hpp"
 GameObject::GameObject(const char* textureSheet, int x, int y, int h, int w) {
 	objTexture = TextureManager::LoadTexture(textureSheet);
 	SDL_QueryTexture(objTexture, NULL, NULL, &dest.w, &dest.h);

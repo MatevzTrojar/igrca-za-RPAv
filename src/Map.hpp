@@ -9,6 +9,7 @@ class Map {
 public:
     std::vector<SDL_Rect> Borders;
     std::vector<SDL_Rect> OWBorders;
+    std::vector<Tile*> DoorTiles;
     SDL_Texture* Bitmap;
     char map[120][72];
      Tile tile[120][72];

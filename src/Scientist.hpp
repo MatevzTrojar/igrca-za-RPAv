@@ -1,9 +1,9 @@
 #pragma once
 #include "Game.h"
 #include "GameObject.h"
+#include "Game.h"
 #include "SDL_keyboard.h"
 #include <glm/glm.hpp>
-#include "Map.hpp"
 #include "glm/ext/scalar_int_sized.hpp"
 #include "glm/ext/vector_float2.hpp"
 class Scientist :public GameObject{

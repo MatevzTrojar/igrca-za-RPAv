@@ -61,7 +61,7 @@ bool Game::playingReplay = false;
 int Game::replayFrame = 0;
 SDL_Point Game::LeftDungeon1 = {0, 0};
 SDL_Point Game::LeftDungeon2 = {0, 0};
-SDL_Point Game::LeftDungeon3 = {0, 0};
+SDL_Point Game::LeftDungeon3 = {0, 0};   
 Player* ghostPlayer = nullptr;
 
 int Game::level = 0;
@@ -110,18 +110,15 @@ void Game::SaveReplay() {
 		std::cerr << "Error opening file for saving." << std::endl;
 		return;
 	}
-	Game::ReplayData replayData;
-	replayData.LeftDungeon1 = Game::LeftDungeon1;
-	replayData.LeftDungeon2 = Game::LeftDungeon2;
-	replayData.LeftDungeon3 = Game::LeftDungeon3;
-	ReplayFile.write(reinterpret_cast<const char*>(&replayData),
-					 sizeof(Game::ReplayData));
 	for (const DeltaPlayer& point : playerReplayPath) {
 		ReplayFile.write(reinterpret_cast<const char*>(&point), sizeof(point));
 	}
-
-	std::cout << "ReplayData.LeftDungeon1.x/y: " << Game::LeftDungeon1.x
-			  << Game::LeftDungeon1.y << std::endl;
+    Game::ReplayData replayData;
+    replayData.LeftDungeon1 = Game::LeftDungeon1;
+    replayData.LeftDungeon2 = Game::LeftDungeon2;
+    replayData.LeftDungeon3 = Game::LeftDungeon3;
+    ReplayFile.write(reinterpret_cast<const char*>(&replayData),
+                     sizeof(Game::ReplayData));
 
 	ReplayFile.close();
 	std::cout << "Replay saved successfully!" << std::endl;
@@ -395,32 +392,20 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 bool just_spawned = false;
 
 void Game::Dungeoninit(bool isReplay) {
-	switch (level) {
-		case 1:
-			player->posx = 56 * 32;
-			player->posy = 25 * 32;
-			break;
-		case 2:
-			player->posx = 26 * 32;
-			player->posy = 22 * 32;
-			break;
-		case 3:
-			player->posx = 16 * 32;
-			player->posy = 4 * 32;
-			break;
-	}
 	map->Bitmap = TextureManager::LoadTexture("assets/textures/Dungeon.png");
 	map->checkOverWorld();
 	map->AssignRand();
 	map->LoadMap();
 	map->AssignBorders();
 	just_spawned = true;
-
 	if (isReplay) {
 		return;
 	} else {
 		std::vector<std::vector<int>> RoomSpawn;
 		if (level == 1) {
+			player->posx = 56 * 32;
+			player->posy = 25 * 32;
+
 			RoomSpawn = {{400, 300},
 						 {42 * 32, 30 * 32, 72 * 32, 14 * 32},
 						 {72 * 32, 43 * 32, 102 * 32, 50 * 32},
@@ -441,6 +426,8 @@ void Game::Dungeoninit(bool isReplay) {
 										   -100, 64, 64);
 			}
 
+			player->posx = 26 * 32;
+			player->posy = 22 * 32;
 			RoomSpawn = {{12 * 32, 28 * 32, 41 * 32, 28 * 32},
 						 {49 * 32, 4 * 32, 72 * 32, 5 * 32},
 						 {98 * 32, 13 * 32, 110 * 32, 25 * 32},
@@ -466,6 +453,8 @@ void Game::Dungeoninit(bool isReplay) {
 				Level2Pet = new GameObject("assets/textures/hampter.png", -100,
 										   -100, 64, 64);
 			}
+			player->posx = 16 * 32;
+			player->posy = 4 * 32;
 			RoomSpawn = {{33 * 32, 5 * 32},
 						 {97 * 32, 5 * 32, 105 * 32, 10 * 32},
 						 {60 * 32, 23 * 32, 70 * 32, 27 * 32},
@@ -499,8 +488,6 @@ void Game::Overworldinit(bool isReplay) {
 			player = new Player("assets/textures/Chewbacca.png", 30 * 32,
 								25 * 32, 64, 64);
 		}
-        player->posx = 30 * 32;
-        player->posy = 25 * 32;
 		map->Bitmap =
 			TextureManager::LoadTexture("assets/textures/overworld.xcf");
 		map->checkOverWorld();
@@ -658,15 +645,15 @@ void Game::update() {
 		return;
 	}
 
-	Uint32 now = SDL_GetTicks();
-    std::cout<<level<<std::endl;
-	if (now - lastCaptureTime >= 1000 / 60) {
-		lastCaptureTime = now;
+Uint32 now = SDL_GetTicks();
 
-		DeltaPlayer deltaPlayer = {player->posx, player->posy};
-		playerReplayPath.push_back(deltaPlayer);
-	}
+if (now - lastCaptureTime >= 1000 / 60) {
+    lastCaptureTime = now;
 
+    DeltaPlayer deltaPlayer = {player->posx, player->posy};
+    playerReplayPath.push_back(deltaPlayer);
+}
+ 
 	player->Update();
 	if (overworld) {
 		Overworldupdate();
@@ -822,8 +809,6 @@ void Game::Dungeonupdate(bool isReplay) {
 			case 1:
 				LeftDungeon1.x = player->posx;
 				LeftDungeon1.y = player->posy;
-				std::cout << "LeftDungeon1.x/y: " << LeftDungeon1.x
-						  << LeftDungeon1.y << std::endl;
 				break;
 			case 2:
 				LeftDungeon2.x = player->posx;
@@ -949,17 +934,16 @@ void Game::render() {
 	} else if (gameOver) {
 		SDL_RenderCopy(renderer, gameOverScreen, nullptr, &logicalRect);
 	} else {
-		if (map) {
-			map->Render();
-		} else {
-			std::cerr << "Error: map is null!\n";
-		}
-		if (player) {
-			player->Render();
-		} else {
-			std::cerr << "Error: player is null!\n";
-		}
-		if (!playingReplay) {
+			if (map) {
+				map->Render();
+			} else {
+				std::cerr << "Error: map is null!\n";
+			}
+			if (player) {
+				player->Render();
+			} else {
+				std::cerr << "Error: player is null!\n";
+		} if(!playingReplay) {
 			if (Level1Pet) Level1Pet->Render();
 			if (Level2Pet) Level2Pet->Render();
 			if (Level3Pet) Level3Pet->Render();
@@ -1015,9 +999,9 @@ void Game::render() {
 
 void Game::clean() {
 	SaveGame();
-	if (!playingReplay) {
-		SaveReplay();
-	}
+    if(!playingReplay){
+	SaveReplay();
+    }
 	if (lifeTextTexture) SDL_DestroyTexture(lifeTextTexture);
 	TTF_CloseFont(font);
 	TTF_Quit();
@@ -1028,3 +1012,337 @@ void Game::clean() {
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit();
 }
+#include "Replay.hpp"
+
+#include <ctime>
+#include <exception>
+#include <fstream>
+#include <utility>
+
+#include "Collision.hpp"
+#include "Game.h"
+#include "SDL_render.h"
+#include "TextureManager.h"
+std::vector<Game::DeltaPlayer> Replay::replayPath;
+Game::ReplayData ReplayData;
+size_t Replay::currentFrame = 0;
+void Replay::initReplay(Game* game) {
+	std::cout << "Replay::initReplay called" << std::endl;
+	replayPath.clear();
+	currentFrame = 0;
+	std::ifstream replayFile("replay.bin", std::ios::binary);
+	if (!replayFile) {
+		std::cerr << "Error opening replay file." << std::endl;
+		return;
+	}
+	Game::DeltaPlayer point;
+	while (replayFile.read(reinterpret_cast<char*>(&point), sizeof(point))) {
+		replayPath.push_back(point);
+	}
+	replayFile.read(reinterpret_cast<char*>(&ReplayData),
+					sizeof(Game::ReplayData));
+	Game::LeftDungeon1 = ReplayData.LeftDungeon1;
+	Game::LeftDungeon2 = ReplayData.LeftDungeon2;
+	Game::LeftDungeon3 = ReplayData.LeftDungeon3;
+	replayFile.close();
+	game->Overworldinit(true);
+}
+
+static Uint32 lastReplayTick = 0;
+
+void Replay::Update(Game* game) {
+	if (currentFrame < replayPath.size()) {
+		// Update player position from replay
+		Game::player->posx = replayPath[currentFrame].posX;
+		Game::player->posy = replayPath[currentFrame].posY;
+		Game::player->dest.x =
+			static_cast<int>(Game::player->posx) - game->Camera.x;
+		Game::player->dest.y =
+			static_cast<int>(Game::player->posy) - game->Camera.y;
+
+		for (int i = 0; i < Game::map->DoorTiles.size(); i++) {
+            SDL_Rect TileDest{(int)Game::map->DoorTiles[i]->posx,
+                              (int)Game::map->DoorTiles[i]->posy,
+                              Game::map->DoorTiles[i]->dest.w,
+                              Game::map->DoorTiles[i]->dest.h};
+            SDL_Rect TempPlayer{ (int)Game::player->posx,
+                                (int)Game::player->posy,
+                                Game::player->dest.w,
+                                Game::player->dest.h};
+                if(Collision::AABB(TileDest,TempPlayer)&&
+                   !Game::map->DoorTiles[i]->Used){
+				Game::map->DoorTiles[i]->Used = true;
+
+				std::cout << "Col detect:" << std::endl;
+				Game::overworld = false;
+				game->level++;
+                /*
+				Game::map->Bitmap =
+					TextureManager::LoadTexture("assets/textures/Dungeon.png");
+				Game::map->checkOverWorld();
+				Game::map->AssignRand();
+				Game::map->LoadMap();
+				Game::map->AssignBorders();
+				return;
+                */
+				 game->Dungeoninit(1);
+			}
+		}
+
+		if (game->level == 1 && !game->overworld &&
+			game->LeftDungeon1.x == static_cast<int>(Game::player->posx) &&
+			game->LeftDungeon1.y == static_cast<int>(Game::player->posy)) {
+			game->overworld = true;
+			Game::level++;
+			TextureManager::LoadTexture("assets/textures/overworld.xcf");
+			Game::map->checkOverWorld();
+			Game::map->AssignRand();
+			Game::map->LoadMap();
+			Game::map->AssignBorders();
+			//   game->Overworldinit(1);
+		} else if (game->level == 2 && !game->overworld &&
+				   game->LeftDungeon2.x ==
+					   static_cast<int>(Game::player->posx) &&
+				   game->LeftDungeon2.y ==
+					   static_cast<int>(Game::player->posy)) {
+			Game::level++;
+			TextureManager::LoadTexture("assets/textures/overworld.xcf");
+			Game::map->checkOverWorld();
+			Game::map->AssignRand();
+			Game::map->LoadMap();
+			Game::map->AssignBorders();
+			//  game->Overworldinit(1);
+		} else if (game->level == 3 && !game->overworld &&
+				   game->LeftDungeon3.x ==
+					   static_cast<int>(Game::player->posx) &&
+				   game->LeftDungeon3.y ==
+					   static_cast<int>(Game::player->posy)) {
+			game->overworld = true;
+			TextureManager::LoadTexture("assets/textures/overworld.xcf");
+			Game::map->checkOverWorld();
+			Game::map->AssignRand();
+			Game::map->LoadMap();
+			Game::map->AssignBorders();
+			//  game->Overworldinit(1);
+		}
+
+		// Frame limiter for replay (60 fps)
+		Uint32 now = SDL_GetTicks();
+		if (now - lastReplayTick >= 1000 / 60) {
+			currentFrame++;
+			lastReplayTick = now;
+		}
+	} else {
+		game->playingReplay = false;
+		game->isRunning = false;
+	}
+}
+
+void Replay::render(Game* game) {
+	SDL_RenderClear(game->renderer);
+	Game::player->Render();
+	Game::map->Render();
+	SDL_RenderPresent(game->renderer);
+}
+#include "Game.h"
+#include <cstdlib>
+#include <ctime>
+#include <fstream>
+#include <iostream>
+#include <iterator>
+
+#include "SDL_render.h"
+#include "glm/detail/type_half.hpp"
+void Map::AssignRand() {
+	if (!Game::overworld) {
+		if (Game::level == 1) {
+			std::ifstream file("assets/Levels/Level1.txt");
+			char type;
+			for (int y = 0; y < 72; y++) {
+				for (int x = 0; x < 120; x++) {
+					file >> type;
+					map[x][y] = type;
+				}
+			}
+		}
+		if (Game::level == 2) {
+			std::ifstream file("assets/Levels/Level2.txt");
+			char type;
+			for (int y = 0; y < 72; y++) {
+				for (int x = 0; x < 120; x++) {
+					file >> type;
+					map[x][y] = type;
+				}
+			}
+		}
+		if (Game::level == 3) {
+			std::ifstream file("assets/Levels/Level3.txt");
+			char type;
+			for (int y = 0; y < 72; y++) {
+				for (int x = 0; x < 120; x++) {
+					file >> type;
+					map[x][y] = type;
+				}
+			}
+		}
+	} else {
+		std::ifstream file("assets/overworld.txt");
+		char type;
+		for (int y = 0; y < 72; y++) {
+			for (int x = 0; x < 120; x++) {
+				file >> type;
+				map[x][y] = type;
+			}
+		}
+	}
+}
+void Map::AssignBorders() {
+	if (!Game::overworld) {
+		for (int y = 0; y < 72; y++) {
+			for (int x = 0; x < 120; x++) {
+				if (map[x][y] == '2') {
+					if (map[x + 1][y] != '2' || map[x - 1][y] != '2' ||
+						map[x][y + 1] != '2' || map[x][y - 1] != '2') {
+						Borders.push_back(tile[x][y].dest);
+						tile[x][y].isWall = true;
+					}
+				}
+
+                }
+			}
+	} else {
+		for (int y = 0; y < 72; y++) {
+			for (int x = 0; x < 120; x++) {
+                if(map[x][y] == '4' || map[x][y] == '7'){
+                        DoorTiles.push_back(&tile[x][y]); 
+                    }
+				if (map[x][y] == '5') {
+					if (map[x + 1][y] != '5' || map[x - 1][y] != '5' ||
+						map[x][y + 1] != '5' || map[x][y - 1] != '5') {
+						OWBorders.push_back(tile[x][y].dest);
+						tile[x][y].isWall = true;
+					}
+				}
+				if (map[x][y] == '3') {
+					if (map[x + 1][y] != '3' || map[x - 1][y] != '3' ||
+						map[x][y + 1] != '3' || map[x][y - 1] != '3') {
+						OWBorders.push_back(tile[x][y].dest);
+						tile[x][y].isWall = true;
+					}
+				}
+                if(map[x][y] == '8'){
+                    if (map[x + 1][y] != '8' || map[x - 1][y] != '8' ||
+                            map[x][y + 1] != '8' || map[x][y - 1] != '8') {
+                        OWBorders.push_back(tile[x][y].dest);
+                        tile[x][y].isWall = true;
+                    }
+                }
+
+
+				/*
+				if (map[x][y] == '4') {
+					if (map[x + 1][y] != '4' || map[x - 1][y] != '4' ||
+						map[x][y + 1] != '4' || map[x][y - 1] != '4') {
+						OWBorders.push_back(tile[x][y].dest);
+						tile[x][y].isWall = true;
+
+					}
+
+				}
+				*/
+			}
+		}
+	}
+}
+void Map::LoadMap() {
+	for (int y = 0; y < 72; y++) {
+		for (int x = 0; x < 120; x++) {
+			tile[x][y].dest.x = x * 32;
+			tile[x][y].dest.y = y * 32;
+			tile[x][y].dest.w = 32;
+			tile[x][y].dest.h = 32;
+			tile[x][y].posx = tile[x][y].dest.x;
+			tile[x][y].posy = tile[x][y].dest.y;
+		}
+	}
+    for(int i = 0; i < DoorTiles.size(); i++){
+        std::cout<<"all Door tiles X/Y: "<<DoorTiles[i]->posx<<", "<<DoorTiles[i]->posy<<std::endl;
+
+    }
+}
+void Map::checkOverWorld() {
+	if (!Game::overworld) {
+		tile1 = {32, 0, 32, 32};
+		tile2 = {32, 64, 32, 32};
+
+	} else {
+		tile1 = {0, 271, 32, 32};	 // normal grass
+		tile2 = {0, 298, 32, 32};	 // grass z rozicami
+		tile3 = {209, 263, 32, 32};	 // gozd
+		tile4 = {121, 633, 32, 32};	 // dungeon door
+		tile7 = {421, 754, 32, 32};	 // dungeon second door
+		tile5 = {211, 720, 32, 32};	 // dungeon wall
+		tile6 = {30, 569, 32, 32};	 // dungeon roof
+        tile8 = {211,836,32,32}; //center za zivalce walls
+        tile9 = {30,809,32,32}; //center za zivalce roof
+        tile10 = {121,754,32,32}; //center za zivalce door 
+	}
+}
+
+void Map::Render() {
+	int OffsetX = Game::Camera.x / 32;
+	int OffsetY = Game::Camera.y / 32;
+
+	int pixelOffsetX = Game::Camera.x % 32;	 // Sub-tile offset
+	int pixelOffsetY = Game::Camera.y % 32;	 // Sub-tile offset
+
+	int maxX = std::min(OffsetX + 61,
+						120);  // +1 to prevent gaps at screen edges
+	int maxY = std::min(OffsetY + 35, 72);
+
+	for (int y = OffsetY; y < maxY; y++) {
+		for (int x = OffsetX; x < maxX; x++) {
+			char tileType = map[x][y];
+
+			// Calculate screen position with smooth pixel offset
+			SDL_Rect dest = {(x - OffsetX) * 32 - pixelOffsetX,
+							 (y - OffsetY) * 32 - pixelOffsetY, 32, 32};
+
+			switch (tileType) {
+				case '1':
+					SDL_RenderCopy(Game::renderer, Bitmap, &tile1, &dest);
+					break;
+				case '2':
+					SDL_RenderCopy(Game::renderer, Bitmap, &tile2, &dest);
+					break;
+				case '3':
+					SDL_RenderCopy(Game::renderer, Bitmap, &tile3, &dest);
+					break;
+				case '4':
+					SDL_RenderCopy(Game::renderer, Bitmap, &tile4, &dest);
+					break;
+				case '5':
+					SDL_RenderCopy(Game::renderer, Bitmap, &tile5, &dest);
+					break;
+				case '6':
+					SDL_RenderCopy(Game::renderer, Bitmap, &tile6, &dest);
+					break;
+				case '7':
+					SDL_RenderCopy(Game::renderer, Bitmap, &tile7, &dest);
+                    break;
+                case '8':
+                    SDL_RenderCopy(Game::renderer, Bitmap, &tile8, &dest);
+                    break;
+                case '9':
+                    SDL_RenderCopy(Game::renderer, Bitmap, &tile9, &dest);
+                    break;
+                case '0':
+                    SDL_RenderCopy(Game::renderer, Bitmap, &tile10, &dest);
+                    break;
+				default:
+					break;	// Skip empty tiles or unknown types
+			}
+		}
+	}
+}
+

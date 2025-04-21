@@ -11,6 +11,7 @@ add_executable(${PROJECT_NAME} src/main.cpp src/GameObject.cpp src/TextureManage
     src/player.cpp
 src/Tile.cpp
 src/Collision.cpp
+src/Replay.cpp
 )
 
 INCLUDE(FindPkgConfig)
