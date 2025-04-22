@@ -1,8 +1,74 @@
 [
 {
   "directory": "/home/matko/Desktop/igrca-za-RPAv/build",
-  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/main.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/main.cpp",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/usr/include/freetype2 -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/sysprof-6 -I/home/matko/Desktop/igrca-za-RPAv/src/HeaderFiles -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/main.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/main.cpp",
   "file": "/home/matko/Desktop/igrca-za-RPAv/src/main.cpp",
   "output": "CMakeFiles/mygame.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/matko/Desktop/igrca-za-RPAv/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/usr/include/freetype2 -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/sysprof-6 -I/home/matko/Desktop/igrca-za-RPAv/src/HeaderFiles -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/GameObject.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/GameObject.cpp",
+  "file": "/home/matko/Desktop/igrca-za-RPAv/src/GameObject.cpp",
+  "output": "CMakeFiles/mygame.dir/src/GameObject.cpp.o"
+},
+{
+  "directory": "/home/matko/Desktop/igrca-za-RPAv/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/usr/include/freetype2 -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/sysprof-6 -I/home/matko/Desktop/igrca-za-RPAv/src/HeaderFiles -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/TextureManager.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/TextureManager.cpp",
+  "file": "/home/matko/Desktop/igrca-za-RPAv/src/TextureManager.cpp",
+  "output": "CMakeFiles/mygame.dir/src/TextureManager.cpp.o"
+},
+{
+  "directory": "/home/matko/Desktop/igrca-za-RPAv/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/usr/include/freetype2 -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/sysprof-6 -I/home/matko/Desktop/igrca-za-RPAv/src/HeaderFiles -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/Game.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/Game.cpp",
+  "file": "/home/matko/Desktop/igrca-za-RPAv/src/Game.cpp",
+  "output": "CMakeFiles/mygame.dir/src/Game.cpp.o"
+},
+{
+  "directory": "/home/matko/Desktop/igrca-za-RPAv/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/usr/include/freetype2 -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/sysprof-6 -I/home/matko/Desktop/igrca-za-RPAv/src/HeaderFiles -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/Scientist.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/Scientist.cpp",
+  "file": "/home/matko/Desktop/igrca-za-RPAv/src/Scientist.cpp",
+  "output": "CMakeFiles/mygame.dir/src/Scientist.cpp.o"
+},
+{
+  "directory": "/home/matko/Desktop/igrca-za-RPAv/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/usr/include/freetype2 -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/sysprof-6 -I/home/matko/Desktop/igrca-za-RPAv/src/HeaderFiles -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/Mouse.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/Mouse.cpp",
+  "file": "/home/matko/Desktop/igrca-za-RPAv/src/Mouse.cpp",
+  "output": "CMakeFiles/mygame.dir/src/Mouse.cpp.o"
+},
+{
+  "directory": "/home/matko/Desktop/igrca-za-RPAv/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/usr/include/freetype2 -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/sysprof-6 -I/home/matko/Desktop/igrca-za-RPAv/src/HeaderFiles -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/Bullet.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/Bullet.cpp",
+  "file": "/home/matko/Desktop/igrca-za-RPAv/src/Bullet.cpp",
+  "output": "CMakeFiles/mygame.dir/src/Bullet.cpp.o"
+},
+{
+  "directory": "/home/matko/Desktop/igrca-za-RPAv/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/usr/include/freetype2 -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/sysprof-6 -I/home/matko/Desktop/igrca-za-RPAv/src/HeaderFiles -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/Map.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/Map.cpp",
+  "file": "/home/matko/Desktop/igrca-za-RPAv/src/Map.cpp",
+  "output": "CMakeFiles/mygame.dir/src/Map.cpp.o"
+},
+{
+  "directory": "/home/matko/Desktop/igrca-za-RPAv/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/usr/include/freetype2 -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/sysprof-6 -I/home/matko/Desktop/igrca-za-RPAv/src/HeaderFiles -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/player.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/player.cpp",
+  "file": "/home/matko/Desktop/igrca-za-RPAv/src/player.cpp",
+  "output": "CMakeFiles/mygame.dir/src/player.cpp.o"
+},
+{
+  "directory": "/home/matko/Desktop/igrca-za-RPAv/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/usr/include/freetype2 -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/sysprof-6 -I/home/matko/Desktop/igrca-za-RPAv/src/HeaderFiles -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/Tile.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/Tile.cpp",
+  "file": "/home/matko/Desktop/igrca-za-RPAv/src/Tile.cpp",
+  "output": "CMakeFiles/mygame.dir/src/Tile.cpp.o"
+},
+{
+  "directory": "/home/matko/Desktop/igrca-za-RPAv/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/usr/include/freetype2 -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/sysprof-6 -I/home/matko/Desktop/igrca-za-RPAv/src/HeaderFiles -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/Collision.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/Collision.cpp",
+  "file": "/home/matko/Desktop/igrca-za-RPAv/src/Collision.cpp",
+  "output": "CMakeFiles/mygame.dir/src/Collision.cpp.o"
+},
+{
+  "directory": "/home/matko/Desktop/igrca-za-RPAv/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/usr/include/libpng16 -I/usr/include/rav1e -I/usr/include/svt-av1 -I/usr/include/webp -I/usr/include/freetype2 -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/sysprof-6 -I/home/matko/Desktop/igrca-za-RPAv/src/HeaderFiles -I/home/matko/Desktop/igrca-za-RPAv/build/_deps/glm-src/glm/..  -std=c++0x -o CMakeFiles/mygame.dir/src/Replay.cpp.o -c /home/matko/Desktop/igrca-za-RPAv/src/Replay.cpp",
+  "file": "/home/matko/Desktop/igrca-za-RPAv/src/Replay.cpp",
+  "output": "CMakeFiles/mygame.dir/src/Replay.cpp.o"
 }
 ]

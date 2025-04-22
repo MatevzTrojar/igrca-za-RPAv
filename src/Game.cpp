@@ -1,5 +1,12 @@
 #include "Game.h"
 
+#include <SDL_blendmode.h>
+#include <SDL_error.h>
+#include <SDL_events.h>
+#include <SDL_rect.h>
+#include <SDL_render.h>
+#include <SDL_stdinc.h>
+#include <SDL_timer.h>
 #include <SDL_ttf.h>
 
 #include <climits>
@@ -8,11 +15,8 @@
 #include <cstdlib>
 #include <fstream>
 #include <glm/glm.hpp>
-#include <iomanip>
 #include <ios>
 #include <iostream>
-#include <iterator>
-#include <memory>
 #include <set>
 #include <vector>
 
@@ -21,34 +25,26 @@
 #include "GameObject.h"
 #include "Mouse.hpp"
 #include "Replay.hpp"
-#include "SDL_blendmode.h"
-#include "SDL_error.h"
-#include "SDL_events.h"
-#include "SDL_joystick.h"
-#include "SDL_log.h"
-#include "SDL_mutex.h"
-#include "SDL_rect.h"
-#include "SDL_render.h"
-#include "SDL_stdinc.h"
-#include "SDL_timer.h"
 #include "Scientist.hpp"
 #include "TextureManager.h"
-#include "glm/detail/type_half.hpp"
+#include "clock.hpp"
+
 int SCREEN_WIDTH = 1920;
 int SCREEN_HEIGHT = 1080;
 std::set<Bullet*> bullets;
-Player* Game::player;
 GameObject* Level1Pet;
 GameObject* Level2Pet;
 GameObject* Level3Pet;
 std::set<Scientist*> scientists;
 Mouse mouse;
-Map* Game::map;
-SDL_Rect Game::Camera = {0, 0, 1920, 1080};
 int life = 3;
-SDL_Renderer* Game::renderer = nullptr;
 SDL_Renderer* PauseRenderer = nullptr;
 bool isInnitialized = false;
+SDL_Renderer* Game::renderer = nullptr;
+
+Player* Game::player;
+Map* Game::map;
+SDL_Rect Game::Camera = {0, 0, 1920, 1080};
 bool Game::overworld = true;
 bool Game::victory = false;
 bool Game::gameOver = false;
@@ -114,6 +110,7 @@ void Game::SaveReplay() {
 	replayData.LeftDungeon1 = Game::LeftDungeon1;
 	replayData.LeftDungeon2 = Game::LeftDungeon2;
 	replayData.LeftDungeon3 = Game::LeftDungeon3;
+
 	ReplayFile.write(reinterpret_cast<const char*>(&replayData),
 					 sizeof(Game::ReplayData));
 	for (const DeltaPlayer& point : playerReplayPath) {
@@ -153,17 +150,14 @@ void Game::SaveGame() {
 	data.Follow1 = Level1Pet ? Level1Pet->Follow : false;
 	data.Follow2 = Level2Pet ? Level2Pet->Follow : false;
 	data.Follow3 = Level3Pet ? Level3Pet->Follow : false;
-	//	if (overworld)
+
 	data.PetCount = (Level1Pet != nullptr) + (Level2Pet != nullptr) +
 					(Level3Pet != nullptr);
-	//	else
-	//		data.PetCount = 0;
 
 	SaveFile.write(reinterpret_cast<const char*>(&data), sizeof(SaveData));
-	//	if (overworld) {
+
 	SaveObjectData saveData;
 	if (Level1Pet) {
-		// GetSaveData() should now also return shelter coordinates.
 		saveData = Level1Pet->GetSaveData();
 		SaveFile.write(reinterpret_cast<char*>(&saveData), sizeof(saveData));
 	}
@@ -206,11 +200,30 @@ void Game::SaveGame() {
 bool Game::Loaded = false;
 void Game::LoadGame() {
 	Loaded = true;
+	std::ifstream ReplayFile("replay.bin", std::ios::binary);
+	Game::ReplayData replayData;
+	ReplayFile.read(reinterpret_cast<char*>(&replayData),
+					sizeof(Game::ReplayData));
+	if (!ReplayFile) {
+		std::cerr << "Error opening file for loading." << std::endl;
+		return;
+	}
+
+
+	Game::LeftDungeon1 = replayData.LeftDungeon1;
+	Game::LeftDungeon2 = replayData.LeftDungeon2;
+	Game::LeftDungeon3 = replayData.LeftDungeon3;
+	DeltaPlayer point;
+	while (ReplayFile.read(reinterpret_cast<char*>(&point), sizeof(point))) {
+		playerReplayPath.push_back(point);
+	}
+	ReplayFile.close();
 	std::ifstream LoadFile("Saving.bin", std::ios::binary);
 	if (!LoadFile) {
 		std::cerr << "Error opening file for loading." << std::endl;
 		return;
 	}
+
 	SaveData data;
 	LoadFile.read(reinterpret_cast<char*>(&data), sizeof(SaveData));
 	level = data.level;
@@ -337,7 +350,6 @@ Game::Game() {}
 Game::~Game() {}
 
 void Game::init(const char* title, int width, int height, bool fullscreen) {
-	// Use the resizable flag (and fullscreen if desired)
 	int flags = SDL_WINDOW_RESIZABLE;
 	if (fullscreen) {
 		flags |= SDL_WINDOW_FULLSCREEN;
@@ -357,7 +369,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 	if (!font) {
 		std::cerr << "Failed to load font: " << TTF_GetError() << std::endl;
 	}
-	// Pre-render text (if needed)
+
 	TextureManager::RenderText(font, "Hitpoints: " + std::to_string(life),
 							   textColor);
 	TextureManager::RenderText(pauseFont, "Paused", textColor);
@@ -372,11 +384,9 @@ void Game::init(const char* title, int width, int height, bool fullscreen) {
 				  << std::endl;
 	}
 
-	// Create a render target texture at the logical resolution (1920x1080)
 	renderTarget = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888,
 									 SDL_TEXTUREACCESS_TARGET, 1920, 1080);
 
-	// Initialize our global screen width/height with the given width/height.
 	SCREEN_WIDTH = width;
 	SCREEN_HEIGHT = height;
 
@@ -499,8 +509,8 @@ void Game::Overworldinit(bool isReplay) {
 			player = new Player("assets/textures/Chewbacca.png", 30 * 32,
 								25 * 32, 64, 64);
 		}
-        player->posx = 30 * 32;
-        player->posy = 25 * 32;
+		player->posx = 30 * 32;
+		player->posy = 25 * 32;
 		map->Bitmap =
 			TextureManager::LoadTexture("assets/textures/overworld.xcf");
 		map->checkOverWorld();
@@ -559,21 +569,18 @@ void Game::handleEvents() {
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
 			case SDL_QUIT:
-				isRunning = false;
+				running(true);
 				break;
 			case SDL_WINDOWEVENT:
 				if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
-					// Update our screen dimensions when the window is resized.
 					SCREEN_WIDTH = event.window.data1;
 					SCREEN_HEIGHT = event.window.data2;
 				}
 				break;
 			case SDL_MOUSEBUTTONDOWN: {
-				// Convert raw mouse coordinates to logical coordinates.
 				int windowW, windowH;
 				SDL_GetWindowSize(window, &windowW, &windowH);
-				// Because we are stretching the fixed resolution to fill the
-				// window, we use the ratios (logical/resolution).
+
 				float scaleX = 1920.0f / windowW;
 				float scaleY = 1080.0f / windowH;
 				mouse.xpos = event.button.x * scaleX;
@@ -582,12 +589,9 @@ void Game::handleEvents() {
 				SDL_Rect mouseRect = {static_cast<int>(mouse.xpos),
 									  static_cast<int>(mouse.ypos), 1, 1};
 
-				// Use logical coordinate rectangles for button collisions.
 				if (MainMenu) {
-					// For example, if playButton is defined in logical
-					// coordinates:
 					if (Collision::AABB(playButton, mouseRect)) {
-						MainMenu = false;  // Start the game
+						MainMenu = false;
 						RestartGame();
 					} else if (Collision::AABB(loadButton, mouseRect)) {
 						LoadGame();
@@ -596,8 +600,7 @@ void Game::handleEvents() {
 						MainMenu = false;
 						playingReplay = true;
 						Replay::initReplay(this);
-					} else if (Collision::AABB(leaderboardButton, mouseRect)) {
-						// leaderboard code
+					} else if (Collision::AABB(UserButton, mouseRect)) {
 					}
 				}
 				if (victory) {
@@ -649,7 +652,7 @@ void Game::update() {
 		if (Camera.y > (mapHeight - Camera.h)) Camera.y = mapHeight - Camera.h;
 		return;
 	}
-	// std::cout << Paused << std::endl;
+
 	if (!isInnitialized) {
 		return;
 	}
@@ -659,7 +662,6 @@ void Game::update() {
 	}
 
 	Uint32 now = SDL_GetTicks();
-    std::cout<<level<<std::endl;
 	if (now - lastCaptureTime >= 1000 / 60) {
 		lastCaptureTime = now;
 
@@ -934,13 +936,11 @@ void Game::Overworldupdate(bool isReplay) {
 }
 
 void Game::render() {
-	// Set render target to our offscreen texture with fixed resolution.
 	SDL_SetRenderTarget(renderer, renderTarget);
 	SDL_RenderClear(renderer);
 
-	SDL_Rect logicalRect = {0, 0, 1920, 1080};	// fixed logical resolution
+	SDL_Rect logicalRect = {0, 0, 1920, 1080};
 	if (MainMenu) {
-		// Render main menu background using the logical resolution.
 		SDL_RenderCopy(renderer, mainMenuTexture, nullptr, &logicalRect);
 	} else if (EndGame) {
 		SDL_RenderCopy(renderer, EndGameScreen, nullptr, &logicalRect);
@@ -979,8 +979,7 @@ void Game::render() {
 			}
 
 			if (!victory && !gameOver && lifeTextTexture) {
-				SDL_Rect lifeRect = {1720, 20, 180,
-									 50};  // defined in logical coordinates
+				SDL_Rect lifeRect = {1720, 20, 180, 50};
 				SDL_RenderCopy(renderer, lifeTextTexture, nullptr, &lifeRect);
 			} else if (!victory && !gameOver) {
 				std::cerr << "Warning: lifeTextTexture is null!\n";
@@ -988,7 +987,6 @@ void Game::render() {
 		}
 	}
 
-	// Draw UI overlays (for example, the "Paused" text) on the render target.
 	if (Paused) {
 		SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 128);
@@ -996,18 +994,15 @@ void Game::render() {
 
 		SDL_Texture* pauseTexture =
 			TextureManager::RenderText(pauseFont, "Paused", textColor);
-		// Place the pause text in the center using logical coordinates.
+
 		SDL_Rect pauseRect = {1920 / 2 - 200, 1080 / 2 - 50, 400, 100};
 		SDL_RenderCopy(renderer, pauseTexture, nullptr, &pauseRect);
 		SDL_DestroyTexture(pauseTexture);
 	}
 
-	// Finished drawing to renderTarget; now switch back to the window.
 	SDL_SetRenderTarget(renderer, NULL);
 	SDL_RenderClear(renderer);
 
-	// Finally, copy the entire render target to the window, scaling it to fill
-	// the window.
 	SDL_Rect destRect = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
 	SDL_RenderCopy(renderer, renderTarget, nullptr, &destRect);
 	SDL_RenderPresent(renderer);

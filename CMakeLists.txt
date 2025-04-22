@@ -6,13 +6,19 @@ cmake_minimum_required(VERSION 3.3)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
 
-add_executable(${PROJECT_NAME} src/main.cpp src/GameObject.cpp src/TextureManager.cpp src/Game.cpp src/Scientist.cpp src/Mouse.cpp src/Bullet.cpp
+add_executable(${PROJECT_NAME} src/main.cpp 
+    src/GameObject.cpp
+    src/TextureManager.cpp
+    src/Game.cpp 
+    src/Scientist.cpp
+    src/Mouse.cpp src/Bullet.cpp
     src/Map.cpp
     src/player.cpp
-src/Tile.cpp
-src/Collision.cpp
-src/Replay.cpp
+    src/Tile.cpp
+    src/Collision.cpp
+    src/Replay.cpp
 )
+
 
 INCLUDE(FindPkgConfig)
 include(FetchContent)
@@ -34,7 +40,11 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(glm)
 
 
-INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS} ${SDL2IMAGE_INCLUDE_DIRS} ${SDL2TTF_INCLUDE_DIRS})
+INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS}
+    ${SDL2IMAGE_INCLUDE_DIRS}
+    ${SDL2TTF_INCLUDE_DIRS}
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/HeaderFiles
+)
 
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} PRIVATE
     ${SDL2_LIBRARIES}

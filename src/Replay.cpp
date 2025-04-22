@@ -1,17 +1,14 @@
 #include "Replay.hpp"
 
 #include <ctime>
-#include <exception>
-#include <experimental/filesystem>
 #include <fstream>
-#include <utility>
+#include <iostream>
 
 #include "Collision.hpp"
 #include "Game.h"
 #include "SDL_rect.h"
 #include "SDL_render.h"
-#include "TextureManager.h"
-#include "glm/detail/type_half.hpp"
+
 std::vector<Game::DeltaPlayer> Replay::replayPath;
 Game::ReplayData ReplayData;
 size_t Replay::currentFrame = 0;
@@ -44,12 +41,11 @@ static Uint32 lastReplayTick = 0;
 
 void Replay::Update(Game* game) {
 	if (currentFrame < replayPath.size()) {
+		std::cout << Game::level << std::endl;
+		for (SDL_Rect Border : Game::map->Borders) {
+			Game::player->CollisionDetect(Border);
+		}
 
-            std::cout<<Game::level<<std::endl;
-        for(SDL_Rect Border : Game::map->Borders){
-            Game::player->CollisionDetect(Border);
-        }
-		// Update player position from replay
 		Game::player->posx = replayPath[currentFrame].posX;
 		Game::player->posy = replayPath[currentFrame].posY;
 		Game::player->dest.x =
@@ -90,13 +86,13 @@ void Replay::Update(Game* game) {
 			game->LeftDungeon1.x == static_cast<int>(Game::player->posx) &&
 			game->LeftDungeon1.y == static_cast<int>(Game::player->posy)) {
 			game->overworld = true;
-			 game->Overworldinit(1);
+			game->Overworldinit(1);
 		} else if (game->level == 2 && !game->overworld &&
 				   game->LeftDungeon2.x ==
 					   static_cast<int>(Game::player->posx) &&
 				   game->LeftDungeon2.y ==
 					   static_cast<int>(Game::player->posy)) {
-            Game::overworld = true;
+			Game::overworld = true;
 			game->Overworldinit(1);
 		} else if (game->level == 3 && !game->overworld &&
 				   game->LeftDungeon3.x ==
@@ -107,7 +103,6 @@ void Replay::Update(Game* game) {
 			game->Overworldinit(1);
 		}
 
-		// Frame limiter for replay (60 fps)
 		Uint32 now = SDL_GetTicks();
 		if (now - lastReplayTick >= 1000 / 60) {
 			currentFrame++;
@@ -115,7 +110,7 @@ void Replay::Update(Game* game) {
 		}
 	} else {
 		game->playingReplay = false;
-		game->isRunning = false;
+		game->running(true);
 	}
 }
 
